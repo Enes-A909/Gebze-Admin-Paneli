@@ -449,9 +449,14 @@
                     Kategori Seç
                   </button>
                   <ul class="dropdown-menu dropdown-menu-light">
-                    <li><a class="dropdown-item" href="#1" onclick="baskanSayfasi()">Olay 1</a></li>
-                    <li><a class="dropdown-item" href="#2" onclick="loadCards()">Olay 2</a></li>
-                    <li><a class="dropdown-item" href="#3" onclick="loadCards()">Olay 3</a></li>
+                    <li><a class="dropdown-item" href="#1" onclick="">Başkan</a></li>
+                    <li><a class="dropdown-item" href="#2" onclick="">Başkan Yardımcısı</a></li>
+                    <li><a class="dropdown-item" href="#3" onclick="">Başkan Danışmanı</a></li>
+                    <li><a class="dropdown-item" href="#4" onclick="">Belediye Meclisi</a></li>
+                    <li><a class="dropdown-item" href="#5" onclick="">Müdürlükler</a></li>
+                    <li><a class="dropdown-item" href="#3" onclick="">Yönetim Şeması</a></li>
+                    <li><a class="dropdown-item" href="#3" onclick="">Eski Başkanlar</a></li>
+
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -461,14 +466,17 @@
                     Tüm Durumlar
                   </button>
                   <ul class="dropdown-menu dropdown-menu-light">
-                    <li><a class="dropdown-item" href="#1" onclick="">Olay 1</a></li>
-                    <li><a class="dropdown-item" href="#2">Olay 2</a></li>
-                    <li><a class="dropdown-item" href="#3">Olay 3</a></li>
+                    <li><a class="dropdown-item" href="#1" onclick="">Tümü</a></li>
+                    <li><a class="dropdown-item" href="#2">Arşivlendi</a></li>
+                    <li><a class="dropdown-item" href="#3">Taslak</a></li>
+                    <li><a class="dropdown-item" href="#3" onclick="">Tamamlandı</a></li>
+
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
-                  <button type="button" class="btn btn-outline-primary" style="margin-right: 10px;"><i
-                      data-feather="plus" style="margin-bottom: -9px; margin-left: -15px;"></i>
+                  <button type="button" class="btn btn-outline-primary" style="margin-right: 10px;"
+                    onclick="kategoriSecModalAc()"><i data-feather="plus"
+                      style="margin-bottom: -9px; margin-left: -15px;"></i>
                     Sayfa Ekle</button>
                 </li>
                 <li class="nav-item dropdown">
@@ -518,7 +526,7 @@
                         padding: 5px 10px;
                         border-radius: 4px;
                         cursor: pointer;
-                      ">
+                      " onclick="baskanSayfasi()">
                     Düzenle
                   </button>
                 </td>
@@ -537,7 +545,7 @@
                         padding: 5px 10px;
                         border-radius: 4px;
                         cursor: pointer;
-                      ">
+                      " onclick="baskanYardimcisi()">
                     Düzenle
                   </button>
                 </td>
@@ -641,6 +649,33 @@
             </tbody>
           </table>
         </div>
+
+        <!-- Kategori Seçim Modalı -->
+        <div class="modal fade" id="kategoriModal" tabindex="-1" aria-labelledby="kategoriModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg">
+              <div class="modal-header">
+                <h5 class="modal-title" id="kategoriModalLabel">Kategori Seç</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+              </div>
+              <div class="modal-body">
+                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                  <button class="btn btn-outline-primary" onclick="sayfaEkle('Başkan')">Başkan</button>
+                  <button class="btn btn-outline-primary" onclick="sayfaEkle('Başkan Yardımcısı')">Başkan
+                    Yardımcısı</button>
+                  <button class="btn btn-outline-primary" onclick="sayfaEkle('Başkan Danışmanı')">Başkan
+                    Danışmanı</button>
+                  <button class="btn btn-outline-primary" onclick="sayfaEkle('Belediye Meclisi')">Belediye
+                    Meclisi</button>
+                  <button class="btn btn-outline-primary" onclick="sayfaEkle('Müdürlükler')">Müdürlükler</button>
+                  <button class="btn btn-outline-primary" onclick="sayfaEkle('Yönetim Şeması')">Yönetim Şeması</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
         <!-- Container-fluid starts-->
         <div class="container-fluid">
@@ -781,6 +816,140 @@
               });
           }
         </script>
+
+        <!-- Başkan Yardımcıları ve Başkan Danışmanları -->
+        <!-- Listenin içinde herhangi bir elemana tıklandığında açılacak sayfa -->
+        <script>
+          function baskanYardimcisi() {
+            const container = document.getElementById('icerikler');
+
+            container.innerHTML = `
+      <div class="d-flex flex-wrap gap-4 justify-content-center">
+        
+        <!-- 📷 Resim Kartı -->
+        <div class="card" style="flex: 1; max-width: 25%; box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
+          <div id="imageContainer" class="d-flex align-items-center justify-content-center bg-light border-bottom" style="height: 250px;">
+            <img id="previewImage" src="" alt="Resim Önizleme" style="max-height: 100%; max-width: 100%; display: none;">
+            <span id="placeholderText" class="text-muted">Henüz resim yüklenmedi</span>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Resim Yükle</h5>
+            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            <button type="button" class="btn btn-outline-primary" id="customButton">Resim Seç</button>
+          </div>
+        </div>
+
+        <!-- 📝 Bilgi Kartı -->
+        <div class="card" style="flex: 3; max-width: 70%; box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
+          <div class="card-body">
+            <h5 class="card-title">Kişi Bilgileri</h5>
+
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Ad Soyad</label>
+              <input type="text" class="form-control" id="fullName" placeholder="Örneğin: Ahmet Yılmaz">
+            </div>
+
+            <div class="mb-3">
+              <label for="position" class="form-label">Makam</label>
+              <input type="text" class="form-control" id="position" placeholder="Örneğin: Başkan Yardımcısı">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">E-posta</label>
+              <input type="email" class="form-control" id="email" placeholder="ornek@eposta.com">
+            </div>
+
+            <div class="mb-3">
+              <label for="phone" class="form-label">Telefon Numarası</label>
+              <input type="tel" class="form-control" id="phone" placeholder="05xx xxx xx xx">
+            </div>
+
+            <button class="btn btn-primary" id="savePersonBtn">Kaydet</button>
+          </div>
+        </div>
+
+      </div>
+    `;
+
+            // 🔁 innerHTML sonrası eventleri tekrar bağla
+            const input = document.getElementById('imageInput');
+            const button = document.getElementById('customButton');
+            const preview = document.getElementById('previewImage');
+            const placeholder = document.getElementById('placeholderText');
+
+            button.addEventListener('click', () => input.click());
+
+            input.addEventListener('change', function () {
+              const file = this.files[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                  preview.src = e.target.result;
+                  preview.style.display = 'block';
+                  placeholder.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+              }
+            });
+
+            // 🎉 Kaydet butonuna tıklanınca console’a yazdıralım
+            document.getElementById('savePersonBtn').addEventListener('click', () => {
+              const adSoyad = document.getElementById('fullName').value;
+              const makam = document.getElementById('position').value;
+              const email = document.getElementById('email').value;
+              const tel = document.getElementById('phone').value;
+
+              console.log("Kayıt Edilen Kişi:", { adSoyad, makam, email, tel });
+              alert("Kişi bilgileri kaydedildi!");
+            });
+          }
+
+          // İstersen doğrudan çağır:
+          // baskanYardimcisi();
+        </script>
+
+        <script>
+          let satirNumarasi = 7;
+
+          // Modalı açar
+          function kategoriSecModalAc() {
+            const modal = new bootstrap.Modal(document.getElementById('kategoriModal'));
+            modal.show();
+          }
+
+          // Kategoriye göre satır ekler
+          function sayfaEkle(kategori) {
+            const tablo = document.querySelector("#icerikler table tbody");
+
+            satirNumarasi++;
+            const yeniSatir = document.createElement("tr");
+
+            // Fonksiyonu kategoriye göre ayarlayalım
+            let duzenleFonksiyonu = "baskanSayfasi()";
+            if (kategori === "Başkan Yardımcısı") duzenleFonksiyonu = "baskanYardimcisi()";
+            else if (kategori === "Müdürlükler") duzenleFonksiyonu = "makamDinamik()";
+
+            yeniSatir.innerHTML = `
+      <th scope="row"><input type="checkbox" /></th>
+      <td>Yeni Sayfa</td>
+      <td>${kategori}</td>
+      <td>Taslak</td>
+      <td>${new Date().toLocaleString("tr-TR")}</td>
+      <td style="text-align: right">
+        <button style="background-color: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;"
+          onclick="${duzenleFonksiyonu}">Düzenle</button>
+      </td>
+    `;
+
+            tablo.appendChild(yeniSatir);
+
+            // Modalı kapat
+            const modalInstance = bootstrap.Modal.getInstance(document.getElementById('kategoriModal'));
+            modalInstance.hide();
+          }
+        </script>
+
+
       </div>
     </div>
   </div>
