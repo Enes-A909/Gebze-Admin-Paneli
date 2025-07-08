@@ -208,22 +208,38 @@
         <!-- 📝 Bilgi Kartı -->
         <div class="card" style="flex: 3; max-width: 70%; box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
           <div class="card-body">
-            <h5 class="card-title">Kişi Bilgileri</h5>
+            <h5 class="card-title">Müdürlük Bilgileri</h5>
 
             <div class="mb-3">
-              <label for="fullName" class="form-label">Ad Soyad</label>
-              <input type="text" class="form-control" id="fullName" placeholder="Örneğin: Enes Reis">
+              <label for="fullName" class="form-label">Müdürlük Adı</label>
+              <input type="text" class="form-control" id="fullName" placeholder="Örneğin: İnsan Kaynakları Müdürlüğü">
             </div>
 
             <div class="mb-3">
-              <label for="position" class="form-label">Makam</label>
-              <input type="text" class="form-control" id="position" placeholder="Örneğin: Başkan Yardımcısı">
+              <label for="position" class="form-label">Yönetici Adı Soyadı</label>
+              <input type="text" class="form-control" id="position" placeholder="Örneğin: İsmail Osmanoğlu">
             </div>
 
             <div class="mb-3">
               <label for="email" class="form-label">E-posta</label>
               <input type="email" class="form-control" id="email" placeholder="ornek@eposta.com">
             </div>
+
+            <div class="mb-3">
+              <label for="bio" class="form-label">Biyografi</label>
+              <textarea class="form-control" id="bio" rows="3" placeholder="Kısa bir biyografi yazın..."></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="regulation" class="form-label">Yönetmelik</label>
+              <textarea class="form-control" id="regulation" rows="3" placeholder="Yönetmelik metnini buraya yazın..."></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="about" class="form-label">Müdürlük Hakkında</label>
+              <textarea class="form-control" id="about" rows="3" placeholder="Kısa bir açıklama yazın..."></textarea>
+            </div>
+
 
             <button class="btn btn-primary" id="savePersonBtn">Kaydet</button>
           </div>
@@ -258,9 +274,11 @@
       const adSoyad = document.getElementById('fullName').value;
       const makam = document.getElementById('position').value;
       const email = document.getElementById('email').value;
-      const tel = document.getElementById('phone').value;
+      const biyografi = document.getElementById('bio').value;
+      const yönetmelik = document.getElementById('regulation').value;
+      const hakkinda = document.getElementById('about').value;
 
-      console.log("Kayıt Edilen Kişi:", { adSoyad, makam, email, tel });
+      console.log("Kayıt Edilen Kişi:", { adSoyad, makam, email, biyografi, yönetmelik, hakkinda });
       alert("Kişi bilgileri kaydedildi!");
     });
   }
@@ -301,17 +319,7 @@
 
             <div class="mb-3">
               <label for="fullName" class="form-label">Ad Soyad</label>
-              <input type="text" class="form-control" id="fullName" placeholder="Örneğin: Enes Reis">
-            </div>
-
-            <div class="mb-3">
-              <label for="position" class="form-label">Makam</label>
-              <input type="text" class="form-control" id="position" placeholder="Örneğin: Başkan Yardımcısı">
-            </div>
-
-            <div class="mb-3">
-              <label for="email" class="form-label">E-posta</label>
-              <input type="email" class="form-control" id="email" placeholder="ornek@eposta.com">
+              <input type="text" class="form-control" id="fullName" placeholder="Örneğin: Ahmet Penbegüllü">
             </div>
             
             <button class="btn btn-primary" id="savePersonBtn">Kaydet</button>
@@ -356,4 +364,86 @@
 
   // İstersen doğrudan çağır:
   // eskiBaskanlar();
+</script>
+
+
+
+<!-- Belediye Meclisi -->
+
+<div id="cardContainer"></div>
+
+<script>
+  function belediyeMeclisi() {
+    const container = document.getElementById('cardContainer');
+
+    container.innerHTML = `
+      <div class="d-flex flex-wrap gap-4 justify-content-center">
+        
+        <!-- 📷 Resim Kartı -->
+        <div class="card" style="flex: 1; max-width: 25%; box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
+          <div id="imageContainer" class="d-flex align-items-center justify-content-center bg-light border-bottom" style="height: 250px;">
+            <img id="previewImage" src="" alt="Resim Önizleme" style="max-height: 100%; max-width: 100%; display: none;">
+            <span id="placeholderText" class="text-muted">Henüz resim yüklenmedi</span>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Resim Yükle</h5>
+            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            <button type="button" class="btn btn-outline-primary" id="customButton">Resim Seç</button>
+          </div>
+        </div>
+
+        <!-- 📝 Bilgi Kartı -->
+        <div class="card" style="flex: 3; max-width: 70%; box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
+          <div class="card-body">
+            <h5 class="card-title">Kişi Bilgileri</h5>
+
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Ad Soyad</label>
+              <input type="text" class="form-control" id="fullName" placeholder="Örneğin: Ahmet Penbegüllü">
+            </div>
+
+            <div class="mb-3">
+              <label for="position" class="form-label">Makam</label>
+              <input type="text" class="form-control" id="position" placeholder="Örneğin: Başkan">
+            </div>
+            
+            <button class="btn btn-primary" id="savePersonBtn">Kaydet</button>
+          </div>
+        </div>
+
+      </div>
+    `;
+
+    // 🔁 innerHTML sonrası eventleri tekrar bağla
+    const input = document.getElementById('imageInput');
+    const button = document.getElementById('customButton');
+    const preview = document.getElementById('previewImage');
+    const placeholder = document.getElementById('placeholderText');
+
+    button.addEventListener('click', () => input.click());
+
+    input.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+          placeholder.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // 🎉 Kaydet butonuna tıklanınca console’a yazdıralım
+    document.getElementById('savePersonBtn').addEventListener('click', () => {
+      const adSoyad = document.getElementById('fullName').value;
+      const makam = document.getElementById('position').value;
+      console.log("Kayıt Edilen Kişi:", { adSoyad, makam });
+      alert("Kişi bilgileri kaydedildi!");
+    });
+  }
+
+  // İstersen doğrudan çağır:
+  // belediyeMeclisi();
 </script>

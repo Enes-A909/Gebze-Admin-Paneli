@@ -1,260 +1,178 @@
 <!DOCTYPE html>
 <html lang="tr">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="endless admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities."
-    />
-    <meta
-      name="keywords"
-      content="admin template, endless admin template, dashboard template, flat admin template, responsive admin template, web app"
-    />
-    <meta name="author" content="pixelstrap" />
-    <link
-      rel="icon"
-      href="../assets/images/gebze-belediyesi.ico"
-      type="image/x-icon"
-    />
-    <link
-      rel="shortcut icon"
-      href="../assets/images//gebze-belediyesi.ico"
-      type="image/x-icon"
-    />
-    <title>Hizmetler - Halka Açık Alanlar</title>
-    <!-- Google font-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../assets/css/fontawesome.css"
-    />
-    <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/icofont.css" />
-    <!-- Themify icon-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/themify.css" />
-    <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/flag-icon.css" />
-    <!-- Feather icon-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../assets/css/feather-icon.css"
-    />
-    <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/chartist.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/prism.css" />
-    <!-- Plugins css Ends-->
-    <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
-    <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-    <link
-      id="color"
-      rel="stylesheet"
-      href="../assets/css/light-1.css"
-      media="screen"
-    />
-    <!-- Responsive css-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../assets/css/responsive.css"
-    />
-  </head>
 
-  <body>
-    <!-- Loader starts-->
-    <div class="loader-wrapper">
-      <div class="loader bg-white">
-        <div class="whirly-loader"></div>
-      </div>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="endless admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities." />
+  <meta name="keywords"
+    content="admin template, endless admin template, dashboard template, flat admin template, responsive admin template, web app" />
+  <meta name="author" content="pixelstrap" />
+  <link rel="icon" href="../assets/images/gebze-belediyesi.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="../assets/images//gebze-belediyesi.ico" type="image/x-icon" />
+  <title>Hizmetler - Halka Açık Alanlar</title>
+  <!-- Google font-->
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <!-- Font Awesome-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome.css" />
+  <!-- ico-font-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/icofont.css" />
+  <!-- Themify icon-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/themify.css" />
+  <!-- Flag icon-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/flag-icon.css" />
+  <!-- Feather icon-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/feather-icon.css" />
+  <!-- Plugins css start-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/chartist.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/prism.css" />
+  <!-- Plugins css Ends-->
+  <!-- Bootstrap css-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+  <!-- App css-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+  <link id="color" rel="stylesheet" href="../assets/css/light-1.css" media="screen" />
+  <!-- Responsive css-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css" />
+</head>
+
+<body>
+  <!-- Loader starts-->
+  <div class="loader-wrapper">
+    <div class="loader bg-white">
+      <div class="whirly-loader"></div>
     </div>
-    <!-- Loader ends-->
-    <!-- page-wrapper Start-->
-    <div class="page-wrapper">
-      <!-- Page Header Start-->
-      <div class="page-main-header">
-        <div
-          class="main-header-right row"
-          style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
-        >
-          <div class="main-header-left d-lg-none">
-            <div class="logo-wrapper">
-              <a href="index.html"
-                ><img src="../assets/images/gebze-logo.png" alt=""
-              /></a>
-            </div>
+  </div>
+  <!-- Loader ends-->
+  <!-- page-wrapper Start-->
+  <div class="page-wrapper">
+    <!-- Page Header Start-->
+    <div class="page-main-header">
+      <div class="main-header-right row" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
+        <div class="main-header-left d-lg-none">
+          <div class="logo-wrapper">
+            <a href="index.html"><img src="../assets/images/gebze-logo.png" alt="" /></a>
           </div>
-          <div class="mobile-sidebar d-block">
-            <div class="media-body text-right switch-sm">
-              <label class="switch"
-                ><a href="#"
-                  ><i id="sidebar-toggle" data-feather="align-left"></i></a
-              ></label>
-            </div>
+        </div>
+        <div class="mobile-sidebar d-block">
+          <div class="media-body text-right switch-sm">
+            <label class="switch"><a href="#"><i id="sidebar-toggle" data-feather="align-left"></i></a></label>
           </div>
-          <div class="nav-right col p-0">
-            <ul class="nav-menus">
-              <li>
-                <form class="form-inline search-form" action="#" method="get">
-                  <div class="form-group">
-                    <div class="Typeahead Typeahead--twitterUsers">
-                      <div class="u-posRelative">
-                        <input
-                          class="Typeahead-input form-control-plaintext"
-                          id="demo-input"
-                          type="text"
-                          name="q"
-                          placeholder="Arama yap..."
-                        />
-                        <div
-                          class="spinner-border Typeahead-spinner"
-                          role="status"
-                        >
-                          <span class="sr-only">Yükleniyor...</span>
-                        </div>
-                        <span class="d-sm-none mobile-search"
-                          ><i data-feather="search"></i
-                        ></span>
+        </div>
+        <div class="nav-right col p-0">
+          <ul class="nav-menus">
+            <li>
+              <form class="form-inline search-form" action="#" method="get">
+                <div class="form-group">
+                  <div class="Typeahead Typeahead--twitterUsers">
+                    <div class="u-posRelative">
+                      <input class="Typeahead-input form-control-plaintext" id="demo-input" type="text" name="q"
+                        placeholder="Arama yap..." />
+                      <div class="spinner-border Typeahead-spinner" role="status">
+                        <span class="sr-only">Yükleniyor...</span>
                       </div>
-                      <div class="Typeahead-menu"></div>
+                      <span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
                     </div>
-                  </div>
-                </form>
-              </li>
-
-              <li class="onhover-dropdown">
-                <i data-feather="bell"></i><span class="dot"></span>
-                <ul class="notification-dropdown onhover-show-div">
-                  <li>
-                    Bildirimler
-                    <span class="badge badge-pill badge-primary pull-right"
-                      >3</span
-                    >
-                  </li>
-                  <li>
-                    <div class="media">
-                      <div class="media-body">
-                        <h6 class="mt-0">
-                          <span
-                            ><i
-                              class="shopping-color"
-                              data-feather="shopping-bag"
-                            ></i></span
-                          >Siparişiniz Kargoya Verilmeye Hazır..!<small
-                            class="pull-right"
-                            >9:00 AM</small
-                          >
-                        </h6>
-                        <p class="mb-0">
-                          Lorem ipsum dolor sit amet, consectetuer.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media">
-                      <div class="media-body">
-                        <h6 class="mt-0 txt-success">
-                          <span
-                            ><i
-                              class="download-color font-success"
-                              data-feather="download"
-                            ></i></span
-                          >İndirme Tamamlandı<small class="pull-right"
-                            >2:30 PM</small
-                          >
-                        </h6>
-                        <p class="mb-0">
-                          Lorem ipsum dolor sit amet, consectetuer.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media">
-                      <div class="media-body">
-                        <h6 class="mt-0 txt-danger">
-                          <span
-                            ><i
-                              class="alert-color font-danger"
-                              data-feather="alert-circle"
-                            ></i></span
-                          >250 MB çöp dosyaları<small class="pull-right"
-                            >5:00 PM</small
-                          >
-                        </h6>
-                        <p class="mb-0">
-                          Lorem ipsum dolor sit amet, consectetuer.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="bg-light txt-dark">
-                    <a href="#">Tüm</a> bildirimler
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#"
-                  ><i
-                    class="right_side_toggle"
-                    data-feather="message-circle"
-                  ></i
-                  ><span class="dot"></span
-                ></a>
-              </li>
-              <li class="onhover-dropdown">
-                <div class="media align-items-center">
-                  <img
-                    class="align-self-center pull-right img-50 rounded-circle"
-                    src="../assets/images/dashboard/user.png"
-                    alt="header-user"
-                  />
-                  <div class="dotted-animation">
-                    <span class="animate-circle"></span
-                    ><span class="main-circle"></span>
+                    <div class="Typeahead-menu"></div>
                   </div>
                 </div>
-                <ul class="profile-dropdown onhover-show-div p-20">
-                  <li>
-                    <a href="#"><i data-feather="user"></i> Profili Düzenle</a>
-                  </li>
-                  <li>
-                    <a href="#"><i data-feather="mail"></i> Gelen Kutusu</a>
-                  </li>
-                  <li>
-                    <a href="#"><i data-feather="lock"></i> Kilit Ekranı</a>
-                  </li>
-                  <li>
-                    <a href="#"><i data-feather="settings"></i> Ayarlar</a>
-                  </li>
-                  <li>
-                    <a href="#"><i data-feather="log-out"></i> Çıkış Yap</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <div class="d-lg-none mobile-toggle pull-right">
-              <i data-feather="more-horizontal"></i>
-            </div>
+              </form>
+            </li>
+
+            <li class="onhover-dropdown">
+              <i data-feather="bell"></i><span class="dot"></span>
+              <ul class="notification-dropdown onhover-show-div">
+                <li>
+                  Bildirimler
+                  <span class="badge badge-pill badge-primary pull-right">3</span>
+                </li>
+                <li>
+                  <div class="media">
+                    <div class="media-body">
+                      <h6 class="mt-0">
+                        <span><i class="shopping-color" data-feather="shopping-bag"></i></span>Siparişiniz Kargoya
+                        Verilmeye Hazır..!<small class="pull-right">9:00 AM</small>
+                      </h6>
+                      <p class="mb-0">
+                        Lorem ipsum dolor sit amet, consectetuer.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="media">
+                    <div class="media-body">
+                      <h6 class="mt-0 txt-success">
+                        <span><i class="download-color font-success" data-feather="download"></i></span>İndirme
+                        Tamamlandı<small class="pull-right">2:30 PM</small>
+                      </h6>
+                      <p class="mb-0">
+                        Lorem ipsum dolor sit amet, consectetuer.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="media">
+                    <div class="media-body">
+                      <h6 class="mt-0 txt-danger">
+                        <span><i class="alert-color font-danger" data-feather="alert-circle"></i></span>250 MB çöp
+                        dosyaları<small class="pull-right">5:00 PM</small>
+                      </h6>
+                      <p class="mb-0">
+                        Lorem ipsum dolor sit amet, consectetuer.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li class="bg-light txt-dark">
+                  <a href="#">Tüm</a> bildirimler
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="right_side_toggle" data-feather="message-circle"></i><span class="dot"></span></a>
+            </li>
+            <li class="onhover-dropdown">
+              <div class="media align-items-center">
+                <img class="align-self-center pull-right img-50 rounded-circle"
+                  src="../assets/images/dashboard/user.png" alt="header-user" />
+                <div class="dotted-animation">
+                  <span class="animate-circle"></span><span class="main-circle"></span>
+                </div>
+              </div>
+              <ul class="profile-dropdown onhover-show-div p-20">
+                <li>
+                  <a href="#"><i data-feather="user"></i> Profili Düzenle</a>
+                </li>
+                <li>
+                  <a href="#"><i data-feather="mail"></i> Gelen Kutusu</a>
+                </li>
+                <li>
+                  <a href="#"><i data-feather="lock"></i> Kilit Ekranı</a>
+                </li>
+                <li>
+                  <a href="#"><i data-feather="settings"></i> Ayarlar</a>
+                </li>
+                <li>
+                  <a href="#"><i data-feather="log-out"></i> Çıkış Yap</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-lg-none mobile-toggle pull-right">
+            <i data-feather="more-horizontal"></i>
           </div>
-          <script id="result-template" type="text/x-handlebars-template">
+        </div>
+        <script id="result-template" type="text/x-handlebars-template">
             <div class="ProfileCard u-cf">
               <div class="ProfileCard-avatar"><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -277,685 +195,458 @@
               </div>
             </div>
           </script>
-          <script id="empty-template" type="text/x-handlebars-template">
+        <script id="empty-template" type="text/x-handlebars-template">
             <div class="EmptyMessage">Aradığınız sonuç bulunamadı. Büyük
               ihtimalle sistem şu an kapalı, üzücü ama kısa sürede çözeceğiz!</div>
           </script>
+      </div>
+    </div>
+    <!-- Page Header Ends -->
+    <!-- Page Body Start-->
+    <div class="page-body-wrapper">
+      <!-- Page Sidebar Start-->
+      <div class="page-sidebar bg-light">
+        <div class="main-header-left d-none d-lg-block" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
+          <div class="logo-wrapper">
+            <a href="index.html"><img src="../assets/images/gebze-logo-8.png" alt="" /></a>
+          </div>
+        </div>
+
+        <!-- Buradan itibaren logo hariç tüm yan menü var. -->
+        <div class="sidebar custom-scrollbar bg-light" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
+          <!-- Bu div kullanıcı bilgilerini içeriyor -->
+          <div class="sidebar-user text-center" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
+            <div>
+              <img class="img-60 rounded-circle" src="../assets/images/user/1.jpg" alt="#" />
+              <div class="profile-edit">
+                <a href="edit-profile.html" target="_blank"><i data-feather="edit"></i></a>
+              </div>
+            </div>
+            <h6 class="mt-3 f-14 text-dark">İsim Soyisim</h6>
+            <p class="text-dark">Kademe</p>
+          </div>
+          <!-- Buradan itibaren yan menü başlıkları ve menüler var. -->
+          <ul class="sidebar-menu bg-light">
+            <li>
+              <a class="sidebar-header text-dark" href="index.html"><i
+                  data-feather="home"></i><span>Anasayfa</span><span class="badge badge-pill badge-primary"></span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="#"><i data-feather="briefcase"></i>
+                <span>Kurumsal</span>
+                <i class="fa fa-angle-right pull-right"></i>
+              </a>
+              <ul class="sidebar-submenu">
+                <li>
+                  <a href="Kurumsal - Yönetim.html" class="text-dark"><i class="fa fa-circle text-dark"></i>Yönetim</a>
+                </li>
+                <li>
+                  <a href="Kurumsal - Vizyon Misyon.html" class="text-dark"><i
+                      class="fa fa-circle text-dark"></i>Vizyon-Misyon-İlke</a>
+                </li>
+                <li>
+                  <a href="Kurumsal - Raporlar.html" class="text-dark"><i
+                      class="fa fa-circle text-dark"></i>Raporlar</a>
+                </li>
+                <li>
+                  <a href="Kurumsal - Komisyonlar.html" class="text-dark"><i
+                      class="fa fa-circle text-dark"></i>Komisyonlar</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="Haberler.html"><i
+                  data-feather="file-text"></i><span>Haberler</span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="#"><i data-feather="map-pin"></i><span>Gebze</span><i
+                  class="fa fa-angle-right pull-right"></i></a>
+              <ul class="sidebar-submenu">
+                <li>
+                  <a href="Gebze - Tarihce.html" class="text-dark"><i class="fa fa-circle text-dark"></i>Tarihten
+                    Günümüze
+                    Gebze</a>
+                </li>
+                <li>
+                  <a href="Gebze - Yönetim.html" class="text-dark"><i class="fa fa-circle text-dark"></i>Gebze
+                    Yönetim</a>
+                </li>
+                <li>
+                  <a href="Gebze - Sanal Tur.html" class="text-dark"><i class="fa fa-circle text-dark"></i>360 Sanal
+                    Tur</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="#"><i data-feather="layers"></i><span>Hizmetler</span><i
+                  class="fa fa-angle-right pull-right"></i></a>
+              <ul class="sidebar-submenu">
+                <li>
+                  <a href="Hizmetler - Halka Acik Alanlar.html" class="text-dark"><i
+                      class="fa fa-circle text-dark"></i>Halka Açık
+                    Alanlar</a>
+                </li>
+                <li>
+                  <a href="Hizmetler - Etkinlikler.html" class="text-dark"><i
+                      class="fa fa-circle text-dark"></i>Etkinlikler</a>
+                </li>
+                <li>
+                  <a href="Hizmetler - Halk yararına olanlar.html" class="text-dark"><i
+                      class="fa fa-circle text-dark"></i>Halk yararına
+                    olanlar</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="Etkinlikler.html"><i
+                  data-feather="slack"></i><span>Etkinlikler</span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="Yayınlarımız.html"><i
+                  data-feather="book"></i><span>Yayınlarımız</span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="İletisim.html"><i
+                  data-feather="mail"></i><span>İletişim</span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="kullanicilar.html"><i
+                  data-feather="users"></i><span>Kullanıcılar</span></a>
+            </li>
+          </ul>
         </div>
       </div>
-      <!-- Page Header Ends -->
-      <!-- Page Body Start-->
-      <div class="page-body-wrapper">
-        <!-- Page Sidebar Start-->
-        <div class="page-sidebar bg-light">
-          <div
-            class="main-header-left d-none d-lg-block"
-            style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
-          >
-            <div class="logo-wrapper">
-              <a href="index.html"
-                ><img src="../assets/images/gebze-logo-8.png" alt=""
-              /></a>
+      <!-- Page Sidebar Ends-->
+      <!-- Right sidebar Start-->
+      <div class="right-sidebar" id="right_side_bar">
+        <div class="container p-0">
+          <div class="modal-header p-l-20 p-r-20">
+            <div class="col-sm-8 p-0">
+              <h6 class="modal-title font-weight-bold">ARKADAŞ LİSTESİ</h6>
+            </div>
+            <div class="col-sm-4 text-right p-0">
+              <i class="mr-2" data-feather="settings"></i>
             </div>
           </div>
-
-          <!-- Buradan itibaren logo hariç tüm yan menü var. -->
-          <div
-            class="sidebar custom-scrollbar bg-light"
-            style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
-          >
-            <!-- Bu div kullanıcı bilgilerini içeriyor -->
-            <div
-              class="sidebar-user text-center"
-              style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
-            >
-              <div>
-                <img
-                  class="img-60 rounded-circle"
-                  src="../assets/images/user/1.jpg"
-                  alt="#"
-                />
-                <div class="profile-edit">
-                  <a href="edit-profile.html" target="_blank"
-                    ><i data-feather="edit"></i
-                  ></a>
+        </div>
+        <div class="friend-list-search mt-0">
+          <input type="text" placeholder="search friend" /><i class="fa fa-search"></i>
+        </div>
+        <div class="chat-box">
+          <div class="people-list friend-list">
+            <ul class="list">
+              <li class="clearfix">
+                <img class="rounded-circle user-image" src="./../assets/images/user/1.jpg" alt="" />
+                <div class="status-circle online"></div>
+                <div class="about">
+                  <div class="name">Vincent Porter</div>
+                  <div class="status">Online</div>
                 </div>
-              </div>
-              <h6 class="mt-3 f-14 text-dark">İsim Soyisim</h6>
-              <p class="text-dark">Kademe</p>
-            </div>
-            <!-- Buradan itibaren yan menü başlıkları ve menüler var. -->
-            <ul class="sidebar-menu bg-light">
-              <li>
-                <a class="sidebar-header text-dark" href="index.html"
-                  ><i data-feather="home"></i><span>Anasayfa</span
-                  ><span class="badge badge-pill badge-primary"></span
-                ></a>
               </li>
-              <li>
-                <a class="sidebar-header text-dark" href="#"
-                  ><i data-feather="briefcase"></i>
-                  <span>Kurumsal</span>
-                  <i class="fa fa-angle-right pull-right"></i>
-                </a>
-                <ul class="sidebar-submenu">
-                  <li>
-                    <a href="Kurumsal - Yönetim.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Yönetim</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Kurumsal - Vizyon Misyon.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i
-                      >Vizyon-Misyon-İlke</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Kurumsal - Raporlar.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Raporlar</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Kurumsal - Komisyonlar.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Komisyonlar</a
-                    >
-                  </li>
-                </ul>
+              <li class="clearfix">
+                <img class="rounded-circle user-image" src="./../assets/images/user/2.png" alt="" />
+                <div class="status-circle away"></div>
+                <div class="about">
+                  <div class="name">Ain Chavez</div>
+                  <div class="status">28 minutes ago</div>
+                </div>
               </li>
-              <li>
-                <a class="sidebar-header text-dark" href="Haberler.html"
-                  ><i data-feather="file-text"></i><span>Haberler</span></a
-                >
+              <li class="clearfix">
+                <img class="rounded-circle user-image" src="./../assets/images/user/8.jpg" alt="" />
+                <div class="status-circle online"></div>
+                <div class="about">
+                  <div class="name">Kori Thomas</div>
+                  <div class="status">Online</div>
+                </div>
               </li>
-              <li>
-                <a class="sidebar-header text-dark" href="#"
-                  ><i data-feather="map-pin"></i><span>Gebze</span
-                  ><i class="fa fa-angle-right pull-right"></i
-                ></a>
-                <ul class="sidebar-submenu">
-                  <li>
-                    <a href="Gebze - Tarihce.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Tarihten Günümüze
-                      Gebze</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Gebze - Yönetim.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Gebze Yönetim</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Gebze - 360 Sanal Tur.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>360 Sanal Tur</a
-                    >
-                  </li>
-                </ul>
+              <li class="clearfix">
+                <img class="rounded-circle user-image" src="./../assets/images/user/4.jpg" alt="" />
+                <div class="status-circle online"></div>
+                <div class="about">
+                  <div class="name">Erica Hughes</div>
+                  <div class="status">Online</div>
+                </div>
               </li>
-              <li>
-                <a class="sidebar-header text-dark" href="#"
-                  ><i data-feather="layers"></i><span>Hizmetler</span
-                  ><i class="fa fa-angle-right pull-right"></i
-                ></a>
-                <ul class="sidebar-submenu">
-                  <li>
-                    <a
-                      href="Hizmetler - Halka Acik Alanlar.html"
-                      class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Halka Açık
-                      Alanlar</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Hizmetler - Etkinlikler.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Etkinlikler</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="Hizmetler - Halk yararına olanlar.html"
-                      class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Halk yararına
-                      olanlar</a
-                    >
-                  </li>
-                </ul>
+              <li class="clearfix">
+                <img class="rounded-circle user-image" src="./../assets/images/user/5.jpg" alt="" />
+                <div class="status-circle offline"></div>
+                <div class="about">
+                  <div class="name">Ginger Johnston</div>
+                  <div class="status">2 minutes ago</div>
+                </div>
               </li>
-              <li>
-                <a class="sidebar-header text-dark" href="Etkinlikler.html"
-                  ><i data-feather="slack"></i><span>Etkinlikler</span></a
-                >
+              <li class="clearfix">
+                <img class="rounded-circle user-image" src="./../assets/images/user/6.jpg" alt="" />
+                <div class="status-circle away"></div>
+                <div class="about">
+                  <div class="name">Prasanth Anand</div>
+                  <div class="status">2 hour ago</div>
+                </div>
               </li>
-              <li>
-                <a class="sidebar-header text-dark" href="Yayınlarımız.html"
-                  ><i data-feather="book"></i><span>Yayınlarımız</span></a
-                >
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="İletisim.html"
-                  ><i data-feather="mail"></i><span>İletişim</span></a
-                >
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="kullanicilar.html"
-                  ><i data-feather="users"></i><span>Kullanıcılar</span></a
-                >
+              <li class="clearfix">
+                <img class="rounded-circle user-image" src="./../assets/images/user/7.jpg" alt="" />
+                <div class="status-circle online"></div>
+                <div class="about">
+                  <div class="name">Hileri Jecno</div>
+                  <div class="status">Online</div>
+                </div>
               </li>
             </ul>
           </div>
         </div>
-        <!-- Page Sidebar Ends-->
-        <!-- Right sidebar Start-->
-        <div class="right-sidebar" id="right_side_bar">
-          <div class="container p-0">
-            <div class="modal-header p-l-20 p-r-20">
-              <div class="col-sm-8 p-0">
-                <h6 class="modal-title font-weight-bold">ARKADAŞ LİSTESİ</h6>
-              </div>
-              <div class="col-sm-4 text-right p-0">
-                <i class="mr-2" data-feather="settings"></i>
+      </div>
+      <!-- Right sidebar Ends-->
+      <div class="page-body">
+        <div class="container-fluid">
+          <div class="page-header">
+            <div class="row">
+              <div class="col">
+                <div class="page-header-left">
+                  <h3>Halka Açık Alanlar</h3>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="index.html"><i data-feather="home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">Hizmetler</li>
+                    <li class="breadcrumb-item active">
+                      <a href="Hizmetler - Halka Acik Alanlar.html">Halka Açık Alanlar</a>
+                    </li>
+                  </ol>
+                </div>
               </div>
             </div>
           </div>
-          <div class="friend-list-search mt-0">
-            <input type="text" placeholder="search friend" /><i
-              class="fa fa-search"
-            ></i>
-          </div>
-          <div class="chat-box">
-            <div class="people-list friend-list">
-              <ul class="list">
-                <li class="clearfix">
-                  <img
-                    class="rounded-circle user-image"
-                    src="./../assets/images/user/1.jpg"
-                    alt=""
-                  />
-                  <div class="status-circle online"></div>
-                  <div class="about">
-                    <div class="name">Vincent Porter</div>
-                    <div class="status">Online</div>
-                  </div>
+        </div>
+
+        <!-- Benim yaptığım navbar kısmı -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"
+          style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
+              aria-label="Toggle navigation" style="margin-right: 10px">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="margin-right: 10px">
+                    <i data-feather="filter" style="margin-bottom: -9px; margin-left: -15px"></i>
+                    Kategori Seç
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-light">
+                    <li>
+                      <a class="dropdown-item" href="#1" onclick="baskanSayfasi()">Olay 1</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#2" onclick="loadCards()">Olay 2</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#3" onclick="loadCards()">Olay 3</a>
+                    </li>
+                  </ul>
                 </li>
-                <li class="clearfix">
-                  <img
-                    class="rounded-circle user-image"
-                    src="./../assets/images/user/2.png"
-                    alt=""
-                  />
-                  <div class="status-circle away"></div>
-                  <div class="about">
-                    <div class="name">Ain Chavez</div>
-                    <div class="status">28 minutes ago</div>
-                  </div>
+                <li class="nav-item dropdown">
+                  <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="margin-right: 10px">
+                    <i data-feather="filter" style="margin-bottom: -9px; margin-left: -15px"></i>
+                    Tüm Durumlar
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-light">
+                    <li>
+                      <a class="dropdown-item" href="#1" onclick="">Olay 1</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#2">Olay 2</a></li>
+                    <li><a class="dropdown-item" href="#3">Olay 3</a></li>
+                  </ul>
                 </li>
-                <li class="clearfix">
-                  <img
-                    class="rounded-circle user-image"
-                    src="./../assets/images/user/8.jpg"
-                    alt=""
-                  />
-                  <div class="status-circle online"></div>
-                  <div class="about">
-                    <div class="name">Kori Thomas</div>
-                    <div class="status">Online</div>
-                  </div>
+                <li class="nav-item dropdown">
+                  <button type="button" class="btn btn-outline-primary" style="margin-right: 10px">
+                    <i data-feather="plus" style="margin-bottom: -9px; margin-left: -15px"></i>
+                    Sayfa Ekle
+                  </button>
                 </li>
-                <li class="clearfix">
-                  <img
-                    class="rounded-circle user-image"
-                    src="./../assets/images/user/4.jpg"
-                    alt=""
-                  />
-                  <div class="status-circle online"></div>
-                  <div class="about">
-                    <div class="name">Erica Hughes</div>
-                    <div class="status">Online</div>
-                  </div>
+                <li class="nav-item dropdown">
+                  <button type="button" class="btn btn-outline-primary" style="margin-right: 10px">
+                    <i data-feather="trash-2" style="margin-bottom: -9px; margin-left: -15px"></i>
+                    Sayfa Sil
+                  </button>
                 </li>
-                <li class="clearfix">
-                  <img
-                    class="rounded-circle user-image"
-                    src="./../assets/images/user/5.jpg"
-                    alt=""
-                  />
-                  <div class="status-circle offline"></div>
-                  <div class="about">
-                    <div class="name">Ginger Johnston</div>
-                    <div class="status">2 minutes ago</div>
-                  </div>
-                </li>
-                <li class="clearfix">
-                  <img
-                    class="rounded-circle user-image"
-                    src="./../assets/images/user/6.jpg"
-                    alt=""
-                  />
-                  <div class="status-circle away"></div>
-                  <div class="about">
-                    <div class="name">Prasanth Anand</div>
-                    <div class="status">2 hour ago</div>
-                  </div>
-                </li>
-                <li class="clearfix">
-                  <img
-                    class="rounded-circle user-image"
-                    src="./../assets/images/user/7.jpg"
-                    alt=""
-                  />
-                  <div class="status-circle online"></div>
-                  <div class="about">
-                    <div class="name">Hileri Jecno</div>
-                    <div class="status">Online</div>
-                  </div>
+                <li class="nav-item dropdown">
+                  <button type="button" class="btn btn-outline-primary" style="margin-right: 10px">
+                    <i data-feather="save" style="margin-bottom: -9px; margin-left: -15px"></i>
+                    Kaydet
+                  </button>
                 </li>
               </ul>
             </div>
           </div>
+        </nav>
+
+        <br /><br />
+
+        <!-- İçeriklerin Yükleneceği Alan -->
+        <div id="icerikler">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <input type="checkbox" />
+                </th>
+                <th scope="col">Sayfa Başlığı</th>
+                <th scope="col">Kategori</th>
+                <th scope="col">Durumu</th>
+                <th scope="col">Son Güncelleme</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><input type="checkbox" /></th>
+                <td scope=" row">Atölyeler</td>
+                <td scope="row">Halka Açık Alanlar</td>
+                <td scope="row">Arşivlendi</td>
+                <td scope="row">...</td>
+                <td scope="row" style="text-align: right">
+                  <button style="
+                            background-color: #28a745;
+                            color: white;
+                            border: none;
+                            padding: 5px 10px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                          ">
+                    Düzenle
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row"><input type="checkbox" /></th>
+                <td>Bebek-Çocuk Bakım Evi</td>
+                <td>Halka Açık Alanlar</td>
+                <td>Arşivlendi</td>
+                <td>...</td>
+                <td scope="row" style="text-align: right">
+                  <button style="
+                            background-color: #28a745;
+                            color: white;
+                            border: none;
+                            padding: 5px 10px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                          ">
+                    Düzenle
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row"><input type="checkbox" /></th>
+                <td>Kütüphane</td>
+                <td>Halka Açık Alanlar</td>
+                <td>Arşivlendi</td>
+                <td>...</td>
+                <td scope="row" style="text-align: right">
+                  <button style="
+                            background-color: #28a745;
+                            color: white;
+                            border: none;
+                            padding: 5px 10px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                          ">
+                    Düzenle
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row"><input type="checkbox" /></th>
+                <td>Merkezler</td>
+                <td>Halka Açık Alanlar</td>
+                <td>Arşivlendi</td>
+                <td>...</td>
+                <td scope="row" style="text-align: right">
+                  <button style="
+                            background-color: #28a745;
+                            color: white;
+                            border: none;
+                            padding: 5px 10px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                          ">
+                    Düzenle
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <!-- Right sidebar Ends-->
-        <div class="page-body">
-          <div class="container-fluid">
-            <div class="page-header">
-              <div class="row">
-                <div class="col">
-                  <div class="page-header-left">
-                    <h3>Halka Açık Alanlar</h3>
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                        <a href="index.html"><i data-feather="home"></i></a>
-                      </li>
-                      <li class="breadcrumb-item">Hizmetler</li>
-                      <li class="breadcrumb-item active">
-                        <a href="Hizmetler - Halka Acik Alanlar.html"
-                          >Halka Açık Alanlar</a
-                        >
-                      </li>
-                    </ol>
+
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+          <div class="row">
+            <!-- footer start-->
+            <footer class="footer w-100">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 footer-copyright">
+                    <p class="mb-0">
+                      Copyright 2018 © Endless All rights reserved.
+                    </p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="pull-right mb-0">
+                      Hand crafted & made with<i class="fa fa-heart"></i>
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
+            </footer>
           </div>
-
-<<<<<<< HEAD
-          <!-- Benim yaptığım navbar kısmı -->
-          <nav
-            class="navbar navbar-expand-lg navbar-light bg-light"
-            style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
-          >
-            <div class="container-fluid">
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNavDarkDropdown"
-                aria-controls="navbarNavDarkDropdown"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                style="margin-right: 10px"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item dropdown">
-                    <button
-                      class="btn btn-outline-primary dropdown-toggle"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style="margin-right: 10px"
-                    >
-                      <i
-                        data-feather="filter"
-                        style="margin-bottom: -9px; margin-left: -15px"
-                      ></i>
-                      Kategori Seç
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-light">
-                      <li>
-                        <a
-                          class="dropdown-item"
-                          href="#1"
-                          onclick="baskanSayfasi()"
-                          >Olay 1</a
-                        >
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#2" onclick="loadCards()"
-                          >Olay 2</a
-                        >
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#3" onclick="loadCards()"
-                          >Olay 3</a
-                        >
-                      </li>
-=======
-                <!-- Buradan itibaren logo hariç tüm yan menü var. -->
-                <div class="sidebar custom-scrollbar bg-light"
-                    style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
-                    <!-- Bu div kullanıcı bilgilerini içeriyor -->
-                    <div class="sidebar-user text-center" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
-                        <div><img class="img-60 rounded-circle" src="../assets/images/user/1.jpg" alt="#">
-                            <div class="profile-edit"><a href="edit-profile.html" target="_blank"><i
-                                        data-feather="edit"></i></a>
-                            </div>
-                        </div>
-                        <h6 class="mt-3 f-14 text-dark">İsim Soyisim</h6>
-                        <p class="text-dark">Kademe</p>
-                    </div>
-                    <!-- Buradan itibaren yan menü başlıkları ve menüler var. -->
-                    <ul class="sidebar-menu bg-light">
-                        <li><a class="sidebar-header text-dark" href="index.html"><i
-                                    data-feather="home"></i><span>Anasayfa</span><span
-                                    class="badge badge-pill badge-primary"></span></a>
-                        </li>
-                        <li>
-                            <a class="sidebar-header text-dark" href="#"><i data-feather="briefcase"></i>
-                                <span>Kurumsal</span>
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </a>
-                            <ul class="sidebar-submenu">
-                                <li><a href="Kurumsal - Yönetim.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>Yönetim</a></li>
-                                <li><a href="Kurumsal - Vizyon Misyon.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>Vizyon-Misyon-İlke</a></li>
-                                <li><a href="Kurumsal - Raporlar.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>Raporlar</a></li>
-                                <li><a href="Kurumsal - Komisyonlar.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>Komisyonlar</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="sidebar-header text-dark" href="Haberler.html"><i
-                                    data-feather="file-text"></i><span>Haberler</span></a></li>
-                        <li><a class="sidebar-header text-dark" href="#"><i
-                                    data-feather="map-pin"></i><span>Gebze</span><i
-                                    class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="sidebar-submenu">
-                                <li><a href="Gebze - Tarihce.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>Tarihten
-                                        Günümüze Gebze</a>
-                                </li>
-                                <li><a href="Gebze - Yönetim.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>Gebze
-                                        Yönetim</a></li>
-                                <li><a href="Gebze - Sanal Tur.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>360 Sanal
-                                        Tur</a></li>
-
-
-                            </ul>
-                        </li>
-                        <li><a class="sidebar-header text-dark" href="#"><i
-                                    data-feather="layers"></i><span>Hizmetler</span><i
-                                    class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="sidebar-submenu">
-                                <li><a href="Hizmetler - Halka Acik Alanlar.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>Halka Açık
-                                        Alanlar</a></li>
-                                <li><a href="Hizmetler - Etkinlikler.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>Etkinlikler</a>
-                                </li>
-                                <li><a href="Hizmetler - Halk yararına olanlar.html" class="text-dark"><i
-                                            class="fa fa-circle text-dark"></i>Halk yararına
-                                        olanlar</a></li>
-
-                            </ul>
-                        </li>
-                        <li><a class="sidebar-header text-dark" href="Etkinlikler.html"><i
-                                    data-feather="slack"></i><span>Etkinlikler</span></a>
-                        </li>
-                        <li><a class="sidebar-header text-dark" href="Yayınlarımız.html"><i
-                                    data-feather="book"></i><span>Yayınlarımız</span></a>
-                        </li>
-                        <li><a class="sidebar-header text-dark" href="İletisim.html"><i
-                                    data-feather="mail"></i><span>İletişim</span></a>
-                        </li>
-                        <li><a class="sidebar-header text-dark" href="kullanicilar.html"><i
-                                    data-feather="users"></i><span>Kullanıcılar</span></a></li>
-
->>>>>>> df196bc34d7c26843fa79e2f2572e13015e89a47
-                    </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <button
-                      class="btn btn-outline-primary dropdown-toggle"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style="margin-right: 10px"
-                    >
-                      <i
-                        data-feather="filter"
-                        style="margin-bottom: -9px; margin-left: -15px"
-                      ></i>
-                      Tüm Durumlar
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-light">
-                      <li>
-                        <a class="dropdown-item" href="#1" onclick="">Olay 1</a>
-                      </li>
-                      <li><a class="dropdown-item" href="#2">Olay 2</a></li>
-                      <li><a class="dropdown-item" href="#3">Olay 3</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <button
-                      type="button"
-                      class="btn btn-outline-primary"
-                      style="margin-right: 10px"
-                    >
-                      <i
-                        data-feather="plus"
-                        style="margin-bottom: -9px; margin-left: -15px"
-                      ></i>
-                      Sayfa Ekle
-                    </button>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <button
-                      type="button"
-                      class="btn btn-outline-primary"
-                      style="margin-right: 10px"
-                    >
-                      <i
-                        data-feather="trash-2"
-                        style="margin-bottom: -9px; margin-left: -15px"
-                      ></i>
-                      Sayfa Sil
-                    </button>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <button
-                      type="button"
-                      class="btn btn-outline-primary"
-                      style="margin-right: 10px"
-                    >
-                      <i
-                        data-feather="save"
-                        style="margin-bottom: -9px; margin-left: -15px"
-                      ></i>
-                      Kaydet
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-
-          <br /><br />
-
-          <!-- İçeriklerin Yükleneceği Alan -->
-          <div id="icerikler">
-            <div id="icerikler">
-              <div id="icerikler">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">
-                        <input type="checkbox" />
-                      </th>
-                      <th scope="col">Sayfa Başlığı</th>
-                      <th scope="col">Kategori</th>
-                      <th scope="col">Durumu</th>
-                      <th scope="col">Son Güncelleme</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td scope=" row">Atölyeler</td>
-                      <td scope="row">Halka Açık Alanlar</td>
-                      <td scope="row">Arşivlendi</td>
-                      <td scope="row">...</td>
-                      <td scope="row" style="text-align: right">
-                        <button
-                          style="
-                            background-color: #28a745;
-                            color: white;
-                            border: none;
-                            padding: 5px 10px;
-                            border-radius: 4px;
-                            cursor: pointer;
-                          "
-                        >
-                          Düzenle
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td>Bebek-Çocuk Bakım Evi</td>
-                      <td>Halka Açık Alanlar</td>
-                      <td>Arşivlendi</td>
-                      <td>...</td>
-                      <td scope="row" style="text-align: right">
-                        <button
-                          style="
-                            background-color: #28a745;
-                            color: white;
-                            border: none;
-                            padding: 5px 10px;
-                            border-radius: 4px;
-                            cursor: pointer;
-                          "
-                        >
-                          Düzenle
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td>Kütüphane</td>
-                      <td>Halka Açık Alanlar</td>
-                      <td>Arşivlendi</td>
-                      <td>...</td>
-                      <td scope="row" style="text-align: right">
-                        <button
-                          style="
-                            background-color: #28a745;
-                            color: white;
-                            border: none;
-                            padding: 5px 10px;
-                            border-radius: 4px;
-                            cursor: pointer;
-                          "
-                        >
-                          Düzenle
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td>Merkezler</td>
-                      <td>Halka Açık Alanlar</td>
-                      <td>Arşivlendi</td>
-                      <td>...</td>
-                      <td scope="row" style="text-align: right">
-                        <button
-                          style="
-                            background-color: #28a745;
-                            color: white;
-                            border: none;
-                            padding: 5px 10px;
-                            border-radius: 4px;
-                            cursor: pointer;
-                          "
-                        >
-                          Düzenle
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- Container-fluid starts-->
-          <div class="container-fluid">
-            <div class="row">
-              <!-- footer start-->
-              <footer class="footer w-100">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-6 footer-copyright">
-                      <p class="mb-0">
-                        Copyright 2018 © Endless All rights reserved.
-                      </p>
-                    </div>
-                    <div class="col-md-6">
-                      <p class="pull-right mb-0">
-                        Hand crafted & made with<i class="fa fa-heart"></i>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </footer>
-            </div>
-          </div>
-          <!-- latest jquery-->
-          <script src="../assets/js/jquery-3.2.1.min.js"></script>
-          <!-- Bootstrap js-->
-          <script src="../assets/js/bootstrap/popper.min.js"></script>
-          <script src="../assets/js/bootstrap/bootstrap.js"></script>
-          <!-- feather icon js-->
-          <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-          <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-          <!-- Sidebar jquery-->
-          <script src="../assets/js/sidebar-menu.js"></script>
-          <script src="../assets/js/config.js"></script>
-          <!-- Plugins JS start-->
-          <script src="../assets/js/chart/chartist/chartist.js"></script>
-          <script src="../assets/js/chart/knob/knob.min.js"></script>
-          <script src="../assets/js/chart/knob/knob-chart.js"></script>
-          <script src="../assets/js/prism/prism.min.js"></script>
-          <script src="../assets/js/clipboard/clipboard.min.js"></script>
-          <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
-          <script src="../assets/js/counter/jquery.counterup.min.js"></script>
-          <script src="../assets/js/counter/counter-custom.js"></script>
-          <script src="../assets/js/custom-card/custom-card.js"></script>
-          <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
-          <script src="../assets/js/dashboard/default.js"></script>
-          <script src="../assets/js/notify/index.js"></script>
-          <script src="../assets/js/typeahead/handlebars.js"></script>
-          <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
-          <script src="../assets/js/typeahead/typeahead.custom.js"></script>
-          <script src="../assets/js/chat-menu.js"></script>
-          <script src="../assets/js/height-equal.js"></script>
-          <script src="../assets/js/tooltip-init.js"></script>
-          <script src="../assets/js/typeahead-search/handlebars.js"></script>
-          <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
-          <!-- Plugins JS Ends-->
-          <!-- Theme js-->
-          <script src="../assets/js/script.js"></script>
-          <!-- Bootstrap JS + Popper -->
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-          <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-          <!-- Plugin used-->
         </div>
+        <!-- latest jquery-->
+        <script src="../assets/js/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap js-->
+        <script src="../assets/js/bootstrap/popper.min.js"></script>
+        <script src="../assets/js/bootstrap/bootstrap.js"></script>
+        <!-- feather icon js-->
+        <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+        <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+        <!-- Sidebar jquery-->
+        <script src="../assets/js/sidebar-menu.js"></script>
+        <script src="../assets/js/config.js"></script>
+        <!-- Plugins JS start-->
+        <script src="../assets/js/chart/chartist/chartist.js"></script>
+        <script src="../assets/js/chart/knob/knob.min.js"></script>
+        <script src="../assets/js/chart/knob/knob-chart.js"></script>
+        <script src="../assets/js/prism/prism.min.js"></script>
+        <script src="../assets/js/clipboard/clipboard.min.js"></script>
+        <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
+        <script src="../assets/js/counter/jquery.counterup.min.js"></script>
+        <script src="../assets/js/counter/counter-custom.js"></script>
+        <script src="../assets/js/custom-card/custom-card.js"></script>
+        <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
+        <script src="../assets/js/dashboard/default.js"></script>
+        <script src="../assets/js/notify/index.js"></script>
+        <script src="../assets/js/typeahead/handlebars.js"></script>
+        <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
+        <script src="../assets/js/typeahead/typeahead.custom.js"></script>
+        <script src="../assets/js/chat-menu.js"></script>
+        <script src="../assets/js/height-equal.js"></script>
+        <script src="../assets/js/tooltip-init.js"></script>
+        <script src="../assets/js/typeahead-search/handlebars.js"></script>
+        <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
+        <!-- Plugins JS Ends-->
+        <!-- Theme js-->
+        <script src="../assets/js/script.js"></script>
+        <!-- Bootstrap JS + Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
+        <!-- Plugin used-->
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
