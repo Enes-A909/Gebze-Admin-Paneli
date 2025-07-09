@@ -327,7 +327,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="page-header-left">
-                                    <h3>Anasayfa</h3>
+                                    <h3>Profil</h3>
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a>
                                         </li>
@@ -384,16 +384,28 @@
                                     <input type="tel" class="form-control" id="phone" placeholder="05xx xxx xx xx">
                                 </div>
 
-                                <div class="mb-3">
+                                <!-- 🔐 Yeni Şifre -->
+                                <div class="mb-3 position-relative">
                                     <label for="password" class="form-label">Yeni Şifre</label>
                                     <input type="password" class="form-control" id="password" placeholder="********">
+                                    <i data-feather="eye" class="position-absolute" id="togglePassword"
+                                        style="top: 40px; right: 10px; cursor: pointer;"></i>
+                                </div>
+
+                                <!-- 🔐 Yeni Şifre Tekrar -->
+                                <div class="mb-3 position-relative">
+                                    <label for="passwordRepeat" class="form-label">Yeni Şifre (Tekrar)</label>
+                                    <input type="password" class="form-control" id="passwordRepeat"
+                                        placeholder="********">
+                                    <i data-feather="eye" class="position-absolute" id="togglePasswordRepeat"
+                                        style="top: 40px; right: 10px; cursor: pointer;"></i>
                                 </div>
 
                                 <button class="btn btn-primary" id="saveProfileBtn">Kaydet</button>
                             </div>
                         </div>
-
                     </div>
+
 
 
                 </div>
@@ -460,6 +472,7 @@
                 <!-- Plugin used-->
 
                 <script>
+                    // Fotoğraf önizleme
                     const imageInput = document.getElementById('imageInput');
                     const customButton = document.getElementById('customButton');
                     const previewImage = document.getElementById('previewImage');
@@ -480,16 +493,49 @@
                         }
                     });
 
+                    // Şifre göster/gizle işlemi
+                    function attachTogglePassword(iconId, inputId) {
+                        const icon = document.getElementById(iconId);
+                        icon.addEventListener("click", function () {
+                            const input = document.getElementById(inputId);
+                            const isPassword = input.type === "password";
+
+                            input.type = isPassword ? "text" : "password";
+                            icon.setAttribute("data-feather", isPassword ? "eye-off" : "eye");
+
+                            // feather.replace yeniden çağrıldığında yeni SVG oluşacağı için,
+                            // önce eski event’i kaldırıp sonra yeniden bağlayamıyoruz.
+                            // Bunun yerine event’i yeniden bağlarız:
+                            feather.replace();
+
+                            // Yeni oluşturulan SVG’ye tekrar event bağla
+                            setTimeout(() => attachTogglePassword(iconId, inputId), 0);
+                        });
+                    }
+
+                    // Event'leri ilk kez bağla
+                    attachTogglePassword("togglePassword", "password");
+                    attachTogglePassword("togglePasswordRepeat", "passwordRepeat");
+
+                    // Kaydet butonu
                     document.getElementById('saveProfileBtn').addEventListener('click', () => {
                         const adSoyad = document.getElementById('fullName').value;
                         const email = document.getElementById('email').value;
                         const tel = document.getElementById('phone').value;
                         const sifre = document.getElementById('password').value;
+                        const sifreTekrar = document.getElementById('passwordRepeat').value;
+
+                        if (sifre !== sifreTekrar) {
+                            alert("Şifreler eşleşmiyor!");
+                            return;
+                        }
 
                         console.log("Profil Güncellendi:", { adSoyad, email, tel, sifre });
                         alert("Profil başarıyla güncellendi!");
                     });
                 </script>
+
+
 </body>
 
 </html>
