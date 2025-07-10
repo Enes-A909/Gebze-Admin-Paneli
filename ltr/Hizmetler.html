@@ -3,13 +3,20 @@
   <head>
     <style>
       table {
-        border: 1px solid black;
+        border-radius: 10px;
+      }
+
+      table tr {
+        transition: background-color 0.3s ease;
+        border-radius: 10px;
       }
 
       table tr:hover {
         background-color: #cccccc;
-        cursor: pointer;
         transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 10px;
       }
 
       table tr button {
@@ -43,7 +50,7 @@
       }
 
       .dropdown-toggle {
-        background-color: #ffad33f5;
+        background-color: #ffcc7f84;
         color: white;
         border: none;
         padding: 6px 10px;
@@ -88,7 +95,7 @@
       }
 
       .badge {
-        background-color: #75e1fad4;
+        background-color: #21d18538;
 
         padding: 4px 8px;
         border-radius: 12px;
@@ -509,519 +516,515 @@
 
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler">
-            <div id="icerikler">
-              <div id="icerikler">
-                <table
-                  class="table"
-                  style="
-                    box-shadow: 0 6px 10px rgba(0, 85, 255, 0.748);
-                    background-color: rgba(204, 204, 204, 0.186);
-                  "
-                >
-                  <thead>
-                    <tr>
-                      <th scope="col">
-                        <input type="checkbox" />
-                      </th>
-                      <th scope="col">Sayfa Başlığı</th>
-                      <th scope="col">Kategori</th>
-                      <th scope="col">Durumu</th>
-                      <th scope="col">Son Güncelleme</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td scope=" row">Yağlı Güreş</td>
-                      <td scope="row">
-                        <span class="badge" style="margin-top: 7px"
-                          >Etkinlik Alanları</span
-                        >
-                      </td>
-                      <td scope="row">
-                        <span class="arşiv" style="margin-top: 7px">
-                          Arşivlendi
-                        </span>
-                      </td>
-                      <td scope="row">...</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button
-                            class="dropdown-toggle"
-                            onclick="toggleDropdown(this)"
-                          >
-                            İşlemler
-                          </button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle
-                            </button>
-                            <button onclick="sil()">
-                              <img
-                                src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                                alt="remove"
-                                width="10%"
-                                height="10%"
-                              />
-                              Sil
-                            </button>
-                            <button onclick="icerik()">
-                              <img
-                                src="../assets/images/dropdown_svg/copy-writing.svg"
-                                alt="content"
-                                width="10%"
-                                height="10%"
-                              />
-                              İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td>Mesire Alanı</td>
-                      <td>
-                        <span class="badge" style="margin-top: 7px"
-                          >Etkinlik Alanları</span
-                        >
-                      </td>
-                      <td>
-                        <span class="arşiv" style="margin-top: 7px">
-                          Arşivlendi
-                        </span>
-                      </td>
-                      <td>...</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button
-                            class="dropdown-toggle"
-                            onclick="toggleDropdown(this)"
-                          >
-                            İşlemler
-                          </button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle
-                            </button>
-                            <button onclick="sil()">
-                              <img
-                                src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                                alt="remove"
-                                width="10%"
-                                height="10%"
-                              />
-                              Sil
-                            </button>
-                            <button onclick="icerik()">
-                              <img
-                                src="../assets/images/dropdown_svg/copy-writing.svg"
-                                alt="content"
-                                width="10%"
-                                height="10%"
-                              />
-                              İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+            <table
+              class="table"
+              style="
+                box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+                background-color: rgba(204, 204, 204, 0.186);
+              "
+            >
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" />
+                  </th>
+                  <th scope="col">Sayfa Başlığı</th>
+                  <th scope="col">Kategori</th>
+                  <th scope="col">Durumu</th>
+                  <th scope="col">Son Güncelleme</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td scope=" row">Yağlı Güreş</td>
+                  <td scope="row">
+                    <span class="badge" style="margin-top: 7px"
+                      >Etkinlik Alanları</span
+                    >
+                  </td>
+                  <td scope="row">
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td scope="row">...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td>Mesire Alanı</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px"
+                      >Etkinlik Alanları</span
+                    >
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
 
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td scope=" row">Atölyeler</td>
-                      <td scope="row">
-                        <span class="badge" style="margin-top: 7px"
-                          >Halka Açık Alanlar</span
-                        >
-                      </td>
-                      <td scope="row">
-                        <span class="arşiv" style="margin-top: 7px">
-                          Arşivlendi
-                        </span>
-                      </td>
-                      <td scope="row">...</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button
-                            class="dropdown-toggle"
-                            onclick="toggleDropdown(this)"
-                          >
-                            İşlemler
-                          </button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle
-                            </button>
-                            <button onclick="sil()">
-                              <img
-                                src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                                alt="remove"
-                                width="10%"
-                                height="10%"
-                              />
-                              Sil
-                            </button>
-                            <button onclick="icerik()">
-                              <img
-                                src="../assets/images/dropdown_svg/copy-writing.svg"
-                                alt="content"
-                                width="10%"
-                                height="10%"
-                              />
-                              İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td>Bebek-Çocuk Bakım Evi</td>
-                      <td>
-                        <span class="badge" style="margin-top: 7px"
-                          >Halka Açık Alanlar</span
-                        >
-                      </td>
-                      <td>
-                        <span class="arşiv" style="margin-top: 7px">
-                          Arşivlendi
-                        </span>
-                      </td>
-                      <td>...</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button
-                            class="dropdown-toggle"
-                            onclick="toggleDropdown(this)"
-                          >
-                            İşlemler
-                          </button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle
-                            </button>
-                            <button onclick="sil()">
-                              <img
-                                src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                                alt="remove"
-                                width="10%"
-                                height="10%"
-                              />
-                              Sil
-                            </button>
-                            <button onclick="icerik()">
-                              <img
-                                src="../assets/images/dropdown_svg/copy-writing.svg"
-                                alt="content"
-                                width="10%"
-                                height="10%"
-                              />
-                              İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td>Kütüphane</td>
-                      <td>
-                        <span class="badge" style="margin-top: 7px"
-                          >Halka Açık Alanlar</span
-                        >
-                      </td>
-                      <td>
-                        <span class="arşiv" style="margin-top: 7px">
-                          Arşivlendi
-                        </span>
-                      </td>
-                      <td>...</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button
-                            class="dropdown-toggle"
-                            onclick="toggleDropdown(this)"
-                          >
-                            İşlemler
-                          </button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle
-                            </button>
-                            <button onclick="sil()">
-                              <img
-                                src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                                alt="remove"
-                                width="10%"
-                                height="10%"
-                              />
-                              Sil
-                            </button>
-                            <button onclick="icerik()">
-                              <img
-                                src="../assets/images/dropdown_svg/copy-writing.svg"
-                                alt="content"
-                                width="10%"
-                                height="10%"
-                              />
-                              İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td>Merkezler</td>
-                      <td>
-                        <span class="badge" style="margin-top: 7px"
-                          >Halka Açık Alanlar</span
-                        >
-                      </td>
-                      <td>
-                        <span class="arşiv" style="margin-top: 7px">
-                          Arşivlendi
-                        </span>
-                      </td>
-                      <td>...</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button
-                            class="dropdown-toggle"
-                            onclick="toggleDropdown(this)"
-                          >
-                            İşlemler
-                          </button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle
-                            </button>
-                            <button onclick="sil()">
-                              <img
-                                src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                                alt="remove"
-                                width="10%"
-                                height="10%"
-                              />
-                              Sil
-                            </button>
-                            <button onclick="icerik()">
-                              <img
-                                src="../assets/images/dropdown_svg/copy-writing.svg"
-                                alt="content"
-                                width="10%"
-                                height="10%"
-                              />
-                              İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td scope=" row">Eğitim</td>
-                      <td scope="row">
-                        <span class="badge" style="margin-top: 7px"
-                          >Halk Yararına Olanlar</span
-                        >
-                      </td>
-                      <td scope="row">
-                        <span class="arşiv" style="margin-top: 7px">
-                          Arşivlendi
-                        </span>
-                      </td>
-                      <td scope="row">...</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button
-                            class="dropdown-toggle"
-                            onclick="toggleDropdown(this)"
-                          >
-                            İşlemler
-                          </button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle
-                            </button>
-                            <button onclick="sil()">
-                              <img
-                                src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                                alt="remove"
-                                width="10%"
-                                height="10%"
-                              />
-                              Sil
-                            </button>
-                            <button onclick="icerik()">
-                              <img
-                                src="../assets/images/dropdown_svg/copy-writing.svg"
-                                alt="content"
-                                width="10%"
-                                height="10%"
-                              />
-                              İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td>Evlendirme</td>
-                      <td>
-                        <span class="badge" style="margin-top: 7px"
-                          >Halk Yararına Olanlar</span
-                        >
-                      </td>
-                      <td>
-                        <span class="arşiv" style="margin-top: 7px">
-                          Arşivlendi
-                        </span>
-                      </td>
-                      <td>...</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button
-                            class="dropdown-toggle"
-                            onclick="toggleDropdown(this)"
-                          >
-                            İşlemler
-                          </button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle
-                            </button>
-                            <button onclick="sil()">
-                              <img
-                                src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                                alt="remove"
-                                width="10%"
-                                height="10%"
-                              />
-                              Sil
-                            </button>
-                            <button onclick="icerik()">
-                              <img
-                                src="../assets/images/dropdown_svg/copy-writing.svg"
-                                alt="content"
-                                width="10%"
-                                height="10%"
-                              />
-                              İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" /></th>
-                      <td>Geri Dönüşüm</td>
-                      <td>
-                        <span class="badge" style="margin-top: 7px"
-                          >Halk Yararına Olanlar</span
-                        >
-                      </td>
-                      <td>
-                        <span class="arşiv" style="margin-top: 7px">
-                          Arşivlendi
-                        </span>
-                      </td>
-                      <td>...</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button
-                            class="dropdown-toggle"
-                            onclick="toggleDropdown(this)"
-                          >
-                            İşlemler
-                          </button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle
-                            </button>
-                            <button onclick="sil()">
-                              <img
-                                src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                                alt="remove"
-                                width="10%"
-                                height="10%"
-                              />
-                              Sil
-                            </button>
-                            <button onclick="icerik()">
-                              <img
-                                src="../assets/images/dropdown_svg/copy-writing.svg"
-                                alt="content"
-                                width="10%"
-                                height="10%"
-                              />
-                              İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td scope=" row">Atölyeler</td>
+                  <td scope="row">
+                    <span class="badge" style="margin-top: 7px"
+                      >Halka Açık Alanlar</span
+                    >
+                  </td>
+                  <td scope="row">
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td scope="row">...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td>Bebek-Çocuk Bakım Evi</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px"
+                      >Halka Açık Alanlar</span
+                    >
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td>Kütüphane</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px"
+                      >Halka Açık Alanlar</span
+                    >
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td>Merkezler</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px"
+                      >Halka Açık Alanlar</span
+                    >
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td scope=" row">Eğitim</td>
+                  <td scope="row">
+                    <span class="badge" style="margin-top: 7px"
+                      >Halk Yararına Olanlar</span
+                    >
+                  </td>
+                  <td scope="row">
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td scope="row">...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td>Evlendirme</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px"
+                      >Halk Yararına Olanlar</span
+                    >
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td>Geri Dönüşüm</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px"
+                      >Halk Yararına Olanlar</span
+                    >
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <!-- latest jquery-->
