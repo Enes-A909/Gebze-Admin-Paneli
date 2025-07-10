@@ -36,6 +36,56 @@
         display: block;
         margin-right: 100px;
       }
+
+      .dropdown-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-toggle {
+        background-color: #ffad33f5;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 110%;
+        left: 0;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+        min-width: 140px;
+      }
+
+      .dropdown-menu button {
+        width: 100%;
+        padding: 8px 12px;
+        border: none;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .dropdown-menu button:hover {
+        background-color: #f0f0f0;
+      }
+
+      .menu-title {
+        font-weight: bold;
+        padding: 10px 12px 5px;
+        font-size: 13px;
+        color: #444;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 5px;
+      }
     </style>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -764,20 +814,21 @@
                   <td scope="row">Arşivlendi</td>
                   <td scope="row">...</td>
                   <td scope="row" style="text-align: right">
-                    <button
-                      style="
-                        background-color: rgba(0, 81, 255, 0.738);
-                        color: white;
-                        border: none;
-                        padding: 5px 10px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                      "
-                      onclick="baskanSayfasi()"
-                      class="btn btn-outline-primary"
-                    >
-                      Düzenle
-                    </button>
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -787,20 +838,21 @@
                   <td>Arşivlendi</td>
                   <td>...</td>
                   <td scope="row" style="text-align: right">
-                    <button
-                      style="
-                        background-color: rgba(0, 81, 255, 0.738);
-                        color: white;
-                        border: none;
-                        padding: 5px 10px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                      "
-                      onclick="baskanYardimcisi()"
-                      class="btn btn-outline-primary"
-                    >
-                      Düzenle
-                    </button>
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -810,20 +862,21 @@
                   <td>Arşivlendi</td>
                   <td>...</td>
                   <td scope="row" style="text-align: right">
-                    <button
-                      style="
-                        background-color: rgba(0, 81, 255, 0.738);
-                        color: white;
-                        border: none;
-                        padding: 5px 10px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                      "
-                      onclick="baskanDanışmanları()"
-                      class="btn btn-outline-primary"
-                    >
-                      Düzenle
-                    </button>
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -833,19 +886,21 @@
                   <td>Arşivlendi</td>
                   <td>...</td>
                   <td scope="row" style="text-align: right">
-                    <button
-                      style="
-                        background-color: rgba(0, 81, 255, 0.738);
-                        color: white;
-                        border: none;
-                        padding: 5px 10px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                      "
-                      class="btn btn-outline-primary"
-                    >
-                      Düzenle
-                    </button>
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -855,19 +910,21 @@
                   <td>Arşivlendi</td>
                   <td>...</td>
                   <td scope="row" style="text-align: right">
-                    <button
-                      style="
-                        background-color: rgba(0, 81, 255, 0.738);
-                        color: white;
-                        border: none;
-                        padding: 5px 10px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                      "
-                      class="btn btn-outline-primary"
-                    >
-                      Düzenle
-                    </button>
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -877,19 +934,21 @@
                   <td>Arşivlendi</td>
                   <td>...</td>
                   <td scope="row" style="text-align: right">
-                    <button
-                      style="
-                        background-color: rgba(0, 81, 255, 0.738);
-                        color: white;
-                        border: none;
-                        padding: 5px 10px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                      "
-                      class="btn btn-outline-primary"
-                    >
-                      Düzenle
-                    </button>
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -900,19 +959,21 @@
                   <td>...</td>
 
                   <td scope="row" style="text-align: right">
-                    <button
-                      style="
-                        background-color: rgba(0, 81, 255, 0.738);
-                        color: white;
-                        border: none;
-                        padding: 5px 10px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                      "
-                      class="btn btn-outline-primary"
-                    >
-                      Düzenle
-                    </button>
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
+                      >
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -1267,6 +1328,75 @@
               );
               modalInstance.hide();
             }
+          </script>
+          <script>
+            function toggleMenu(button) {
+              const menu = button.nextElementSibling;
+              const allMenus = document.querySelectorAll(".islem-menu");
+
+              allMenus.forEach((m) => {
+                if (m !== menu) m.style.display = "none";
+              });
+
+              menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+            }
+
+            // Örnek fonksiyonlar
+            function ekle() {
+              alert("Ekleme sayfasına yönlendiriliyor...");
+            }
+
+            function duzenle() {
+              alert("Düzenleme sayfasına yönlendiriliyor...");
+            }
+
+            function sil() {
+              alert("Silme işlemi yapılıyor...");
+            }
+
+            function icerik() {
+              alert("İçerik detayına yönlendiriliyor...");
+            }
+          </script>
+          <script>
+            function toggleDropdown(btn) {
+              const menu = btn.nextElementSibling;
+
+              // Diğer tüm açık menüleri kapat
+              document.querySelectorAll(".dropdown-menu").forEach((el) => {
+                if (el !== menu) el.style.display = "none";
+              });
+
+              // Tıklanan menüyü aç/kapat
+              menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+            }
+
+            function ekle() {
+              alert("Ekle tıklandı");
+            }
+
+            function duzenle() {
+              alert("Düzenle tıklandı");
+            }
+
+            function sil() {
+              alert("Sil tıklandı");
+            }
+
+            function icerik() {
+              alert("İçerik tıklandı");
+            }
+
+            // Sayfa dışında bir yere tıklanınca menü kapanır
+            document.addEventListener("click", function (e) {
+              if (!e.target.closest(".dropdown-container")) {
+                document
+                  .querySelectorAll(".dropdown-menu")
+                  .forEach((el) => (el.style.display = "none"));
+              }
+            });
           </script>
         </div>
       </div>
