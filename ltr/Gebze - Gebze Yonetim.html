@@ -372,107 +372,107 @@
         <br /><br />
 
         <!-- İçeriklerin Yükleneceği Alan -->
-
         <div id="icerikler">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">
-                  <input type="checkbox" />
-                </th>
-                <th scope="col">Sayfa Başlığı</th>
-                <th scope="col">Kategori</th>
-                <th scope="col">Durumu</th>
-                <th scope="col">Son Güncelleme</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"><input type="checkbox" /></th>
-                <td scope=" row">Mahalle Muhtarları</td>
-                <td scope="row">
-                  <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
-                </td>
-                <td scope="row">
-                  <span class="arşiv" style="margin-top: 7px">
-                    Arşivlendi
-                  </span>
-                </td>
-                <td scope="row">...</td>
-                <td scope="row" style="text-align: right">
-                  <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                      İşlemler
-                    </button>
-                    <div class="dropdown-menu">
-                      <div class="menu-title">İçerikler</div>
-                      <button onclick="ekle()">➕ Ekle</button>
-                      <button onclick="duzenle()">✏️ Düzenle</button>
-                      <button onclick="sil()">🗑️ Sil</button>
-                      <button onclick="icerik()">📄 İçerik</button>
+          <div id="icerikler">
+            <table class="table" style="box-shadow: 0 6px 10px rgba(0, 81, 255, 0.738)">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" />
+                  </th>
+                  <th scope="col">Sayfa Başlığı</th>
+                  <th scope="col">Kategori</th>
+                  <th scope="col">Durumu</th>
+                  <th scope="col">Son Güncelleme</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td scope=" row">Mahalle Muhtarları</td>
+                  <td scope="row">
+                    <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
+                  </td>
+                  <td scope="row">
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td scope="row">...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"><input type="checkbox" /></th>
-                <td>Kardeş Şehirler</td>
-                <td>
-                  <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
-                </td>
-                <td>
-                  <span class="arşiv" style="margin-top: 7px">
-                    Arşivlendi
-                  </span>
-                </td>
-                <td>...</td>
-                <td scope="row" style="text-align: right">
-                  <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                      İşlemler
-                    </button>
-                    <div class="dropdown-menu">
-                      <div class="menu-title">İçerikler</div>
-                      <button onclick="ekle()">➕ Ekle</button>
-                      <button onclick="duzenle()">✏️ Düzenle</button>
-                      <button onclick="sil()">🗑️ Sil</button>
-                      <button onclick="icerik()">📄 İçerik</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td>Kardeş Şehirler</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"><input type="checkbox" /></th>
-                <td>Üye Olduğumuz birlikler</td>
-                <td>
-                  <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
-                </td>
-                <td>
-                  <span class="arşiv" style="margin-top: 7px">
-                    Arşivlendi
-                  </span>
-                </td>
-                <td>...</td>
-                <td scope="row" style="text-align: right">
-                  <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                      İşlemler
-                    </button>
-                    <div class="dropdown-menu">
-                      <div class="menu-title">İçerikler</div>
-                      <button onclick="ekle()">➕ Ekle</button>
-                      <button onclick="duzenle()">✏️ Düzenle</button>
-                      <button onclick="sil()">🗑️ Sil</button>
-                      <button onclick="icerik()">📄 İçerik</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" /></th>
+                  <td>Üye Olduğumuz birlikler</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-
 
         <!-- latest jquery-->
         <script src="../assets/js/jquery-3.2.1.min.js"></script>
