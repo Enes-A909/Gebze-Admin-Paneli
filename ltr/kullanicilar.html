@@ -2,6 +2,32 @@
 <html lang="tr">
   <head>
     <style>
+      table {
+        border-radius: 10px;
+      }
+
+      table tr {
+        transition: background-color 0.3s ease;
+        border-radius: 10px;
+      }
+
+      table tr:hover {
+        background-color: #cccccc;
+        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+
+      table tr button {
+        transition: transform 0.3s ease !important;
+        transform: translate(0%, 0%);
+      }
+
+      table tr button:hover {
+        transition: transform 0.3s ease !important;
+        transform: translate(-5%, 0%);
+      }
       .logo-img {
         height: 200px !important;
         /* Boyutu küçültür */
@@ -548,8 +574,11 @@
 
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler">
-            <div class="table-responsive">
-              <table class="table table-hover align-middle">
+            <div class="table">
+              <table
+                class="table"
+                style="box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738)"
+              >
                 <thead class="table-light">
                   <tr>
                     <th scope="col">Profil Fotoğrafı</th>
