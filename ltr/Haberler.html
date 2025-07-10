@@ -1,6 +1,101 @@
 <!DOCTYPE html>
 <html lang="tr">
   <head>
+    <style>
+      table {
+        border-radius: 10px;
+      }
+      table tr {
+        transition: background-color 0.3s ease;
+        transition: all 0.8s ease;
+        border-radius: 10px;
+      }
+      table tr:hover {
+        background-color: #cccccc;
+        transition: background-color 0.3s ease;
+        transition: all 0.8s ease;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      table tr button {
+        transition: transform 1s ease !important;
+        transform: translate(0%, 0%);
+      }
+      table tr button:hover {
+        transition: transform 1s ease !important;
+        transform: translate(-2%, 0%);
+      }
+      table {
+        border-radius: 10px;
+      }
+      table tr {
+        transition: background-color 0.3s ease;
+        border-radius: 10px;
+      }
+      table tr:hover {
+        background-color: #cccccc;
+        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      table tr button {
+        transition: transform 0.3s ease !important;
+        transform: translate(0%, 0%);
+      }
+      table tr button:hover {
+        transition: transform 0.3s ease !important;
+        transform: translate(-5%, 0%);
+      }
+      .dropdown-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-toggle {
+        background-color: #ffad33f5;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 110%;
+        left: 0;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        z-index: 999;
+        min-width: 140px;
+      }
+
+      .dropdown-menu button {
+        width: 100%;
+        padding: 8px 12px;
+        border: none;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .dropdown-menu button:hover {
+        background-color: #f0f0f0;
+      }
+
+      .menu-title {
+        font-weight: bold;
+        padding: 10px 12px 5px;
+        font-size: 13px;
+        color: #444;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 5px;
+      }
+    </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -75,104 +170,6 @@
       type="text/css"
       href="../assets/css/responsive.css"
     />
-
-    <style>
-      .custom-file-upload {
-        display: inline-block;
-        padding: 10px 20px;
-        cursor: pointer;
-        background-color: #007bff;
-        color: white;
-        border-radius: 8px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-      }
-
-      .custom-file-upload:hover {
-        background-color: #0056b3;
-      }
-
-      #newsFoto {
-        display: none; /* input'ı gizliyoruz */
-      }
-
-      #fileName {
-        margin-left: 10px;
-        font-style: italic;
-      }
-
-      table {
-        border-radius: 10px;
-      }
-      table tr {
-        transition: background-color 0.3s ease;
-        transition: all 0.8s ease;
-        border-radius: 10px;
-      }
-      table tr:hover {
-        background-color: #cccccc;
-        transition: background-color 0.3s ease;
-        transition: all 0.8s ease;
-        cursor: pointer;
-        border-radius: 10px;
-      }
-      table tr button {
-        transition: transform 1s ease !important;
-        transform: translate(0%, 0%);
-      }
-      table tr button:hover {
-        transition: transform 1s ease !important;
-        transform: translate(-2%, 0%);
-      }
-      .dropdown-container {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdown-toggle {
-        background-color: #ffad33f5;
-        color: white;
-        border: none;
-        padding: 6px 10px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 110%;
-        left: 0;
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        z-index: 999;
-        min-width: 140px;
-      }
-
-      .dropdown-menu button {
-        width: 100%;
-        padding: 8px 12px;
-        border: none;
-        background: none;
-        text-align: left;
-        cursor: pointer;
-        font-size: 14px;
-      }
-
-      .dropdown-menu button:hover {
-        background-color: #f0f0f0;
-      }
-
-      .menu-title {
-        font-weight: bold;
-        padding: 10px 12px 5px;
-        font-size: 13px;
-        color: #444;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 5px;
-      }
-    </style>
   </head>
 
   <body>
@@ -1007,79 +1004,6 @@
                 </tbody>
               </table>
             </div>
-
-            <script>
-              document.addEventListener("DOMContentLoaded", function () {
-                const buttons = document.querySelectorAll(".formButton");
-
-                buttons.forEach(function (button, index) {
-                  button.addEventListener("click", function () {
-                    const row = button.closest("tr");
-                    const haberAdi = row.children[1].innerText;
-                    const haberTarihi = row.children[2].innerText;
-                    const haberIcerigi = row.children[3].innerText;
-                    const photoIcerigi = row.children[0].children[0].src;
-
-                    document.getElementById("icerikler").innerHTML = `
-                <div class="container-sm">
-                  <form>
-                    <div class="form-group">
-                      <label>Haber Adı</label>
-                      <input type="text" class="form-control" value="${haberAdi}" />
-                    </div>
-                    <div class="form-group">
-                      <label>Haber Tarihi</label>
-                      <input type="date" class="form-control" value="${haberTarihi
-                        .split(".")
-                        .reverse()
-                        .join("-")}" />
-                    </div>
-                    <div class="form-group">
-                      <label>Haber İçeriği</label>
-                      <textarea class="form-control">${haberIcerigi}</textarea>
-                    </div>
-              <div style="width: 150px; height: 400px; float:center;">
-              <img
-                src="${photoIcerigi}"
-                alt="newsFoto"
-                id="newsPhoto"
-                width: 150px;
-                height:250px;
-              />
-              <label for="newsFoto" class="custom-file-upload mt-4" style="width:260px; text-align:center;">
-                 Fotoğraf Seç
-              </label>
-              <input
-              height="100px"
-              width="100px"
-                type="file"
-                name="file"
-                id="newsFoto"
-                accept=".png,.jpg,.jpeg"
-              />
-            </div>
-                  </form>
-                </div>
-              `;
-                    const input = document.getElementById("newsFoto");
-                    const img = document.getElementById("newsPhoto");
-
-                    input.addEventListener("change", function () {
-                      const file = this.files[0];
-                      if (file) {
-                        const reader = new FileReader();
-                        reader.addEventListener("load", function () {
-                          img.src = reader.result;
-                        });
-                        reader.readAsDataURL(file);
-                      } else {
-                        img.src = "";
-                      }
-                    });
-                  });
-                });
-              });
-            </script>
 
             <!-- latest jquery-->
             <script src="../assets/js/jquery-3.2.1.min.js"></script>

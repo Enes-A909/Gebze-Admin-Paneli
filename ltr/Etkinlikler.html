@@ -1,6 +1,78 @@
 <!DOCTYPE html>
 <html lang="tr">
   <head>
+    <style>
+      table {
+        border-radius: 10px;
+      }
+      table tr {
+        transition: background-color 0.3s ease;
+        border-radius: 10px;
+      }
+      table tr:hover {
+        background-color: #cccccc;
+        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      table tr button {
+        transition: transform 0.3s ease !important;
+        transform: translate(0%, 0%);
+      }
+      table tr button:hover {
+        transition: transform 0.3s ease !important;
+        transform: translate(-5%, 0%);
+      }
+      .dropdown-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-toggle {
+        background-color: #ffad33f5;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 110%;
+        left: 0;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        z-index: 999;
+        min-width: 140px;
+      }
+
+      .dropdown-menu button {
+        width: 100%;
+        padding: 8px 12px;
+        border: none;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .dropdown-menu button:hover {
+        background-color: #f0f0f0;
+      }
+
+      .menu-title {
+        font-weight: bold;
+        padding: 10px 12px 5px;
+        font-size: 13px;
+        color: #444;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 5px;
+      }
+    </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -75,35 +147,6 @@
       type="text/css"
       href="../assets/css/responsive.css"
     />
-
-    <style>
-      table {
-        border-radius: 10px;
-      }
-      table tr {
-        transition: background-color 0.3s ease;
-        transition: all 0.8s ease;
-        border-radius: 10px;
-      }
-      table tr:hover {
-        background-color: #cccccc;
-        transition: background-color 0.3s ease;
-        transition: all 0.8s ease;
-        cursor: pointer;
-        box-shadow: 0 4px 9px rgba(56, 119, 255, 0.948);
-
-        border-radius: 10px;
-      }
-      table tr button {
-        transition: transform 1s ease !important;
-        transform: translate(0%, 0%);
-      }
-      table tr button:hover {
-        transition: transform 1s ease !important;
-        transform: translate(-2%, 0%);
-        box-shadow: 0 4px 9px rgba(56, 119, 255, 0.948);
-      }
-    </style>
   </head>
 
   <body>
@@ -713,83 +756,235 @@
             <div class="container-sm ml-1">
               <table
                 class="table"
-                style="
-                  border-left: 1px solid;
-                  border-right: 1px solid;
-                  border-bottom: 1px solid;
-                "
+                style="box-shadow: 6px 6px 20px rgba(0, 81, 255, 0.738)"
               >
-                <thead class="thead-primary">
+                <thead>
                   <tr>
                     <th scope="col"></th>
-                    <th scope="col">Etkinlik Adı</th>
-                    <th scope="col">Etkinlik Tarihi</th>
-                    <th scope="col">Açıklama</th>
+                    <th scope="col">Sayfa Başlığı</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Durumu</th>
+                    <th scope="col">Son Güncelleme</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>
+                    <th scope="row">
                       <img
                         src="../assets/images/gebze-belediyesi.ico"
-                        alt="img"
-                        style="width: 30px; height: 30px"
+                        alt="gebze-belediyesi-img"
+                        width="30px"
+                        height="30px"
                       />
-                    </td>
-                    <td>Mark</td>
-                    <td>07.07.2025</td>
-                    <td>açıklama</td>
-                    <td>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        style="float: right"
-                      >
-                        Düzenle
-                      </button>
+                    </th>
+                    <td scope=" row">Başkan</td>
+                    <td scope="row">Yönetim</td>
+                    <td scope="row">Arşivlendi</td>
+                    <td scope="row">...</td>
+                    <td scope="row" style="text-align: right">
+                      <div class="dropdown-container">
+                        <button
+                          class="dropdown-toggle"
+                          onclick="toggleDropdown(this)"
+                        >
+                          İşlemler
+                        </button>
+                        <div class="dropdown-menu">
+                          <div class="menu-title">İçerikler</div>
+                          <button onclick="ekle()">➕ Ekle</button>
+                          <button onclick="duzenle()">✏️ Düzenle</button>
+                          <button onclick="sil()">🗑️ Sil</button>
+                          <button onclick="icerik()">📄 İçerik</button>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <th scope="row">
                       <img
                         src="../assets/images/gebze-belediyesi.ico"
-                        alt="img"
-                        style="width: 30px; height: 30px"
+                        alt="gebze-belediyesi-img"
+                        width="30px"
+                        height="30px"
                       />
-                    </td>
-                    <td>Fred</td>
-                    <td>08.08.2025</td>
-                    <td>açıklama</td>
-                    <td>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        style="float: right"
-                      >
-                        Düzenle
-                      </button>
+                    </th>
+                    <td>Başkan Yardımcıları</td>
+                    <td>Yönetim</td>
+                    <td>Arşivlendi</td>
+                    <td>...</td>
+                    <td scope="row" style="text-align: right">
+                      <div class="dropdown-container">
+                        <button
+                          class="dropdown-toggle"
+                          onclick="toggleDropdown(this)"
+                        >
+                          İşlemler
+                        </button>
+                        <div class="dropdown-menu">
+                          <div class="menu-title">İçerikler</div>
+                          <button onclick="ekle()">➕ Ekle</button>
+                          <button onclick="duzenle()">✏️ Düzenle</button>
+                          <button onclick="sil()">🗑️ Sil</button>
+                          <button onclick="icerik()">📄 İçerik</button>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <th scope="row">
                       <img
                         src="../assets/images/gebze-belediyesi.ico"
-                        alt="img"
-                        style="width: 30px; height: 30px"
+                        alt="gebze-belediyesi-img"
+                        width="30px"
+                        height="30px"
                       />
+                    </th>
+                    <td>Başkan Danışmanları</td>
+                    <td>Yönetim</td>
+                    <td>Arşivlendi</td>
+                    <td>...</td>
+                    <td scope="row" style="text-align: right">
+                      <div class="dropdown-container">
+                        <button
+                          class="dropdown-toggle"
+                          onclick="toggleDropdown(this)"
+                        >
+                          İşlemler
+                        </button>
+                        <div class="dropdown-menu">
+                          <div class="menu-title">İçerikler</div>
+                          <button onclick="ekle()">➕ Ekle</button>
+                          <button onclick="duzenle()">✏️ Düzenle</button>
+                          <button onclick="sil()">🗑️ Sil</button>
+                          <button onclick="icerik()">📄 İçerik</button>
+                        </div>
+                      </div>
                     </td>
-                    <td>Anderson</td>
-                    <td>12.12.2025</td>
-                    <td>açıklama</td>
-                    <td>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        style="float: right"
-                      >
-                        Düzenle
-                      </button>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      <img
+                        src="../assets/images/gebze-belediyesi.ico"
+                        alt="gebze-belediyesi-img"
+                        width="30px"
+                        height="30px"
+                      />
+                    </th>
+                    <td>Müdürlükler</td>
+                    <td>Yönetim</td>
+                    <td>Arşivlendi</td>
+                    <td>...</td>
+                    <td scope="row" style="text-align: right">
+                      <div class="dropdown-container">
+                        <button
+                          class="dropdown-toggle"
+                          onclick="toggleDropdown(this)"
+                        >
+                          İşlemler
+                        </button>
+                        <div class="dropdown-menu">
+                          <div class="menu-title">İçerikler</div>
+                          <button onclick="ekle()">➕ Ekle</button>
+                          <button onclick="duzenle()">✏️ Düzenle</button>
+                          <button onclick="sil()">🗑️ Sil</button>
+                          <button onclick="icerik()">📄 İçerik</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      <img
+                        src="../assets/images/gebze-belediyesi.ico"
+                        alt="gebze-belediyesi-img"
+                        width="30px"
+                        height="30px"
+                      />
+                    </th>
+                    <td>Belediye Meclisi</td>
+                    <td>Yönetim</td>
+                    <td>Arşivlendi</td>
+                    <td>...</td>
+                    <td scope="row" style="text-align: right">
+                      <div class="dropdown-container">
+                        <button
+                          class="dropdown-toggle"
+                          onclick="toggleDropdown(this)"
+                        >
+                          İşlemler
+                        </button>
+                        <div class="dropdown-menu">
+                          <div class="menu-title">İçerikler</div>
+                          <button onclick="ekle()">➕ Ekle</button>
+                          <button onclick="duzenle()">✏️ Düzenle</button>
+                          <button onclick="sil()">🗑️ Sil</button>
+                          <button onclick="icerik()">📄 İçerik</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      <img
+                        src="../assets/images/gebze-belediyesi.ico"
+                        alt="gebze-belediyesi-img"
+                        width="30px"
+                        height="30px"
+                      />
+                    </th>
+                    <td>Yönetim Şeması</td>
+                    <td>Yönetim</td>
+                    <td>Arşivlendi</td>
+                    <td>...</td>
+                    <td scope="row" style="text-align: right">
+                      <div class="dropdown-container">
+                        <button
+                          class="dropdown-toggle"
+                          onclick="toggleDropdown(this)"
+                        >
+                          İşlemler
+                        </button>
+                        <div class="dropdown-menu">
+                          <div class="menu-title">İçerikler</div>
+                          <button onclick="ekle()">➕ Ekle</button>
+                          <button onclick="duzenle()">✏️ Düzenle</button>
+                          <button onclick="sil()">🗑️ Sil</button>
+                          <button onclick="icerik()">📄 İçerik</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      <img
+                        src="../assets/images/gebze-belediyesi.ico"
+                        alt="gebze-belediyesi-img"
+                        width="30px"
+                        height="30px"
+                      />
+                    </th>
+                    <td>Eski Başkanlar</td>
+                    <td>Yönetim</td>
+                    <td>Arşivlendi</td>
+                    <td>...</td>
+
+                    <td scope="row" style="text-align: right">
+                      <div class="dropdown-container">
+                        <button
+                          class="dropdown-toggle"
+                          onclick="toggleDropdown(this)"
+                        >
+                          İşlemler
+                        </button>
+                        <div class="dropdown-menu">
+                          <div class="menu-title">İçerikler</div>
+                          <button onclick="ekle()">➕ Ekle</button>
+                          <button onclick="duzenle()">✏️ Düzenle</button>
+                          <button onclick="sil()">🗑️ Sil</button>
+                          <button onclick="icerik()">📄 İçerik</button>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -837,6 +1032,75 @@
 
           <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
           <!-- Plugin used-->
+          <script>
+            function toggleMenu(button) {
+              const menu = button.nextElementSibling;
+              const allMenus = document.querySelectorAll(".islem-menu");
+
+              allMenus.forEach((m) => {
+                if (m !== menu) m.style.display = "none";
+              });
+
+              menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+            }
+
+            // Örnek fonksiyonlar
+            function ekle() {
+              alert("Ekleme sayfasına yönlendiriliyor...");
+            }
+
+            function duzenle() {
+              alert("Düzenleme sayfasına yönlendiriliyor...");
+            }
+
+            function sil() {
+              alert("Silme işlemi yapılıyor...");
+            }
+
+            function icerik() {
+              alert("İçerik detayına yönlendiriliyor...");
+            }
+          </script>
+          <script>
+            function toggleDropdown(btn) {
+              const menu = btn.nextElementSibling;
+
+              // Diğer tüm açık menüleri kapat
+              document.querySelectorAll(".dropdown-menu").forEach((el) => {
+                if (el !== menu) el.style.display = "none";
+              });
+
+              // Tıklanan menüyü aç/kapat
+              menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+            }
+
+            function ekle() {
+              alert("Ekle tıklandı");
+            }
+
+            function duzenle() {
+              alert("Düzenle tıklandı");
+            }
+
+            function sil() {
+              alert("Sil tıklandı");
+            }
+
+            function icerik() {
+              alert("İçerik tıklandı");
+            }
+
+            // Sayfa dışında bir yere tıklanınca menü kapanır
+            document.addEventListener("click", function (e) {
+              if (!e.target.closest(".dropdown-container")) {
+                document
+                  .querySelectorAll(".dropdown-menu")
+                  .forEach((el) => (el.style.display = "none"));
+              }
+            });
+          </script>
         </div>
       </div>
     </div>
