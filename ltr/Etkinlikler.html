@@ -27,7 +27,8 @@
 
     table tr button:hover {
       transition: transform 0.3s ease !important;
-      transform: translate(-5%, 0%);
+      transform: scale(1.2)
+      
     }
 
     .dropdown-container {
@@ -42,6 +43,8 @@
       padding: 6px 10px;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3 ease;
+     
     }
 
     .dropdown-menu {
@@ -83,6 +86,11 @@
   outline: none !important;
   box-shadow: none !important;
   border-color: transparent !important;
+   
+}
+.dropdown-toggle:hover {
+  background-color: #f5b54ddc;
+  color: white;
 }
 
   </style>
