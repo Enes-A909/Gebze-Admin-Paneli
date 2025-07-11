@@ -467,6 +467,19 @@
             </div>
           </div>
 
+<<<<<<< HEAD
+        <!-- Benim yaptığım navbar kısmı -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid d-flex justify-content-end">
+            <button id="archive-button" class="btn me-2 mr-2 text-white" type="button"
+              style="background-color: darkgrey; box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1); display: none;">Arşivle</button>
+            <button id="delete-button" class="btn me-2 mr-2 text-white" type="button"
+              style="background-color: darkgrey; box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1); display: none;">Sil</button>
+            <button class="btn me-2 mr-2 text-white" type="button"
+              style="background-color: darkgrey; box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);">Ekle</button>
+          </div>
+        </nav>
+=======
           <!-- Benim yaptığım navbar kısmı -->
           <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid d-flex justify-content-end">
@@ -502,11 +515,105 @@
               </button>
             </div>
           </nav>
+>>>>>>> 7c5bbab3d10b648d3700abe95b290e16fac2ee7d
 
           <br /><br />
 
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler">
+<<<<<<< HEAD
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="checkbox-item" id="ana-checkbox" />
+                  </th>
+                  <th scope="col">Sayfa Başlığı</th>
+                  <th scope="col">Kategori</th>
+                  <th scope="col">Durumu</th>
+                  <th scope="col">Son Güncelleme</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
+                  <td scope=" row">Mahalle Muhtarları</td>
+                  <td scope="row">
+                    <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
+                  </td>
+                  <td scope="row">
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td scope="row">...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
+                  <td>Kardeş Şehirler</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
+                  <td>Üye Olduğumuz birlikler</td>
+                  <td>
+                    <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
+                  </td>
+                  <td>
+                    <span class="arşiv" style="margin-top: 7px">
+                      Arşivlendi
+                    </span>
+                  </td>
+                  <td>...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="menu-title">İçerikler</div>
+                        <button onclick="ekle()">➕ Ekle</button>
+                        <button onclick="duzenle()">✏️ Düzenle</button>
+                        <button onclick="sil()">🗑️ Sil</button>
+                        <button onclick="icerik()">📄 İçerik</button>
+=======
             <div id="icerikler">
               <table
                 class="table"
@@ -621,6 +728,7 @@
                           <button onclick="sil()">🗑️ Sil</button>
                           <button onclick="icerik()">📄 İçerik</button>
                         </div>
+>>>>>>> 7c5bbab3d10b648d3700abe95b290e16fac2ee7d
                       </div>
                     </td>
                   </tr>
@@ -630,6 +738,69 @@
           </div>
           <footer style="height: 200px; opacity: 0"></footer>
 
+<<<<<<< HEAD
+        <script>
+          // Burada herhangi bir checkbox seçildiğinde Arşivle ve Sil butonlarının display özelliğini none olmaktan çıkaracağız.
+          const checkboxes = document.querySelectorAll('.checkbox-item');
+          const archiveButton = document.getElementById('archive-button');
+          const deleteButton = document.getElementById('delete-button');
+
+          checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+              const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+              archiveButton.style.display = isChecked ? 'block' : 'none';
+              deleteButton.style.display = isChecked ? 'block' : 'none';
+            });
+          });
+
+          // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+          const anaCheckbox = document.getElementById('ana-checkbox');
+          anaCheckbox.addEventListener('change', () => {
+            checkboxes.forEach(checkbox => {
+              checkbox.checked = anaCheckbox.checked;
+              checkbox.dispatchEvent(new Event('change'));
+            });
+          });
+        </script>
+
+        <!-- latest jquery-->
+        <script src="../assets/js/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap js-->
+        <script src="../assets/js/bootstrap/popper.min.js"></script>
+        <script src="../assets/js/bootstrap/bootstrap.js"></script>
+        <!-- feather icon js-->
+        <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+        <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+        <!-- Sidebar jquery-->
+        <script src="../assets/js/sidebar-menu.js"></script>
+        <script src="../assets/js/config.js"></script>
+        <!-- Plugins JS start-->
+        <script src="../assets/js/chart/chartist/chartist.js"></script>
+        <script src="../assets/js/chart/knob/knob.min.js"></script>
+        <script src="../assets/js/chart/knob/knob-chart.js"></script>
+        <script src="../assets/js/prism/prism.min.js"></script>
+        <script src="../assets/js/clipboard/clipboard.min.js"></script>
+        <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
+        <script src="../assets/js/counter/jquery.counterup.min.js"></script>
+        <script src="../assets/js/counter/counter-custom.js"></script>
+        <script src="../assets/js/custom-card/custom-card.js"></script>
+        <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
+        <script src="../assets/js/dashboard/default.js"></script>
+        <script src="../assets/js/notify/index.js"></script>
+        <script src="../assets/js/typeahead/handlebars.js"></script>
+        <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
+        <script src="../assets/js/typeahead/typeahead.custom.js"></script>
+        <script src="../assets/js/chat-menu.js"></script>
+        <script src="../assets/js/height-equal.js"></script>
+        <script src="../assets/js/tooltip-init.js"></script>
+        <script src="../assets/js/typeahead-search/handlebars.js"></script>
+        <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
+        <!-- Plugins JS Ends-->
+        <!-- Theme js-->
+        <script src="../assets/js/script.js"></script>
+        <!-- Bootstrap JS + Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+=======
           <!-- latest jquery-->
           <script src="../assets/js/jquery-3.2.1.min.js"></script>
           <!-- Bootstrap js-->
@@ -667,6 +838,7 @@
           <script src="../assets/js/script.js"></script>
           <!-- Bootstrap JS + Popper -->
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+>>>>>>> 7c5bbab3d10b648d3700abe95b290e16fac2ee7d
 
           <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
           <!-- Plugin used-->
