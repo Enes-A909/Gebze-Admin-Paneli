@@ -353,12 +353,13 @@
         <!-- Benim yaptığım navbar kısmı -->
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid d-flex justify-content-end">
-            <button class="btn me-2 mr-2 text-white" type="button"
-              style="background-color: darkgrey; box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);">Arşivle</button>
-            <button class="btn me-2 mr-2 text-white" type="button"
-              style="background-color: darkgrey; box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);">Sil</button>
+            <button id="archive-button" class="btn me-2 mr-2 text-white" type="button"
+              style="background-color: darkgrey; box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1); display: none;">Arşivle</button>
+            <button id="delete-button" class="btn me-2 mr-2 text-white" type="button"
+              style="background-color: darkgrey; box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1); display: none;">Sil</button>
             <button class="btn me-2 mr-2 text-white" type="button"
               style="background-color: darkgrey; box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);">Ekle</button>
+          </div>
         </nav>
 
         <br /><br />
@@ -369,7 +370,7 @@
             <thead>
               <tr>
                 <th scope="col">
-                  <input type="checkbox" />
+                  <input type="checkbox" class="checkbox-item" id="ana-checkbox" />
                 </th>
                 <th scope="col">Sayfa Başlığı</th>
                 <th scope="col">Kategori</th>
@@ -380,7 +381,7 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row"><input type="checkbox" /></th>
+                <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
                 <td scope=" row">360 Sanal Tur</td>
                 <td scope="row">
                   <span class="badge" style="margin-top: 7px">Sanal Tur</span>
@@ -409,6 +410,30 @@
             </tbody>
           </table>
         </div>
+
+        <script>
+          // Burada herhangi bir checkbox seçildiğinde Arşivle ve Sil butonlarının display özelliğini none olmaktan çıkaracağız.
+          const checkboxes = document.querySelectorAll('.checkbox-item');
+          const archiveButton = document.getElementById('archive-button');
+          const deleteButton = document.getElementById('delete-button');
+
+          checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+              const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+              archiveButton.style.display = isChecked ? 'block' : 'none';
+              deleteButton.style.display = isChecked ? 'block' : 'none';
+            });
+          });
+
+          // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+          const anaCheckbox = document.getElementById('ana-checkbox');
+          anaCheckbox.addEventListener('change', () => {
+            checkboxes.forEach(checkbox => {
+              checkbox.checked = anaCheckbox.checked;
+              checkbox.dispatchEvent(new Event('change'));
+            });
+          });
+        </script>
 
         <!-- latest jquery-->
         <script src="../assets/js/jquery-3.2.1.min.js"></script>
