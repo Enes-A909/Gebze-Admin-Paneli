@@ -33,7 +33,7 @@
       table tr input {
         transition: transform 0.5s ease;
         width: 100%;
-        border-radius: 3px;
+        border-radius: 5px;
         border: none;
         box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
       }
@@ -102,6 +102,11 @@
         color: #444;
         border-bottom: 1px solid #eee;
         margin-bottom: 5px;
+      }
+
+      .buttons {
+        margin-top: 20px;
+        float: right;
       }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -462,110 +467,133 @@
             </div>
           </div>
 
-          <!-- Benim yaptığım navbar kısmı -->
-          <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid d-flex justify-content-end">
-              <button
-                class="btn me-2 mr-2 text-white"
-                type="button"
-                style="
-                  background-color: darkgrey;
-                  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);
-                "
-              >
-                Ekle
-              </button>
-            </div>
-          </nav>
-
-          <br /><br />
-
           <!-- İçeriklerin Yükleneceği Alan -->
-          <div id="icerikler">
+          <div id="icerikler" style="margin-top: 80px">
             <div class="container-sm" style="margin: auto">
-              <table
-                class="table"
-                style="
-                  box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
-                  margin-top: 20px;
-                "
-              >
-                <thead>
-                  <tr>
-                    <th colspan="5" style="text-align: center">İLETİŞİM</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      <i data-feather="map-pin"></i>
-                    </th>
-                    <td scope=" row">Adres</td>
-                    <td scope="row"></td>
-                    <td scope="row"></td>
-                    <td scope="row" style="text-align: right">
-                      <div class="dropdown-container">
-                        <button
-                          class="dropdown-toggle"
-                          onclick="toggleDropdown(this)"
-                        >
-                          İşlemler
-                        </button>
-                        <div class="dropdown-menu">
-                          <button>
-                            <a
-                              href="adresDuzenle.html"
-                              style="text-decoration: none; color: black"
-                            >
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle</a
-                            >
-                          </button>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      <i data-feather="phone"></i>
-                    </th>
-                    <td scope=" row">İletişim Bilgileri</td>
-                    <td scope="row"></td>
-                    <td scope="row"></td>
-                    <td scope="row" style="text-align: right">
-                      <div class="dropdown-container">
-                        <button
-                          class="dropdown-toggle"
-                          onclick="toggleDropdown(this)"
-                        >
-                          İşlemler
-                        </button>
-                        <div class="dropdown-menu">
-                          <button>
-                            <a
-                              href="iletisimDuzenle.html"
-                              style="text-decoration: none; color: black"
-                            >
-                              <img
-                                src="../assets/images/dropdown_svg/edit.svg"
-                                alt="edit"
-                                width="10%"
-                                height="10%"
-                              />
-                              Düzenle</a
-                            >
-                          </button>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <form action="">
+                <table
+                  class="table"
+                  style="
+                    box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+                    margin-top: 20px;
+                  "
+                >
+                  <thead>
+                    <tr>
+                      <th colspan="5" style="text-align: center">
+                        İLETİŞİM BİLGİLERİ DÜZENLE
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">
+                        <i data-feather="phone"></i>
+                      </th>
+                      <td scope=" row">Telefon</td>
+                      <td scope="row">
+                        <input
+                          type="text"
+                          name="phone"
+                          id="phone"
+                          value="0262 642 04 30"
+                        />
+                      </td>
+                      <td scope="row"></td>
+                      <td scope="row" style="text-align: right">
+                        <img
+                          src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                          alt="remove"
+                          width="25px"
+                          height="25px"
+                          onclick="remove(this)"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <i data-feather="printer"></i>
+                      </th>
+                      <td scope=" row">Fax</td>
+                      <td scope="row">
+                        <input
+                          type="text"
+                          name="fax"
+                          id="fax"
+                          value="0262 642 04 31"
+                        />
+                      </td>
+                      <td scope="row"></td>
+                      <td scope="row" style="text-align: right">
+                        <img
+                          src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                          alt="remove"
+                          width="25px"
+                          height="25px"
+                          onclick="remove(this)"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <i data-feather="mail"></i>
+                      </th>
+                      <td scope=" row">E-Posta</td>
+                      <td scope="row">
+                        <input
+                          type="email"
+                          name="eMail"
+                          id="eMail"
+                          value="gebze@gebze.bel.tr"
+                        />
+                      </td>
+                      <td scope="row"></td>
+                      <td scope="row" style="text-align: right">
+                        <img
+                          src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                          alt="remove"
+                          width="25px"
+                          height="25px"
+                          onclick="remove(this)"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <i data-feather="file"></i>
+                      </th>
+                      <td scope=" row">E-Posta(KEP)</td>
+                      <td scope="row">
+                        <input
+                          type="email"
+                          name="eMailKep"
+                          id="eMailKep"
+                          value="gebzebelediyesi@hs01.kep.tr"
+                        />
+                      </td>
+                      <td scope="row"></td>
+                      <td scope="row" style="text-align: right">
+                        <img
+                          src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                          alt="remove"
+                          width="25px"
+                          height="25px"
+                          onclick="remove(this)"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="buttons d-flex justify-content-end">
+                  <input
+                    type="reset"
+                    value="SIFIRLA"
+                    style="margin-right: 10px"
+                    class="btn btn-danger"
+                  />
+                  <input type="submit" value="KAYDET" class="btn btn-success" />
+                </div>
+              </form>
             </div>
           </div>
           <footer style="height: 200px; opacity: 0"></footer>
@@ -622,6 +650,7 @@
               menu.style.display =
                 menu.style.display === "block" ? "none" : "block";
             }
+
             // Örnek fonksiyonlar
           </script>
           <script>
@@ -637,6 +666,7 @@
               menu.style.display =
                 menu.style.display === "block" ? "none" : "block";
             }
+
             // Sayfa dışında bir yere tıklanınca menü kapanır
             document.addEventListener("click", function (e) {
               if (!e.target.closest(".dropdown-container")) {
@@ -645,6 +675,15 @@
                   .forEach((el) => (el.style.display = "none"));
               }
             });
+          </script>
+          <script>
+            function remove(icon) {
+              const satir = icon.closest("tr"); // ikonun bulunduğu <tr>'yi bul
+              const inpt = satir.querySelector("input"); // satır içindeki input'u bul
+              if (inpt) {
+                inpt.value = ""; // içeriği temizle
+              }
+            }
           </script>
         </div>
       </div>
