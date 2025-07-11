@@ -3,13 +3,38 @@
   <head>
     <style>
       table {
-        border: 1px solid black;
+        border: 1px solid rgb(255, 255, 255);
       }
 
       table tr:hover {
         background-color: #cccccc;
         cursor: pointer;
         transition: background-color 0.3s ease;
+      }
+
+      table tr button {
+        transition: transform 0.3s ease !important;
+        transform: translate(0%, 0%);
+      }
+
+      table tr button:hover {
+        transition: transform 0.3s ease !important;
+        transform: scale(1.2);
+      }
+
+      .table-button {
+        background-color: rgba(0, 81, 255, 0.738);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        transition: transform 0.3s ease !important;
+      }
+
+      .table-button:hover {
+        background-color: rgba(0, 0, 0, 0.948);
       }
 
       .logo-img {
@@ -33,12 +58,13 @@
       }
 
       .dropdown-toggle {
-        background-color: #ffad33f5;
-        color: white;
+        background-color: #ffcc7f84;
+        color: rgba(43, 42, 42, 0.692);
         border: none;
         padding: 6px 10px;
         border-radius: 5px;
         cursor: pointer;
+        transition: transform 0.36s ease !important;
       }
 
       .dropdown-menu {
@@ -47,16 +73,13 @@
         top: 110%;
         left: 0;
         background-color: white;
-        border: 1px solid #ddd;
+        border: 1px solid #2d2525;
         border-radius: 5px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 2px 6px rgba(236, 225, 225, 0.15);
         z-index: 999;
         min-width: 140px;
       }
-      table tr button:hover {
-        transition: transform 0.3s ease !important;
-        transform: scale(1.2);
-      }
+
       .dropdown-menu button {
         width: 100%;
         padding: 8px 12px;
@@ -81,7 +104,7 @@
       }
 
       .badge {
-        background-color: #75e1fad4;
+        background-color: #21d18538;
 
         padding: 4px 8px;
         border-radius: 12px;
@@ -91,7 +114,7 @@
       }
 
       .arşiv {
-        background-color: #ff9898bf;
+        background-color: #7d373769;
 
         padding: 4px 8px;
         border-radius: 15px;
@@ -99,6 +122,7 @@
         font-weight: 500;
         display: inline-block;
       }
+
       .dropdown-toggle:focus,
       .dropdown-toggle:focus-visible {
         outline: none !important;
@@ -109,6 +133,10 @@
         background-color: #f5b54ddc;
         color: white;
       }
+      /* * {
+        outline: none !important;
+        box-shadow: none !important;
+      }*/
     </style>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
