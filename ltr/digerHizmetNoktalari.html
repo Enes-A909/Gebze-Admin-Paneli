@@ -12,7 +12,6 @@
       }
 
       table tr:hover {
-        background-color: #cccccc;
         transition: background-color 0.3s ease;
         transition: all 0.3s ease;
         cursor: pointer;
@@ -52,15 +51,15 @@
         display: inline-block;
       }
 
-      .editButton {
+      .dropdown-toggle {
         background-color: #ffcc7f84;
         color: white;
         border: none;
-        outline: none;
         padding: 6px 10px;
         border-radius: 5px;
+        cursor: pointer;
       }
-      .editButton:hover {
+      .dropdown-toggle:hover {
         background-color: #ffcc7fcf;
         color: white;
         border: none;
@@ -102,6 +101,11 @@
         color: #444;
         border-bottom: 1px solid #eee;
         margin-bottom: 5px;
+      }
+
+      .buttons {
+        margin-top: 20px;
+        float: right;
       }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -462,182 +466,311 @@
             </div>
           </div>
 
-          <!-- Benim yaptığım navbar kısmı -->
-          <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid d-flex justify-content-end">
-              <button
-                class="btn me-2 mr-2 text-white"
-                type="button"
-                style="
-                  background-color: darkgrey;
-                  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);
-                "
-              >
-                Ekle
-              </button>
-            </div>
-          </nav>
-
-          <br /><br />
-
           <!-- İçeriklerin Yükleneceği Alan -->
-          <div id="icerikler">
+          <div id="icerikler" style="margin-top: 80px">
             <div class="container-sm" style="margin: auto">
-              <table
-                class="table"
+              <!-- Kart Başlangıcı -->
+              <div
+                class="d-flex align-items-start gap-4 mb-4"
                 style="
-                  box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
-                  margin-top: 20px;
+                  background: #fff;
+                  padding: 20px;
+                  border-radius: 10px;
+                  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
                 "
               >
-                <thead>
-                  <tr>
-                    <th colspan="5" style="text-align: center">İLETİŞİM</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      <i data-feather="map-pin"></i>
-                    </th>
-                    <td scope=" row">Adres</td>
-                    <td scope="row"></td>
-                    <td scope="row"></td>
-                    <td scope="row" style="text-align: right">
-                      <a href="adresDuzenle.html">
-                        <button
-                          class="editButton"
-                          onclick="toggleDropdown(this)"
+                <!-- Sol: Resim -->
+                <div style="flex: 0 0 300px">
+                  <img
+                    src="../assets/images/contact-img/gebzeBelediyeBaskanligi.jpeg"
+                    class="img-fluid rounded"
+                    alt="gebzeBelediyeBaskanligi"
+                    style="width: 100%; height: auto"
+                  />
+                  <a href="#" class="btn btn-primary w-100 mt-2">Düzenle</a>
+                </div>
+                <div style="flex: 1; padding-left: 20px">
+                  <h4 style="margin-bottom: 16px">Gebze Belediye Başkanlığı</h4>
+
+                  <p style="margin-bottom: 12px; font-size: 16px">
+                    <strong>Adres:</strong>
+                    <a
+                      href="https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.8057953,29.4359547,1453m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      style="text-decoration: none; color: #246bfd"
+                      >Güzeller Mah. Belediye Cad. No:1, 41400 Gebze /
+                      Kocaeli</a
+                    >
+                  </p>
+                  <p style="margin-bottom: 12px; font-size: 14px">
+                    <strong>Telefon Numarası:</strong>
+
+                    0 262 642 04 30
+                  </p>
+
+                  <!-- Müdürlükler -->
+                  <p style="margin-bottom: 8px">
+                    <strong>Binada Bulunan Müdürlükler:</strong>
+                  </p>
+
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: repeat(3, 1fr);
+                      gap: 16px;
+                    "
+                  >
+                    <!-- 1. Kolon -->
+                    <ul style="padding-left: 20px; list-style-type: disc">
+                      <li>Ruhsat ve Denetim Müdürlüğü</li>
+                      <li>İmar ve Şehircilik Müdürlüğü</li>
+                      <li>Plan ve Proje Müdürlüğü</li>
+                      <li>İnsan kaynakları ve Eğitim Müdürlüğü</li>
+                      <li>Numarataj Şefliği</li>
+                    </ul>
+
+                    <!-- 2. Kolon -->
+                    <ul style="padding-left: 20px; list-style-type: disc">
+                      <li>Hukuk İşleri Müdürlüğü</li>
+                      <li>Özel Kalem Müdürlüğü</li>
+                      <li>Destek Hizmet Müdürlüğü</li>
+                      <li>Mali Hizmetler Müdürlüğü</li>
+                      <li>İstihdam Ofisi</li>
+                    </ul>
+
+                    <!-- 3. Kolon -->
+                    <ul style="padding-left: 20px; list-style-type: disc">
+                      <li>Basın Yayın ve Halkla İlişkiler Müdürlüğü</li>
+                      <li>Emlak ve İstimlak Müdürlüğü</li>
+                      <li>Evrak Kayıt Servisi</li>
+                      <li>Bilgi İşlem Müdürlüğü</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="container-sm" style="margin: auto">
+                <!-- Kart Başlangıcı -->
+                <div
+                  class="d-flex align-items-start gap-4 mb-4"
+                  style="
+                    background: #fff;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+                  "
+                >
+                  <!-- Sol: Resim -->
+                  <div style="flex: 0 0 300px">
+                    <img
+                      src="../assets/images/mevlanaEkHizmet.jpeg"
+                      class="img-fluid rounded"
+                      alt="gebzeBelediyeBaskanligi"
+                      style="width: 100%; height: auto"
+                    />
+                    <a href="#" class="btn btn-primary w-100 mt-2">Düzenle</a>
+                  </div>
+                  <div style="flex: 1; padding-left: 20px">
+                    <h4 style="margin-bottom: 16px">
+                      T.C. GEBZE BELEDİYESİ MEVLANA EK HİZMET BİNASI
+                    </h4>
+
+                    <p style="margin-bottom: 12px; font-size: 16px">
+                      <strong>Adres:</strong>
+                      <a
+                        href="https://www.google.com/maps/place/T.C.+GEBZE+BELED%C4%B0YES%C4%B0+EK+H%C4%B0ZMET+B%C4%B0NASI/@40.8104203,29.4228192,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb219420d2a451:0x1ffbb472e940fc95!8m2!3d40.8104203!4d29.4253941!16s%2Fg%2F11r3nb7p3x?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank"
+                        style="text-decoration: none; color: #246bfd"
+                        >Mevlana, Issıkgöl Cd. No:111, 41400 Gebze/Kocaeli</a
+                      >
+                    </p>
+                    <p style="margin-bottom: 12px; font-size: 14px">
+                      <strong>Telefon Numarası:</strong>
+
+                      0 262 642 04 30
+                    </p>
+
+                    <!-- Müdürlükler -->
+                    <p style="margin-bottom: 8px">
+                      <strong>Binada Bulunan Müdürlükler:</strong>
+                    </p>
+
+                    <div
+                      style="
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 16px;
+                      "
+                    >
+                      <!-- 1. Kolon -->
+                      <ul style="padding-left: 20px; list-style-type: disc">
+                        <li>Makina İkmal Bakım Onarım Servisi</li>
+                        <li>Otobüs İşleri Servisi</li>
+                        <li>Temizlik İşleri Müdürlüğü</li>
+                        <li>Teftiş Kurulu Müdürlüğü</li>
+                        <li>Park ve Bahçeler Müdürlüğü</li>
+                      </ul>
+
+                      <!-- 2. Kolon -->
+                      <ul style="padding-left: 20px; list-style-type: disc">
+                        <li>İşletme ve İştirakler Müdürlüğü</li>
+                        <li>Zabıta Müdürlüğü</li>
+                        <li>Mezarlıklar Müdürlüğü</li>
+                        <li>Trafik ve Eğitim Okulu Zabıta Amirliği</li>
+                        <li>Veteriner İşleri Müdürlüğü</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-sm" style="margin: auto">
+                  <!-- Kart Başlangıcı -->
+                  <div
+                    class="d-flex align-items-start gap-4 mb-4"
+                    style="
+                      background: #fff;
+                      padding: 20px;
+                      border-radius: 10px;
+                      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+                    "
+                  >
+                    <!-- Sol: Resim -->
+                    <div style="flex: 0 0 300px">
+                      <img
+                        src="../assets/images/KentMeydanı.jpeg"
+                        class="img-fluid rounded"
+                        alt="gebzeBelediyeBaskanligi"
+                        style="width: 100%; height: auto"
+                      />
+                      <a href="#" class="btn btn-primary w-100 mt-2">Düzenle</a>
+                    </div>
+                    <div style="flex: 1; padding-left: 20px">
+                      <h4 style="margin-bottom: 16px">
+                        Gebze Belediye Başkanlığı
+                      </h4>
+
+                      <p style="margin-bottom: 12px; font-size: 16px">
+                        <strong>Adres:</strong>
+                        <a
+                          href="https://www.google.com/maps/place/Gebze+Kent+Meydan%C4%B1/@40.798966,29.4281553,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb2166b4804e33:0x7e61a156df7f1291!8m2!3d40.798966!4d29.4307302!16s%2Fg%2F11q9hw3d5z?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
+                          target="_blank"
+                          style="text-decoration: none; color: #246bfd"
+                          >Hacıhalil, 1222/2. Sk. No:4, 41400 Gebze/Kocaeli</a
                         >
-                          Düzenle
-                        </button>
-                        </a>
-                        </div>
+                      </p>
+                      <p style="margin-bottom: 12px; font-size: 14px">
+                        <strong>Telefon Numarası:</strong>
+
+                        0 262 642 04 30
+                      </p>
+
+                      <!-- Müdürlükler -->
+                      <p style="margin-bottom: 8px">
+                        <strong>Binada Bulunan Müdürlükler:</strong>
+                      </p>
+
+                      <div
+                        style="
+                          display: grid;
+                          grid-template-columns: repeat(3, 1fr);
+                          gap: 16px;
+                        "
+                      >
+                        <!-- 1. Kolon -->
+                        <ul style="padding-left: 20px; list-style-type: disc">
+                          <li>Kültür İşleri Müdürlüğü</li>
+                          <li>Evlendirme Memurluğu</li>
+                          <li>Sosyal Destek Hizmetleri Müdürlüğü</li>
+                          <li>Yazı İşleri Müdürlüğü</li>
+                        </ul>
                       </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      <i data-feather="phone"></i>
-                    </th>
-                    <td scope=" row">İletişim Bilgileri</td>
-                    <td scope="row"></td>
-                    <td scope="row"></td>
-                    <td scope="row" style="text-align: right">
-                      <a href="iletisimDuzenle.html">
-                        <button
-                          class="editButton"
-                          onclick="toggleDropdown(this)"
-                        >
-                          Düzenle
-                        </button>
-                        </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      <i data-feather="map"></i>
-                    </th>
-                    <td scope=" row">Diğer Hizmet Noktalarımız</td>
-                    <td scope="row"></td>
-                    <td scope="row"></td>
-                    <td scope="row" style="text-align: right">
-                      <a href="iletisimDuzenle.html">
-                        <button
-                          class="editButton"
-                          onclick="toggleDropdown(this)"
-                        >
-                          Düzenle
-                        </button>
-                        </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                    </div>
+                  </div>
+                </div>
+
+                <footer style="height: 200px; opacity: 0"></footer>
+
+                <!-- latest jquery-->
+                <script src="../assets/js/jquery-3.2.1.min.js"></script>
+                <!-- Bootstrap js-->
+                <script src="../assets/js/bootstrap/popper.min.js"></script>
+                <script src="../assets/js/bootstrap/bootstrap.js"></script>
+                <!-- feather icon js-->
+                <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+                <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+                <!-- Sidebar jquery-->
+                <script src="../assets/js/sidebar-menu.js"></script>
+                <script src="../assets/js/config.js"></script>
+                <!-- Plugins JS start-->
+                <script src="../assets/js/chart/chartist/chartist.js"></script>
+                <script src="../assets/js/chart/knob/knob.min.js"></script>
+                <script src="../assets/js/chart/knob/knob-chart.js"></script>
+                <script src="../assets/js/prism/prism.min.js"></script>
+                <script src="../assets/js/clipboard/clipboard.min.js"></script>
+                <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
+                <script src="../assets/js/counter/jquery.counterup.min.js"></script>
+                <script src="../assets/js/counter/counter-custom.js"></script>
+                <script src="../assets/js/custom-card/custom-card.js"></script>
+                <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
+                <script src="../assets/js/dashboard/default.js"></script>
+                <script src="../assets/js/notify/index.js"></script>
+                <script src="../assets/js/typeahead/handlebars.js"></script>
+                <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
+                <script src="../assets/js/typeahead/typeahead.custom.js"></script>
+                <script src="../assets/js/chat-menu.js"></script>
+                <script src="../assets/js/height-equal.js"></script>
+                <script src="../assets/js/tooltip-init.js"></script>
+                <script src="../assets/js/typeahead-search/handlebars.js"></script>
+                <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
+                <!-- Plugins JS Ends-->
+                <!-- Theme js-->
+                <script src="../assets/js/script.js"></script>
+                <!-- Bootstrap JS + Popper -->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+                <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
+                <!-- Plugin used-->
+                <script>
+                  function toggleMenu(button) {
+                    const menu = button.nextElementSibling;
+                    const allMenus = document.querySelectorAll(".islem-menu");
+
+                    allMenus.forEach((m) => {
+                      if (m !== menu) m.style.display = "none";
+                    });
+
+                    menu.style.display =
+                      menu.style.display === "block" ? "none" : "block";
+                  }
+
+                  // Örnek fonksiyonlar
+                </script>
+                <script>
+                  function toggleDropdown(btn) {
+                    const menu = btn.nextElementSibling;
+
+                    // Diğer tüm açık menüleri kapat
+                    document
+                      .querySelectorAll(".dropdown-menu")
+                      .forEach((el) => {
+                        if (el !== menu) el.style.display = "none";
+                      });
+
+                    // Tıklanan menüyü aç/kapat
+                    menu.style.display =
+                      menu.style.display === "block" ? "none" : "block";
+                  }
+
+                  // Sayfa dışında bir yere tıklanınca menü kapanır
+                  document.addEventListener("click", function (e) {
+                    if (!e.target.closest(".dropdown-container")) {
+                      document
+                        .querySelectorAll(".dropdown-menu")
+                        .forEach((el) => (el.style.display = "none"));
+                    }
+                  });
+                </script>
+              </div>
             </div>
           </div>
-          <footer style="height: 200px; opacity: 0"></footer>
-
-          <!-- latest jquery-->
-          <script src="../assets/js/jquery-3.2.1.min.js"></script>
-          <!-- Bootstrap js-->
-          <script src="../assets/js/bootstrap/popper.min.js"></script>
-          <script src="../assets/js/bootstrap/bootstrap.js"></script>
-          <!-- feather icon js-->
-          <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-          <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-          <!-- Sidebar jquery-->
-          <script src="../assets/js/sidebar-menu.js"></script>
-          <script src="../assets/js/config.js"></script>
-          <!-- Plugins JS start-->
-          <script src="../assets/js/chart/chartist/chartist.js"></script>
-          <script src="../assets/js/chart/knob/knob.min.js"></script>
-          <script src="../assets/js/chart/knob/knob-chart.js"></script>
-          <script src="../assets/js/prism/prism.min.js"></script>
-          <script src="../assets/js/clipboard/clipboard.min.js"></script>
-          <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
-          <script src="../assets/js/counter/jquery.counterup.min.js"></script>
-          <script src="../assets/js/counter/counter-custom.js"></script>
-          <script src="../assets/js/custom-card/custom-card.js"></script>
-          <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
-          <script src="../assets/js/dashboard/default.js"></script>
-          <script src="../assets/js/notify/index.js"></script>
-          <script src="../assets/js/typeahead/handlebars.js"></script>
-          <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
-          <script src="../assets/js/typeahead/typeahead.custom.js"></script>
-          <script src="../assets/js/chat-menu.js"></script>
-          <script src="../assets/js/height-equal.js"></script>
-          <script src="../assets/js/tooltip-init.js"></script>
-          <script src="../assets/js/typeahead-search/handlebars.js"></script>
-          <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
-          <!-- Plugins JS Ends-->
-          <!-- Theme js-->
-          <script src="../assets/js/script.js"></script>
-          <!-- Bootstrap JS + Popper -->
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-          <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-          <!-- Plugin used-->
-          <script>
-            function toggleMenu(button) {
-              const menu = button.nextElementSibling;
-              const allMenus = document.querySelectorAll(".islem-menu");
-
-              allMenus.forEach((m) => {
-                if (m !== menu) m.style.display = "none";
-              });
-
-              menu.style.display =
-                menu.style.display === "block" ? "none" : "block";
-            }
-            // Örnek fonksiyonlar
-          </script>
-          <script>
-            function toggleDropdown(btn) {
-              const menu = btn.nextElementSibling;
-
-              // Diğer tüm açık menüleri kapat
-              document.querySelectorAll(".dropdown-menu").forEach((el) => {
-                if (el !== menu) el.style.display = "none";
-              });
-
-              // Tıklanan menüyü aç/kapat
-              menu.style.display =
-                menu.style.display === "block" ? "none" : "block";
-            }
-            // Sayfa dışında bir yere tıklanınca menü kapanır
-            document.addEventListener("click", function (e) {
-              if (!e.target.closest(".dropdown-container")) {
-                document
-                  .querySelectorAll(".dropdown-menu")
-                  .forEach((el) => (el.style.display = "none"));
-              }
-            });
-          </script>
         </div>
       </div>
     </div>
