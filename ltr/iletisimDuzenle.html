@@ -35,7 +35,7 @@
         width: 100%;
         border-radius: 5px;
         border: none;
-        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+        box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);
       }
 
       table tr input:hover {
@@ -107,6 +107,34 @@
         color: #444;
         border-bottom: 1px solid #eee;
         margin-bottom: 5px;
+      }
+
+      .buttonSave {
+        background-color: #21d18581 !important;
+        color: rgba(0, 0, 0, 0.54) !important;
+        margin-right: 15px;
+      }
+      .buttonReset {
+        background-color: #82474769 !important;
+        color: rgba(0, 0, 0, 0.54) !important;
+      }
+      .buttonUrl {
+        background-color: rgba(68, 127, 245, 0.495) !important;
+        color: rgba(0, 0, 0, 0.54) !important;
+      }
+      .buttonSave:hover {
+        background-color: #21d185fe !important;
+        color: white !important;
+      }
+
+      .buttonReset:hover {
+        background-color: #7d3737b5 !important;
+        color: white !important;
+      }
+
+      .buttonUrl:hover {
+        background-color: rgba(68, 127, 245, 0.872) !important;
+        color: white !important;
       }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -620,24 +648,20 @@
                   class="buttons d-flex justify-content-end"
                   style="margin-bottom: 20px"
                 >
-                  <button
-                    onclick="olustur()"
-                    class="btn btn-warning mr-3 mt-4"
-                    style="width: px"
-                  >
+                  <button onclick="olustur()" class="buttonUrl btn mr-3 mt-4">
                     URL OLUŞTUR
                   </button>
 
                   <input
                     type="reset"
                     value="SIFIRLA"
-                    class="btn btn-danger mr-3 mt-4"
+                    class="btn mr-3 mt-4 buttonReset"
                     onclick="Reload()"
                   />
                   <input
                     type="submit"
                     value="KAYDET"
-                    class="btn btn-success mt-4"
+                    class="btn mt-4 buttonSave"
                   />
                 </div>
               </form>
