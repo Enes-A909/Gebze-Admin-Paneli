@@ -487,15 +487,18 @@
                       </th>
                       <td scope=" row">Telefon</td>
                       <td scope="row">
-                        <input
-                          type="text"
-                          name="phone"
-                          id="phone"
-                          value="0262 642 04 30"
-                        />
+                        <span style="color: #5e5e5e">0262 642 04 30</span>
                       </td>
                       <td scope="row"></td>
                       <td scope="row" style="text-align: right">
+                        <img
+                          src="../assets/images/editFrameSvg.svg"
+                          alt="editIcon"
+                          width="25px"
+                          height="25px"
+                          style="margin-right: 20px"
+                          onclick="addInput(this,'0262 642 04 30')"
+                        />
                         <img
                           src="../assets/images/dropdown_svg/rubbish-bin.svg"
                           alt="remove"
@@ -511,15 +514,18 @@
                       </th>
                       <td scope=" row">Fax</td>
                       <td scope="row">
-                        <input
-                          type="text"
-                          name="fax"
-                          id="fax"
-                          value="0262 642 04 31"
-                        />
+                        <span style="color: #5e5e5e">0262 642 04 31</span>
                       </td>
                       <td scope="row"></td>
                       <td scope="row" style="text-align: right">
+                        <img
+                          src="../assets/images/editFrameSvg.svg"
+                          alt="editIcon"
+                          width="25px"
+                          height="25px"
+                          style="margin-right: 20px"
+                          onclick="addInput(this,'0262 642 04 31')"
+                        />
                         <img
                           src="../assets/images/dropdown_svg/rubbish-bin.svg"
                           alt="remove"
@@ -535,15 +541,18 @@
                       </th>
                       <td scope=" row">E-Posta</td>
                       <td scope="row">
-                        <input
-                          type="email"
-                          name="eMail"
-                          id="eMail"
-                          value="gebze@gebze.bel.tr"
-                        />
+                        <span style="color: #5e5e5e">gebze@gebze.bel.tr</span>
                       </td>
                       <td scope="row"></td>
                       <td scope="row" style="text-align: right">
+                        <img
+                          src="../assets/images/editFrameSvg.svg"
+                          alt="editIcon"
+                          width="25px"
+                          height="25px"
+                          style="margin-right: 20px"
+                          onclick="addInput(this,'gebze@gebze.bel.tr')"
+                        />
                         <img
                           src="../assets/images/dropdown_svg/rubbish-bin.svg"
                           alt="remove"
@@ -559,15 +568,21 @@
                       </th>
                       <td scope=" row">E-Posta(KEP)</td>
                       <td scope="row">
-                        <input
-                          type="email"
-                          name="eMailKep"
-                          id="eMailKep"
-                          value="gebzebelediyesi@hs01.kep.tr"
-                        />
+                        <span style="color: #5e5e5e"
+                          >gebzebelediyesi@hs01.kep.tr</span
+                        >
                       </td>
                       <td scope="row"></td>
                       <td scope="row" style="text-align: right">
+                        <img
+                          src="../assets/images/editFrameSvg.svg"
+                          alt="editIcon"
+                          width="25px"
+                          height="25px"
+                          id="editFrameSvg"
+                          style="margin-right: 20px"
+                          onclick="addInput(this,'gebzebelediyesi@hs01.kep.tr')"
+                        />
                         <img
                           src="../assets/images/dropdown_svg/rubbish-bin.svg"
                           alt="remove"
@@ -606,6 +621,7 @@
               </form>
             </div>
           </div>
+
           <footer style="height: 200px; opacity: 0"></footer>
 
           <!-- latest jquery-->
@@ -724,6 +740,26 @@
               if (inpt) {
                 inpt.value = "";
               }
+            }
+          </script>
+          <script>
+            function addInput(icon, text) {
+              const tr = icon.closest("tr");
+              const tdInput = tr.children[2];
+
+              tdInput.innerHTML = `<input
+                  type="email"
+                  name="eMailKep"
+                  id="eMailKep"
+                  value="${text}"
+                  style="opacity: 0; transition: all 0.6s ease; height:30px; color: #5e5e5e; "
+                />`;
+              setTimeout(() => {
+                const input = tdInput.querySelector("input");
+                if (input) {
+                  input.style.opacity = "1";
+                }
+              }, 50);
             }
           </script>
         </div>
