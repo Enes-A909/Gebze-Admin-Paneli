@@ -47,6 +47,11 @@
         transform: scale(1.02);
       }
 
+      table tr td span {
+        min-width: 80px;
+        display: inline-block;
+      }
+
       .dropdown-container {
         position: relative;
         display: inline-block;
@@ -487,7 +492,12 @@
                       </th>
                       <td scope=" row">Telefon</td>
                       <td scope="row">
-                        <span style="color: #5e5e5e">0262 642 04 30</span>
+                        <span
+                          style="color: #5e5e5e"
+                          onclick="addInput(this,`text`)"
+                          id="phone"
+                          >0262 642 04 30</span
+                        >
                       </td>
                       <td scope="row"></td>
                       <td scope="row" style="text-align: right">
@@ -497,10 +507,10 @@
                           width="25px"
                           height="25px"
                           style="margin-right: 20px"
-                          onclick="addInput(this,'0262 642 04 30')"
+                          onclick="addInput(this,`text`)"
                         />
                         <img
-                          src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                          src="../assets/images/rubbishSvg.svg"
                           alt="remove"
                           width="25px"
                           height="25px"
@@ -514,7 +524,12 @@
                       </th>
                       <td scope=" row">Fax</td>
                       <td scope="row">
-                        <span style="color: #5e5e5e">0262 642 04 31</span>
+                        <span
+                          style="color: #5e5e5e"
+                          onclick="addInput(this,`text`)"
+                          id="fax"
+                          >0262 642 04 31</span
+                        >
                       </td>
                       <td scope="row"></td>
                       <td scope="row" style="text-align: right">
@@ -524,10 +539,10 @@
                           width="25px"
                           height="25px"
                           style="margin-right: 20px"
-                          onclick="addInput(this,'0262 642 04 31')"
+                          onclick="addInput(this,`text`)"
                         />
                         <img
-                          src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                          src="../assets/images/rubbishSvg.svg"
                           alt="remove"
                           width="25px"
                           height="25px"
@@ -541,7 +556,12 @@
                       </th>
                       <td scope=" row">E-Posta</td>
                       <td scope="row">
-                        <span style="color: #5e5e5e">gebze@gebze.bel.tr</span>
+                        <span
+                          style="color: #5e5e5e"
+                          onclick="addInput(this,`email`)"
+                          id="eMail"
+                          >gebze@gebze.bel.tr</span
+                        >
                       </td>
                       <td scope="row"></td>
                       <td scope="row" style="text-align: right">
@@ -551,10 +571,10 @@
                           width="25px"
                           height="25px"
                           style="margin-right: 20px"
-                          onclick="addInput(this,'gebze@gebze.bel.tr')"
+                          onclick="addInput(this,`email`)"
                         />
                         <img
-                          src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                          src="../assets/images/rubbishSvg.svg"
                           alt="remove"
                           width="25px"
                           height="25px"
@@ -568,7 +588,10 @@
                       </th>
                       <td scope=" row">E-Posta(KEP)</td>
                       <td scope="row">
-                        <span style="color: #5e5e5e"
+                        <span
+                          style="color: #5e5e5e"
+                          onclick="addInput(this,`email`)"
+                          id="eMailKep"
                           >gebzebelediyesi@hs01.kep.tr</span
                         >
                       </td>
@@ -581,10 +604,10 @@
                           height="25px"
                           id="editFrameSvg"
                           style="margin-right: 20px"
-                          onclick="addInput(this,'gebzebelediyesi@hs01.kep.tr')"
+                          onclick="addInput(this,`email`)"
                         />
                         <img
-                          src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                          src="../assets/images/rubbishSvg.svg"
                           alt="remove"
                           width="25px"
                           height="25px"
@@ -611,6 +634,7 @@
                     type="reset"
                     value="SIFIRLA"
                     class="btn btn-danger mr-3 mt-4"
+                    onclick="Reload()"
                   />
                   <input
                     type="submit"
@@ -739,27 +763,43 @@
               const inpt = satir.querySelector("input");
               if (inpt) {
                 inpt.value = "";
+              } else {
+                satir.querySelector("span").textContent = "";
               }
             }
           </script>
           <script>
-            function addInput(icon, text) {
+            function addInput(icon, type) {
               const tr = icon.closest("tr");
               const tdInput = tr.children[2];
 
+              const text = tdInput.innerText.trim();
+
               tdInput.innerHTML = `<input
-                  type="email"
-                  name="eMailKep"
-                  id="eMailKep"
+                  type="${type}"
                   value="${text}"
-                  style="opacity: 0; transition: all 0.6s ease; height:30px; color: #5e5e5e; "
+                  style="opacity: 0; transition: all 0.3s ease; height:30px; color: #5e5e5e; "
                 />`;
+              let input = tdInput.querySelector("input");
               setTimeout(() => {
-                const input = tdInput.querySelector("input");
                 if (input) {
                   input.style.opacity = "1";
+                  input.focus();
                 }
               }, 50);
+
+              function handleClickOutside(e) {
+                if (e.target !== input && e.target !== icon) {
+                  tdInput.innerHTML = `<span style="color: #5e5e5e;" onclick='addInput(this)' >${input.value}</span>`;
+                  document.removeEventListener("click", handleClickOutside);
+                }
+              }
+              document.addEventListener("click", handleClickOutside);
+            }
+          </script>
+          <script>
+            function Reload() {
+              window.location.reload();
             }
           </script>
         </div>
