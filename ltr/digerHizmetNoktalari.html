@@ -3,19 +3,13 @@
   <head>
     <style>
       table {
-        border-radius: 10px;
-      }
-
-      table tr {
-        transition: background-color 0.3s ease;
-        border-radius: 10px;
+        border: 1px solid rgb(255, 255, 255);
       }
 
       table tr:hover {
-        transition: background-color 0.3s ease;
-        transition: all 0.3s ease;
+        background-color: #cccccc;
         cursor: pointer;
-        border-radius: 10px;
+        transition: background-color 0.3s ease;
       }
 
       table tr button {
@@ -25,25 +19,37 @@
 
       table tr button:hover {
         transition: transform 0.3s ease !important;
-        transform: translate(-5%, 0%);
-        transform: scale(1.1);
+        transform: scale(1.2);
       }
 
-      table tr input {
-        transition: transform 0.5s ease;
-        width: 100%;
-        border-radius: 3px;
+      .table-button {
+        background-color: rgba(0, 81, 255, 0.738);
+        color: white;
         border: none;
-        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        transition: transform 0.3s ease !important;
       }
 
-      table tr input:hover {
-        transition: transform 0.5s ease;
-        transform: scale(1.02);
+      .table-button:hover {
+        background-color: rgba(0, 0, 0, 0.948);
       }
 
-      table tr input:focus {
-        transform: scale(1.02);
+      .logo-img {
+        height: 200px !important;
+        /* Boyutu küçültür */
+        object-fit: contain;
+        display: block;
+      }
+
+      .index-img {
+        height: 70px !important;
+        /* Boyutu küçültür */
+        object-fit: contain;
+        display: block;
+        margin-right: 100px;
       }
 
       .dropdown-container {
@@ -52,20 +58,13 @@
       }
 
       .dropdown-toggle {
-        background-color: #ffcc7f84;
-        color: white;
+        background-color: rgba(74, 130, 243, 0.344);
+        color: rgba(43, 42, 42, 0.692);
         border: none;
         padding: 6px 10px;
         border-radius: 5px;
         cursor: pointer;
-      }
-      .dropdown-toggle:hover {
-        background-color: #ffcc7fcf;
-        color: white;
-        border: none;
-        padding: 6px 10px;
-        border-radius: 5px;
-        cursor: pointer;
+        transition: transform 0.36s ease !important;
       }
 
       .dropdown-menu {
@@ -74,8 +73,9 @@
         top: 110%;
         left: 0;
         background-color: white;
-        border: 1px solid #ddd;
+        border: 1px solid #2d2525;
         border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(236, 225, 225, 0.15);
         z-index: 999;
         min-width: 140px;
       }
@@ -103,11 +103,42 @@
         margin-bottom: 5px;
       }
 
-      .buttons {
-        margin-top: 20px;
-        float: right;
+      .badge {
+        background-color: #21d18538;
+
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        display: inline-block;
       }
+
+      .arşiv {
+        background-color: #7d373769;
+
+        padding: 4px 8px;
+        border-radius: 15px;
+        font-size: 13px;
+        font-weight: 500;
+        display: inline-block;
+      }
+
+      .dropdown-toggle:focus,
+      .dropdown-toggle:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+      .dropdown-toggle:hover {
+        background-color: rgba(68, 127, 245, 0.495);
+        color: white;
+      }
+      /* * {
+        outline: none !important;
+        box-shadow: none !important;
+      }*/
     </style>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -130,8 +161,7 @@
       href="../assets/images//gebze-belediyesi.ico"
       type="image/x-icon"
     />
-    <title>Diğer Hizmet Noktaları</title>
-
+    <title>Kurumsal - Yönetim</title>
     <!-- Google font-->
     <link
       href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
@@ -259,8 +289,11 @@
                 </div>
                 <ul class="profile-dropdown onhover-show-div p-20">
                   <li>
-                    <a href="#"><i data-feather="user"></i> Profili Düzenle</a>
+                    <a href="Profil.html"
+                      ><i data-feather="user"></i> Profili Düzenle</a
+                    >
                   </li>
+
                   <li>
                     <a href="#"><i data-feather="settings"></i> Ayarlar</a>
                   </li>
@@ -408,7 +441,7 @@
                     >
                   </li>
                   <li>
-                    <a href="Gebze - Sanal Tur.html" class="text-dark"
+                    <a href="Gebze - 360 Sanal Tur.html" class="text-dark"
                       ><i class="fa fa-circle text-dark"></i>360 Sanal Tur</a
                     >
                   </li>
@@ -443,24 +476,21 @@
           </div>
         </div>
         <!-- Page Sidebar Ends-->
+
         <div class="page-body">
           <div class="container-fluid">
             <div class="page-header">
               <div class="row">
                 <div class="col">
                   <div class="page-header-left">
-                    <h3>Diğer Hizmet Noktaları</h3>
+                    <h3>Yönetim</h3>
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
                         <a href="index.html"><i data-feather="home"></i></a>
                       </li>
+                      <li class="breadcrumb-item">Kurumsal</li>
                       <li class="breadcrumb-item active">
-                        <a href="İletisim.html">İletişim</a>
-                      </li>
-                      <li class="breadcrumb-item active">
-                        <a href="digerHizmetNoktalari.html"
-                          >Diğer Hizmet Noktaları</a
-                        >
+                        <a href="Kurumsal - Yönetim.html">Yönetim</a>
                       </li>
                     </ol>
                   </div>
@@ -469,311 +499,495 @@
             </div>
           </div>
 
-          <!-- İçeriklerin Yükleneceği Alan -->
-          <div id="icerikler" style="margin-top: 80px">
-            <div class="container-sm" style="margin: auto">
-              <!-- Kart Başlangıcı -->
-              <div
-                class="d-flex align-items-start gap-4 mb-4"
+          <!-- Benim yaptığım navbar kısmı -->
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid d-flex justify-content-end">
+              <button
+                id="archive-button"
+                class="btn me-2 mr-2 text-white"
+                type="button"
                 style="
-                  background: #fff;
-                  padding: 20px;
-                  border-radius: 10px;
-                  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+                  background-color: darkgrey;
+                  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);
+                  display: none;
                 "
               >
-                <!-- Sol: Resim -->
-                <div style="flex: 0 0 300px">
-                  <img
-                    src="../assets/images/contact-img/gebzeBelediyeBaskanligi.jpeg"
-                    class="img-fluid rounded"
-                    alt="gebzeBelediyeBaskanligi"
-                    style="width: 100%; height: auto"
-                  />
-                  <a href="#" class="btn btn-primary w-100 mt-2">Düzenle</a>
-                </div>
-                <div style="flex: 1; padding-left: 20px">
-                  <h4 style="margin-bottom: 16px">Gebze Belediye Başkanlığı</h4>
+                Arşivle
+              </button>
+              <button
+                id="delete-button"
+                class="btn me-2 mr-2 text-white"
+                type="button"
+                style="
+                  background-color: darkgrey;
+                  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);
+                  display: none;
+                "
+              >
+                Sil
+              </button>
+              <button
+                class="btn me-2 mr-2 text-white"
+                type="button"
+                style="
+                  background-color: rgba(169, 169, 169, 0.436);
+                  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);
+                "
+              >
+                Ekle
+              </button>
+            </div>
+          </nav>
 
-                  <p style="margin-bottom: 12px; font-size: 16px">
-                    <strong>Adres:</strong>
-                    <a
-                      href="https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.8057953,29.4359547,1453m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
-                      target="_blank"
-                      style="text-decoration: none; color: #246bfd"
-                      >Güzeller Mah. Belediye Cad. No:1, 41400 Gebze /
-                      Kocaeli</a
-                    >
-                  </p>
-                  <p style="margin-bottom: 12px; font-size: 14px">
-                    <strong>Telefon Numarası:</strong>
+          <br /><br />
 
-                    0 262 642 04 30
-                  </p>
-
-                  <!-- Müdürlükler -->
-                  <p style="margin-bottom: 8px">
-                    <strong>Binada Bulunan Müdürlükler:</strong>
-                  </p>
-
-                  <div
-                    style="
-                      display: grid;
-                      grid-template-columns: repeat(3, 1fr);
-                      gap: 16px;
-                    "
-                  >
-                    <!-- 1. Kolon -->
-                    <ul style="padding-left: 20px; list-style-type: disc">
-                      <li>Ruhsat ve Denetim Müdürlüğü</li>
-                      <li>İmar ve Şehircilik Müdürlüğü</li>
-                      <li>Plan ve Proje Müdürlüğü</li>
-                      <li>İnsan kaynakları ve Eğitim Müdürlüğü</li>
-                      <li>Numarataj Şefliği</li>
-                    </ul>
-
-                    <!-- 2. Kolon -->
-                    <ul style="padding-left: 20px; list-style-type: disc">
-                      <li>Hukuk İşleri Müdürlüğü</li>
-                      <li>Özel Kalem Müdürlüğü</li>
-                      <li>Destek Hizmet Müdürlüğü</li>
-                      <li>Mali Hizmetler Müdürlüğü</li>
-                      <li>İstihdam Ofisi</li>
-                    </ul>
-
-                    <!-- 3. Kolon -->
-                    <ul style="padding-left: 20px; list-style-type: disc">
-                      <li>Basın Yayın ve Halkla İlişkiler Müdürlüğü</li>
-                      <li>Emlak ve İstimlak Müdürlüğü</li>
-                      <li>Evrak Kayıt Servisi</li>
-                      <li>Bilgi İşlem Müdürlüğü</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="container-sm" style="margin: auto">
-                <!-- Kart Başlangıcı -->
-                <div
-                  class="d-flex align-items-start gap-4 mb-4"
-                  style="
-                    background: #fff;
-                    padding: 20px;
-                    border-radius: 10px;
-                    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-                  "
-                >
-                  <!-- Sol: Resim -->
-                  <div style="flex: 0 0 300px">
-                    <img
-                      src="../assets/images/mevlanaEkHizmet.jpeg"
-                      class="img-fluid rounded"
-                      alt="gebzeBelediyeBaskanligi"
-                      style="width: 100%; height: auto"
-                    />
-                    <a href="#" class="btn btn-primary w-100 mt-2">Düzenle</a>
-                  </div>
-                  <div style="flex: 1; padding-left: 20px">
-                    <h4 style="margin-bottom: 16px">
-                      T.C. GEBZE BELEDİYESİ MEVLANA EK HİZMET BİNASI
-                    </h4>
-
-                    <p style="margin-bottom: 12px; font-size: 16px">
-                      <strong>Adres:</strong>
-                      <a
-                        href="https://www.google.com/maps/place/T.C.+GEBZE+BELED%C4%B0YES%C4%B0+EK+H%C4%B0ZMET+B%C4%B0NASI/@40.8104203,29.4228192,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb219420d2a451:0x1ffbb472e940fc95!8m2!3d40.8104203!4d29.4253941!16s%2Fg%2F11r3nb7p3x?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
-                        target="_blank"
-                        style="text-decoration: none; color: #246bfd"
-                        >Mevlana, Issıkgöl Cd. No:111, 41400 Gebze/Kocaeli</a
+          <!-- İçeriklerin Yükleneceği Alan -->
+          <div id="icerikler">
+            <div id="kategoriButonlari" style="margin-bottom: 20px">
+              <button onclick="filtrele('amirlikler')">Amirlikler</button>
+              <button onclick="filtrele('kültürel')">
+                Kültür ve Sanat Merkezleri
+              </button>
+              <button onclick="filtrele('sosyal')">Sosyal Tesisler</button>
+              <button onclick="filtrele('eğitim')">Eğitim</button>
+              <button onclick="filtrele('diğer')">Diğer</button>
+            </div>
+            <table
+              id="icerikTablosu"
+              cellpadding="8"
+              cellspacing="0"
+              style="width: 100%; border-collapse: collapse"
+            >
+              <thead>
+                <tr>
+                  <th scope="col">Sayfa Başlığı</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">Çarşı ve Seyyar Zabıta Amirliği</td>
+                    <div class="dropdown-container">
+                      <button
+                        class="dropdown-toggle"
+                        onclick="toggleDropdown(this)"
                       >
-                    </p>
-                    <p style="margin-bottom: 12px; font-size: 14px">
-                      <strong>Telefon Numarası:</strong>
-
-                      0 262 642 04 30
-                    </p>
-
-                    <!-- Müdürlükler -->
-                    <p style="margin-bottom: 8px">
-                      <strong>Binada Bulunan Müdürlükler:</strong>
-                    </p>
-
-                    <div
-                      style="
-                        display: grid;
-                        grid-template-columns: repeat(3, 1fr);
-                        gap: 16px;
-                      "
-                    >
-                      <!-- 1. Kolon -->
-                      <ul style="padding-left: 20px; list-style-type: disc">
-                        <li>Makina İkmal Bakım Onarım Servisi</li>
-                        <li>Otobüs İşleri Servisi</li>
-                        <li>Temizlik İşleri Müdürlüğü</li>
-                        <li>Teftiş Kurulu Müdürlüğü</li>
-                        <li>Park ve Bahçeler Müdürlüğü</li>
-                      </ul>
-
-                      <!-- 2. Kolon -->
-                      <ul style="padding-left: 20px; list-style-type: disc">
-                        <li>İşletme ve İştirakler Müdürlüğü</li>
-                        <li>Zabıta Müdürlüğü</li>
-                        <li>Mezarlıklar Müdürlüğü</li>
-                        <li>Trafik ve Eğitim Okulu Zabıta Amirliği</li>
-                        <li>Veteriner İşleri Müdürlüğü</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="container-sm" style="margin: auto">
-                  <!-- Kart Başlangıcı -->
-                  <div
-                    class="d-flex align-items-start gap-4 mb-4"
-                    style="
-                      background: #fff;
-                      padding: 20px;
-                      border-radius: 10px;
-                      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <!-- Sol: Resim -->
-                    <div style="flex: 0 0 300px">
-                      <img
-                        src="../assets/images/KentMeydanı.jpeg"
-                        class="img-fluid rounded"
-                        alt="gebzeBelediyeBaskanligi"
-                        style="width: 100%; height: auto"
-                      />
-                      <a href="#" class="btn btn-primary w-100 mt-2">Düzenle</a>
-                    </div>
-                    <div style="flex: 1; padding-left: 20px">
-                      <h4 style="margin-bottom: 16px">
-                        Gebze Belediye Başkanlığı
-                      </h4>
-
-                      <p style="margin-bottom: 12px; font-size: 16px">
-                        <strong>Adres:</strong>
-                        <a
-                          href="https://www.google.com/maps/place/Gebze+Kent+Meydan%C4%B1/@40.798966,29.4281553,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb2166b4804e33:0x7e61a156df7f1291!8m2!3d40.798966!4d29.4307302!16s%2Fg%2F11q9hw3d5z?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
-                          target="_blank"
-                          style="text-decoration: none; color: #246bfd"
-                          >Hacıhalil, 1222/2. Sk. No:4, 41400 Gebze/Kocaeli</a
-                        >
-                      </p>
-                      <p style="margin-bottom: 12px; font-size: 14px">
-                        <strong>Telefon Numarası:</strong>
-
-                        0 262 642 04 30
-                      </p>
-
-                      <!-- Müdürlükler -->
-                      <p style="margin-bottom: 8px">
-                        <strong>Binada Bulunan Müdürlükler:</strong>
-                      </p>
-
-                      <div
-                        style="
-                          display: grid;
-                          grid-template-columns: repeat(3, 1fr);
-                          gap: 16px;
-                        "
-                      >
-                        <!-- 1. Kolon -->
-                        <ul style="padding-left: 20px; list-style-type: disc">
-                          <li>Kültür İşleri Müdürlüğü</li>
-                          <li>Evlendirme Memurluğu</li>
-                          <li>Sosyal Destek Hizmetleri Müdürlüğü</li>
-                          <li>Yazı İşleri Müdürlüğü</li>
-                        </ul>
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle()">
+                          <img
+                            src="../assets/images/dropdown_svg/edit.svg"
+                            alt="edit"
+                            width="10%"
+                            height="10%"
+                          />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img
+                            src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                            alt="remove"
+                            width="10%"
+                            height="10%"
+                          />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img
+                            src="../assets/images/dropdown_svg/copy-writing.svg"
+                            alt="content"
+                            width="10%"
+                            height="10%"
+                          />
+                          İçerik
+                        </button>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                <footer style="height: 200px; opacity: 0"></footer>
+          <!-- Kategori Seçim Modalı -->
 
-                <!-- latest jquery-->
-                <script src="../assets/js/jquery-3.2.1.min.js"></script>
-                <!-- Bootstrap js-->
-                <script src="../assets/js/bootstrap/popper.min.js"></script>
-                <script src="../assets/js/bootstrap/bootstrap.js"></script>
-                <!-- feather icon js-->
-                <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-                <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-                <!-- Sidebar jquery-->
-                <script src="../assets/js/sidebar-menu.js"></script>
-                <script src="../assets/js/config.js"></script>
-                <!-- Plugins JS start-->
-                <script src="../assets/js/chart/chartist/chartist.js"></script>
-                <script src="../assets/js/chart/knob/knob.min.js"></script>
-                <script src="../assets/js/chart/knob/knob-chart.js"></script>
-                <script src="../assets/js/prism/prism.min.js"></script>
-                <script src="../assets/js/clipboard/clipboard.min.js"></script>
-                <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
-                <script src="../assets/js/counter/jquery.counterup.min.js"></script>
-                <script src="../assets/js/counter/counter-custom.js"></script>
-                <script src="../assets/js/custom-card/custom-card.js"></script>
-                <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
-                <script src="../assets/js/dashboard/default.js"></script>
-                <script src="../assets/js/notify/index.js"></script>
-                <script src="../assets/js/typeahead/handlebars.js"></script>
-                <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
-                <script src="../assets/js/typeahead/typeahead.custom.js"></script>
-                <script src="../assets/js/chat-menu.js"></script>
-                <script src="../assets/js/height-equal.js"></script>
-                <script src="../assets/js/tooltip-init.js"></script>
-                <script src="../assets/js/typeahead-search/handlebars.js"></script>
-                <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
-                <!-- Plugins JS Ends-->
-                <!-- Theme js-->
-                <script src="../assets/js/script.js"></script>
-                <!-- Bootstrap JS + Popper -->
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+          <footer style="height: 200px; opacity: 0"></footer>
 
-                <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-                <!-- Plugin used-->
-                <script>
-                  function toggleMenu(button) {
-                    const menu = button.nextElementSibling;
-                    const allMenus = document.querySelectorAll(".islem-menu");
+          <!-- latest jquery-->
+          <script src="../assets/js/jquery-3.2.1.min.js"></script>
+          <!-- Bootstrap js-->
+          <script src="../assets/js/bootstrap/popper.min.js"></script>
+          <script src="../assets/js/bootstrap/bootstrap.js"></script>
+          <!-- feather icon js-->
+          <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+          <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+          <!-- Sidebar jquery-->
+          <script src="../assets/js/sidebar-menu.js"></script>
+          <script src="../assets/js/config.js"></script>
+          <!-- Plugins JS start-->
+          <script src="../assets/js/chart/chartist/chartist.js"></script>
+          <script src="../assets/js/chart/knob/knob.min.js"></script>
+          <script src="../assets/js/chart/knob/knob-chart.js"></script>
+          <script src="../assets/js/prism/prism.min.js"></script>
+          <script src="../assets/js/clipboard/clipboard.min.js"></script>
+          <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
+          <script src="../assets/js/counter/jquery.counterup.min.js"></script>
+          <script src="../assets/js/counter/counter-custom.js"></script>
+          <script src="../assets/js/custom-card/custom-card.js"></script>
+          <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
+          <script src="../assets/js/dashboard/default.js"></script>
+          <script src="../assets/js/notify/index.js"></script>
+          <script src="../assets/js/typeahead/handlebars.js"></script>
+          <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
+          <script src="../assets/js/typeahead/typeahead.custom.js"></script>
+          <script src="../assets/js/chat-menu.js"></script>
+          <script src="../assets/js/height-equal.js"></script>
+          <script src="../assets/js/tooltip-init.js"></script>
+          <script src="../assets/js/typeahead-search/handlebars.js"></script>
+          <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
+          <!-- Plugins JS Ends-->
+          <!-- Theme js-->
+          <script src="../assets/js/script.js"></script>
+          <!-- Bootstrap JS + Popper -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-                    allMenus.forEach((m) => {
-                      if (m !== menu) m.style.display = "none";
-                    });
+          <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
+          <!-- Plugin used-->
 
-                    menu.style.display =
-                      menu.style.display === "block" ? "none" : "block";
-                  }
+          <script>
+            const cardHTML = `
+  <div class="d-flex flex-wrap gap-5 justify-content-center">
 
-                  // Örnek fonksiyonlar
-                </script>
-                <script>
-                  function toggleDropdown(btn) {
-                    const menu = btn.nextElementSibling;
-
-                    // Diğer tüm açık menüleri kapat
-                    document
-                      .querySelectorAll(".dropdown-menu")
-                      .forEach((el) => {
-                        if (el !== menu) el.style.display = "none";
-                      });
-
-                    // Tıklanan menüyü aç/kapat
-                    menu.style.display =
-                      menu.style.display === "block" ? "none" : "block";
-                  }
-
-                  // Sayfa dışında bir yere tıklanınca menü kapanır
-                  document.addEventListener("click", function (e) {
-                    if (!e.target.closest(".dropdown-container")) {
-                      document
-                        .querySelectorAll(".dropdown-menu")
-                        .forEach((el) => (el.style.display = "none"));
-                    }
-                  });
-                </script>
-              </div>
+        <!-- 📷 Resim Yükleme Kartı (1/4) -->
+        <div class="card"
+            style="flex: 1; max-width: 25%; box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948); margin-right: 25px;">
+            <div id="imageContainer" class="d-flex align-items-center justify-content-center bg-light border-bottom"
+              style="height: 250px;">
+              <img id="previewImage" src="" alt="Resim Önizleme"
+                style="max-height: 100%; max-width: 100%; display: none;">
+              <span id="placeholderText" class="text-muted">Henüz resim yüklenmedi</span>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">Resim Yükle</h5>
+              <input type="file" id="imageInput" accept="image/*" style="display: none;">
+              <button type="button" class="btn btn-outline-primary" id="customButton">Resim Seç</button>
             </div>
           </div>
+
+        <!-- 📝 Metin Giriş Kartı (3/4) -->
+        <div class="card" style="flex: 3; max-width: 73%; box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
+            <div class="card-body">
+              <h5 class="card-title">Biyografi</h5>
+
+              <div class="mb-3">
+                <label for="textInput" class="form-label">Başlık</label>
+                <input type="text" class="form-control" id="textInput" placeholder="Bir başlık gir...">
+              </div>
+
+              <div class="mb-3">
+                <label for="textArea" class="form-label">Açıklama</label>
+                <textarea class="form-control" id="textArea" rows="6" placeholder="Detayları buraya yaz..."></textarea>
+              </div>
+
+              <button class="btn btn-outline-primary">Kaydet</button>
+            </div>
+          </div>
+        </div>
+
+  `;
+
+            const container = document.getElementById("icerikler");
+
+            function baskanSayfasi() {
+              container.innerHTML = cardHTML;
+
+              // Event listener’ları tekrar ekliyoruz, çünkü innerHTML ile DOM yenilendi:
+              const input = document.getElementById("imageInput");
+              const button = document.getElementById("customButton");
+              const preview = document.getElementById("previewImage");
+              const placeholder = document.getElementById("placeholderText");
+
+              button.addEventListener("click", () => input.click());
+
+              input.addEventListener("change", function () {
+                const file = this.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                    placeholder.style.display = "none";
+                  };
+                  reader.readAsDataURL(file);
+                }
+              });
+
+              // Örnek: Kaydet butonuna tıklandığında alert verelim
+              document
+                .getElementById("saveBtn")
+                .addEventListener("click", () => {
+                  alert("Kaydedildi!");
+                });
+            }
+          </script>
+
+          <!-- Başkan Yardımcıları ve Başkan Danışmanları -->
+          <!-- Listenin içinde herhangi bir elemana tıklandığında açılacak sayfa -->
+          <script>
+            function baskanYardimcisi() {
+              const container = document.getElementById("icerikler");
+
+              container.innerHTML = `
+      <div class="d-flex flex-wrap gap-4 justify-content-center">
+        
+        <!-- 📷 Resim Kartı -->
+        <div class="card" style="flex: 1; max-width: 25%; box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
+          <div id="imageContainer" class="d-flex align-items-center justify-content-center bg-light border-bottom" style="height: 250px;">
+            <img id="previewImage" src="" alt="Resim Önizleme" style="max-height: 100%; max-width: 100%; display: none;">
+            <span id="placeholderText" class="text-muted">Henüz resim yüklenmedi</span>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Resim Yükle</h5>
+            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            <button type="button" class="btn btn-outline-primary" id="customButton">Resim Seç</button>
+          </div>
+        </div>
+
+        <!-- 📝 Bilgi Kartı -->
+        <div class="card" style="flex: 3; max-width: 70%; box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948);">
+          <div class="card-body">
+            <h5 class="card-title">Kişi Bilgileri</h5>
+
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Ad Soyad</label>
+              <input type="text" class="form-control" id="fullName" placeholder="Örneğin: Ahmet Yılmaz">
+            </div>
+
+            <div class="mb-3">
+              <label for="position" class="form-label">Makam</label>
+              <input type="text" class="form-control" id="position" placeholder="Örneğin: Başkan Yardımcısı">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">E-posta</label>
+              <input type="email" class="form-control" id="email" placeholder="ornek@eposta.com">
+            </div>
+
+            <div class="mb-3">
+              <label for="phone" class="form-label">Telefon Numarası</label>
+              <input type="tel" class="form-control" id="phone" placeholder="05xx xxx xx xx">
+            </div>
+
+            <button class="btn btn-primary" id="savePersonBtn">Kaydet</button>
+          </div>
+        </div>
+
+      </div>
+    `;
+
+              // 🔁 innerHTML sonrası eventleri tekrar bağla
+              const input = document.getElementById("imageInput");
+              const button = document.getElementById("customButton");
+              const preview = document.getElementById("previewImage");
+              const placeholder = document.getElementById("placeholderText");
+
+              button.addEventListener("click", () => input.click());
+
+              input.addEventListener("change", function () {
+                const file = this.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                    placeholder.style.display = "none";
+                  };
+                  reader.readAsDataURL(file);
+                }
+              });
+
+              // 🎉 Kaydet butonuna tıklanınca console’a yazdıralım
+              document
+                .getElementById("savePersonBtn")
+                .addEventListener("click", () => {
+                  const adSoyad = document.getElementById("fullName").value;
+                  const makam = document.getElementById("position").value;
+                  const email = document.getElementById("email").value;
+                  const tel = document.getElementById("phone").value;
+
+                  console.log("Kayıt Edilen Kişi:", {
+                    adSoyad,
+                    makam,
+                    email,
+                    tel,
+                  });
+                  alert("Kişi bilgileri kaydedildi!");
+                });
+            }
+
+            // İstersen doğrudan çağır:
+            // baskanYardimcisi();
+          </script>
+
+          <script>
+            let satirNumarasi = 7;
+
+            // Modalı açar
+            function kategoriSecModalAc() {
+              const modal = new bootstrap.Modal(
+                document.getElementById("kategoriModal")
+              );
+              modal.show();
+            }
+
+            // Kategoriye göre satır ekler
+            function sayfaEkle(kategori) {
+              const tablo = document.querySelector("#icerikler table tbody");
+
+              satirNumarasi++;
+              const yeniSatir = document.createElement("tr");
+
+              // Fonksiyonu kategoriye göre ayarlayalım
+              let duzenleFonksiyonu = "baskanSayfasi()";
+              if (kategori === "Başkan Yardımcısı")
+                duzenleFonksiyonu = "baskanYardimcisi()";
+              else if (kategori === "Müdürlükler")
+                duzenleFonksiyonu = "makamDinamik()";
+
+              yeniSatir.innerHTML = `
+      <th scope="row"><input type="checkbox" /></th>
+      <td>Yeni Sayfa</td>
+      <td>${kategori}</td>
+      <td>Taslak</td>
+      <td>${new Date().toLocaleString("tr-TR")}</td>
+      <td style="text-align: right">
+        <button style="background-color: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;"
+          onclick="${duzenleFonksiyonu}">Düzenle</button>
+      </td>
+    `;
+
+              tablo.appendChild(yeniSatir);
+
+              // Modalı kapat
+              const modalInstance = bootstrap.Modal.getInstance(
+                document.getElementById("kategoriModal")
+              );
+              modalInstance.hide();
+            }
+          </script>
+          <script>
+            function toggleMenu(button) {
+              const menu = button.nextElementSibling;
+              const allMenus = document.querySelectorAll(".islem-menu");
+
+              allMenus.forEach((m) => {
+                if (m !== menu) m.style.display = "none";
+              });
+
+              menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+            }
+
+            // Örnek fonksiyonlar
+            function ekle() {
+              alert("Ekleme sayfasına yönlendiriliyor...");
+            }
+
+            function duzenle() {
+              alert("Düzenleme sayfasına yönlendiriliyor...");
+            }
+
+            function sil() {
+              alert("Silme işlemi yapılıyor...");
+            }
+
+            function icerik() {
+              alert("İçerik detayına yönlendiriliyor...");
+            }
+          </script>
+          <script>
+            function toggleDropdown(btn) {
+              const menu = btn.nextElementSibling;
+
+              // Diğer tüm açık menüleri kapat
+              document.querySelectorAll(".dropdown-menu").forEach((el) => {
+                if (el !== menu) el.style.display = "none";
+              });
+
+              // Tıklanan menüyü aç/kapat
+              menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+            }
+
+            function ekle() {
+              alert("Ekle tıklandı");
+            }
+
+            function duzenle() {
+              alert("Düzenle tıklandı");
+            }
+
+            function sil() {
+              alert("Sil tıklandı");
+            }
+
+            function icerik() {
+              alert("İçerik tıklandı");
+            }
+
+            // Sayfa dışında bir yere tıklanınca menü kapanır
+            document.addEventListener("click", function (e) {
+              if (!e.target.closest(".dropdown-container")) {
+                document
+                  .querySelectorAll(".dropdown-menu")
+                  .forEach((el) => (el.style.display = "none"));
+              }
+            });
+          </script>
+
+          <script>
+            // Burada herhangi bir checkbox seçildiğinde Arşivle ve Sil butonlarının display özelliğini none olmaktan çıkaracağız.
+            const checkboxes = document.querySelectorAll(".checkbox-item");
+            const archiveButton = document.getElementById("archive-button");
+            const deleteButton = document.getElementById("delete-button");
+
+            checkboxes.forEach((checkbox) => {
+              checkbox.addEventListener("change", () => {
+                const isChecked = Array.from(checkboxes).some(
+                  (checkbox) => checkbox.checked
+                );
+                archiveButton.style.display = isChecked ? "block" : "none";
+                deleteButton.style.display = isChecked ? "block" : "none";
+              });
+            });
+
+            // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+            const anaCheckbox = document.getElementById("ana-checkbox");
+            anaCheckbox.addEventListener("change", () => {
+              checkboxes.forEach((checkbox) => {
+                checkbox.checked = anaCheckbox.checked;
+                checkbox.dispatchEvent(new Event("change"));
+              });
+            });
+          </script>
+          <script>
+            function filtrele(kategori) {
+              const satirlar = document.querySelectorAll(
+                "#icerikTablosu tbody tr"
+              );
+              satirlar.forEach((tr) => {
+                if (kategori === "tum" || tr.classList.contains(kategori)) {
+                  tr.style.display = "";
+                } else {
+                  tr.style.display = "none";
+                }
+              });
+            }
+          </script>
         </div>
       </div>
     </div>
