@@ -137,6 +137,35 @@
         outline: none !important;
         box-shadow: none !important;
       }*/
+      #kategoriButonlari {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      #kategoriButonlari button {
+        padding: 10px 10px;
+
+        cursor: pointer;
+
+        text-align: center;
+        font-weight: bold;
+        min-width: auto; /* Yazı kadar genişlik */
+        flex: none; /* Genişlik zorlamasını kaldırır */
+        background-color: #67baea71;
+      }
+
+      #kategoriButonlari button:focus {
+        transition: transform 0.3s ease !important;
+        transform: scale(1.07);
+      }
+      #kategoriButonlari button:focus,
+      #kategoriButonlari button:active {
+        outline: none;
+        border: none; /* İstersen bunu da kaldırabilirsin */
+        box-shadow: none; /* Tarayıcı gölgesini de kaldırır */
+      }
     </style>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -544,13 +573,36 @@
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler">
             <div id="kategoriButonlari" style="margin-bottom: 20px">
-              <button onclick="filtrele('amirlikler')">Amirlikler</button>
-              <button onclick="filtrele('kültürel')">
+              <button
+                onclick="filtrele('amirlikler')"
+                style="border: none; width: 80px; height: 40px"
+              >
+                Amirlikler
+              </button>
+              <button
+                onclick="filtrele('kültürel')"
+                style="border: none; width: 200px; height: 40px"
+              >
                 Kültür ve Sanat Merkezleri
               </button>
-              <button onclick="filtrele('sosyal')">Sosyal Tesisler</button>
-              <button onclick="filtrele('eğitim')">Eğitim</button>
-              <button onclick="filtrele('diğer')">Diğer</button>
+              <button
+                onclick="filtrele('sosyal')"
+                style="border: none; width: 130px; height: 40px"
+              >
+                Sosyal Tesisler
+              </button>
+              <button
+                onclick="filtrele('eğitim')"
+                style="border: none; width: 80px; height: 40px"
+              >
+                Eğitim
+              </button>
+              <button
+                onclick="filtrele('diğer')"
+                style="border: none; width: 80px; height: 40px"
+              >
+                Diğer
+              </button>
             </div>
             <table
               id="icerikTablosu"
@@ -561,40 +613,95 @@
             >
               <thead style="background-color: #e1eaff"></thead>
               <tbody>
-                <tr class="amirlikler col-12">
-                  <td colspan="12">Çarşı ve Seyyar Zabıta Amirliği</td>
-                  <td colspan="12">Terminal Zabıta Amirliği.</td>
-                  <td colspan="12">Mollafeneri Zabıta Amirliği</td>
-                  <td colspan="12">Kamyon ve Tır garajı Zabıta Amirliği</td>
-                  <td colspan="12">Beylikbağı Karakolu</td>
+                <tr class="amirlikler">
+                  <td>Çarşı ve Seyyar Zabıta Amirliği</td>
+                </tr>
+                <tr class="amirlikler">
+                  <td>Terminal Zabıta Amirliği.</td>
+                </tr>
+                <tr class="amirlikler">
+                  <td>Mollafeneri Zabıta Amirliği</td>
+                </tr>
+                <tr class="amirlikler">
+                  <td>Kamyon ve Tır garajı Zabıta Amirliği</td>
+                </tr>
+                <tr class="amirlikler">
+                  <td>Beylikbağı Karakolu</td>
+                </tr>
+
+                <tr class="kültürel">
+                  <td>Beylikbağı Bilim ve Sanat Merkezi</td>
                 </tr>
                 <tr class="kültürel">
-                  <td>Sağlık</td>
-                  <td>Aile Hekimliği Bilgilendirmesi</td>
-                  <td>
-                    Gebze genelinde yeni aile hekimliği düzenlemeleri tanıtıldı.
-                  </td>
+                  <td>Arapçeşme Bilim ve Sanat Merkezi</td>
+                </tr>
+                <tr class="kültürel">
+                  <td>İstasyon Bilim ve Sanat Merkezi</td>
+                </tr>
+
+                <tr class="sosyal">
+                  <td>Güzide Kent Meydanı</td>
                 </tr>
                 <tr class="sosyal">
-                  <td>Sosyal</td>
-                  <td>Gençlik Merkezi Açılışı</td>
-                  <td>
-                    Yeni yapılan gençlik merkezinin açılışı gerçekleştirildi.
-                  </td>
+                  <td>Güzide Cumhuriyet Meydanı</td>
+                </tr>
+
+                <tr class="eğitim">
+                  <td>Atlı Eğitim Merkezi</td>
                 </tr>
                 <tr class="eğitim">
-                  <td>Diğer</td>
-                  <td>Yeni Otopark Projesi</td>
+                  <td>Cumhuriyet Spor Salonu</td>
+                </tr>
+                <tr class="eğitim">
+                  <td>Enderun Çocuk Atölyeleri</td>
+                </tr>
+                <tr class="eğitim">
+                  <td>Gesmek Ademyavuz Mahalle Kursu</td>
+                </tr>
+                <tr class="eğitim">
+                  <td>Gesmek Gaziler Mahalle Kursu</td>
+                </tr>
+                <tr class="eğitim">
+                  <td>Gesmek Merkez</td>
+                </tr>
+                <tr class="eğitim">
+                  <td>Gesmek Yenikent Mahalle Kursu</td>
+                </tr>
+
+                <tr class="diğer">
+                  <td>Adem Yavuz Mezarlığı</td>
+                </tr>
+                <tr class="diğer">
+                  <td>Gebze Merkez Mezarlığı ve Şehitliği</td>
+                </tr>
+                <tr class="diğer">
+                  <td>Mimar Sinan Mezarlığı</td>
+                </tr>
+                <tr class="diğer">
+                  <td>Pelitli Mezarlığı</td>
+                </tr>
+                <tr class="diğer">
+                  <td>Osman Yılmaz Mezarlığı</td>
+                </tr>
+                <tr class="diğer">
+                  <td>Elden Ele Gönül Çarşısı</td>
+                </tr>
+                <tr class="diğer">
+                  <td>Gebze Terminal</td>
+                </tr>
+                <tr class="diğer">
+                  <td>Kamyon ve Tır Parkı</td>
+                </tr>
+                <tr class="diğer">
+                  <td>Mevlana Kapalı Pazar Alanı</td>
+                </tr>
+                <tr class="diğer">
                   <td>
-                    Şehir merkezine yeni çok katlı otopark projesi duyuruldu.
+                    Sokak Hayvanları Tedavi, Rehabilitasyon ve Eğitim Merkezi
                   </td>
                 </tr>
                 <tr class="diğer">
-                  <td>Sağlık</td>
-                  <td>Aile Hekimliği Bilgilendirmesi</td>
-                  <td>
-                    Gebze genelinde yeni aile hekimliği düzenlemeleri tanıtıldı.
-                  </td>
+                  <td>Tatlıkuyu Pazar Alanı</td>
                 </tr>
               </tbody>
             </table>
@@ -966,14 +1073,19 @@
               const satirlar = document.querySelectorAll(
                 "#icerikTablosu tbody tr"
               );
-              satirlar.forEach((tr) => {
-                if (kategori === "tum" || tr.classList.contains(kategori)) {
-                  tr.style.display = "";
+              satirlar.forEach((satir) => {
+                if (satir.classList.contains(kategori)) {
+                  satir.style.display = "table-row";
                 } else {
-                  tr.style.display = "none";
+                  satir.style.display = "none";
                 }
               });
             }
+
+            // Sayfa yüklendiğinde sadece "amirlikler" gösterilsin
+            window.onload = function () {
+              filtrele("amirlikler");
+            };
           </script>
         </div>
       </div>
