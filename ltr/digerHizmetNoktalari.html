@@ -2,6 +2,20 @@
 <html lang="tr">
   <head>
     <style>
+      .editButton {
+        background-color: rgba(0, 81, 255, 0.738);
+        border: none;
+        border-radius: 7px;
+        width: 80px;
+        height: 30px;
+      }
+      .editButton:focus,
+      .editButton:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+
       table {
         border: 1px solid rgb(255, 255, 255);
       }
@@ -134,9 +148,9 @@
         color: white;
       }
       /* * {
-        outline: none !important;
-        box-shadow: none !important;
-      }*/
+              outline: none !important;
+              box-shadow: none !important;
+            }*/
       #kategoriButonlari {
         display: flex;
         flex-wrap: wrap;
@@ -157,7 +171,7 @@
       }
 
       #kategoriButonlari button:focus {
-        transition: transform 0.3s ease !important;
+        transition: transform 0.5s ease !important;
         transform: scale(1.07);
       }
       #kategoriButonlari button:focus,
@@ -169,6 +183,40 @@
 
       td > a > svg {
         fill: black !important;
+      }
+      #icerikTablosu {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      #icerikTablosu td,
+      #icerikTablosu th {
+        border: none; /* tüm varsayılan kenarlıkları kaldır */
+        padding: 10px;
+      }
+
+      #icerikTablosu tbody tr {
+        border-bottom: 1px solid #ccc; /* sadece satır altına çizgi */
+      }
+
+      #icerikTablosu thead {
+        border-bottom: 2px solid #aaa; /* istersen başlığa kalın çizgi */
+      }
+      #kategoriButonlari button {
+        transition: all 0.5;
+      }
+
+      #kategoriButonlari button.active {
+        border: 2px solid #ffffff;
+        transform: scale(1.05);
+        background-color: #255f8552;
+      }
+      #kategoriButonlari button.active {
+        background-color: #366e925c;
+
+        font-weight: bold;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        transform: scale(1.02);
       }
     </style>
 
@@ -516,14 +564,16 @@
               <div class="row">
                 <div class="col">
                   <div class="page-header-left">
-                    <h3>Yönetim</h3>
+                    <h3>Diğer Hizmet Noktalarımız</h3>
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
                         <a href="index.html"><i data-feather="home"></i></a>
                       </li>
-                      <li class="breadcrumb-item">Kurumsal</li>
+                      <li class="breadcrumb-item">İletisim</li>
                       <li class="breadcrumb-item active">
-                        <a href="Kurumsal - Yönetim.html">Yönetim</a>
+                        <a href="digerHizmetNoktalari.html"
+                          >Diğer Hizmet Noktalarımız
+                        </a>
                       </li>
                     </ol>
                   </div>
@@ -610,12 +660,15 @@
             </div>
             <table
               id="icerikTablosu"
-              border="1"
               cellpadding="8"
               cellspacing="0"
-              style="width: 100%; border-collapse: collapse"
+              style="
+                width: 100%;
+                border-collapse: collapse;
+                background-color: #908f8f25;
+              "
             >
-              <thead style="background-color: #e1eaff"></thead>
+              <thead style="background-color: #b8babf"></thead>
               <th style="width: 40px"></th>
               <!-- Sadece ikon için, dar -->
               <tbody>
@@ -640,7 +693,13 @@
                     </a>
                   </td>
                   <td colspan="9">Çarşı ve Seyyar Zabıta Amirliği</td>
+                  <td style="text-align: right">
+                    <button class="editButton" onclick="toggleDropdown(this)">
+                      Düzenle
+                    </button>
+                  </td>
                 </tr>
+
                 <tr class="amirlikler">
                   <td style="text-align: center; width: 40px">
                     <a
@@ -662,6 +721,11 @@
                     </a>
                   </td>
                   <td colspan="9">Trafik ve Eğitim Okulu Zabıta Amirliği</td>
+                  <td style="text-align: right">
+                    <button class="editButton" onclick="toggleDropdown(this)">
+                      Düzenle
+                    </button>
+                  </td>
                 </tr>
                 <tr class="amirlikler">
                   <td style="text-align: center; width: 40px">
@@ -683,10 +747,17 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Terminal Zabıta Amirliği.</td>
+
+                  <td colspan="9">Terminal Zabıta Amirliği.</td>
+                  <td style="text-align: right">
+                    <button class="editButton" onclick="toggleDropdown(this)">
+                      Düzenle
+                    </button>
+                  </td>
                 </tr>
+
                 <tr class="amirlikler">
-                  <td style="text-align: center; width: 40px">
+                  <td style="text-align: right; width: 40px">
                     <a
                       href="https://www.google.com/maps/@40.8859666,29.4927502,3a,75y,142.31h,77.41t/data=!3m7!1e1!3m5!1s-9qle0WHXRI0irrRBfUwbw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D12.589068767916302%26panoid%3D-9qle0WHXRI0irrRBfUwbw%26yaw%3D142.31097865574856!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D"
                       target="_blank"
@@ -705,7 +776,12 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Mollafeneri Zabıta Amirliği</td>
+                  <td colspan="9">Mollafeneri Zabıta Amirliği</td>
+                  <td style="text-align: right">
+                    <button class="editButton" onclick="toggleDropdown(this)">
+                      Düzenle
+                    </button>
+                  </td>
                 </tr>
                 <tr class="amirlikler">
                   <td style="text-align: center; width: 40px">
@@ -727,7 +803,12 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Kamyon ve Tır garajı Zabıta Amirliği</td>
+                  <td colspan="9">Kamyon ve Tır garajı Zabıta Amirliği</td>
+                  <td style="text-align: right">
+                    <button class="editButton" onclick="toggleDropdown(this)">
+                      Düzenle
+                    </button>
+                  </td>
                 </tr>
                 <tr class="amirlikler">
                   <td style="text-align: center; width: 40px">
@@ -749,7 +830,12 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Beylikbağı Karakolu</td>
+                  <td colspan="9">Beylikbağı Karakolu</td>
+                  <td style="text-align: right">
+                    <button class="editButton" onclick="toggleDropdown(this)">
+                      Düzenle
+                    </button>
+                  </td>
                 </tr>
 
                 <tr class="kültürel">
@@ -1653,6 +1739,45 @@
             }
 
             // Sayfa yüklendiğinde sadece "amirlikler" gösterilsin
+            window.onload = function () {
+              filtrele("amirlikler");
+            };
+          </script>
+          <script>
+            function filtrele(kategori) {
+              // Tüm satırları gizle
+              document
+                .querySelectorAll("#icerikTablosu tbody tr")
+                .forEach(function (satir) {
+                  satir.style.display = "none";
+                });
+
+              // Seçilen kategoriye ait satırları göster
+              document
+                .querySelectorAll("#icerikTablosu tbody tr." + kategori)
+                .forEach(function (satir) {
+                  satir.style.display = "";
+                });
+
+              // Aktif buton vurgusu
+              document
+                .querySelectorAll("#kategoriButonlari button")
+                .forEach(function (buton) {
+                  buton.classList.remove("active");
+                });
+
+              // Butona active class'ı ekle
+              const aktifButon = document.querySelector(
+                "#kategoriButonlari button[onclick=\"filtrele('" +
+                  kategori +
+                  "')\"]"
+              );
+              if (aktifButon) {
+                aktifButon.classList.add("active");
+              }
+            }
+
+            // Sayfa ilk yüklendiğinde çalışsın:
             window.onload = function () {
               filtrele("amirlikler");
             };
