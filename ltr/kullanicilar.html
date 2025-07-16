@@ -379,28 +379,127 @@
         <!-- Benim yaptığım navbar kısmı -->
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid d-flex justify-content-end">
-            <button id="archive-button" class="btn me-2 mr-2 text-white" type="button" style="
-                  background-color: darkgrey;
-                  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);
-                  display: none;
-                ">
-              Arşivle
+            <style>
+              .buton {
+                height: 36px;
+                border-radius: 12px;
+                border: none;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                padding: 0 16px;
+                width: auto;
+                /* Genişlik içeriğe göre */
+                margin-right: 8px;
+                color: white;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                user-select: none;
+              }
+
+              .buton:hover {
+                transform: scale(1.1);
+                filter: brightness(85%);
+              }
+
+              .icon {
+                width: 16px;
+                height: 16px;
+                position: relative;
+                flex-shrink: 0;
+                margin-right: 8px;
+              }
+
+              /* EKLE (artı) */
+              .arti::before,
+              .arti::after {
+                content: "";
+                position: absolute;
+                background-color: white;
+                border-radius: 1px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+
+              .arti::before {
+                width: 2px;
+                height: 14px;
+              }
+
+              .arti::after {
+                width: 14px;
+                height: 2px;
+              }
+
+              /* ARŞİVLE (kutu) */
+              .kutu::before,
+              .kutu::after {
+                content: "";
+                position: absolute;
+                background-color: white;
+                border-radius: 1px;
+                left: 50%;
+                transform: translateX(-50%);
+              }
+
+              .kutu::before {
+                width: 14px;
+                height: 4px;
+                top: 4px;
+              }
+
+              .kutu::after {
+                width: 14px;
+                height: 8px;
+                top: 9px;
+              }
+
+              /* SİL SVG path renk beyaz */
+              .sil-butonu svg path {
+                fill: white;
+              }
+
+              /* Renkler */
+              .ekle-butonu {
+                background-color: #4CAF50;
+              }
+
+              .arsivle-butonu {
+                background-color: #2196F3;
+              }
+
+              .sil-butonu {
+                background-color: #F44336;
+              }
+            </style>
+
+            <!-- EKLE -->
+            <button class="buton ekle-butonu">
+              <div class="icon arti"></div>
+              <span>Ekle</span>
             </button>
-            <button id="delete-button" class="btn me-2 mr-2 text-white" type="button" style="
-                  background-color: darkgrey;
-                  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);
-                  display: none;
-                ">
-              Sil
+
+            <!-- ARŞİVLE -->
+            <button class="buton arsivle-butonu">
+              <div class="icon kutu"></div>
+              <span>Arşivle</span>
             </button>
-            <button class="btn me-2 mr-2 text-white" type="button" style="
-                  background-color: darkgrey;
-                  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 1);
-                ">
-              Ekle
+
+            <!-- SİL -->
+            <button class="buton sil-butonu">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                aria-hidden="true" focusable="false">
+                <path
+                  d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z" />
+              </svg>
+              <span>Sil</span>
             </button>
+
           </div>
         </nav>
+
 
         <br /><br />
 
@@ -409,7 +508,7 @@
           <div class="table">
             <table class="table table-hover align-middle"
               style="background-color: rgba(204, 204, 204, 0.186); border-radius: 10px;">
-              <thead class="table-light">
+              <thead class="tablo-baslik" style="background-color: rgba(204, 204, 204, 0.186);">
                 <tr>
                   <th scope="col">Profil Fotoğrafı</th>
                   <th scope="col">İsim Soyisim</th>
