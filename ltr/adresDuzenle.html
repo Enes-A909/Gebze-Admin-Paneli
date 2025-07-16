@@ -107,6 +107,35 @@
         margin-top: 20px;
         float: right;
       }
+
+      .input {
+        background-color: #f3f1f18b;
+        border: none;
+        box-shadow: 4px 4px 10px rgba(100, 100, 100, 0.295);
+        border-radius: 5px;
+      }
+
+      #mudurlukList {
+        column-count: 4;
+        column-gap: 20px;
+        width: 1000px;
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+        max-height: 500px; /* opsiyonel */
+      }
+
+      #mudurlukListe li {
+        background: #f0f0f0;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        break-inside: avoid; /* li parçalanmasın diye */
+      }
+
+      .remove {
+        cursor: pointer;
+      }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -471,7 +500,7 @@
             <div class="container-sm" style="margin: auto">
               <!-- Kart Başlangıcı -->
               <div
-                class="d-flex align-items-start gap-4 mb-4"
+                class="d-flex align-items-start gap-4 mb-4 crd"
                 style="
                   background: #fff;
                   padding: 20px;
@@ -487,7 +516,13 @@
                     alt="gebzeBelediyeBaskanligi"
                     style="width: 100%; height: auto"
                   />
-                  <a href="#" class="btn btn-primary w-100 mt-2">Düzenle</a>
+                  <a
+                    href="#"
+                    class="btn btn-primary w-100 mt-2"
+                    id="editBtn"
+                    onclick="addEdit('../assets/images/contact-img/gebzeBelediyeBaskanligi.jpeg','Gebze Belediye Başkanlığı','https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.8057953,29.4359547,1453m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D','Güzeller Mah. Belediye Cad. No:1, 41400 Gebze / Kocaeli','0 262 642 04 30')"
+                    >Düzenle</a
+                  >
                 </div>
                 <div style="flex: 1; padding-left: 20px">
                   <h4 style="margin-bottom: 16px">Gebze Belediye Başkanlığı</h4>
@@ -767,6 +802,274 @@
                         .forEach((el) => (el.style.display = "none"));
                     }
                   });
+                </script>
+                <script>
+                  const input = document.getElementById("resim");
+                  const img = document.getElementById("img");
+
+                  input.addEventListener("change", function () {
+                    const dosya = this.files[0];
+
+                    if (dosya) {
+                      const okuyucu = new FileReader();
+
+                      okuyucu.onload = function (e) {
+                        img.src = e.target.result;
+                        img.style.display = "block";
+                      };
+
+                      okuyucu.readAsDataURL(dosya);
+                    }
+                  });
+                </script>
+                <script>
+                  function addEdit(
+                    img,
+                    title,
+                    addressLink,
+                    addressTitle,
+                    phone
+                  ) {
+                    const crd = document.getElementsByClassName("crd")[0];
+                    crd.innerHTML = `
+                  <div class="container-sm" style="margin: auto">
+                    <!-- Kart Başlangıcı -->
+                    <div
+                      class="d-flex align-items-start gap-4 mb-4"
+                      style="
+                        background: #fff;
+                        padding: 20px;
+                        border-radius: 10px;
+                        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+                      "
+                    >
+                      <!-- Sol: Resim -->
+                      <div style="flex: 0 0 300px">
+                        <img
+                          src="${img}"
+                          class="img-fluid rounded"
+                          alt="${title}"
+                          style="width: 100%; height: 230px"
+                          id="img"
+                        />
+                        <label
+                          for="resim"
+                          class="btn btn-outline-primary mt-2"
+                          style="width: 100%"
+                        >
+                          Fotoğraf Seç
+                        </label>
+                        <input
+                          type="file"
+                          name="resim"
+                          id="resim"
+                          style="display: none"
+                          accept="image/*"
+                          class="input"
+                        />
+                      </div>
+                      <div style="flex: 1; padding-left: 20px">
+                        <h4 style="margin-bottom: 16px">
+                          <input
+                            type="text"
+                            name="title"
+                            id="title"
+                            value="${title}"
+                            class="input"
+                          />
+                        </h4>
+
+                        <p style="margin-bottom: 12px; font-size: 16px">
+                          <strong>Adres:</strong>
+                          <input
+                            type="text"
+                            name="addressLink"
+                            id="addressLink"
+                            style="width: 58%"
+                            placeholder="Adres Linki"
+                            class="input"
+                            value="${addressLink}"
+                          /><img
+                            src="../assets/images/rubbishSvg.svg"
+                            style="margin-left: 4px"
+                            width="18px"
+                            height="18px"
+                            alt="remove"
+                            onclick="document.getElementById('addressLink').value=''"
+                          /><br />
+
+                          <input
+                            type="text"
+                            placeholder="Adres Başlığı"
+                            value="${addressTitle}"
+                            id="addressTitle"
+                            style="
+                              margin-top: 5px !important;
+                              margin-left: 60px !important;
+                              width: 58% !important;
+                            "
+                            class="input"
+                          /><img
+                            src="../assets/images/rubbishSvg.svg"
+                            style="margin-left: 4px"
+                            width="18px"
+                            height="18px"
+                            alt="remove"
+                            class="remove"
+                            onclick="document.getElementById('addressTitle').value=''"
+                          />
+                        </p>
+                        <p style="margin-bottom: 12px; font-size: 14px">
+                          <strong>Telefon Numarası:</strong>
+
+                          <input
+                            type="text"
+                            name="phone"
+                            id="phone"
+                            placeholder="Telefon Numaras"
+                            value="${phone}"
+                            style="width: 125px !important"
+                            class="input"
+                          />
+                        </p>
+
+                        <!-- Müdürlükler -->
+                        <p style="margin-bottom: 8px">
+                          <strong>Binada Bulunan Müdürlükler:</strong>
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            style="width: 40px; padding: 3px"
+                            id="add"
+                          >
+                            Ekle
+                          </button>
+                        </p>
+
+                        <div
+                          style="
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 16px;
+                          "
+                        >
+                          <!-- 1. Kolon -->
+                          <ul
+                            style="padding-left: 20px; list-style-type: disc"
+                            id="mudurlukList"
+                          >
+                            <li>
+                              <input
+                                type="text"
+                                name="list"
+                                id="list"
+                                class="input"
+                                value=""
+                                placeholder="Müdürlük"
+                                style="width: 150px !important"
+                              /><img
+                                src="../assets/images/rubbishSvg.svg"
+                                style="margin-left: 2px"
+                                alt="sil"
+                                width="15px"
+                                height="15px"
+                                class="remove"
+                              />
+                            </li>
+                            <li>
+                              <input
+                                type="text"
+                                name="list"
+                                id="list"
+                                class="input"
+                                value=""
+                                placeholder="Müdürlük"
+                                style="width: 150px !important"
+                              /><img
+                                src="../assets/images/rubbishSvg.svg"
+                                style="margin-left: 2px"
+                                alt="sil"
+                                width="15px"
+                                height="15px"
+                                class="remove"
+                              />
+                            </li>
+                            <li>
+                              <input
+                                type="text"
+                                name="list"
+                                id="list"
+                                class="input"
+                                value=""
+                                placeholder="Müdürlük"
+                                style="width: 150px !important"
+                              /><img
+                                src="../assets/images/rubbishSvg.svg"
+                                style="margin-left: 2px"
+                                alt="sil"
+                                width="15px"
+                                height="15px"
+                                class="remove"
+                              />
+                            </li>
+                            <li>
+                              <input
+                                type="text"
+                                name="list"
+                                id="list"
+                                class="input"
+                                value="Yazı İşleri Müdürlüğü"
+                                placeholder="Müdürlük"
+                                style="width: 150px !important"
+                              /><img
+                                src="../assets/images/rubbishSvg.svg"
+                                style="margin-left: 2px"
+                                alt="sil"
+                                width="15px"
+                                height="15px"
+                                class="remove"
+                              />
+                            </li>
+                          </ul>
+                        </div>`;
+
+                    document.querySelectorAll(".remove").forEach((btn) => {
+                      btn.addEventListener("click", function () {
+                        const li = this.closest("li");
+                        if (li) {
+                          li.remove();
+                        }
+                      });
+                    });
+
+                    const liste = document.getElementById("mudurlukList");
+                    const ekleBtn = document.getElementById("add");
+
+                    ekleBtn.addEventListener("click", function () {
+                      const yeniLi = document.createElement("li");
+                      yeniLi.innerHTML = `<input
+                                type="text"
+                                name="list"
+                                id="list"
+                                class="input"
+                                placeholder="Müdürlük"
+                                style="width: 150px !important"
+                              /><img
+                                src="../assets/images/rubbishSvg.svg"
+                                style="margin-left: 2px"
+                                alt="sil"
+                                width="15px"
+                                height="15px"
+                                class="remove"
+                              />`;
+                      liste.appendChild(yeniLi);
+
+                      const silBtn = yeniLi.querySelector(".remove");
+                      silBtn.addEventListener("click", function () {
+                        yeniLi.remove();
+                      });
+                    });
+                  }
                 </script>
               </div>
             </div>
