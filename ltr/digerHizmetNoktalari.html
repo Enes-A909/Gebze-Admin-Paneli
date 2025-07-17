@@ -2,8 +2,11 @@
 <html lang="tr">
   <head>
     <style>
+      .DHNbuton {
+        border-radius: 7px;
+      }
       .editButton {
-        background-color: rgba(0, 81, 255, 0.738);
+        background-color: rgba(51, 89, 171, 0.405);
         border: none;
         border-radius: 7px;
         width: 80px;
@@ -628,30 +631,35 @@
           <div id="icerikler">
             <div id="kategoriButonlari" style="margin-bottom: 20px">
               <button
+                class="DHNbuton"
                 onclick="filtrele('amirlikler')"
                 style="border: none; width: 80px; height: 40px"
               >
                 Amirlikler
               </button>
               <button
+                class="DHNbuton"
                 onclick="filtrele('kültürel')"
                 style="border: none; width: 200px; height: 40px"
               >
                 Kültür ve Sanat Merkezleri
               </button>
               <button
+                class="DHNbuton"
                 onclick="filtrele('sosyal')"
                 style="border: none; width: 130px; height: 40px"
               >
                 Sosyal Tesisler
               </button>
               <button
+                class="DHNbuton"
                 onclick="filtrele('eğitim')"
                 style="border: none; width: 80px; height: 40px"
               >
                 Eğitim
               </button>
               <button
+                class="DHNbuton"
                 onclick="filtrele('diğer')"
                 style="border: none; width: 80px; height: 40px"
               >
@@ -670,7 +678,7 @@
             >
               <thead style="background-color: #b8babf"></thead>
               <th style="width: 40px"></th>
-              <!-- Sadece ikon için, dar -->
+
               <tbody>
                 <tr class="amirlikler">
                   <td style="text-align: center; width: 40px">
