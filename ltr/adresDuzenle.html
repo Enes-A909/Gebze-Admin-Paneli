@@ -907,7 +907,7 @@
                         <input
                           type="text"
                           name="addressLink"
-                          id="addressLink"
+                          id="addressLink-${photoId}"
                           style="width: 58%"
                           placeholder="Adres Linki"
                           class="input"
@@ -919,14 +919,14 @@
                           height="18px"
                           alt="remove"
                           class="remove"
-                          onclick="document.getElementById('addressLink').value=''"
+                          onclick="document.getElementById('addressLink-${photoId}').value=''"
                         /><br />
 
                         <input
                           type="text"
                           placeholder="Adres Başlığı"
                           value="${addressTitle}"
-                          id="addressTitle"
+                          id="addressTitle-${photoId}"
                           style="
                             margin-top: 5px !important;
                             margin-left: 60px !important;
@@ -940,7 +940,7 @@
                           height="18px"
                           alt="remove"
                           class="remove"
-                          onclick="document.getElementById('addressTitle').value=''"
+                          onclick="document.getElementById('addressTitle-${photoId}').value=''"
                         />
                       </p>
                       <p style="margin-bottom: 12px; font-size: 14px">
