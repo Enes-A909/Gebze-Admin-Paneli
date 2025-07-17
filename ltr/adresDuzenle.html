@@ -136,6 +136,12 @@
       .remove {
         cursor: pointer;
       }
+
+      #mudurlukUl {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -517,10 +523,9 @@
                     style="width: 100%; height: auto"
                   />
                   <a
-                    href="#"
-                    class="btn btn-primary w-100 mt-2"
+                    class="btn btn-primary w-100 mt-2 text-light"
                     id="editBtn"
-                    onclick="addEdit('../assets/images/contact-img/gebzeBelediyeBaskanligi.jpeg','Gebze Belediye Başkanlığı','https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.8057953,29.4359547,1453m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D','Güzeller Mah. Belediye Cad. No:1, 41400 Gebze / Kocaeli','0 262 642 04 30',0)"
+                    onclick="addEdit('../assets/images/contact-img/gebzeBelediyeBaskanligi.jpeg','Gebze Belediye Başkanlığı','https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.8057953,29.4359547,1453m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D','Güzeller Mah. Belediye Cad. No:1, 41400 Gebze / Kocaeli','0 262 642 04 30',0,'ulMudurBaskanlik')"
                     >Düzenle</a
                   >
                 </div>
@@ -558,7 +563,7 @@
                     <!-- 1. Kolon -->
                     <ul
                       style="padding-left: 20px; list-style-type: disc"
-                      class="ulMudur"
+                      class="ulMudurBaskanlik"
                     >
                       <li>Ruhsat ve Denetim Müdürlüğü</li>
                       <li>İmar ve Şehircilik Müdürlüğü</li>
@@ -570,7 +575,7 @@
                     <!-- 2. Kolon -->
                     <ul
                       style="padding-left: 20px; list-style-type: disc"
-                      class="ulMudur"
+                      class="ulMudurBaskanlik"
                     >
                       <li>Hukuk İşleri Müdürlüğü</li>
                       <li>Özel Kalem Müdürlüğü</li>
@@ -582,7 +587,7 @@
                     <!-- 3. Kolon -->
                     <ul
                       style="padding-left: 20px; list-style-type: disc"
-                      class="ulMudur"
+                      class="ulMudurBaskanlik"
                     >
                       <li>Basın Yayın ve Halkla İlişkiler Müdürlüğü</li>
                       <li>Emlak ve İstimlak Müdürlüğü</li>
@@ -603,6 +608,7 @@
                     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
                   "
                 >
+                  <img src="" alt="" />
                   <!-- Sol: Resim -->
                   <div style="flex: 0 0 300px">
                     <img
@@ -611,8 +617,12 @@
                       alt="gebzeBelediyeBaskanligi"
                       style="width: 100%; height: auto"
                     />
-                    <img src="" alt="" />
-                    <a href="#" class="btn btn-primary w-100 mt-2">Düzenle</a>
+                    <a
+                      class="btn btn-primary w-100 mt-2 text-light"
+                      id="editBtn"
+                      onclick="addEdit('../assets/images/mevlanaEkHizmet.jpeg','T.C. GEBZE BELEDİYESİ MEVLANA EK HİZMET BİNASI','https://www.google.com/maps/place/T.C.+GEBZE+BELED%C4%B0YES%C4%B0+EK+H%C4%B0ZMET+B%C4%B0NASI/@40.8104203,29.4228192,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb219420d2a451:0x1ffbb472e940fc95!8m2!3d40.8104203!4d29.4253941!16s%2Fg%2F11r3nb7p3x?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D','Mevlana, Issıkgöl Cd. No:111, 41400 Gebze/Kocaeli','0 262 642 04 30',1,'ulMudurMevlana')"
+                      >Düzenle</a
+                    >
                   </div>
                   <div style="flex: 1; padding-left: 20px">
                     <h4 style="margin-bottom: 16px">
@@ -649,7 +659,7 @@
                       <!-- 1. Kolon -->
                       <ul
                         style="padding-left: 20px; list-style-type: disc"
-                        class="ulMudur"
+                        class="ulMudurMevlana"
                       >
                         <li>Makina İkmal Bakım Onarım Servisi</li>
                         <li>Otobüs İşleri Servisi</li>
@@ -661,7 +671,7 @@
                       <!-- 2. Kolon -->
                       <ul
                         style="padding-left: 20px; list-style-type: disc"
-                        class="ulMudur"
+                        class="ulMudurMevlana"
                       >
                         <li>İşletme ve İştirakler Müdürlüğü</li>
                         <li>Zabıta Müdürlüğü</li>
@@ -691,12 +701,16 @@
                         alt="gebzeBelediyeBaskanligi"
                         style="width: 100%; height: auto"
                       />
-                      <a href="#" class="btn btn-primary w-100 mt-2">Düzenle</a>
+                      <img src="" alt="" />
+                      <a
+                        class="btn btn-primary w-100 mt-2 text-light"
+                        id="editBtn"
+                        onclick="addEdit('../assets/images/KentMeydanı.jpeg','Gebze Belediyesi','https://www.google.com/maps/place/Gebze+Kent+Meydan%C4%B1/@40.798966,29.4281553,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb2166b4804e33:0x7e61a156df7f1291!8m2!3d40.798966!4d29.4307302!16s%2Fg%2F11q9hw3d5z?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D','Hacıhalil, 1222/2. Sk. No:4, 41400 Gebze/Kocaeli','0 262 642 04 30',2,'ulMudurBelediye')"
+                        >Düzenle</a
+                      >
                     </div>
                     <div style="flex: 1; padding-left: 20px">
-                      <h4 style="margin-bottom: 16px">
-                        Gebze Belediye Başkanlığı
-                      </h4>
+                      <h4 style="margin-bottom: 16px">Gebze Belediyesi</h4>
 
                       <p style="margin-bottom: 12px; font-size: 16px">
                         <strong>Adres:</strong>
@@ -726,7 +740,10 @@
                         "
                       >
                         <!-- 1. Kolon -->
-                        <ul style="padding-left: 20px; list-style-type: disc">
+                        <ul
+                          style="padding-left: 20px; list-style-type: disc"
+                          class="ulMudurBelediye"
+                        >
                           <li>Kültür İşleri Müdürlüğü</li>
                           <li>Evlendirme Memurluğu</li>
                           <li>Sosyal Destek Hizmetleri Müdürlüğü</li>
@@ -820,47 +837,45 @@
                   });
                 </script>
                 <script>
-                  const input = document.getElementById("resim");
-                  const img = document.getElementById("img");
-
-                  input.addEventListener("change", function () {
-                    const dosya = this.files[0];
-
-                    if (dosya) {
-                      const okuyucu = new FileReader();
-
-                      okuyucu.onload = function (e) {
-                        img.src = e.target.result;
-                        img.style.display = "block";
-                      };
-
-                      okuyucu.readAsDataURL(dosya);
-                    }
-                  });
-                </script>
-                <script>
                   function addEdit(
                     img,
                     title,
                     addressLink,
                     addressTitle,
                     phone,
-                    photoId
+                    photoId,
+                    listMudurluk
                   ) {
+                    console.log(
+                      "crd length:",
+                      document.getElementsByClassName("crd").length
+                    );
+
                     const crd = document.getElementsByClassName("crd")[photoId];
+                    const mudurlukList =
+                      document.getElementsByClassName(listMudurluk);
+
+                    let mudurluk = [];
+
+                    for (let i = 0; i < mudurlukList.length; i++) {
+                      const liElements =
+                        mudurlukList[i].getElementsByTagName("li");
+
+                      for (let j = 0; j < liElements.length; j++) {
+                        mudurluk.push(liElements[j].textContent.trim());
+                      }
+                    }
+
                     crd.innerHTML = `
-                  
-                    <!-- Sol: Resim -->
                     <div style="flex: 0 0 300px">
                       <img
                         src="${img}"
-                        class="img-fluid rounded"
+                        class="img-fluid rounded preview-img"
                         alt="${title}"
                         style="width: 100%; height: 230px"
-                        id="img"
                       />
                       <label
-                        for="resim"
+                        for="resim-${photoId}"
                         class="btn btn-outline-primary mt-2"
                         style="width: 100%"
                       >
@@ -869,10 +884,10 @@
                       <input
                         type="file"
                         name="resim"
-                        id="resim"
+                        id="resim-${photoId}"
                         style="display: none"
                         accept="image/*"
-                        class="input"
+                        class="resim-input"
                       />
                     </div>
                     <div style="flex: 1; padding-left: 20px">
@@ -883,6 +898,7 @@
                           id="title"
                           value="${title}"
                           class="input"
+                          style="width:600px"
                         />
                       </h4>
 
@@ -902,6 +918,7 @@
                           width="18px"
                           height="18px"
                           alt="remove"
+                          class="remove"
                           onclick="document.getElementById('addressLink').value=''"
                         /><br />
 
@@ -918,7 +935,7 @@
                           class="input"
                         /><img
                           src="../assets/images/rubbishSvg.svg"
-                          style="margin-left: 4px"
+                          style="margin-left: 4px;"
                           width="18px"
                           height="18px"
                           alt="remove"
@@ -945,280 +962,46 @@
                         <strong>Binada Bulunan Müdürlükler:</strong>
                         <button
                           type="button"
-                          class="btn btn-primary"
-                          style="width: 40px; padding: 3px"
-                          id="add"
+                          class="btn btn-primary add"
+                          style="width: 40px; padding: 3px; "
                         >
                           Ekle
                         </button>
                       </p>
 
-                      <div
-                        style="
-                          display: grid;
-                          grid-template-columns: repeat(3, 1fr);
-                          gap: 16px;
-                        "
-                      >
-                        <!-- 1. Kolon -->
-                        <ul
-                          style="padding-left: 20px; list-style-type: disc"
-                          id="mudurlukList"
+                        <div
+                          style="
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 16px;
+                            list-style-type:none;
+                          "
+                          class="mudurlukUl"
                         >
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value=""
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="İmar ve Şehircilik Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Plan ve Proje Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="İnsan kaynakları ve Eğitim Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Numarataj Şefliği"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Hukuk İşleri Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Özel Kalem Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Destek Hizmet Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Mali Hizmetler Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="İstihdam Ofisi"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Basın Yayın ve Halkla İlişkiler Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Emlak ve İstimlak Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Evrak Kayıt Servisi"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                          <li>
-                            <input
-                              type="text"
-                              name="list"
-                              id="list"
-                              class="input"
-                              value="Bilgi İşlem Müdürlüğü"
-                              placeholder="Müdürlük"
-                              style="width: 150px !important"
-                            /><img
-                              src="../assets/images/rubbishSvg.svg"
-                              style="margin-left: 2px"
-                              alt="sil"
-                              width="15px"
-                              height="15px"
-                              class="remove"
-                            />
-                          </li>
-                        </ul>
-                      `;
+                        </div>
+                        `;
+
+                    const mudUl = crd.querySelector(".mudurlukUl");
+                    for (let i = 0; i < mudurluk.length; i++) {
+                      mudUl.innerHTML += `<li style="display: flex; align-items: center; gap: 6px;">
+                      <input
+                      type="text"
+                      name="list"
+                      id="list"
+                      class="input"
+                      value="${mudurluk[i]}"
+                      placeholder="Müdürlük"
+                      style="width: 150px !important"
+                      /><img
+                      src="../assets/images/rubbishSvg.svg"
+                      style="margin-left: 2px"
+                      alt="sil"
+                      width="15px"
+                      height="15px"
+                      class="remove"
+                                />
+                    </li>`;
+                    }
 
                     document.querySelectorAll(".remove").forEach((btn) => {
                       btn.addEventListener("click", function () {
@@ -1229,26 +1012,45 @@
                       });
                     });
 
-                    const liste = document.getElementById("mudurlukList");
-                    const ekleBtn = document.getElementById("add");
+                    const input = crd.querySelector(".resim-input");
+                    const imgSrc = crd.querySelector(".preview-img");
+
+                    input.addEventListener("change", function () {
+                      const dosya = this.files[0];
+
+                      if (dosya) {
+                        const okuyucu = new FileReader();
+
+                        okuyucu.onload = function (e) {
+                          imgSrc.src = e.target.result;
+                          imgSrc.style.display = "block";
+                        };
+
+                        okuyucu.readAsDataURL(dosya);
+                      }
+                    });
+
+                    const liste = crd.querySelector(".mudurlukUl");
+                    const ekleBtn = crd.querySelector(".add");
 
                     ekleBtn.addEventListener("click", function () {
                       const yeniLi = document.createElement("li");
                       yeniLi.innerHTML = `<input
-                                type="text"
-                                name="list"
-                                id="list"
-                                class="input"
-                                placeholder="Müdürlük"
-                                style="width: 150px !important"
-                              /><img
-                                src="../assets/images/rubbishSvg.svg"
-                                style="margin-left: 2px"
-                                alt="sil"
-                                width="15px"
-                                height="15px"
-                                class="remove"
-                              />`;
+                                  type="text"
+                                  name="list"
+                                  id="list"
+                                  class="input"
+                                  placeholder="Müdürlük"
+                                  style="width: 150px !important; list-style-type:none;"
+                                /><img
+                                  src="../assets/images/rubbishSvg.svg"
+                                  style="margin-left: 2px"
+                                  alt="sil"
+                                  width="15px"
+                                  height="15px"
+                                  class="remove"
+                                />`;
+
                       liste.appendChild(yeniLi);
 
                       const silBtn = yeniLi.querySelector(".remove");
