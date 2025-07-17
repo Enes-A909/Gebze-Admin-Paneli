@@ -502,13 +502,13 @@
             </style>
 
             <!-- EKLE -->
-            <button class="buton ekle-butonu">
+            <button class="buton ekle-butonu" onclick="ekle()">
               <div class="icon arti"></div>
               <span>Ekle</span>
             </button>
 
             <!-- ARŞİVLE -->
-            <button class="buton arsivle-butonu">
+            <button class="buton arsivle-butonu" onclick="arsivle()">
               <div class="icon kutu"></div>
               <span>Arşivle</span>
             </button>
@@ -629,75 +629,38 @@
         <!-- Plugin used-->
 
         <script>
-          function toggleMenu(button) {
-            const menu = button.nextElementSibling;
-            const allMenus = document.querySelectorAll(".islem-menu");
-
-            allMenus.forEach((m) => {
-              if (m !== menu) m.style.display = "none";
-            });
-
-            menu.style.display =
-              menu.style.display === "block" ? "none" : "block";
-          }
-
-          // Örnek fonksiyonlar
-          function ekle() {
-            alert("Ekleme sayfasına yönlendiriliyor...");
-          }
-
-          function duzenle() {
-            alert("Düzenleme sayfasına yönlendiriliyor...");
-          }
-
-          function sil() {
-            alert("Silme işlemi yapılıyor...");
-          }
-
-          function icerik() {
-            alert("İçerik detayına yönlendiriliyor...");
-          }
-        </script>
-        <script>
+          // Açılır menüyü açıp kapatma
           function toggleDropdown(btn) {
             const menu = btn.nextElementSibling;
-
-            // Diğer tüm açık menüleri kapat
             document.querySelectorAll(".dropdown-menu").forEach((el) => {
               if (el !== menu) el.style.display = "none";
             });
-
-            // Tıklanan menüyü aç/kapat
-            menu.style.display =
-              menu.style.display === "block" ? "none" : "block";
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
           }
 
+          // Tablo görünümüne geri dönme
           function geriDon() {
-            location.reload(); // En kolay çözüm: Sayfayı yeniler
+            location.reload(); // Sayfayı yenileyerek tabloyu geri yükler
           }
 
-
+          // Yeni yayın ekleme ve düzenleme formunu açma
           function ekle() {
-            alert("Ekle tıklandı");
-          }
-
-          function duzenle() {
             const icerikDiv = document.getElementById("icerikler");
 
+            // Formu göster (duzenle ile aynı)
             icerikDiv.innerHTML = `
     <div style="background-color: #f9f9f9; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1)">
-      <h4>PDF Düzenle</h4><br>
+      <h4>Yeni Yayın Ekle</h4><br>
       <h5>Başlık</h5>
-      <input type="text" id="baslik"/> <br><br>
+      <input type="text" id="baslik" placeholder="Yayın başlığını girin" style="width: 100%; padding: 8px;"/> <br><br>
       <input type="file" id="pdfDosya" accept="application/pdf" style="margin-bottom: 20px" /> <br><br>
       <div id="pdfOnizleme" style="margin-top: 20px;"></div>
       <button onclick="geriDon()" style="margin-top: 20px; padding: 10px 15px; background-color: #2196F3; color: white; border: none; border-radius: 5px;">Geri Dön</button>
-    <button onclick="kaydet()" style="margin-top: 20px; padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Kaydet</button>
+      <button onclick="kaydet()" style="margin-top: 20px; padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Kaydet</button>
     </div>
-
   `;
 
-            // PDF seçildiğinde göster
+            // PDF önizlemesini yönet
             setTimeout(() => {
               const input = document.getElementById("pdfDosya");
               const preview = document.getElementById("pdfOnizleme");
@@ -716,23 +679,173 @@
             }, 0);
           }
 
+          // Yeni yayını kaydetme ve tabloya ekleme
+          function kaydet() {
+            const baslik = document.getElementById("baslik").value;
+            const pdfDosya = document.getElementById("pdfDosya").files[0];
 
+            // Başlık ve PDF dosyasının dolu olduğunu kontrol et
+            if (!baslik || !pdfDosya) {
+              alert("Lütfen başlık ve PDF dosyasını doldurun.");
+              return;
+            }
+
+            // Tabloyu geri yükle
+            const icerikDiv = document.getElementById("icerikler");
+            icerikDiv.innerHTML = `
+    <table class="table" style="background-color: rgba(204, 204, 204, 0.186); border-radius: 10px;">
+      <thead>
+        <tr>
+          <th scope="col"><input type="checkbox" id="ana-checkbox" /></th>
+          <th scope="col">Sayfa Başlığı</th>
+          <th scope="col">Kategori</th>
+          <th scope="col">Durumu</th>
+          <th scope="col">Son Güncelleme</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr>
+          <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
+          <td scope="row">Söz Verdiğimiz Gibi</td>
+          <td scope="row"><span class="badge" style="margin-top: 7px">Yayınlarımız</span></td>
+          <td scope="row"><span class="arşiv" style="margin-top: 7px">Arşivlendi</span></td>
+          <td scope="row">...</td>
+          <td scope="row" style="text-align: right">
+            <div class="dropdown-container">
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
+              <div class="dropdown-menu">
+                <button onclick="duzenle()">
+                  <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" /> Düzenle
+                </button>
+                <button onclick="sil()">
+                  <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" /> Sil
+                </button>
+                <button onclick="icerik()">
+                  <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%" height="10%" /> İçerik
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  `;
+
+            // Yeni satırı tabloya ekle
+            const tableBody = document.getElementById("table-body");
+            const newRow = document.createElement("tr");
+            const currentDate = new Date().toLocaleDateString("tr-TR");
+            newRow.innerHTML = `
+    <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
+    <td scope="row">${baslik}</td>
+    <td scope="row"><span class="badge" style="margin-top: 7px">Yayınlarımız</span></td>
+    <td scope="row"><span class="arşiv" style="margin-top: 7px">Aktif</span></td>
+    <td scope="row">${currentDate}</td>
+    <td scope="row" style="text-align: right">
+      <div class="dropdown-container">
+        <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
+        <div class="dropdown-menu">
+          <button onclick="duzenle()">
+            <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" /> Düzenle
+          </button>
+          <button onclick="sil()">
+            <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" /> Sil
+          </button>
+          <button onclick="icerik()">
+            <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%" height="10%" /> İçerik
+          </button>
+        </div>
+      </div>
+    </td>
+  `;
+            tableBody.appendChild(newRow);
+
+            // Checkbox olay dinleyicilerini yeniden bağla
+            attachCheckboxListeners();
+          }
+
+          // Mevcut yayını düzenleme
+          function duzenle() {
+            const icerikDiv = document.getElementById("icerikler");
+            icerikDiv.innerHTML = `
+    <div style="background-color: #f9f9f9; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1)">
+      <h4>PDF Düzenle</h4><br>
+      <h5>Başlık</h5>
+      <input type="text" id="baslik" placeholder="Yayın başlığını girin" style="width: 100%; padding: 8px;" value="Söz Verdiğimiz Gibi"/> <br><br>
+      <input type="file" id="pdfDosya" accept="application/pdf" style="margin-bottom: 20px" /> <br><br>
+      <div id="pdfOnizleme" style="margin-top: 20px;"></div>
+      <button onclick="geriDon()" style="margin-top: 20px; padding: 10px 15px; background-color: #2196F3; color: white; border: none; border-radius: 5px;">Geri Dön</button>
+      <button onclick="kaydet()" style="margin-top: 20px; padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Kaydet</button>
+    </div>
+  `;
+
+            // PDF önizlemesini yönet
+            setTimeout(() => {
+              const input = document.getElementById("pdfDosya");
+              const preview = document.getElementById("pdfOnizleme");
+
+              input.addEventListener("change", function () {
+                const file = this.files[0];
+                if (file && file.type === "application/pdf") {
+                  const url = URL.createObjectURL(file);
+                  preview.innerHTML = `
+          <iframe src="${url}" width="100%" height="500px" style="border:1px solid #ccc;"></iframe>
+        `;
+                } else {
+                  preview.innerHTML = `<p style="color: red;">Geçerli bir PDF seçin.</p>`;
+                }
+              });
+            }, 0);
+          }
+
+          // Yayını silme
           function sil() {
             alert("Sil tıklandı");
           }
 
+          // İçeriği görüntüleme
           function icerik() {
             alert("İçerik tıklandı");
           }
 
-          // Sayfa dışında bir yere tıklanınca menü kapanır
+
+          // Sayfa dışında bir yere tıklanınca açılır menüyü kapatma
           document.addEventListener("click", function (e) {
             if (!e.target.closest(".dropdown-container")) {
-              document
-                .querySelectorAll(".dropdown-menu")
-                .forEach((el) => (el.style.display = "none"));
+              document.querySelectorAll(".dropdown-menu").forEach((el) => {
+                el.style.display = "none";
+              });
             }
           });
+
+
+          function arsivle() {
+            const checkboxes = document.querySelectorAll(".checkbox-item");
+            let herhangiBiriSecili = false;
+
+            checkboxes.forEach((checkbox) => {
+              if (checkbox.checked) {
+                herhangiBiriSecili = true;
+
+                // Satırı bul
+                const row = checkbox.closest("tr");
+                // Durum hücresini bul (4. sütun yani index 3)
+                const durumHucresi = row.querySelectorAll("td, th")[3];
+                const durumSpan = durumHucresi.querySelector("span");
+
+                if (durumSpan.textContent.trim() !== "Arşivlendi") {
+                  durumSpan.textContent = "Arşivlendi";
+                }
+              }
+            });
+
+            if (!herhangiBiriSecili) {
+              alert("Lütfen arşivlemek için en az bir içerik seçin.");
+            }
+          }
+
+
         </script>
 
         <script>
@@ -740,16 +853,6 @@
           const checkboxes = document.querySelectorAll(".checkbox-item");
           const archiveButton = document.getElementById("archive-button");
           const deleteButton = document.getElementById("delete-button");
-
-          checkboxes.forEach((checkbox) => {
-            checkbox.addEventListener("change", () => {
-              const isChecked = Array.from(checkboxes).some(
-                (checkbox) => checkbox.checked
-              );
-              archiveButton.style.display = isChecked ? "block" : "none";
-              deleteButton.style.display = isChecked ? "block" : "none";
-            });
-          });
 
           // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
           const anaCheckbox = document.getElementById("ana-checkbox");
