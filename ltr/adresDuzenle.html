@@ -500,7 +500,7 @@
             <div class="container-sm" style="margin: auto">
               <!-- Kart Başlangıcı -->
               <div
-                class="d-flex align-items-start gap-4 mb-4 crd"
+                class="d-flex align-items-start gap-4 mb-4 crd p-0"
                 style="
                   background: #fff;
                   padding: 20px;
@@ -556,7 +556,10 @@
                     "
                   >
                     <!-- 1. Kolon -->
-                    <ul style="padding-left: 20px; list-style-type: disc">
+                    <ul
+                      style="padding-left: 20px; list-style-type: disc"
+                      class="ulMudur"
+                    >
                       <li>Ruhsat ve Denetim Müdürlüğü</li>
                       <li>İmar ve Şehircilik Müdürlüğü</li>
                       <li>Plan ve Proje Müdürlüğü</li>
@@ -565,7 +568,10 @@
                     </ul>
 
                     <!-- 2. Kolon -->
-                    <ul style="padding-left: 20px; list-style-type: disc">
+                    <ul
+                      style="padding-left: 20px; list-style-type: disc"
+                      class="ulMudur"
+                    >
                       <li>Hukuk İşleri Müdürlüğü</li>
                       <li>Özel Kalem Müdürlüğü</li>
                       <li>Destek Hizmet Müdürlüğü</li>
@@ -574,7 +580,10 @@
                     </ul>
 
                     <!-- 3. Kolon -->
-                    <ul style="padding-left: 20px; list-style-type: disc">
+                    <ul
+                      style="padding-left: 20px; list-style-type: disc"
+                      class="ulMudur"
+                    >
                       <li>Basın Yayın ve Halkla İlişkiler Müdürlüğü</li>
                       <li>Emlak ve İstimlak Müdürlüğü</li>
                       <li>Evrak Kayıt Servisi</li>
@@ -637,7 +646,10 @@
                       "
                     >
                       <!-- 1. Kolon -->
-                      <ul style="padding-left: 20px; list-style-type: disc">
+                      <ul
+                        style="padding-left: 20px; list-style-type: disc"
+                        class="ulMudur"
+                      >
                         <li>Makina İkmal Bakım Onarım Servisi</li>
                         <li>Otobüs İşleri Servisi</li>
                         <li>Temizlik İşleri Müdürlüğü</li>
@@ -646,7 +658,10 @@
                       </ul>
 
                       <!-- 2. Kolon -->
-                      <ul style="padding-left: 20px; list-style-type: disc">
+                      <ul
+                        style="padding-left: 20px; list-style-type: disc"
+                        class="ulMudur"
+                      >
                         <li>İşletme ve İştirakler Müdürlüğü</li>
                         <li>Zabıta Müdürlüğü</li>
                         <li>Mezarlıklar Müdürlüğü</li>
@@ -831,207 +846,398 @@
                     phone
                   ) {
                     const crd = document.getElementsByClassName("crd")[0];
+                    const allUlMudur = document.querySelectorAll(".ulMudur");
+                    allUlMudur.array.forEach((ul) => {
+                      const allLiMudur = ul.querySelectorAll("li");
+                      liElements.forEach((li) => {
+                        listMudur.push(li.textContent.trim());
+                      });
+                    });
+                    console.log(allUlMudur);
+                    let listMudur = new Array();
+
                     crd.innerHTML = `
-                  <div class="container-sm" style="margin: auto">
-                    <!-- Kart Başlangıcı -->
-                    <div
-                      class="d-flex align-items-start gap-4 mb-4"
-                      style="
-                        background: #fff;
-                        padding: 20px;
-                        border-radius: 10px;
-                        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-                      "
-                    >
-                      <!-- Sol: Resim -->
-                      <div style="flex: 0 0 300px">
-                        <img
-                          src="${img}"
-                          class="img-fluid rounded"
-                          alt="${title}"
-                          style="width: 100%; height: 230px"
-                          id="img"
-                        />
-                        <label
-                          for="resim"
-                          class="btn btn-outline-primary mt-2"
-                          style="width: 100%"
-                        >
-                          Fotoğraf Seç
-                        </label>
+                      <div class="container-sm" style="margin: auto">
+                   <div
+                    class="d-flex align-items-start gap-4 mb-4"
+                    style="
+                      background: #fff;
+                      padding: 20px;
+                      border-radius: 10px;
+                      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+                      padding:0;
+                    "
+                  >
+                    <!-- Sol: Resim -->
+                    <div style="flex: 0 0 300px">
+                      <img
+                        src="${img}"
+                        class="img-fluid rounded"
+                        alt="${title}"
+                        style="width: 100%; height: 230px"
+                        id="img"
+                      />
+                      <label
+                        for="resim"
+                        class="btn btn-outline-primary mt-2"
+                        style="width: 100%"
+                      >
+                        Fotoğraf Seç
+                      </label>
+                      <input
+                        type="file"
+                        name="resim"
+                        id="resim"
+                        style="display: none"
+                        accept="image/*"
+                        class="input"
+                      />
+                    </div>
+                    <div style="flex: 1; padding-left: 20px">
+                      <h4 style="margin-bottom: 16px">
                         <input
-                          type="file"
-                          name="resim"
-                          id="resim"
-                          style="display: none"
-                          accept="image/*"
+                          type="text"
+                          name="title"
+                          id="title"
+                          value="${title}"
                           class="input"
                         />
-                      </div>
-                      <div style="flex: 1; padding-left: 20px">
-                        <h4 style="margin-bottom: 16px">
-                          <input
-                            type="text"
-                            name="title"
-                            id="title"
-                            value="${title}"
-                            class="input"
-                          />
-                        </h4>
+                      </h4>
 
-                        <p style="margin-bottom: 12px; font-size: 16px">
-                          <strong>Adres:</strong>
-                          <input
-                            type="text"
-                            name="addressLink"
-                            id="addressLink"
-                            style="width: 58%"
-                            placeholder="Adres Linki"
-                            class="input"
-                            value="${addressLink}"
-                          /><img
-                            src="../assets/images/rubbishSvg.svg"
-                            style="margin-left: 4px"
-                            width="18px"
-                            height="18px"
-                            alt="remove"
-                            onclick="document.getElementById('addressLink').value=''"
-                          /><br />
+                      <p style="margin-bottom: 12px; font-size: 16px">
+                        <strong>Adres:</strong>
+                        <input
+                          type="text"
+                          name="addressLink"
+                          id="addressLink"
+                          style="width: 58%"
+                          placeholder="Adres Linki"
+                          class="input"
+                          value="${addressLink}"
+                        /><img
+                          src="../assets/images/rubbishSvg.svg"
+                          style="margin-left: 4px"
+                          width="18px"
+                          height="18px"
+                          alt="remove"
+                          onclick="document.getElementById('addressLink').value=''"
+                        /><br />
 
-                          <input
-                            type="text"
-                            placeholder="Adres Başlığı"
-                            value="${addressTitle}"
-                            id="addressTitle"
-                            style="
-                              margin-top: 5px !important;
-                              margin-left: 60px !important;
-                              width: 58% !important;
-                            "
-                            class="input"
-                          /><img
-                            src="../assets/images/rubbishSvg.svg"
-                            style="margin-left: 4px"
-                            width="18px"
-                            height="18px"
-                            alt="remove"
-                            class="remove"
-                            onclick="document.getElementById('addressTitle').value=''"
-                          />
-                        </p>
-                        <p style="margin-bottom: 12px; font-size: 14px">
-                          <strong>Telefon Numarası:</strong>
-
-                          <input
-                            type="text"
-                            name="phone"
-                            id="phone"
-                            placeholder="Telefon Numaras"
-                            value="${phone}"
-                            style="width: 125px !important"
-                            class="input"
-                          />
-                        </p>
-
-                        <!-- Müdürlükler -->
-                        <p style="margin-bottom: 8px">
-                          <strong>Binada Bulunan Müdürlükler:</strong>
-                          <button
-                            type="button"
-                            class="btn btn-primary"
-                            style="width: 40px; padding: 3px"
-                            id="add"
-                          >
-                            Ekle
-                          </button>
-                        </p>
-
-                        <div
+                        <input
+                          type="text"
+                          placeholder="Adres Başlığı"
+                          value="${addressTitle}"
+                          id="addressTitle"
                           style="
-                            display: grid;
-                            grid-template-columns: repeat(3, 1fr);
-                            gap: 16px;
+                            margin-top: 5px !important;
+                            margin-left: 60px !important;
+                            width: 58% !important;
                           "
+                          class="input"
+                        /><img
+                          src="../assets/images/rubbishSvg.svg"
+                          style="margin-left: 4px"
+                          width="18px"
+                          height="18px"
+                          alt="remove"
+                          class="remove"
+                          onclick="document.getElementById('addressTitle').value=''"
+                        />
+                      </p>
+                      <p style="margin-bottom: 12px; font-size: 14px">
+                        <strong>Telefon Numarası:</strong>
+
+                        <input
+                          type="text"
+                          name="phone"
+                          id="phone"
+                          placeholder="Telefon Numaras"
+                          value="${phone}"
+                          style="width: 125px !important"
+                          class="input"
+                        />
+                      </p>
+
+                      <!-- Müdürlükler -->
+                      <p style="margin-bottom: 8px">
+                        <strong>Binada Bulunan Müdürlükler:</strong>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          style="width: 40px; padding: 3px"
+                          id="add"
                         >
-                          <!-- 1. Kolon -->
-                          <ul
-                            style="padding-left: 20px; list-style-type: disc"
-                            id="mudurlukList"
-                          >
-                            <li>
-                              <input
-                                type="text"
-                                name="list"
-                                id="list"
-                                class="input"
-                                value=""
-                                placeholder="Müdürlük"
-                                style="width: 150px !important"
-                              /><img
-                                src="../assets/images/rubbishSvg.svg"
-                                style="margin-left: 2px"
-                                alt="sil"
-                                width="15px"
-                                height="15px"
-                                class="remove"
-                              />
-                            </li>
-                            <li>
-                              <input
-                                type="text"
-                                name="list"
-                                id="list"
-                                class="input"
-                                value=""
-                                placeholder="Müdürlük"
-                                style="width: 150px !important"
-                              /><img
-                                src="../assets/images/rubbishSvg.svg"
-                                style="margin-left: 2px"
-                                alt="sil"
-                                width="15px"
-                                height="15px"
-                                class="remove"
-                              />
-                            </li>
-                            <li>
-                              <input
-                                type="text"
-                                name="list"
-                                id="list"
-                                class="input"
-                                value=""
-                                placeholder="Müdürlük"
-                                style="width: 150px !important"
-                              /><img
-                                src="../assets/images/rubbishSvg.svg"
-                                style="margin-left: 2px"
-                                alt="sil"
-                                width="15px"
-                                height="15px"
-                                class="remove"
-                              />
-                            </li>
-                            <li>
-                              <input
-                                type="text"
-                                name="list"
-                                id="list"
-                                class="input"
-                                value="Yazı İşleri Müdürlüğü"
-                                placeholder="Müdürlük"
-                                style="width: 150px !important"
-                              /><img
-                                src="../assets/images/rubbishSvg.svg"
-                                style="margin-left: 2px"
-                                alt="sil"
-                                width="15px"
-                                height="15px"
-                                class="remove"
-                              />
-                            </li>
-                          </ul>
-                        </div>`;
+                          Ekle
+                        </button>
+                      </p>
+
+                      <div
+                        style="
+                          display: grid;
+                          grid-template-columns: repeat(3, 1fr);
+                          gap: 16px;
+                        "
+                      >
+                        <!-- 1. Kolon -->
+                        <ul
+                          style="padding-left: 20px; list-style-type: disc"
+                          id="mudurlukList"
+                        >
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value=""
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="İmar ve Şehircilik Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Plan ve Proje Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="İnsan kaynakları ve Eğitim Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Numarataj Şefliği"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Hukuk İşleri Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Özel Kalem Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Destek Hizmet Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Mali Hizmetler Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="İstihdam Ofisi"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Basın Yayın ve Halkla İlişkiler Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Emlak ve İstimlak Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Evrak Kayıt Servisi"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              name="list"
+                              id="list"
+                              class="input"
+                              value="Bilgi İşlem Müdürlüğü"
+                              placeholder="Müdürlük"
+                              style="width: 150px !important"
+                            /><img
+                              src="../assets/images/rubbishSvg.svg"
+                              style="margin-left: 2px"
+                              alt="sil"
+                              width="15px"
+                              height="15px"
+                              class="remove"
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                      </div>  `;
 
                     document.querySelectorAll(".remove").forEach((btn) => {
                       btn.addEventListener("click", function () {
