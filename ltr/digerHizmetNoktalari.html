@@ -2,6 +2,18 @@
 <html lang="tr">
   <head>
     <style>
+      .ikincilButon {
+        border-radius: 5px;
+        background-color: rgba(70, 244, 70, 0.455);
+        border: none;
+      }
+      .ikincilButon:focus,
+      .ikincilButon:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+
       .ekle-butonu,
       .arsivle-butonu,
       .sil-butonu {
@@ -1999,6 +2011,69 @@
             window.onload = function () {
               filtrele("amirlikler");
             };
+          </script>
+          <script>
+            let seciliAdres = null;
+
+            function acModal(link) {
+              seciliAdres = link; // düzenlenecek link
+              document.getElementById("adresLink").value = link;
+              var modal = new bootstrap.Modal(
+                document.getElementById("duzenleModal")
+              );
+              modal.show();
+            }
+
+            function kaydetLink() {
+              const yeniLink = document.getElementById("adresLink").value;
+              console.log("Kaydedilen yeni link:", yeniLink);
+              // burada artık veriyi backend'e gönder veya dizini güncelle
+              // örneğin:
+              // adresListesi[guncellenecekIndex].link = yeniLink;
+            }
+          </script>
+          <script>
+            function toggleDropdown(button) {
+              const row = button.closest("tr");
+
+              // GPS ikonunun bulunduğu hücreden sonra gelen ilk td (adres metni)
+              const cells = row.querySelectorAll("td");
+              let textCell = null;
+              for (let i = 0; i < cells.length; i++) {
+                if (cells[i].querySelector("a")) {
+                  textCell = cells[i + 1];
+                  break;
+                }
+              }
+
+              if (!textCell) return;
+              const currentText = textCell.innerText.trim();
+              const gpsLink = row.querySelector("a");
+              const mevcutLink = gpsLink.getAttribute("href");
+
+              if (textCell.querySelector("input")) return;
+
+              textCell.setAttribute("data-original-text", currentText);
+
+              textCell.innerHTML = `
+    <input type="text" id="adresInput" value="${mevcutLink}" style="width: 80%; margin-right: 10px;">
+    <button onclick="saveLink(this)" class="ikincilButon">Kaydet</button>
+  `;
+            }
+
+            function saveLink(saveBtn) {
+              const cell = saveBtn.closest("td");
+              const row = saveBtn.closest("tr");
+              const newLink = cell.querySelector("#adresInput").value;
+
+              const gpsLink = row.querySelector("a");
+              gpsLink.setAttribute("href", newLink);
+
+              const originalText = cell.getAttribute("data-original-text");
+              cell.innerHTML = originalText;
+
+              console.log("Yeni link kaydedildi:", newLink);
+            }
           </script>
         </div>
       </div>
