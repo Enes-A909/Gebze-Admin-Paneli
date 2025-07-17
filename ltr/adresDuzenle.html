@@ -849,15 +849,7 @@
                   ) {
                     const crd = document.getElementsByClassName("crd")[photoId];
                     crd.innerHTML = `
-                   <div
-                    class="d-flex align-items-start gap-4 mb-4 crd p-0"
-                    style="
-                      background: #fff;
-                      padding: 20px;
-                      border-radius: 10px;
-                      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-                    "
-                  >
+                  
                     <!-- Sol: Resim -->
                     <div style="flex: 0 0 300px">
                       <img
@@ -1226,7 +1218,7 @@
                             />
                           </li>
                         </ul>
-                      </div>`;
+                      `;
 
                     document.querySelectorAll(".remove").forEach((btn) => {
                       btn.addEventListener("click", function () {
