@@ -2148,8 +2148,17 @@
           </script>
           <script>
             function seoOlustur() {
-              document.getElementById("icerikler").style.display = "none";
-              document.getElementById("seoAlani").style.display = "block";
+              document.getElementById(
+                "icerikler"
+              ).innerHTML = `<div class="container-sm">
+            <div class="card w-75">
+              <div class="card-body">
+                <h5 class="card-title">SEO OLUŞTUR</h5>
+                <p class="card-text">SEO OLUŞTUR</p>
+                <a href="#" class="btn btn-primary">KAYDET</a>
+              </div>
+            </div>
+          </div>`;
             }
 
             function seoIptal() {
@@ -2171,18 +2180,6 @@
               seoIptal();
             }
           </script>
-        </div>
-      </div>
-    </div>
-    <div class="container-sm">
-      <div class="card w-75">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a href="#" class="btn btn-primary">Button</a>
         </div>
       </div>
     </div>
