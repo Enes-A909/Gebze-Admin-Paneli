@@ -2,6 +2,66 @@
 <html lang="tr">
   <head>
     <style>
+      .seo-container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 24px;
+        background-color: #f8f9fa;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      }
+
+      #seoInput {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-top: 8px;
+        box-sizing: border-box;
+      }
+
+      /* Butonlar */
+      .btn {
+        padding: 10px 20px;
+        background-color: #444;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      .btn:hover {
+        background-color: #222;
+      }
+
+      .btn-cancel {
+        background-color: #aaa;
+      }
+
+      .btn-cancel:hover {
+        background-color: #888;
+      }
+
+      .ikincilButon {
+        border-radius: 5px;
+        background-color: rgba(70, 244, 70, 0.455);
+        border: none;
+      }
+      .ikincilButon:focus,
+      .ikincilButon:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+      .seoButonu:focus,
+      .seoButonu:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+
       .ekle-butonu,
       .arsivle-butonu,
       .sil-butonu {
@@ -596,6 +656,25 @@
           <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid d-flex justify-content-end"></div>
             <style>
+              .seoButonu {
+                background-color: rgba(0, 0, 0, 0.542);
+                margin-right: 10px;
+                border: none;
+                border-radius: 12px;
+                width: 100px;
+                height: 36px;
+
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: white;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                user-select: none;
+              }
+              .seoButonu:hover {
+                transform: scale(1.1);
+                filter: brightness(85%);
+              }
               .buton {
                 height: 36px;
                 border-radius: 12px;
@@ -690,6 +769,10 @@
                 background-color: #f44336a8;
               }
             </style>
+            <!--Seo-->
+            <button class="seoButonu">
+              <span onclick="seoOlustur()">Seo</span>
+            </button>
 
             <!-- EKLE -->
             <button class="buton ekle-butonu">
@@ -879,7 +962,7 @@
                       </svg>
                     </a>
                   </td>
-                  <td colspan="9">Mollafeneri Zabıta Amirliği</td>
+                  <td colspan="9">Mollafenari Zabıta Amirliği</td>
                   <td style="text-align: right">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
@@ -1179,7 +1262,7 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Gesmek Ademyavuz Mahalle Kursu</td>
+                  <td>Gesmek Adem Yavuz Mahalle Kursu</td>
                   <td style="text-align: right">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
@@ -1478,7 +1561,7 @@
                       >
                         <path
                           d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5
-      c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+                          c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
                         />
                       </svg>
                     </a>
@@ -1506,7 +1589,7 @@
                       >
                         <path
                           d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5
-      c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+                          c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
                         />
                       </svg>
                     </a>
@@ -1534,7 +1617,7 @@
                       >
                         <path
                           d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5
-      c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+                          c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
                         />
                       </svg>
                     </a>
@@ -1564,7 +1647,7 @@
                       >
                         <path
                           d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5
-      c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+                          c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
                         />
                       </svg>
                     </a>
@@ -1999,6 +2082,103 @@
             window.onload = function () {
               filtrele("amirlikler");
             };
+          </script>
+          <script>
+            let seciliAdres = null;
+
+            function acModal(link) {
+              seciliAdres = link; // düzenlenecek link
+              document.getElementById("adresLink").value = link;
+              var modal = new bootstrap.Modal(
+                document.getElementById("duzenleModal")
+              );
+              modal.show();
+            }
+
+            function kaydetLink() {
+              const yeniLink = document.getElementById("adresLink").value;
+              console.log("Kaydedilen yeni link:", yeniLink);
+              // burada artık veriyi backend'e gönder veya dizini güncelle
+              // örneğin:
+              // adresListesi[guncellenecekIndex].link = yeniLink;
+            }
+          </script>
+          <script>
+            function toggleDropdown(button) {
+              const row = button.closest("tr");
+
+              // GPS ikonunun bulunduğu hücreden sonra gelen ilk td (adres metni)
+              const cells = row.querySelectorAll("td");
+              let textCell = null;
+              for (let i = 0; i < cells.length; i++) {
+                if (cells[i].querySelector("a")) {
+                  textCell = cells[i + 1];
+                  break;
+                }
+              }
+
+              if (!textCell) return;
+              const currentText = textCell.innerText.trim();
+              const gpsLink = row.querySelector("a");
+              const mevcutLink = gpsLink.getAttribute("href");
+
+              if (textCell.querySelector("input")) return;
+
+              textCell.setAttribute("data-original-text", currentText);
+
+              textCell.innerHTML = `
+    <input type="text" id="adresInput" value="${mevcutLink}" style="width: 80%; margin-right: 10px;">
+    <button onclick="saveLink(this)" class="ikincilButon">Kaydet</button>
+  `;
+            }
+
+            function saveLink(saveBtn) {
+              const cell = saveBtn.closest("td");
+              const row = saveBtn.closest("tr");
+              const newLink = cell.querySelector("#adresInput").value;
+
+              const gpsLink = row.querySelector("a");
+              gpsLink.setAttribute("href", newLink);
+
+              const originalText = cell.getAttribute("data-original-text");
+              cell.innerHTML = originalText;
+
+              console.log("Yeni link kaydedildi:", newLink);
+            }
+          </script>
+          <script>
+            function seoOlustur() {
+              document.getElementById(
+                "icerikler"
+              ).innerHTML = `<div class="container-sm">
+            <div class="card w-75">
+              <div class="card-body">
+                <h5 class="card-title">SEO OLUŞTUR</h5>
+                <p class="card-text">SEO OLUŞTUR</p>
+                <a href="#" class="btn btn-primary">KAYDET</a>
+              </div>
+            </div>
+          </div>`;
+            }
+
+            function seoIptal() {
+              document.getElementById("seoAlani").style.display = "none";
+              document.getElementById("icerikler").style.display = "block";
+            }
+
+            function seoKaydet() {
+              const input = document.getElementById("seoInput").value;
+              const seoUrl = input
+                .toLowerCase()
+                .replace(/[^a-z0-9ğüşıöç\s-]/g, "")
+                .replace(/\s+/g, "-")
+                .replace(/-+/g, "-")
+                .replace(/^-|-$/g, "");
+
+              document.getElementById("seoOutput").textContent = seoUrl;
+              alert("SEO URL oluşturuldu: " + seoUrl);
+              seoIptal();
+            }
           </script>
         </div>
       </div>
