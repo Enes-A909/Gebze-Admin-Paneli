@@ -2,6 +2,48 @@
 <html lang="tr">
   <head>
     <style>
+      .seo-container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 24px;
+        background-color: #f8f9fa;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      }
+
+      #seoInput {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-top: 8px;
+        box-sizing: border-box;
+      }
+
+      /* Butonlar */
+      .btn {
+        padding: 10px 20px;
+        background-color: #444;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      .btn:hover {
+        background-color: #222;
+      }
+
+      .btn-cancel {
+        background-color: #aaa;
+      }
+
+      .btn-cancel:hover {
+        background-color: #888;
+      }
+
       .ikincilButon {
         border-radius: 5px;
         background-color: rgba(70, 244, 70, 0.455);
@@ -9,6 +51,12 @@
       }
       .ikincilButon:focus,
       .ikincilButon:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+      .seoButonu:focus,
+      .seoButonu:focus-visible {
         outline: none !important;
         box-shadow: none !important;
         border-color: transparent !important;
@@ -608,6 +656,25 @@
           <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid d-flex justify-content-end"></div>
             <style>
+              .seoButonu {
+                background-color: rgba(0, 0, 0, 0.542);
+                margin-right: 10px;
+                border: none;
+                border-radius: 12px;
+                width: 100px;
+                height: 36px;
+
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: white;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                user-select: none;
+              }
+              .seoButonu:hover {
+                transform: scale(1.1);
+                filter: brightness(85%);
+              }
               .buton {
                 height: 36px;
                 border-radius: 12px;
@@ -702,6 +769,10 @@
                 background-color: #f44336a8;
               }
             </style>
+            <!--Seo-->
+            <button class="seoButonu">
+              <span onclick="seoOlustur()">Seo</span>
+            </button>
 
             <!-- EKLE -->
             <button class="buton ekle-butonu">
@@ -2073,6 +2144,31 @@
               cell.innerHTML = originalText;
 
               console.log("Yeni link kaydedildi:", newLink);
+            }
+          </script>
+          <script>
+            function seoOlustur() {
+              document.getElementById("icerikler").style.display = "none";
+              document.getElementById("seoAlani").style.display = "block";
+            }
+
+            function seoIptal() {
+              document.getElementById("seoAlani").style.display = "none";
+              document.getElementById("icerikler").style.display = "block";
+            }
+
+            function seoKaydet() {
+              const input = document.getElementById("seoInput").value;
+              const seoUrl = input
+                .toLowerCase()
+                .replace(/[^a-z0-9ğüşıöç\s-]/g, "")
+                .replace(/\s+/g, "-")
+                .replace(/-+/g, "-")
+                .replace(/^-|-$/g, "");
+
+              document.getElementById("seoOutput").textContent = seoUrl;
+              alert("SEO URL oluşturuldu: " + seoUrl);
+              seoIptal();
             }
           </script>
         </div>
