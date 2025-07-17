@@ -11,12 +11,26 @@
       }
       table {
         border-radius: 10px;
+        border-collapse: separate;
+        overflow: hidden;
+        background-color: white;
+        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+      }
+      thead,
+      tbody {
+        background-color: transparent;
+      }
+
+      table tr {
+        transition: background-color 0.3s ease;
+        border-radius: 10px;
       }
 
       table tr:hover {
         background-color: #cccccc;
-        cursor: pointer;
         transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
       }
 
       table tr button {
@@ -50,7 +64,7 @@
       }
 
       .dropdown-toggle {
-        background-color: rgba(68, 127, 245, 0.351);
+        background-color: rgba(68, 127, 245, 0.359);
         color: black;
         border: none;
         padding: 6px 10px;
@@ -89,7 +103,7 @@
         font-weight: bold;
         padding: 10px 12px 5px;
         font-size: 13px;
-        color: #444;
+        color: #f24040;
         border-bottom: 1px solid #eee;
         margin-bottom: 5px;
       }
@@ -105,8 +119,8 @@
       }
 
       .arşiv {
-        background-color: #7d373769;
-
+        background-color: #ab707069;
+        color: white;
         padding: 4px 8px;
         border-radius: 15px;
         font-size: 13px;
@@ -116,6 +130,13 @@
 
       .dropdown-toggle:focus,
       .dropdown-toggle:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+      .ekle-butonu,
+      .arsivle-butonu,
+      .sil-butonu {
         outline: none !important;
         box-shadow: none !important;
         border-color: transparent !important;
