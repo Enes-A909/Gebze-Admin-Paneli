@@ -3,31 +3,222 @@
 
 <head>
     <style>
-        .logo-img {
-            height: 200px !important;
-            /* Boyutu küçültür */
-            object-fit: contain;
-            display: block;
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+        } */
 
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
         }
 
-        .index-img {
-            height: 70px !important;
-            /* Boyutu küçültür */
-            object-fit: contain;
-            display: block;
-            margin-right: 100px;
+        .profile-card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 750px;
+            box-sizing: border-box;
+            position: relative;
+            /* Overlay için */
         }
 
-        #saveProfileBtn,
-        #customButton {
-            background-color: rgb(86, 140, 240);
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profile-photo-section {
+            margin-bottom: 30px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-photo-wrapper {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            border: 3px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            /* Tıklanabilir olduğunu belirtmek için */
+        }
+
+        .profile-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .edit-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+            /* Overlay'ı da yuvarlak yap */
+        }
+
+        .profile-photo-wrapper:hover .edit-overlay {
+            opacity: 1;
+        }
+
+        .edit-overlay i {
+            color: #fff;
+            font-size: 36px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="password"] {
+            width: calc(100% - 2px);
+            /* Padding'i hesaba kat */
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            /* Padding'in genişliğe dahil edilmesini sağlar */
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #007bff;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon input {
+            width: calc(100% - 45px);
+            /* İkon için yer bırak */
+            padding-right: 40px;
+            /* İkonun üzerine binmemesi için */
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            cursor: pointer;
+            /* İkonların tıklanabilir olduğunu belirtmek için */
+        }
+
+        .green-icon {
+            color: #28a745;
+            /* Yeşil tik */
+        }
+
+        .red-icon {
+            color: #dc3545;
+            /* Kırmızı çarpı */
+        }
+
+        .password-toggle-icon {
+            color: #6c757d;
+            /* Göz ikonunun rengi */
+        }
+
+        .link-group {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .link-group a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .link-group a:hover {
+            color: #0056b3;
+        }
+
+        .no-underline {
+            text-decoration: none;
+        }
+
+        .save-button {
+            background-color: #3f92ec;
             color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+            width: 50%;
         }
 
-        #saveProfileBtn:hover,
-        #customButton:hover {
-            background-color: rgba(56, 119, 255, 0.948);
+        .save-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Duyarlı Tasarım */
+        @media (max-width: 600px) {
+            .profile-card {
+                padding: 25px;
+                margin: 15px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .form-group input {
+                font-size: 14px;
+            }
+
+            .save-button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
         }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -70,6 +261,8 @@
     <link id="color" rel="stylesheet" href="../assets/css/light-1.css" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -251,75 +444,61 @@
                 <br><br>
 
                 <!-- İçeriklerin Yükleneceği Alan -->
-                <div id="icerikler">
+                <!-- <div id="icerikler">
+                </div> -->
+                <div class="card-container">
+                    <div class="profile-card">
+                        <h2>PROFİL DÜZENLE</h2>
 
-                    <div class="d-flex flex-wrap gap-4 justify-content-center">
-
-                        <!-- 📷 Profil Fotoğrafı Kartı -->
-                        <div class="card" style="flex: 1; max-width: 25%; box-shadow: 0 4px 10px grey;">
-                            <div class="d-flex align-items-center justify-content-center bg-light border-bottom"
-                                style="height: 250px;">
-                                <img id="previewImage" src="" alt="Profil Fotoğrafı"
-                                    style="max-height: 100%; max-width: 100%; display: none;">
-                                <span id="placeholderText" class="text-muted">Henüz fotoğraf yüklenmedi</span>
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Profil Fotoğrafı</h5>
-                                <input type="file" id="imageInput" accept="image/*" style="display: none;">
-                                <button type="button" class="btn" id="customButton">Fotoğraf
-                                    Seç</button><br><br>
-
-                                <hr style="margin-top: -5px;">
-
-                                <div class="bilgiler">
-                                    <h4 class="ad-soyad">İsim Soyisim</h4><br>
-                                    <p>E-Posta: <span>ahmet@ornek.com</span></p>
-                                    <p>Telefon: <span>+90 555 555 5555</span></p>
-
+                        <div class="profile-photo-section">
+                            <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
+                            <div class="profile-photo-wrapper" id="profilePhotoWrapper">
+                                <img src="default-profile.png" alt="" id="profilePhoto">
+                                <div class="edit-overlay" id="editOverlay">
+                                    <i class="fas fa-camera"></i>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 📝 Profil Bilgileri Kartı -->
-                        <div class="card" style="flex: 3; max-width: 70%; box-shadow: 0 4px 10px grey;">
-                            <div class="card-body">
-                                <h5 class="card-title">Profil Bilgileri</h5>
+                        <div class="form-group">
+                            <label for="fullName">Ad - Soyad</label>
+                            <input type="text" id="fullName" placeholder="Adınızı ve Soyadınızı Girin">
+                        </div>
 
-                                <div class="mb-3">
-                                    <label for="fullName" class="form-label">Ad Soyad</label>
-                                    <input type="text" class="form-control" id="fullName" placeholder="Ahmet Yılmaz">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">E-posta</label>
-                                    <input type="email" class="form-control" id="email" placeholder="ahmet@ornek.com">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Telefon</label>
-                                    <input type="tel" class="form-control" id="phone" placeholder="05xx xxx xx xx">
-                                </div>
-
-                                <!-- 🔐 Yeni Şifre -->
-                                <div class="mb-3 position-relative">
-                                    <label for="password" class="form-label">Yeni Şifre</label>
-                                    <input type="password" class="form-control" id="password" placeholder="********">
-                                    <i data-feather="eye" class="position-absolute" id="togglePassword"
-                                        style="top: 40px; right: 10px; cursor: pointer;"></i>
-                                </div>
-
-                                <!-- 🔐 Yeni Şifre Tekrar -->
-                                <div class="mb-3 position-relative">
-                                    <label for="passwordRepeat" class="form-label">Yeni Şifre (Tekrar)</label>
-                                    <input type="password" class="form-control" id="passwordRepeat"
-                                        placeholder="********">
-                                    <i data-feather="eye" class="position-absolute" id="togglePasswordRepeat"
-                                        style="top: 40px; right: 10px; cursor: pointer;"></i>
-                                </div>
-
-                                <button class="btn" id="saveProfileBtn">Kaydet</button>
+                        <div class="form-group">
+                            <label for="email">E-Posta</label>
+                            <div class="input-with-icon">
+                                <input type="email" id="email" placeholder="ornek@mail.com">
+                                <i class="fas fa-check-circle verified-icon green-icon"></i>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefon Numarası</label>
+                            <div class="input-with-icon">
+                                <input type="tel" id="phone" placeholder="5xx xxx xx xx">
+                                <i class="fas fa-times-circle unverified-icon red-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPassword">Yeni Şifre</label>
+                            <div class="input-with-icon">
+                                <input type="password" id="newPassword" placeholder="Yeni şifrenizi girin">
+                                <i class="fas fa-eye-slash password-toggle-icon" id="toggleNewPassword"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmNewPassword">Yeni Şifre Tekrar</label>
+                            <div class="input-with-icon">
+                                <input type="password" id="confirmNewPassword"
+                                    placeholder="Yeni şifrenizi tekrar girin">
+                                <i class="fas fa-eye-slash password-toggle-icon" id="toggleConfirmNewPassword"></i>
+                            </div>
+                        </div>
+
+                        <button class="save-button">Kaydet</button>
                     </div>
                 </div>
 
@@ -351,66 +530,92 @@
                 <!-- Plugin used-->
 
                 <script>
-                    // Fotoğraf önizleme
-                    const imageInput = document.getElementById('imageInput');
-                    const customButton = document.getElementById('customButton');
-                    const previewImage = document.getElementById('previewImage');
-                    const placeholderText = document.getElementById('placeholderText');
+                    document.addEventListener('DOMContentLoaded', () => {
+                        // Profil Fotoğrafı Yükleme İşlevi
+                        const profilePhotoWrapper = document.getElementById('profilePhotoWrapper');
+                        const profilePhotoInput = document.getElementById('profilePhotoInput');
+                        const profilePhoto = document.getElementById('profilePhoto');
 
-                    customButton.addEventListener('click', () => imageInput.click());
-
-                    imageInput.addEventListener('change', function () {
-                        const file = this.files[0];
-                        if (file) {
-                            const reader = new FileReader();
-                            reader.onload = function (e) {
-                                previewImage.src = e.target.result;
-                                previewImage.style.display = 'block';
-                                placeholderText.style.display = 'none';
-                            };
-                            reader.readAsDataURL(file);
-                        }
-                    });
-
-                    // Şifre göster/gizle işlemi
-                    function attachTogglePassword(iconId, inputId) {
-                        const icon = document.getElementById(iconId);
-                        icon.addEventListener("click", function () {
-                            const input = document.getElementById(inputId);
-                            const isPassword = input.type === "password";
-
-                            input.type = isPassword ? "text" : "password";
-                            icon.setAttribute("data-feather", isPassword ? "eye-off" : "eye");
-
-                            // feather.replace yeniden çağrıldığında yeni SVG oluşacağı için,
-                            // önce eski event’i kaldırıp sonra yeniden bağlayamıyoruz.
-                            // Bunun yerine event’i yeniden bağlarız:
-                            feather.replace();
-
-                            // Yeni oluşturulan SVG’ye tekrar event bağla
-                            setTimeout(() => attachTogglePassword(iconId, inputId), 0);
+                        profilePhotoWrapper.addEventListener('click', () => {
+                            profilePhotoInput.click(); // Gizli dosya input'unu tetikle
                         });
-                    }
 
-                    // Event'leri ilk kez bağla
-                    attachTogglePassword("togglePassword", "password");
-                    attachTogglePassword("togglePasswordRepeat", "passwordRepeat");
+                        profilePhotoInput.addEventListener('change', (event) => {
+                            const file = event.target.files[0];
+                            if (file) {
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                    profilePhoto.src = e.target.result; // Seçilen resmi önizleme olarak göster
+                                };
+                                reader.readAsDataURL(file);
+                            }
+                        });
 
-                    // Kaydet butonu
-                    document.getElementById('saveProfileBtn').addEventListener('click', () => {
-                        const adSoyad = document.getElementById('fullName').value;
-                        const email = document.getElementById('email').value;
-                        const tel = document.getElementById('phone').value;
-                        const sifre = document.getElementById('password').value;
-                        const sifreTekrar = document.getElementById('passwordRepeat').value;
+                        // Şifre Göster/Gizle İşlevi
+                        const togglePassword = (inputId, toggleIconId) => {
+                            const passwordInput = document.getElementById(inputId);
+                            const toggleIcon = document.getElementById(toggleIconId);
 
-                        if (sifre !== sifreTekrar) {
-                            alert("Şifreler eşleşmiyor!");
-                            return;
-                        }
+                            toggleIcon.addEventListener('click', () => {
+                                if (passwordInput.type === 'password') {
+                                    passwordInput.type = 'text';
+                                    toggleIcon.classList.remove('fa-eye-slash');
+                                    toggleIcon.classList.add('fa-eye'); // Normal göz
+                                } else {
+                                    passwordInput.type = 'password';
+                                    toggleIcon.classList.remove('fa-eye');
+                                    toggleIcon.classList.add('fa-eye-slash'); // Üstü çizili göz
+                                }
+                            });
+                        };
 
-                        console.log("Profil Güncellendi:", { adSoyad, email, tel, sifre });
-                        alert("Profil başarıyla güncellendi!");
+                        togglePassword('newPassword', 'toggleNewPassword');
+                        togglePassword('confirmNewPassword', 'toggleConfirmNewPassword');
+
+                        // Telefon Numarası Maskeleme (isteğe bağlı, daha gelişmiş kütüphanelerle yapılabilir)
+                        const phoneInput = document.getElementById('phone');
+                        phoneInput.addEventListener('input', (e) => {
+                            let value = e.target.value.replace(/\D/g, ''); // Sadece rakamları al
+                            let formattedValue = '';
+                            if (value.length > 0) {
+                                formattedValue += '(' + value.substring(0, 3);
+                            }
+                            if (value.length > 3) {
+                                formattedValue += ') ' + value.substring(3, 6);
+                            }
+                            if (value.length > 6) {
+                                formattedValue += ' ' + value.substring(6, 8);
+                            }
+                            if (value.length > 8) {
+                                formattedValue += ' ' + value.substring(8, 10);
+                            }
+                            e.target.value = formattedValue;
+                        });
+
+                        // Kaydet Butonu İşlevi (örnek)
+                        const saveButton = document.querySelector('.save-button');
+                        saveButton.addEventListener('click', () => {
+                            const fullName = document.getElementById('fullName').value;
+                            const email = document.getElementById('email').value;
+                            const phone = document.getElementById('phone').value;
+                            const newPassword = document.getElementById('newPassword').value;
+                            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+                            // Basit validasyon örnekleri
+                            if (!fullName || !email || !phone || !newPassword || !confirmNewPassword) {
+                                alert('Lütfen tüm alanları doldurun!');
+                                return;
+                            }
+
+                            if (newPassword !== confirmNewPassword) {
+                                alert('Yeni şifreler uyuşmuyor!');
+                                return;
+                            }
+
+                            // Burada gerçek bir sunucuya veri gönderme veya bilgileri kaydetme işlemleri yapılır.
+                            console.log('Profil Bilgileri:', { fullName, email, phone, newPassword });
+                            alert('Profil bilgileriniz başarıyla güncellendi!');
+                        });
                     });
                 </script>
 
