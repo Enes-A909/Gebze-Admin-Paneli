@@ -126,6 +126,100 @@
     .table-responsive {
       overflow-x: hidden !important;
     }
+
+    .buton {
+      height: 36px;
+      border-radius: 12px;
+      border: none;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0 16px;
+      width: auto;
+      /* Genişlik içeriğe göre */
+      margin-right: 8px;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      user-select: none;
+    }
+
+    .buton:hover {
+      transform: scale(1.1);
+      filter: brightness(85%);
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      position: relative;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+
+    /* EKLE (artı) */
+    .arti::before,
+    .arti::after {
+      content: "";
+      position: absolute;
+      background-color: white;
+      border-radius: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .arti::before {
+      width: 2px;
+      height: 14px;
+    }
+
+    .arti::after {
+      width: 14px;
+      height: 2px;
+    }
+
+    /* ARŞİVLE (kutu) */
+    .kutu::before,
+    .kutu::after {
+      content: "";
+      position: absolute;
+      background-color: white;
+      border-radius: 1px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .kutu::before {
+      width: 14px;
+      height: 4px;
+      top: 4px;
+    }
+
+    .kutu::after {
+      width: 14px;
+      height: 8px;
+      top: 9px;
+    }
+
+    /* SİL SVG path renk beyaz */
+    .sil-butonu svg path {
+      fill: white;
+    }
+
+    /* Renkler */
+    .ekle-butonu {
+      background-color: #4CAF50;
+    }
+
+    .arsivle-butonu {
+      background-color: #2196F3;
+    }
+
+    .sil-butonu {
+      background-color: #F44336;
+    }
   </style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -370,7 +464,7 @@
               <div class="col">
                 <div class="page-header-left">
                   <h3>Kullanıcılar</h3>
-                  <ol class="breadcrumb">
+                  <ol class="breadcrumb" style="margin-top: 85px; margin-left: -180px;">
                     <li class="breadcrumb-item">
                       <a href="index.html"><i data-feather="home"></i></a>
                     </li>
@@ -387,101 +481,6 @@
         <!-- Benim yaptığım navbar kısmı -->
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid d-flex justify-content-end">
-            <style>
-              .buton {
-                height: 36px;
-                border-radius: 12px;
-                border: none;
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                padding: 0 16px;
-                width: auto;
-                /* Genişlik içeriğe göre */
-                margin-right: 8px;
-                color: white;
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                user-select: none;
-              }
-
-              .buton:hover {
-                transform: scale(1.1);
-                filter: brightness(85%);
-              }
-
-              .icon {
-                width: 16px;
-                height: 16px;
-                position: relative;
-                flex-shrink: 0;
-                margin-right: 8px;
-              }
-
-              /* EKLE (artı) */
-              .arti::before,
-              .arti::after {
-                content: "";
-                position: absolute;
-                background-color: white;
-                border-radius: 1px;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-              }
-
-              .arti::before {
-                width: 2px;
-                height: 14px;
-              }
-
-              .arti::after {
-                width: 14px;
-                height: 2px;
-              }
-
-              /* ARŞİVLE (kutu) */
-              .kutu::before,
-              .kutu::after {
-                content: "";
-                position: absolute;
-                background-color: white;
-                border-radius: 1px;
-                left: 50%;
-                transform: translateX(-50%);
-              }
-
-              .kutu::before {
-                width: 14px;
-                height: 4px;
-                top: 4px;
-              }
-
-              .kutu::after {
-                width: 14px;
-                height: 8px;
-                top: 9px;
-              }
-
-              /* SİL SVG path renk beyaz */
-              .sil-butonu svg path {
-                fill: white;
-              }
-
-              /* Renkler */
-              .ekle-butonu {
-                background-color: #4CAF50;
-              }
-
-              .arsivle-butonu {
-                background-color: #2196F3;
-              }
-
-              .sil-butonu {
-                background-color: #F44336;
-              }
-            </style>
 
             <!-- EKLE -->
             <button class="buton ekle-butonu">
@@ -647,24 +646,9 @@
         <script src="../assets/js/sidebar-menu.js"></script>
         <script src="../assets/js/config.js"></script>
         <!-- Plugins JS start-->
-        <script src="../assets/js/chart/chartist/chartist.js"></script>
-        <script src="../assets/js/chart/knob/knob.min.js"></script>
-        <script src="../assets/js/chart/knob/knob-chart.js"></script>
-        <script src="../assets/js/prism/prism.min.js"></script>
-        <script src="../assets/js/clipboard/clipboard.min.js"></script>
-        <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
-        <script src="../assets/js/counter/jquery.counterup.min.js"></script>
-        <script src="../assets/js/counter/counter-custom.js"></script>
-        <script src="../assets/js/custom-card/custom-card.js"></script>
-        <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
-        <script src="../assets/js/dashboard/default.js"></script>
-        <script src="../assets/js/notify/index.js"></script>
-        <script src="../assets/js/typeahead/handlebars.js"></script>
+
         <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
         <script src="../assets/js/typeahead/typeahead.custom.js"></script>
-        <script src="../assets/js/chat-menu.js"></script>
-        <script src="../assets/js/height-equal.js"></script>
-        <script src="../assets/js/tooltip-init.js"></script>
         <script src="../assets/js/typeahead-search/handlebars.js"></script>
         <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
         <!-- Plugins JS Ends-->
