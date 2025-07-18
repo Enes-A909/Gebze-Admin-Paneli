@@ -9,8 +9,12 @@
         box-shadow: none !important;
         border-color: transparent !important;
       }
+      html {
+        overflow-y: scroll;
+      }
       table {
         border-radius: 10px;
+        table-layout: fixed;
       }
 
       table tr {
@@ -37,6 +41,9 @@
       }
       table td {
         max-width: 18%;
+      }
+      tble td .exp {
+        width: 18%;
       }
 
       .dropdown-container {
@@ -112,16 +119,12 @@
         background-color: rgba(204, 204, 204, 0.186);
         border-radius: 5px;
         border: 2px solid #699aba;
-        width: 60%;
+        width: 80%;
         height: 30px;
       }
 
       #search:focus {
         background-color: rgba(204, 204, 204, 0.186);
-        border-radius: 5px;
-        border: 2px solid #699aba;
-        width: 60%;
-        height: 30px;
       }
 
       #search:hover {
@@ -673,8 +676,8 @@
                     <th scope="col" style="width: 14%">Haber Başlığı</th>
                     <th scope="col" style="width: 14%">Kategori</th>
                     <th scope="col" style="width: 10%">Tarih</th>
-                    <th scope="col" style="width: 10%">Açıklama</th>
-                    <th scope="col" colspan="7" style="text-align: right">
+                    <th scope="col" style="width: 18%">Açıklama</th>
+                    <th scope="col" style="text-align: right">
                       <input
                         type="text"
                         name="search"
@@ -773,7 +776,7 @@
                     </td>
                     <td style="width: 14%" class="management">Başkanlık</td>
                     <td style="width: 10%" class="date">15.09.2023</td>
-                    <td style="width: 10%" class="exp">
+                    <td style="width: 18%" class="exp">
                       Turnuvada bir üst tura yükseldi
                     </td>
                     <td style="text-align: right">
@@ -1239,10 +1242,23 @@
           </script>
           <!-- SEARCH KISMI -->
           <script>
+            let originalContent = ``;
             function search() {
+              document
+                .getElementById("search")
+                .addEventListener("input", search);
               const searchText = document.getElementById("search");
-              const searchButton = document.getElementById("searchBtn");
               const news = document.getElementsByClassName("news");
+              const content = document.getElementById("tableContent");
+
+              if (originalContent === "") {
+                originalContent = content.innerHTML;
+              }
+
+              if (searchText.value.trim() === "") {
+                content.innerHTML = originalContent;
+                return;
+              }
 
               const newsTitle = [];
 
@@ -1250,7 +1266,6 @@
                 newsTitle.push(news[i]);
               }
 
-              const content = document.getElementById("tableContent");
               content.innerHTML = ``;
               var count = 0;
               newsTitle.forEach((title) => {
@@ -1322,12 +1337,14 @@
                   count++;
                 }
               });
+
               if (count == newsTitle.length) {
-                document.getElementById("tableContent").innerHTML = `<tr>
-                  <td style="width: 100%" colspan="12">
-                    <span style="color: #2196f3;" class = "d-flex justify-content-center"
-                      >ARMANIZLA İLGİLİ BİR SONUÇ BULUNAMADI!</span
-                    >
+                document.getElementById("tableContent").innerHTML = `
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 20px;">
+                    <span style="color: #2196f3; font-weight: bold;">
+                      ARAMANIZLA İLGİLİ BİR SONUÇ BULUNAMADI!
+                    </span>
                   </td>
                 </tr>`;
               }
