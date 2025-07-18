@@ -1255,8 +1255,10 @@
               var count = 0;
               newsTitle.forEach((title) => {
                 if (
-                  title.textContent.trim().toLowerCase() ==
-                  searchText.value.trim().toLowerCase()
+                  title.textContent
+                    .trim()
+                    .toLowerCase()
+                    .includes(searchText.value.trim().toLowerCase())
                 ) {
                   const tr = title.closest("tr");
                   const td = tr.querySelectorAll("td");
