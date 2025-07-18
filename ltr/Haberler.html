@@ -39,11 +39,10 @@
         transition: transform 0.3s ease !important;
         transform: scale(1.2);
       }
-      table td {
-        max-width: 18%;
-      }
-      tble td .exp {
-        width: 18%;
+      .dot {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .dropdown-container {
@@ -113,6 +112,10 @@
         object-fit: contain;
         display: block;
         margin-right: 100px;
+      }
+
+      .findClass {
+        background-color: rgba(228, 228, 48, 0.776);
       }
 
       #search {
@@ -706,12 +709,20 @@
                         style="margin-left: 18%"
                       />
                     </td>
-                    <td style="width: 16%" class="news">
+                    <td
+                      style="width: 16%"
+                      class="news dot"
+                      title="Ekonomide Büyüme Rakamları Açıklandı"
+                    >
                       Ekonomide Büyüme Rakamları Açıklandı
                     </td>
                     <td style="width: 14%" class="management">Başkanlık</td>
                     <td style="width: 10%" class="date">19.06.2024</td>
-                    <td style="width: 18%" class="exp">
+                    <td
+                      style="width: 18%"
+                      class="exp dot"
+                      title="Bu yılın ikinci çeyreğinde ekonomi %5.2 büyüdü"
+                    >
                       Bu yılın ikinci çeyreğinde ekonomi %5.2 büyüdü
                     </td>
                     <td style="text-align: right">
@@ -771,12 +782,20 @@
                         style="margin-left: 18%"
                       />
                     </td>
-                    <td style="width: 14%" class="news">
+                    <td
+                      style="width: 14%"
+                      class="news dot"
+                      title="Basketbol Takımımız Gruplardan Çıktı"
+                    >
                       Basketbol Takımımız Gruplardan Çıktı
                     </td>
                     <td style="width: 14%" class="management">Başkanlık</td>
                     <td style="width: 10%" class="date">15.09.2023</td>
-                    <td style="width: 18%" class="exp">
+                    <td
+                      style="width: 18%"
+                      class="exp dot"
+                      title="Turnuvada bir üst tura yükseldi"
+                    >
                       Turnuvada bir üst tura yükseldi
                     </td>
                     <td style="text-align: right">
@@ -836,10 +855,12 @@
                         style="margin-left: 18%"
                       />
                     </td>
-                    <td style="width: 14%" class="news">haber</td>
+                    <td style="width: 14%" class="news dot" title="haber">
+                      haber
+                    </td>
                     <td style="width: 14%" class="management">Yönetim</td>
                     <td style="width: 10%" class="date">30.02.2025</td>
-                    <td style="width: 10%" class="exp">...</td>
+                    <td style="width: 10%" class="exp dot" title="...">...</td>
                     <td style="text-align: right">
                       <div class="dropdown-container">
                         <button
@@ -897,10 +918,12 @@
                         style="margin-left: 18%"
                       />
                     </td>
-                    <td style="width: 14%" class="news">haber</td>
+                    <td style="width: 14%" class="news dot" title="haber">
+                      haber
+                    </td>
                     <td style="width: 14%" class="management">Yönetim</td>
                     <td style="width: 10%" class="date">30.02.2025</td>
-                    <td style="width: 10%" class="exp">...</td>
+                    <td style="width: 10%" class="exp dot" title="...">...</td>
                     <td style="text-align: right">
                       <div class="dropdown-container">
                         <button
@@ -958,10 +981,12 @@
                         style="margin-left: 18%"
                       />
                     </td>
-                    <td style="width: 14%" class="news">haber</td>
+                    <td style="width: 14%" class="news dot" title="haber">
+                      haber
+                    </td>
                     <td style="width: 14%" class="management">Yönetim</td>
                     <td style="width: 10%" class="date">30.02.2025</td>
-                    <td style="width: 10%" class="exp">...</td>
+                    <td style="width: 10%" class="exp dot" title="...">...</td>
                     <td style="text-align: right">
                       <div class="dropdown-container">
                         <button
@@ -1019,10 +1044,12 @@
                         style="margin-left: 18%"
                       />
                     </td>
-                    <td style="width: 14%" class="news">haber</td>
+                    <td style="width: 14%" class="news dot" title="haber">
+                      haber
+                    </td>
                     <td style="width: 14%" class="management">Yönetim</td>
                     <td style="width: 10%" class="date">30.02.2025</td>
-                    <td style="width: 10%" class="exp">...</td>
+                    <td style="width: 10%" class="exp dot" title="...">...</td>
                     <td style="text-align: right">
                       <div class="dropdown-container">
                         <button
@@ -1080,10 +1107,12 @@
                         style="margin-left: 18%"
                       />
                     </td>
-                    <td style="width: 14%" class="news">haber</td>
+                    <td style="width: 14%" class="news dot" title="haber">
+                      haber
+                    </td>
                     <td style="width: 14%" class="management">Yönetim</td>
                     <td style="width: 10%" class="date">30.02.2025</td>
-                    <td style="width: 10%" class="exp">...</td>
+                    <td style="width: 10%" class="exp dot" title="...">...</td>
                     <td style="text-align: right">
                       <div class="dropdown-container">
                         <button
