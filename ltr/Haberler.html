@@ -703,10 +703,79 @@
                         style="margin-left: 18%"
                       />
                     </td>
-                    <td style="width: 14%" class="news">Gebze</td>
-                    <td style="width: 14%" class="management">Yönetim</td>
-                    <td style="width: 10%" class="date">30.02.2025</td>
-                    <td style="width: 10%" class="exp">...</td>
+                    <td style="width: 16%" class="news">
+                      Ekonomide Büyüme Rakamları Açıklandı
+                    </td>
+                    <td style="width: 14%" class="management">Başkanlık</td>
+                    <td style="width: 10%" class="date">19.06.2024</td>
+                    <td style="width: 18%" class="exp">
+                      Bu yılın ikinci çeyreğinde ekonomi %5.2 büyüdü
+                    </td>
+                    <td style="text-align: right">
+                      <div class="dropdown-container">
+                        <button
+                          class="dropdown-toggle"
+                          onclick="toggleDropdown(this)"
+                        >
+                          İşlemler
+                        </button>
+                        <div class="dropdown-menu">
+                          <button onclick="duzenle()">
+                            <img
+                              src="../assets/images/dropdown_svg/edit.svg"
+                              alt="edit"
+                              width="10%"
+                              height="10%"
+                            />
+                            Düzenle
+                          </button>
+                          <button onclick="sil()">
+                            <img
+                              src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                              alt="remove"
+                              width="10%"
+                              height="10%"
+                            />
+                            Sil
+                          </button>
+                          <button onclick="icerik()">
+                            <img
+                              src="../assets/images/dropdown_svg/copy-writing.svg"
+                              alt="content"
+                              width="10%"
+                              height="10%"
+                            />
+                            İçerik
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 3%">
+                      <input
+                        type="checkbox"
+                        name="allCheck"
+                        style="width: 10px"
+                      />
+                    </td>
+                    <td style="width: 12%">
+                      <img
+                        src="../assets/images/gebze-belediyesi.ico"
+                        alt="gebze-belediyesi-img"
+                        width="30px"
+                        height="30px"
+                        style="margin-left: 18%"
+                      />
+                    </td>
+                    <td style="width: 14%" class="news">
+                      Basketbol Takımımız Gruplardan Çıktı
+                    </td>
+                    <td style="width: 14%" class="management">Başkanlık</td>
+                    <td style="width: 10%" class="date">15.09.2023</td>
+                    <td style="width: 10%" class="exp">
+                      Turnuvada bir üst tura yükseldi
+                    </td>
                     <td style="text-align: right">
                       <div class="dropdown-container">
                         <button
@@ -765,67 +834,6 @@
                       />
                     </td>
                     <td style="width: 14%" class="news">haber</td>
-                    <td style="width: 14%" class="management">Yönetim</td>
-                    <td style="width: 10%" class="date">30.02.2025</td>
-                    <td style="width: 10%" class="exp">...</td>
-                    <td style="text-align: right">
-                      <div class="dropdown-container">
-                        <button
-                          class="dropdown-toggle"
-                          onclick="toggleDropdown(this)"
-                        >
-                          İşlemler
-                        </button>
-                        <div class="dropdown-menu">
-                          <button onclick="duzenle()">
-                            <img
-                              src="../assets/images/dropdown_svg/edit.svg"
-                              alt="edit"
-                              width="10%"
-                              height="10%"
-                            />
-                            Düzenle
-                          </button>
-                          <button onclick="sil()">
-                            <img
-                              src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                              alt="remove"
-                              width="10%"
-                              height="10%"
-                            />
-                            Sil
-                          </button>
-                          <button onclick="icerik()">
-                            <img
-                              src="../assets/images/dropdown_svg/copy-writing.svg"
-                              alt="content"
-                              width="10%"
-                              height="10%"
-                            />
-                            İçerik
-                          </button>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width: 3%">
-                      <input
-                        type="checkbox"
-                        name="allCheck"
-                        style="width: 10px"
-                      />
-                    </td>
-                    <td style="width: 12%">
-                      <img
-                        src="../assets/images/gebze-belediyesi.ico"
-                        alt="gebze-belediyesi-img"
-                        width="30px"
-                        height="30px"
-                        style="margin-left: 18%"
-                      />
-                    </td>
-                    <td style="width: 14%" class="news">Gebze</td>
                     <td style="width: 14%" class="management">Yönetim</td>
                     <td style="width: 10%" class="date">30.02.2025</td>
                     <td style="width: 10%" class="exp">...</td>
@@ -1250,7 +1258,8 @@
                   title.textContent.trim().toLowerCase() ==
                   searchText.value.trim().toLowerCase()
                 ) {
-                  console.log(title.textContent);
+                  const tr = title.closest("tr");
+                  const td = tr.querySelectorAll("td");
                   content.innerHTML += `
                 <tr>
                   <td style="width: 3%">
@@ -1261,18 +1270,12 @@
                     />
                   </td>
                   <td style="width: 12%">
-                    <img
-                      src="../assets/images/gebze-belediyesi.ico"
-                      alt="gebze-belediyesi-img"
-                      width="30px"
-                      height="30px"
-                      style="margin-left: 18%"
-                    />
+                    ${td[1].innerHTML}
                   </td>
-                  <td style="width: 14%" class="news">${title.textContent}</td>
-                  <td style="width: 14%" class="management">Yönetim</td>
-                  <td style="width: 10%" class="date">30.02.2025</td>
-                  <td style="width: 10%" class="exp">...</td>
+                  <td style="width: 14%" class="news">${td[2].textContent}</td>
+                  <td style="width: 14%" class="management">${td[3].textContent}</td>
+                  <td style="width: 10%" class="date">${td[4].textContent}</td>
+                  <td style="width: 30%" class="exp">${td[5].textContent}</td>
                   <td style="text-align: right">
                     <div class="dropdown-container">
                       <button
