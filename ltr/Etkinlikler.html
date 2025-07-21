@@ -210,6 +210,15 @@
       display: block;
       margin-right: 100px;
     }
+
+    .select {
+      margin-left: 10px;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
+      font-size: 16px;
+    }
   </style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -657,7 +666,8 @@
                         İşlemler
                       </button>
                       <div class="dropdown-menu">
-                        <button onclick="duzenle()">
+                        <button
+                          onclick="editNews('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.02.2025', '...')">
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                           Düzenle
                         </button>
@@ -837,6 +847,110 @@
           .forEach((el) => (el.style.display = "none"));
       }
     });
+  </script>
+  <script>
+    function editNews(imgSrc, title, date, exp) {
+      let content = document.getElementById("icerikler");
+      date = date.split(".").reverse().join("-");
+
+      content.innerHTML = `<div class="container mt-5">
+              <div
+                class="card"
+                style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);"
+              >
+                 <div
+                  class="card-header text-white"
+                  style="background-color: rgba(208, 162, 10, 0.799)"
+                >
+                  <h5>Düzenle</h5>
+                </div>
+                <div class="card-body">
+                  <form id="editNewsForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Başlık</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        value="${title}"
+                        placeholder="Haber başlığını giriniz"
+                        required
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="haberTarih" class="form-label">Tarih</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="haberTarih"
+                        value="${date}"
+                        required
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="haberIcerik" class="form-label">Açıklama</label>
+                      <textarea
+                        class="form-control"
+                        id="haberIcerik"
+                        rows="5"
+                        placeholder="Haber içeriğini yazınız..."
+                        required
+                      >${exp}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                      <img
+                        src="${imgSrc}"
+                        class="img-fluid rounded preview-img d-flex justify-content-center"
+                        alt="${title}"
+                        style="width: 50%; height: auto; margin-left:25%; max-height:300px"
+                      />
+                      <label
+                        for="resim"
+                        class="btn btn-outline-primary mt-2"
+                        style="width: 100%"
+                      >
+                        Fotoğraf Seç
+                      </label>
+                      <input
+                        type="file"
+                        name="resim"
+                        id="resim"
+                        style="display: none"
+                        accept="image/*"
+                        class="resim-input"
+                      />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                      Güncelle
+                    </button>
+                    <a href="Haberler.html" class="btn btn-secondary">İptal</a>
+                  </form>
+                </div>
+              </div>
+            </div>`;
+
+      const input = document.querySelector(".resim-input");
+      const imgPrev = document.querySelector(".preview-img");
+
+      input.addEventListener("change", function () {
+        const dosya = this.files[0];
+
+        if (dosya) {
+          const okuyucu = new FileReader();
+
+          okuyucu.onload = function (e) {
+            imgPrev.src = e.target.result;
+            imgPrev.style.display = "block";
+          };
+
+          okuyucu.readAsDataURL(dosya);
+        }
+      });
+    }
   </script>
 </body>
 

@@ -513,7 +513,7 @@
             </button>
 
             <!-- SİL -->
-            <button class="buton sil-butonu">
+            <button class="buton sil-butonu" onclick="sil()">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                 aria-hidden="true" focusable="false">
                 <path
@@ -567,7 +567,7 @@
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
-                      <button onclick="sil()">
+                      <button onclick="">
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
@@ -701,7 +701,7 @@
                 <button onclick="duzenle()">
                   <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" /> Düzenle
                 </button>
-                <button onclick="sil()">
+                <button onclick="">
                   <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" /> Sil
                 </button>
                 <button onclick="icerik()">
@@ -732,7 +732,7 @@
           <button onclick="duzenle()">
             <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" /> Düzenle
           </button>
-          <button onclick="sil()">
+          <button onclick="">
             <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" /> Sil
           </button>
           <button onclick="icerik()">
@@ -784,7 +784,18 @@
 
           // Yayını silme
           function sil() {
-            alert("Sil tıklandı");
+            const checkboxes = document.querySelectorAll(".checkbox-item");
+            let seciliVar = false;
+            checkboxes.forEach((checkbox) => {
+              if (checkbox.checked) {
+                seciliVar = true;
+                const row = checkbox.closest("tr");
+                row.parentNode.removeChild(row);
+              }
+            });
+            if (!seciliVar) {
+              alert("Lütfen silmek için en az bir içerik seçin.");
+            }
           }
 
           // İçeriği görüntüleme
