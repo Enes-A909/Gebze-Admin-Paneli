@@ -42,6 +42,10 @@
         transform: scale(1.2);
       }
 
+      .container {
+        width: 100%;
+      }
+
       .dot {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1425,14 +1429,15 @@
               let content = document.getElementById("icerikler");
               date = date.split(".").reverse().join("-");
 
-              content.innerHTML = `<div class="container mt-5">
+              content.innerHTML = `
+              <div class="d-flex justify-content-center">
               <div
-                class="card"
-                style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);"
+                class="card "
+                style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738); width:95%"
               >
                  <div
                   class="card-header text-white"
-                  style="background-color: rgba(48, 114, 184, 0.799)"
+                  style="background-color: rgba(48, 114, 184, 0.799); "
                 >
                   <h5>Düzenle</h5>
                 </div>
@@ -1515,7 +1520,8 @@
                   </form>
                 </div>
               </div>
-            </div>`;
+              </div>
+            `;
 
               if (category === "Yönetim") {
                 document.getElementById("yonetim").selected = true;
