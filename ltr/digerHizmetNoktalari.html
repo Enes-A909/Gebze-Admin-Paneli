@@ -2,6 +2,20 @@
 <html lang="tr">
   <head>
     <style>
+      .DHNDüzenle {
+        margin-left: 10px;
+        margin-right: 200px;
+        margin-top: 15px;
+      }
+
+      .select {
+        margin-left: 10px;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        background-color: #f0f0f0;
+        font-size: 16px;
+      }
       .btn-sil:focus,
       .btn-sil:focus-visible {
         outline: none !important;
@@ -21,19 +35,20 @@
         border-color: transparent !important;
       }
       .amirlik {
-        background-color: #ec45095f;
-
+        background-color: rgba(160, 40, 0, 0.584);
+        color: white;
         padding: 4px 6px;
         border-radius: 12px;
+        display: inline-block;
         font-size: 13px;
         font-weight: 500;
-        display: inline-block;
-        margin-top: 5px;
-        margin-right: 50px;
+        margin-top: 10px;
+        margin-right: 80px;
+        margin-bottom: 10px;
       }
       .eğitim2 {
-        background-color: #86ec095f;
-
+        background-color: rgba(160, 40, 0, 0.584);
+        color: white;
         padding: 4px 6px;
         border-radius: 12px;
         font-size: 13px;
@@ -42,8 +57,8 @@
         margin-top: 5px;
       }
       .Kültürel2 {
-        background-color: #09ec8d5f;
-
+        background-color: rgba(165, 42, 42, 0.514);
+        color: white;
         padding: 4px 6px;
         border-radius: 12px;
         font-size: 13px;
@@ -52,8 +67,8 @@
         margin-top: 5px;
       }
       .sosyal2 {
-        background-color: #0d09ec5f;
-
+        background-color: rgba(165, 42, 42, 0.514);
+        color: white;
         padding: 4px 6px;
         border-radius: 12px;
         font-size: 13px;
@@ -62,8 +77,8 @@
         margin-top: 5px;
       }
       .diger2 {
-        background-color: #e809ec5f;
-
+        background-color: brown;
+        color: white;
         padding: 4px 6px;
         border-radius: 12px;
         font-size: 13px;
@@ -78,12 +93,6 @@
       }
       .ikincilButon:focus,
       .ikincilButon:focus-visible {
-        outline: none !important;
-        box-shadow: none !important;
-        border-color: transparent !important;
-      }
-      .seoButonu:focus,
-      .seoButonu:focus-visible {
         outline: none !important;
         box-shadow: none !important;
         border-color: transparent !important;
@@ -224,7 +233,7 @@
         border-color: transparent !important;
       }
       .dropdown-toggle:hover {
-        background-color: rgba(10, 221, 165, 0.659);
+        background-color: rgba(5, 224, 60, 0.705);
         color: white;
       }
       /* * {
@@ -968,7 +977,10 @@
                     Amirlikler
                   </td>
                   <td style="text-align: right" colspan="4">
-                    <button class="editButton" onclick="toggleDropdown(this)">
+                    <button
+                      class="editButton"
+                      onclick="hizmetNoktalari('https://www.google.com/maps/place/Gebze+K%C3%BClt%C3%BCr+Merkezi/@40.7975725,29.4297499,333m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088792c7b75:0x6f17b50e45cc6c97!8m2!3d40.7982109!4d29.43007!16s%2Fg%2F11cltwggz7?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D', 'Çarşı ve Seyyar Zabıta Amirliği', 'Amirlikler')"
+                    >
                       Düzenle
                     </button>
                   </td>
@@ -997,7 +1009,10 @@
                   <td colspan="4">Trafik ve Eğitim Okulu Zabıta Amirliği</td>
                   <td colspan="4" class="amirlik">Amirlikler</td>
                   <td style="text-align: right" colspan="4">
-                    <button class="editButton" onclick="toggleDropdown(this)">
+                    <button
+                      class="editButton"
+                      onclick="hizmetNoktalari('https://www.google.com/maps/place/Zab%C4%B1ta+M%C3%BCd%C3%BCrl%C3%BC%C4%9F%C3%BC+%C3%87ocuk+Trafik+E%C4%9Fitim+Okulu/@40.8049925,29.4428919,333m/data=!3m1!1e3!4m6!3m5!1s0x14cb20ec9006cb7d:0xd6ffdfe862f20282!8m2!3d40.804962!4d29.4434921!16s%2Fg%2F1t_rytcp?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D' , 'Trafik ve Eğitim Okulu Zabıta Amirliği' , 'Amirlikler')"
+                    >
                       Düzenle
                     </button>
                   </td>
@@ -2263,6 +2278,94 @@
                 filtreleKategoriler([]);
               });
             });
+          </script>
+          <!-- Hizmet Noktaları Düzenleme -->
+          <script>
+            function hizmetNoktalari(nav, name, category) {
+              let content = document.getElementById("icerikler");
+
+              content.innerHTML = `<div class="container mt-5">
+              <div
+                class="card"
+                style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);"
+              >
+
+              
+                 <div
+                  class="card-header text-white"
+                  style="background-color: rgba(48, 114, 184, 0.799)"
+                
+                >
+                  <h5>Düzenle</h5>
+                </div>
+                <!-- DHNDüzenleme(Diğer Hİzmet Noktaları Düzenleme) sayfası  -->
+                <div class="DHNDüzenle">
+                  <form id="editDigerHizmetNoktalariForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Konum Linki</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nav"
+                        value="${nav}"
+                       
+                        required
+                      />
+                    </div>  
+                <div class="mb-5">
+                  <form id="editDigerHizmetNoktalariForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label" >İsim</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nav"
+                        value="${name}"
+                       
+                        required
+                      />
+                    </div>
+                  <!-- DhnCategory= diğer hizmet noktaları kategorisi -->
+                  <div class="DhnCategory">
+                  <form id="editDigerHizmetNoktalariForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label" >Kategori</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nav"
+                        value="${category}"
+                       
+                        required
+                      />
+                    </div>
+                  
+
+                    <button type="submit" class="btn btn-success">
+                      Güncelle
+                    </button>
+                    <a href="digerHizmetNoktalari.html" class="btn btn-secondary">İptal</a>
+                  </form>
+                </div>
+              </div>
+            </div>`;
+
+              if (category === "Amirlikler") {
+                document.getElementById("amirlikler").selected = true;
+              }
+              if (category === "Kültür ve Sanat Merkezleri") {
+                document.getElementById("kültürel").selected = true;
+              }
+              if (category === "Sosyal Tesisler") {
+                document.getElementById("sosyal").selected = true;
+              }
+              if (category === "Eğitim") {
+                document.getElementById("eğitim").selected = true;
+              }
+              if (category === "Diğer") {
+                document.getElementById("diger").selected = true;
+              }
+            }
           </script>
         </div>
       </div>
