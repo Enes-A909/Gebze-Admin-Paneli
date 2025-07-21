@@ -127,6 +127,7 @@
         border: 2px solid #699aba;
         width: 80%;
         height: 30px;
+        padding: 10px;
       }
 
       #search:focus {
@@ -162,6 +163,15 @@
 
       #searchBtn:hover {
         transform: scale(1) !important;
+      }
+
+      .select {
+        margin-left: 10px;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        background-color: #f0f0f0;
+        font-size: 16px;
       }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -687,12 +697,13 @@
                     <th scope="col" style="width: 14%">Kategori</th>
                     <th scope="col" style="width: 10%">Tarih</th>
                     <th scope="col" style="width: 18%">Açıklama</th>
+
                     <th scope="col" style="text-align: right">
                       <input
                         type="text"
                         name="search"
                         id="search"
-                        placeholder="ara"
+                        placeholder="Ara"
                       />
                       <button id="searchBtn" onclick="search()">ARA</button>
                     </th>
@@ -741,7 +752,9 @@
                           İşlemler
                         </button>
                         <div class="dropdown-menu">
-                          <button onclick="duzenle()">
+                          <button
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','Ekonomide Büyüme Rakamları Açıklandı','Başkanlık','19.06.2024','Bu yılın ikinci çeyreğinde ekonomi %5.2 büyüdü')"
+                          >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
                               alt="edit"
@@ -750,7 +763,7 @@
                             />
                             Düzenle
                           </button>
-                          <button onclick="sil()">
+                          <button id="remove" onclick="remove()">
                             <img
                               src="../assets/images/dropdown_svg/rubbish-bin.svg"
                               alt="remove"
@@ -814,7 +827,9 @@
                           İşlemler
                         </button>
                         <div class="dropdown-menu">
-                          <button onclick="duzenle()">
+                          <button
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','Basketbol Takımımız Gruplardan Çıktı','Başkanlık','15.09.2023','Turnuvada bir üst tura yükseldi')"
+                          >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
                               alt="edit"
@@ -823,7 +838,7 @@
                             />
                             Düzenle
                           </button>
-                          <button onclick="sil()">
+                          <button id="remove" onclick="remove()">
                             <img
                               src="../assets/images/dropdown_svg/rubbish-bin.svg"
                               alt="remove"
@@ -832,7 +847,7 @@
                             />
                             Sil
                           </button>
-                          <button onclick="icerik()">
+                          <button onclick="remove()">
                             <img
                               src="../assets/images/dropdown_svg/copy-writing.svg"
                               alt="content"
@@ -886,7 +901,74 @@
                             />
                             Düzenle
                           </button>
-                          <button onclick="sil()">
+                          <button id="remove" onclick="remove()">
+                            <img
+                              src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                              alt="remove"
+                              width="10%"
+                              height="10%"
+                            />
+                            Sil
+                          </button>
+                          <button
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                          >
+                            <img
+                              src="../assets/images/dropdown_svg/copy-writing.svg"
+                              alt="content"
+                              width="10%"
+                              height="10%"
+                            />
+                            İçerik
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 3%">
+                      <input
+                        type="checkbox"
+                        name="allCheck"
+                        style="width: 10px"
+                      />
+                    </td>
+                    <td style="width: 12%">
+                      <img
+                        src="../assets/images/gebze-belediyesi.ico"
+                        alt="gebze-belediyesi-img"
+                        width="30px"
+                        height="30px"
+                        style="margin-left: 18%"
+                      />
+                    </td>
+                    <td style="width: 14%" class="news dot" title="haber">
+                      haber
+                    </td>
+                    <td style="width: 14%" class="management">Yönetim</td>
+                    <td style="width: 10%" class="date">30.02.2025</td>
+                    <td style="width: 10%" class="exp dot" title="...">...</td>
+                    <td style="text-align: right">
+                      <div class="dropdown-container">
+                        <button
+                          class="dropdown-toggle"
+                          onclick="toggleDropdown(this)"
+                        >
+                          İşlemler
+                        </button>
+                        <div class="dropdown-menu">
+                          <button
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                          >
+                            <img
+                              src="../assets/images/dropdown_svg/edit.svg"
+                              alt="edit"
+                              width="10%"
+                              height="10%"
+                            />
+                            Düzenle
+                          </button>
+                          <button id="remove" onclick="remove()">
                             <img
                               src="../assets/images/dropdown_svg/rubbish-bin.svg"
                               alt="remove"
@@ -940,7 +1022,9 @@
                           İşlemler
                         </button>
                         <div class="dropdown-menu">
-                          <button onclick="duzenle()">
+                          <button
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                          >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
                               alt="edit"
@@ -949,7 +1033,7 @@
                             />
                             Düzenle
                           </button>
-                          <button onclick="sil()">
+                          <button id="remove" onclick="remove()">
                             <img
                               src="../assets/images/dropdown_svg/rubbish-bin.svg"
                               alt="remove"
@@ -1003,7 +1087,9 @@
                           İşlemler
                         </button>
                         <div class="dropdown-menu">
-                          <button onclick="duzenle()">
+                          <button
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                          >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
                               alt="edit"
@@ -1012,7 +1098,7 @@
                             />
                             Düzenle
                           </button>
-                          <button onclick="sil()">
+                          <button id="remove" onclick="remove()">
                             <img
                               src="../assets/images/dropdown_svg/rubbish-bin.svg"
                               alt="remove"
@@ -1066,7 +1152,9 @@
                           İşlemler
                         </button>
                         <div class="dropdown-menu">
-                          <button onclick="duzenle()">
+                          <button
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                          >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
                               alt="edit"
@@ -1075,70 +1163,7 @@
                             />
                             Düzenle
                           </button>
-                          <button onclick="sil()">
-                            <img
-                              src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                              alt="remove"
-                              width="10%"
-                              height="10%"
-                            />
-                            Sil
-                          </button>
-                          <button onclick="icerik()">
-                            <img
-                              src="../assets/images/dropdown_svg/copy-writing.svg"
-                              alt="content"
-                              width="10%"
-                              height="10%"
-                            />
-                            İçerik
-                          </button>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width: 3%">
-                      <input
-                        type="checkbox"
-                        name="allCheck"
-                        style="width: 10px"
-                      />
-                    </td>
-                    <td style="width: 12%">
-                      <img
-                        src="../assets/images/gebze-belediyesi.ico"
-                        alt="gebze-belediyesi-img"
-                        width="30px"
-                        height="30px"
-                        style="margin-left: 18%"
-                      />
-                    </td>
-                    <td style="width: 14%" class="news dot" title="haber">
-                      haber
-                    </td>
-                    <td style="width: 14%" class="management">Yönetim</td>
-                    <td style="width: 10%" class="date">30.02.2025</td>
-                    <td style="width: 10%" class="exp dot" title="...">...</td>
-                    <td style="text-align: right">
-                      <div class="dropdown-container">
-                        <button
-                          class="dropdown-toggle"
-                          onclick="toggleDropdown(this)"
-                        >
-                          İşlemler
-                        </button>
-                        <div class="dropdown-menu">
-                          <button onclick="duzenle()">
-                            <img
-                              src="../assets/images/dropdown_svg/edit.svg"
-                              alt="edit"
-                              width="10%"
-                              height="10%"
-                            />
-                            Düzenle
-                          </button>
-                          <button onclick="sil()">
+                          <button id="remove" onclick="remove()">
                             <img
                               src="../assets/images/dropdown_svg/rubbish-bin.svg"
                               alt="remove"
@@ -1384,6 +1409,144 @@
                   </td>
                 </tr>`;
               }
+            }
+          </script>
+          <!-- REMOVE -->
+          <script>
+            function remove() {
+              let tr = document.getElementById("remove").closest("tr");
+              tr.remove();
+            }
+          </script>
+
+          <!-- DÜZENLE-->
+          <script>
+            function editNews(imgSrc, title, category, date, exp) {
+              let content = document.getElementById("icerikler");
+              date = date.split(".").reverse().join("-");
+
+              content.innerHTML = `<div class="container mt-5">
+              <div
+                class="card"
+                style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);"
+              >
+                 <div
+                  class="card-header text-white"
+                  style="background-color: rgba(208, 162, 10, 0.799)"
+                >
+                  <h5>Düzenle</h5>
+                </div>
+                <div class="card-body">
+                  <form id="editNewsForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Başlık</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        value="${title}"
+                        placeholder="Haber başlığını giriniz"
+                        required
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="kategori" class="form-label"
+                        >Kategori</label
+                      >
+                      <select class="select" id="kategori">
+                        <option id="yonetim">Yönetim</option>
+                        <option id="baskanlik">Başkanlık</option>
+                        <option id="halk">Halk</option>
+                        <option id="genel">Genel</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="haberTarih" class="form-label">Tarih</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="haberTarih"
+                        value=${date}
+                        required
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="haberIcerik" class="form-label">Açıklama</label>
+                      <textarea
+                        class="form-control"
+                        id="haberIcerik"
+                        rows="5"
+                        placeholder="Haber içeriğini yazınız..."
+                        required
+                      >${exp}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                      <img
+                        src="${imgSrc}"
+                        class="img-fluid rounded preview-img d-flex justify-content-center"
+                        alt="${title}"
+                        style="width: 50%; height: auto; margin-left:25%; max-height:300px"
+                      />
+                      <label
+                        for="resim"
+                        class="btn btn-outline-primary mt-2"
+                        style="width: 100%"
+                      >
+                        Fotoğraf Seç
+                      </label>
+                      <input
+                        type="file"
+                        name="resim"
+                        id="resim"
+                        style="display: none"
+                        accept="image/*"
+                        class="resim-input"
+                      />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                      Güncelle
+                    </button>
+                    <a href="Haberler.html" class="btn btn-secondary">İptal</a>
+                  </form>
+                </div>
+              </div>
+            </div>`;
+
+              if (category === "Yönetim") {
+                document.getElementById("yonetim").selected = true;
+              }
+              if (category === "Başkanlık") {
+                document.getElementById("baskanlik").selected = true;
+              }
+              if (category === "Halk") {
+                document.getElementById("halk").selected = true;
+              }
+              if (category === "Genel") {
+                document.getElementById("genel").selected = true;
+              }
+
+              const input = document.querySelector(".resim-input");
+              const imgPrev = document.querySelector(".preview-img");
+
+              input.addEventListener("change", function () {
+                const dosya = this.files[0];
+
+                if (dosya) {
+                  const okuyucu = new FileReader();
+
+                  okuyucu.onload = function (e) {
+                    imgPrev.src = e.target.result;
+                    imgPrev.style.display = "block";
+                  };
+
+                  okuyucu.readAsDataURL(dosya);
+                }
+              });
             }
           </script>
         </div>
