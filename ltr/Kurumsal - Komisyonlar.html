@@ -3,13 +3,27 @@
   <head>
     <style>
       table {
-        border: 1px solid black;
+        border-radius: 10px;
+        border-collapse: separate;
+        overflow: hidden;
+        background-color: white;
+        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+      }
+      thead,
+      tbody {
+        background-color: transparent;
+      }
+
+      table tr {
+        transition: background-color 0.3s ease;
+        border-radius: 10px;
       }
 
       table tr:hover {
         background-color: #cccccc;
-        cursor: pointer;
         transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
       }
 
       table tr button {
@@ -98,8 +112,8 @@
       }
 
       .arşiv {
-        background-color: #7d373769;
-
+        background-color: #ab707069;
+        color: white;
         padding: 4px 8px;
         border-radius: 15px;
         font-size: 13px;

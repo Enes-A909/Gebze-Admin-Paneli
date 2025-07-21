@@ -10,13 +10,27 @@
         border-color: transparent !important;
       }
       table {
-        border: 1px solid black;
+        border-radius: 10px;
+        border-collapse: separate;
+        overflow: hidden;
+        background-color: white;
+        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+      }
+      thead,
+      tbody {
+        background-color: transparent;
+      }
+
+      table tr {
+        transition: background-color 0.3s ease;
+        border-radius: 10px;
       }
 
       table tr:hover {
         background-color: #cccccc;
-        cursor: pointer;
         transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
       }
 
       table tr button {
@@ -27,6 +41,21 @@
       table tr button:hover {
         transition: transform 0.3s ease !important;
         transform: scale(1.2);
+      }
+
+      .table-button {
+        background-color: rgba(0, 81, 255, 0.738);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        transition: transform 0.3s ease !important;
+      }
+
+      .table-button:hover {
+        background-color: rgba(0, 0, 0, 0.948);
       }
 
       .logo-img {
@@ -50,12 +79,13 @@
       }
 
       .dropdown-toggle {
-        background-color: rgba(68, 127, 245, 0.495);
-        color: black;
+        background-color: rgba(74, 130, 243, 0.344);
+        color: rgba(43, 42, 42, 0.692);
         border: none;
         padding: 6px 10px;
         border-radius: 5px;
         cursor: pointer;
+        transition: transform 0.36s ease !important;
       }
 
       .dropdown-menu {
@@ -64,9 +94,9 @@
         top: 110%;
         left: 0;
         background-color: white;
-        border: 1px solid #ddd;
+        border: 1px solid #2d2525;
         border-radius: 5px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 2px 6px rgba(236, 225, 225, 0.15);
         z-index: 999;
         min-width: 140px;
       }
@@ -622,13 +652,7 @@
           <!-- İçeriklerin Yükleneceği Alan -->
 
           <div id="icerikler">
-            <table
-              class="table"
-              style="
-                background-color: rgba(204, 204, 204, 0.186);
-                border-radius: 10px;
-              "
-            >
+            <table class="table">
               <thead>
                 <tr>
                   <th scope="col">

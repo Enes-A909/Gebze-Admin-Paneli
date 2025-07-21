@@ -3,13 +3,14 @@
 
 <head>
   <style>
-     .ekle-butonu,
-      .arsivle-butonu,
-      .sil-butonu {
-        outline: none !important;
-        box-shadow: none !important;
-        border-color: transparent !important;
-      }
+    .ekle-butonu,
+    .arsivle-butonu,
+    .sil-butonu {
+      outline: none !important;
+      box-shadow: none !important;
+      border-color: transparent !important;
+    }
+
     table {
       border: 1px solid black;
     }
@@ -94,8 +95,7 @@
       border-bottom: 1px solid #eee;
       margin-bottom: 5px;
     }
-
-    .badge {
+    .kategori{
       background-color: #21d18538;
 
       padding: 4px 8px;
@@ -104,6 +104,7 @@
       font-weight: 500;
       display: inline-block;
     }
+
 
     .arşiv {
       background-color: #7d373769;
@@ -125,6 +126,100 @@
     .dropdown-toggle:hover {
       background-color: rgba(68, 127, 245, 0.495);
       color: white;
+    }
+
+    .buton {
+      height: 36px;
+      border-radius: 12px;
+      border: none;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0 16px;
+      width: auto;
+      /* Genişlik içeriğe göre */
+      margin-right: 8px;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      user-select: none;
+    }
+
+    .buton:hover {
+      transform: scale(1.1);
+      filter: brightness(85%);
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      position: relative;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+
+    /* EKLE (artı) */
+    .arti::before,
+    .arti::after {
+      content: "";
+      position: absolute;
+      background-color: white;
+      border-radius: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .arti::before {
+      width: 2px;
+      height: 14px;
+    }
+
+    .arti::after {
+      width: 14px;
+      height: 2px;
+    }
+
+    /* ARŞİVLE (kutu) */
+    .kutu::before,
+    .kutu::after {
+      content: "";
+      position: absolute;
+      background-color: white;
+      border-radius: 1px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .kutu::before {
+      width: 14px;
+      height: 4px;
+      top: 4px;
+    }
+
+    .kutu::after {
+      width: 14px;
+      height: 8px;
+      top: 9px;
+    }
+
+    /* SİL SVG path renk beyaz */
+    .sil-butonu svg path {
+      fill: white;
+    }
+
+    /* Renkler */
+    .ekle-butonu {
+      background-color: #4CAF50;
+    }
+
+    .arsivle-butonu {
+      background-color: #2196F3;
+    }
+
+    .sil-butonu {
+      background-color: #F44336;
     }
   </style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -390,101 +485,6 @@
         <!-- Benim yaptığım navbar kısmı -->
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid d-flex justify-content-end">
-            <style>
-              .buton {
-                height: 36px;
-                border-radius: 12px;
-                border: none;
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                padding: 0 16px;
-                width: auto;
-                /* Genişlik içeriğe göre */
-                margin-right: 8px;
-                color: white;
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                user-select: none;
-              }
-
-              .buton:hover {
-                transform: scale(1.1);
-                filter: brightness(85%);
-              }
-
-              .icon {
-                width: 16px;
-                height: 16px;
-                position: relative;
-                flex-shrink: 0;
-                margin-right: 8px;
-              }
-
-              /* EKLE (artı) */
-              .arti::before,
-              .arti::after {
-                content: "";
-                position: absolute;
-                background-color: white;
-                border-radius: 1px;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-              }
-
-              .arti::before {
-                width: 2px;
-                height: 14px;
-              }
-
-              .arti::after {
-                width: 14px;
-                height: 2px;
-              }
-
-              /* ARŞİVLE (kutu) */
-              .kutu::before,
-              .kutu::after {
-                content: "";
-                position: absolute;
-                background-color: white;
-                border-radius: 1px;
-                left: 50%;
-                transform: translateX(-50%);
-              }
-
-              .kutu::before {
-                width: 14px;
-                height: 4px;
-                top: 4px;
-              }
-
-              .kutu::after {
-                width: 14px;
-                height: 8px;
-                top: 9px;
-              }
-
-              /* SİL SVG path renk beyaz */
-              .sil-butonu svg path {
-                fill: white;
-              }
-
-              /* Renkler */
-              .ekle-butonu {
-                background-color: #4CAF50;
-              }
-
-              .arsivle-butonu {
-                background-color: #2196F3;
-              }
-
-              .sil-butonu {
-                background-color: #F44336;
-              }
-            </style>
 
             <!-- EKLE -->
             <button class="buton ekle-butonu">
@@ -534,7 +534,7 @@
                 <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
                 <td scope=" row">Mahalle Muhtarları</td>
                 <td scope="row">
-                  <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
+                  <span class="kategori" style="margin-top: 7px">Gebze Yönetim</span>
                 </td>
                 <td scope="row">
                   <span class="arşiv" style="margin-top: 7px">
@@ -561,7 +561,7 @@
                 <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
                 <td>Kardeş Şehirler</td>
                 <td>
-                  <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
+                  <span class="kategori" style="margin-top: 7px">Gebze Yönetim</span>
                 </td>
                 <td>
                   <span class="arşiv" style="margin-top: 7px">
@@ -588,7 +588,7 @@
                 <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
                 <td>Üye Olduğumuz birlikler</td>
                 <td>
-                  <span class="badge" style="margin-top: 7px">Gebze Yönetim</span>
+                  <span class="kategori" style="margin-top: 7px">Gebze Yönetim</span>
                 </td>
                 <td>
                   <span class="arşiv" style="margin-top: 7px">

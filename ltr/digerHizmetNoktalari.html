@@ -2,48 +2,90 @@
 <html lang="tr">
   <head>
     <style>
-      .seo-container {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 24px;
-        background-color: #f8f9fa;
+      .DHNDüzenle {
+        margin-left: 10px;
+        margin-right: 200px;
+        margin-top: 15px;
+      }
+
+      .select {
+        margin-left: 10px;
+        padding: 5px;
+        border-radius: 10px;
         border: 1px solid #ccc;
-        border-radius: 12px;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
-      }
-
-      #seoInput {
-        width: 100%;
-        padding: 10px;
+        background-color: #f0f0f0;
         font-size: 16px;
-        margin-top: 8px;
-        box-sizing: border-box;
       }
-
-      /* Butonlar */
-      .btn {
-        padding: 10px 20px;
-        background-color: #444;
+      .btn-sil:focus,
+      .btn-sil:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+      .btn-uygula:focus,
+      .btn-uygula:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+      .DHNbuton:focus,
+      .DHNbuton:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+      .amirlik {
+        background-color: rgba(160, 40, 0, 0.584);
         color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        margin-right: 10px;
+        padding: 4px 6px;
+        border-radius: 12px;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 10px;
+        margin-right: 80px;
+        margin-bottom: 10px;
       }
-
-      .btn:hover {
-        background-color: #222;
+      .eğitim2 {
+        background-color: rgba(160, 40, 0, 0.584);
+        color: white;
+        padding: 4px 6px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        display: inline-block;
+        margin-top: 5px;
       }
-
-      .btn-cancel {
-        background-color: #aaa;
+      .Kültürel2 {
+        background-color: rgba(165, 42, 42, 0.514);
+        color: white;
+        padding: 4px 6px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        display: inline-block;
+        margin-top: 5px;
       }
-
-      .btn-cancel:hover {
-        background-color: #888;
+      .sosyal2 {
+        background-color: rgba(165, 42, 42, 0.514);
+        color: white;
+        padding: 4px 6px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        display: inline-block;
+        margin-top: 5px;
       }
-
+      .diger2 {
+        background-color: brown;
+        color: white;
+        padding: 4px 6px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        display: inline-block;
+        margin-top: 5px;
+      }
       .ikincilButon {
         border-radius: 5px;
         background-color: rgba(70, 244, 70, 0.455);
@@ -51,12 +93,6 @@
       }
       .ikincilButon:focus,
       .ikincilButon:focus-visible {
-        outline: none !important;
-        box-shadow: none !important;
-        border-color: transparent !important;
-      }
-      .seoButonu:focus,
-      .seoButonu:focus-visible {
         outline: none !important;
         box-shadow: none !important;
         border-color: transparent !important;
@@ -142,13 +178,17 @@
       }
 
       .dropdown-toggle {
-        background-color: rgba(74, 130, 243, 0.344);
-        color: rgba(43, 42, 42, 0.692);
+        background-color: rgba(5, 224, 60, 0.488);
+        color: rgba(9, 161, 6, 0.766);
         border: none;
         padding: 6px 10px;
         border-radius: 5px;
         cursor: pointer;
         transition: transform 0.36s ease !important;
+        width: 100px;
+        height: 40px;
+        font-size: medium;
+        font-weight: bold;
       }
 
       .dropdown-menu {
@@ -186,27 +226,6 @@
         border-bottom: 1px solid #eee;
         margin-bottom: 5px;
       }
-
-      .badge {
-        background-color: #21d18538;
-
-        padding: 4px 8px;
-        border-radius: 12px;
-        font-size: 13px;
-        font-weight: 500;
-        display: inline-block;
-      }
-
-      .arşiv {
-        background-color: #7d373769;
-
-        padding: 4px 8px;
-        border-radius: 15px;
-        font-size: 13px;
-        font-weight: 500;
-        display: inline-block;
-      }
-
       .dropdown-toggle:focus,
       .dropdown-toggle:focus-visible {
         outline: none !important;
@@ -214,7 +233,7 @@
         border-color: transparent !important;
       }
       .dropdown-toggle:hover {
-        background-color: rgba(68, 127, 245, 0.495);
+        background-color: rgba(5, 224, 60, 0.705);
         color: white;
       }
       /* * {
@@ -249,6 +268,24 @@
         outline: none;
         border: none; /* İstersen bunu da kaldırabilirsin */
         box-shadow: none; /* Tarayıcı gölgesini de kaldırır */
+      }
+      .btn-sil:hover {
+        transition: transform 0.5s ease !important;
+        transform: scale(1.07);
+      }
+      .btn-uygula:hover {
+        transition: transform 0.5s ease !important;
+        transform: scale(1.07);
+      }
+      .btn-sil:focus {
+        transition: transform 0.5s ease !important;
+        transform: scale(1.07);
+        box-shadow: 3px 5px 6px rgba(231, 7, 7, 0.793) !important;
+      }
+      .btn-uygula:focus {
+        transition: transform 0.5s ease !important;
+        transform: scale(1.07) !important;
+        box-shadow: 3px 5px 6px rgba(3, 153, 167, 0.793) !important;
       }
 
       td > a > svg {
@@ -656,25 +693,6 @@
           <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid d-flex justify-content-end"></div>
             <style>
-              .seoButonu {
-                background-color: rgba(0, 0, 0, 0.542);
-                margin-right: 10px;
-                border: none;
-                border-radius: 12px;
-                width: 100px;
-                height: 36px;
-
-                cursor: pointer;
-                transition: all 0.3s ease;
-                color: white;
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                user-select: none;
-              }
-              .seoButonu:hover {
-                transform: scale(1.1);
-                filter: brightness(85%);
-              }
               .buton {
                 height: 36px;
                 border-radius: 12px;
@@ -769,10 +787,6 @@
                 background-color: #f44336a8;
               }
             </style>
-            <!--Seo-->
-            <button class="seoButonu">
-              <span onclick="seoOlustur()">Seo</span>
-            </button>
 
             <!-- EKLE -->
             <button class="buton ekle-butonu">
@@ -807,42 +821,103 @@
 
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler" style="margin-top: 50px">
-            <div id="kategoriButonlari" style="margin-bottom: 20px">
-              <button
-                class="DHNbuton"
-                onclick="filtrele('amirlikler')"
-                style="border: none; width: 80px; height: 40px"
-              >
-                Amirlikler
+            <div
+              class="dropdown-container"
+              style="margin-bottom: 20px; position: relative"
+            >
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                Filtrele
               </button>
-              <button
-                class="DHNbuton"
-                onclick="filtrele('kültürel')"
-                style="border: none; width: 200px; height: 40px"
-              >
-                Kültür ve Sanat Merkezleri
-              </button>
-              <button
-                class="DHNbuton"
-                onclick="filtrele('sosyal')"
-                style="border: none; width: 130px; height: 40px"
-              >
-                Sosyal Tesisler
-              </button>
-              <button
-                class="DHNbuton"
-                onclick="filtrele('eğitim')"
-                style="border: none; width: 80px; height: 40px"
-              >
-                Eğitim
-              </button>
-              <button
-                class="DHNbuton"
-                onclick="filtrele('diğer')"
-                style="border: none; width: 80px; height: 40px"
-              >
-                Diğer
-              </button>
+              <div class="dropdown-menu">
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="amirlikler"
+                  />
+                  Amirlikler</label
+                ><br />
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="kültürel"
+                  />
+                  Kültür ve Sanat Merkezleri</label
+                ><br />
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="sosyal"
+                  />
+                  Sosyal Tesisler</label
+                ><br />
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="eğitim"
+                  />
+                  Eğitim</label
+                ><br />
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="diğer"
+                  />
+                  Diğer</label
+                ><br />
+
+                <div
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-top: 10px;
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: center;
+                      gap: 16px;
+                      margin-top: 10px;
+                      padding: 0 10px;
+                    "
+                  >
+                    <button
+                      class="btn-sil"
+                      style="
+                        border: none;
+                        width: 80px;
+                        height: 40px;
+                        background-color: rgba(251, 47, 1, 0.684);
+                        color: rgba(205, 5, 5, 0.9);
+                        font-weight: bold;
+                        border-radius: 5px;
+                      "
+                    >
+                      Temizle
+                    </button>
+                    <button
+                      class="btn-uygula"
+                      style="
+                        border: none;
+                        width: 80px;
+                        height: 40px;
+                        background-color: rgba(1, 213, 251, 0.54);
+                        color: rgba(52, 181, 251, 0.9);
+                        font-weight: bold;
+                        border-radius: 5px;
+                      "
+                    >
+                      Uygula
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
             <table
               id="icerikTablosu"
@@ -851,11 +926,26 @@
               style="
                 width: 100%;
                 border-collapse: collapse;
-                background-color: #908f8f25;
+
+                background-color: rgba(204, 204, 204, 0.186);
+                border-radius: 10px;
               "
             >
-              <thead style="background-color: #b8babf"></thead>
-              <th style="width: 40px"></th>
+              <thead>
+                <tr>
+                  <th scope="col" colspan="1">Konum</th>
+                  <th scope="col" colspan="4">İsim</th>
+                  <th
+                    scope="col"
+                    colspan="4"
+                    style="text-align: left; padding-right: 100px"
+                  >
+                    Kategori
+                  </th>
+
+                  <th scope="col" colspan="3"></th>
+                </tr>
+              </thead>
 
               <tbody>
                 <tr class="amirlikler">
@@ -878,9 +968,19 @@
                       </svg>
                     </a>
                   </td>
-                  <td colspan="9">Çarşı ve Seyyar Zabıta Amirliği</td>
-                  <td style="text-align: right">
-                    <button class="editButton" onclick="toggleDropdown(this)">
+                  <td colspan="4">Çarşı ve Seyyar Zabıta Amirliği</td>
+                  <td
+                    colspan="4"
+                    style="text-align: right; margin-left: auto"
+                    class="amirlik"
+                  >
+                    Amirlikler
+                  </td>
+                  <td style="text-align: right" colspan="4">
+                    <button
+                      class="editButton"
+                      onclick="hizmetNoktalari('https://www.google.com/maps/place/Gebze+K%C3%BClt%C3%BCr+Merkezi/@40.7975725,29.4297499,333m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088792c7b75:0x6f17b50e45cc6c97!8m2!3d40.7982109!4d29.43007!16s%2Fg%2F11cltwggz7?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D', 'Çarşı ve Seyyar Zabıta Amirliği', 'Amirlikler')"
+                    >
                       Düzenle
                     </button>
                   </td>
@@ -906,15 +1006,19 @@
                       </svg>
                     </a>
                   </td>
-                  <td colspan="9">Trafik ve Eğitim Okulu Zabıta Amirliği</td>
-                  <td style="text-align: right">
-                    <button class="editButton" onclick="toggleDropdown(this)">
+                  <td colspan="4">Trafik ve Eğitim Okulu Zabıta Amirliği</td>
+                  <td colspan="4" class="amirlik">Amirlikler</td>
+                  <td style="text-align: right" colspan="4">
+                    <button
+                      class="editButton"
+                      onclick="hizmetNoktalari('https://www.google.com/maps/place/Zab%C4%B1ta+M%C3%BCd%C3%BCrl%C3%BC%C4%9F%C3%BC+%C3%87ocuk+Trafik+E%C4%9Fitim+Okulu/@40.8049925,29.4428919,333m/data=!3m1!1e3!4m6!3m5!1s0x14cb20ec9006cb7d:0xd6ffdfe862f20282!8m2!3d40.804962!4d29.4434921!16s%2Fg%2F1t_rytcp?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D' , 'Trafik ve Eğitim Okulu Zabıta Amirliği' , 'Amirlikler')"
+                    >
                       Düzenle
                     </button>
                   </td>
                 </tr>
                 <tr class="amirlikler">
-                  <td style="text-align: center; width: 40px">
+                  <td style="text-align: center; width: 40px" colspan="1">
                     <a
                       href="https://www.google.com/maps/place/Gebze+Terminali/@40.7948829,29.4573284,17z/data=!4m5!3m4!1s0x14cb20fac8ab9801:0x266fc5bbb55d7ee8!8m2!3d40.7948972!4d29.4595045?shorturl=1"
                       target="_blank"
@@ -934,8 +1038,9 @@
                     </a>
                   </td>
 
-                  <td colspan="9">Terminal Zabıta Amirliği.</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Terminal Zabıta Amirliği.</td>
+                  <td colspan="4" class="amirlik">Amirlikler</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -943,7 +1048,7 @@
                 </tr>
 
                 <tr class="amirlikler">
-                  <td style="text-align: right; width: 40px">
+                  <td style="text-align: center; width: 40px">
                     <a
                       href="https://www.google.com/maps/@40.8859666,29.4927502,3a,75y,142.31h,77.41t/data=!3m7!1e1!3m5!1s-9qle0WHXRI0irrRBfUwbw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D12.589068767916302%26panoid%3D-9qle0WHXRI0irrRBfUwbw%26yaw%3D142.31097865574856!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D"
                       target="_blank"
@@ -962,8 +1067,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td colspan="9">Mollafenari Zabıta Amirliği</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Mollafenari Zabıta Amirliği</td>
+                  <td colspan="4" class="amirlik">Amirlikler</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -989,8 +1095,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td colspan="9">Kamyon ve Tır garajı Zabıta Amirliği</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Kamyon ve Tır garajı Zabıta Amirliği</td>
+                  <td colspan="4" class="amirlik">Amirlikler</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1016,8 +1123,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td colspan="9">Beylikbağı Karakolu</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Beylikbağı Karakolu</td>
+                  <td colspan="4" class="amirlik">Amirlikler</td>
+                  <td colspan="4" style="text-align: right">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1044,8 +1152,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Beylikbağı Bilim ve Sanat Merkezi</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Beylikbağı Bilim ve Sanat Merkezi</td>
+                  <td colspan="4" class="Kültürel2">Kültür ve Sanat Merkezi</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1071,8 +1180,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Arapçeşme Bilim ve Sanat Merkezi</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Arapçeşme Bilim ve Sanat Merkezi</td>
+                  <td colspan="4" class="Kültürel2">Kültür ve Sanat Merkezi</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1098,8 +1208,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>İstasyon Bilim ve Sanat Merkezi</td>
-                  <td style="text-align: right">
+                  <td colspan="4">İstasyon Bilim ve Sanat Merkezi</td>
+                  <td colspan="4" class="Kültürel2">Kültür Ve Sanat Merkezi</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1126,8 +1237,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Güzide Kent Meydanı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Güzide Kent Meydanı</td>
+                  <td colspan="4" class="sosyal2">Sosyal Tesisler</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1153,8 +1265,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Güzide Cumhuriyet Meydanı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Güzide Cumhuriyet Meydanı</td>
+                  <td colspan="4" class="sosyal2">Sosyal Tesisler</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1181,8 +1294,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Atlı Eğitim Merkezi</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Atlı Eğitim Merkezi</td>
+                  <td colspan="4" class="eğitim2">Eğitim</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1208,8 +1322,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Cumhuriyet Spor Salonu</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Cumhuriyet Spor Salonu</td>
+                  <td colspan="4" class="eğitim2">Eğitim</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1235,8 +1350,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Enderun Çocuk Atölyeleri</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Enderun Çocuk Atölyeleri</td>
+                  <td colspan="4" class="eğitim2">Eğitim</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1262,8 +1378,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Gesmek Adem Yavuz Mahalle Kursu</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Gesmek Adem Yavuz Mahalle Kursu</td>
+                  <td colspan="4" class="eğitim2">Eğitim</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1289,8 +1406,10 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Gesmek Gaziler Mahalle Kursu</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Gesmek Gaziler Mahalle Kursu</td>
+                  <td colspan="4" class="eğitim2">Eğitim</td>
+
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1316,8 +1435,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Gesmek Merkez</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Gesmek Merkez</td>
+                  <td colspan="4" class="eğitim2">Eğitim</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1343,8 +1463,9 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Gesmek Yenikent Mahalle Kursu</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Gesmek Yenikent Mahalle Kursu</td>
+                  <td colspan="4" class="eğitim2">Eğitim</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1371,8 +1492,11 @@
                       </svg>
                     </a>
                   </td>
-                  <td>Adem Yavuz Mezarlığı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Adem Yavuz Mezarlığı</td>
+                  <td colspan="4" class="diger2" style="margin-left: auto">
+                    Diğer
+                  </td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1399,8 +1523,9 @@
                     </a>
                   </td>
 
-                  <td>Gebze Merkez Mezarlığı ve Şehitliği</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Gebze Merkez Mezarlığı ve Şehitliği</td>
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1427,8 +1552,9 @@
                     </a>
                   </td>
 
-                  <td>Mimar Sinan Mezarlığı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Mimar Sinan Mezarlığı</td>
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1455,8 +1581,9 @@
                     </a>
                   </td>
 
-                  <td>Pelitli Mezarlığı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Pelitli Mezarlığı</td>
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1483,8 +1610,9 @@
                     </a>
                   </td>
 
-                  <td>Osman Yılmaz Mezarlığı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Osman Yılmaz Mezarlığı</td>
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1511,8 +1639,9 @@
                     </a>
                   </td>
 
-                  <td>Elden Ele Gönül Çarşısı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Elden Ele Gönül Çarşısı</td>
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1539,8 +1668,9 @@
                     </a>
                   </td>
 
-                  <td>Gebze Terminal</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Gebze Terminal</td>
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1567,8 +1697,9 @@
                     </a>
                   </td>
 
-                  <td>Kamyon ve Tır Parkı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Kamyon ve Tır Parkı</td>
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1595,8 +1726,9 @@
                     </a>
                   </td>
 
-                  <td>Mevlana Kapalı Pazar Alanı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Mevlana Kapalı Pazar Alanı</td>
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1623,10 +1755,11 @@
                     </a>
                   </td>
 
-                  <td>
+                  <td colspan="4">
                     Sokak Hayvanları Tedavi, Rehabilitasyon ve Eğitim Merkezi
                   </td>
-                  <td style="text-align: right">
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -1653,8 +1786,9 @@
                     </a>
                   </td>
 
-                  <td>Tatlıkuyu Pazar Alanı</td>
-                  <td style="text-align: right">
+                  <td colspan="4">Tatlıkuyu Pazar Alanı</td>
+                  <td colspan="4" class="diger2">Diğer</td>
+                  <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
                     </button>
@@ -2030,59 +2164,37 @@
               const satirlar = document.querySelectorAll(
                 "#icerikTablosu tbody tr"
               );
+
               satirlar.forEach((satir) => {
-                if (satir.classList.contains(kategori)) {
+                // Eğer kategori "tum" ise hepsini göster
+                if (kategori === "tum" || satir.classList.contains(kategori)) {
                   satir.style.display = "table-row";
                 } else {
                   satir.style.display = "none";
                 }
               });
-            }
 
-            // Sayfa yüklendiğinde sadece "amirlikler" gösterilsin
-            window.onload = function () {
-              filtrele("amirlikler");
-            };
-          </script>
-          <script>
-            function filtrele(kategori) {
-              // Tüm satırları gizle
-              document
-                .querySelectorAll("#icerikTablosu tbody tr")
-                .forEach(function (satir) {
-                  satir.style.display = "none";
-                });
-
-              // Seçilen kategoriye ait satırları göster
-              document
-                .querySelectorAll("#icerikTablosu tbody tr." + kategori)
-                .forEach(function (satir) {
-                  satir.style.display = "";
-                });
-
-              // Aktif buton vurgusu
+              // Aktif butonları güncelle
               document
                 .querySelectorAll("#kategoriButonlari button")
-                .forEach(function (buton) {
+                .forEach((buton) => {
                   buton.classList.remove("active");
                 });
 
-              // Butona active class'ı ekle
               const aktifButon = document.querySelector(
-                "#kategoriButonlari button[onclick=\"filtrele('" +
-                  kategori +
-                  "')\"]"
+                `#kategoriButonlari button[onclick="filtrele('${kategori}')"]`
               );
               if (aktifButon) {
                 aktifButon.classList.add("active");
               }
             }
 
-            // Sayfa ilk yüklendiğinde çalışsın:
+            // Sayfa yüklendiğinde TÜM içerikler gösterilsin
             window.onload = function () {
-              filtrele("amirlikler");
+              filtrele("tum");
             };
           </script>
+
           <script>
             let seciliAdres = null;
 
@@ -2104,80 +2216,155 @@
             }
           </script>
           <script>
-            function toggleDropdown(button) {
-              const row = button.closest("tr");
+            function filtreleKategori(kategori) {
+              const satirlar = document.querySelectorAll(
+                "#icerikTablosu tbody tr"
+              );
 
-              // GPS ikonunun bulunduğu hücreden sonra gelen ilk td (adres metni)
-              const cells = row.querySelectorAll("td");
-              let textCell = null;
-              for (let i = 0; i < cells.length; i++) {
-                if (cells[i].querySelector("a")) {
-                  textCell = cells[i + 1];
-                  break;
+              satirlar.forEach((satir) => {
+                const kategoriHucre = satir.querySelector("td:nth-child(3)");
+                const kategoriMetin = kategoriHucre?.innerText.trim();
+
+                if (kategori === "Hepsi" || kategoriMetin === kategori) {
+                  satir.style.display = "";
+                } else {
+                  satir.style.display = "none";
                 }
-              }
-
-              if (!textCell) return;
-              const currentText = textCell.innerText.trim();
-              const gpsLink = row.querySelector("a");
-              const mevcutLink = gpsLink.getAttribute("href");
-
-              if (textCell.querySelector("input")) return;
-
-              textCell.setAttribute("data-original-text", currentText);
-
-              textCell.innerHTML = `
-    <input type="text" id="adresInput" value="${mevcutLink}" style="width: 80%; margin-right: 10px;">
-    <button onclick="saveLink(this)" class="ikincilButon">Kaydet</button>
-  `;
-            }
-
-            function saveLink(saveBtn) {
-              const cell = saveBtn.closest("td");
-              const row = saveBtn.closest("tr");
-              const newLink = cell.querySelector("#adresInput").value;
-
-              const gpsLink = row.querySelector("a");
-              gpsLink.setAttribute("href", newLink);
-
-              const originalText = cell.getAttribute("data-original-text");
-              cell.innerHTML = originalText;
-
-              console.log("Yeni link kaydedildi:", newLink);
+              });
             }
           </script>
+
           <script>
-            function seoOlustur() {
-              document.getElementById(
-                "icerikler"
-              ).innerHTML = `<div class="container-sm">
-            <div class="card w-75">
-              <div class="card-body">
-                <h5 class="card-title">SEO OLUŞTUR</h5>
-                <p class="card-text">SEO OLUŞTUR</p>
-                <a href="#" class="btn btn-primary">KAYDET</a>
+            // Kategori filtreleme fonksiyonu
+            function filtreleKategoriler(secilenKategoriler) {
+              const satirlar = document.querySelectorAll(
+                "#icerikTablosu tbody tr"
+              );
+
+              satirlar.forEach((satir) => {
+                const kategori =
+                  satir.getAttribute("data-kategori") || satir.className;
+
+                if (
+                  secilenKategoriler.length === 0 ||
+                  secilenKategoriler.includes(kategori)
+                ) {
+                  satir.style.display = "table-row";
+                } else {
+                  satir.style.display = "none";
+                }
+              });
+            }
+
+            // Uygula butonuna class ile tıklama olayını bağla
+            document.querySelectorAll(".btn-uygula").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                const secilenler = Array.from(
+                  document.querySelectorAll(".checkbox-item:checked")
+                ).map((cb) => cb.getAttribute("data-kategori"));
+
+                filtreleKategoriler(secilenler);
+              });
+            });
+
+            // Sil butonu tüm checkbox'ları temizler
+            document.querySelectorAll(".btn-sil").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                document.querySelectorAll(".checkbox-item").forEach((cb) => {
+                  cb.checked = false;
+                });
+
+                // Tüm satırları geri göster
+                filtreleKategoriler([]);
+              });
+            });
+          </script>
+          <!-- Hizmet Noktaları Düzenleme -->
+          <script>
+            function hizmetNoktalari(nav, name, category) {
+              let content = document.getElementById("icerikler");
+
+              content.innerHTML = `<div class="container mt-5">
+              <div
+                class="card"
+                style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);"
+              >
+
+              
+                 <div
+                  class="card-header text-white"
+                  style="background-color: rgba(48, 114, 184, 0.799)"
+                
+                >
+                  <h5>Düzenle</h5>
+                </div>
+                <!-- DHNDüzenleme(Diğer Hİzmet Noktaları Düzenleme) sayfası  -->
+                <div class="DHNDüzenle">
+                  <form id="editDigerHizmetNoktalariForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Konum Linki</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nav"
+                        value="${nav}"
+                       
+                        required
+                      />
+                    </div>  
+                <div class="mb-5">
+                  <form id="editDigerHizmetNoktalariForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label" >İsim</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nav"
+                        value="${name}"
+                       
+                        required
+                      />
+                    </div>
+                  <!-- DhnCategory= diğer hizmet noktaları kategorisi -->
+                  <div class="DhnCategory">
+                  <form id="editDigerHizmetNoktalariForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label" >Kategori</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nav"
+                        value="${category}"
+                       
+                        required
+                      />
+                    </div>
+                  
+
+                    <button type="submit" class="btn btn-success">
+                      Güncelle
+                    </button>
+                    <a href="digerHizmetNoktalari.html" class="btn btn-secondary">İptal</a>
+                  </form>
+                </div>
               </div>
-            </div>
-          </div>`;
-            }
+            </div>`;
 
-            function seoIptal() {
-              document.getElementById("seoAlani").style.display = "none";
-              document.getElementById("icerikler").style.display = "block";
-            }
-
-            function seoKaydet() {
-              const input = document.getElementById("seoInput").value;
-              const seoUrl = input
-                .toLowerCase()
-                .replace(/[^a-z0-9ğüşıöç\s-]/g, "")
-                .replace(/\s+/g, "-")
-                .replace(/-+/g, "-")
-                .replace(/^-|-$/g, "");
-
-              document.getElementById("seoOutput").textContent = seoUrl;
-              alert("SEO URL oluşturuldu: " + seoUrl);
-              seoIptal();
+              if (category === "Amirlikler") {
+                document.getElementById("amirlikler").selected = true;
+              }
+              if (category === "Kültür ve Sanat Merkezleri") {
+                document.getElementById("kültürel").selected = true;
+              }
+              if (category === "Sosyal Tesisler") {
+                document.getElementById("sosyal").selected = true;
+              }
+              if (category === "Eğitim") {
+                document.getElementById("eğitim").selected = true;
+              }
+              if (category === "Diğer") {
+                document.getElementById("diger").selected = true;
+              }
             }
           </script>
         </div>
