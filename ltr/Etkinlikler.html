@@ -446,7 +446,7 @@
           </div>
         </div>
         <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-fluid d-flex justify-content-end">
+          <div class="container-fluid d-flex justify-content-end" id="nav">
             <button class="buton ekle-butonu" onclick="ekle()">
               <div class="icon arti"></div>
               <span>Ekle</span>
@@ -791,6 +791,8 @@
   <script>
     function ekle() {
       let content = document.getElementById("icerikler");
+
+      document.getElementById("nav").innerHTML = ``;
 
       content.innerHTML = `<div class="container mt-5">
               <div
@@ -1178,17 +1180,11 @@
       let content = document.getElementById("icerikler");
       date = date.split(".").reverse().join("-");
 
-      content.innerHTML = `<div class="container mt-5">
+      content.innerHTML = `<div class="d-flex justify-content-center">
               <div
                 class="card"
-                style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);"
+                style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738); width:95%; "
               >
-                 <div
-                  class="card-header text-white"
-                  style="background-color: rgba(48, 114, 184, 0.799)"
-                >
-                  <h5>Düzenle</h5>
-                </div>
                 <div class="card-body">
                   <form id="editNewsForm">
                     <div class="mb-3">
@@ -1230,7 +1226,7 @@
                         src="${imgSrc}"
                         class="img-fluid rounded preview-img d-flex justify-content-center"
                         alt="${title}"
-                        style="width: 50%; height: auto; margin-left:25%; max-height:300px"
+                        style="width: 30%; height: auto; margin-left:35%; max-height:300px"
                       />
                       <label
                         for="resim"
@@ -1257,6 +1253,8 @@
                 </div>
               </div>
             </div>`;
+
+            document.getElementById("nav").innerHTML=``
 
       const input = document.querySelector(".resim-input");
       const imgPrev = document.querySelector(".preview-img");
