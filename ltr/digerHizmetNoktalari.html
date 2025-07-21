@@ -2,6 +2,18 @@
 <html lang="tr">
   <head>
     <style>
+      .btn-sil:focus,
+      .btn-sil:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+      .btn-uygula:focus,
+      .btn-uygula:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
       .DHNbuton:focus,
       .DHNbuton:focus-visible {
         outline: none !important;
@@ -212,7 +224,7 @@
         border-color: transparent !important;
       }
       .dropdown-toggle:hover {
-        background-color: rgba(0, 245, 49, 0.659);
+        background-color: rgba(10, 221, 165, 0.659);
         color: white;
       }
       /* * {
@@ -247,6 +259,24 @@
         outline: none;
         border: none; /* İstersen bunu da kaldırabilirsin */
         box-shadow: none; /* Tarayıcı gölgesini de kaldırır */
+      }
+      .btn-sil:hover {
+        transition: transform 0.5s ease !important;
+        transform: scale(1.07);
+      }
+      .btn-uygula:hover {
+        transition: transform 0.5s ease !important;
+        transform: scale(1.07);
+      }
+      .btn-sil:focus {
+        transition: transform 0.5s ease !important;
+        transform: scale(1.07);
+        box-shadow: 3px 5px 6px rgba(231, 7, 7, 0.793) !important;
+      }
+      .btn-uygula:focus {
+        transition: transform 0.5s ease !important;
+        transform: scale(1.07) !important;
+        box-shadow: 3px 5px 6px rgba(3, 153, 167, 0.793) !important;
       }
 
       td > a > svg {
@@ -790,57 +820,94 @@
                 Filtrele
               </button>
               <div class="dropdown-menu">
-                <button
-                  class="DHNbuton"
-                  onclick="filtrele('amirlikler')"
-                  style="border: none; width: 200px; height: 40px"
-                >
-                  <th scope="row">
-                    <input type="checkbox" class="checkbox-item" />
-                  </th>
-                  Amirlikler
-                </button>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="amirlikler"
+                  />
+                  Amirlikler</label
+                ><br />
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="kültürel"
+                  />
+                  Kültür ve Sanat Merkezleri</label
+                ><br />
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="sosyal"
+                  />
+                  Sosyal Tesisler</label
+                ><br />
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="eğitim"
+                  />
+                  Eğitim</label
+                ><br />
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-item"
+                    data-kategori="diğer"
+                  />
+                  Diğer</label
+                ><br />
 
-                <button
-                  class="DHNbuton"
-                  onclick="filtrele('kültürel')"
-                  style="border: none; width: 200px; height: 40px"
+                <div
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-top: 10px;
+                  "
                 >
-                  <th scope="row">
-                    <input type="checkbox" class="checkbox-item" />
-                  </th>
-                  Kültür ve Sanat Merkezleri
-                </button>
-                <button
-                  class="DHNbuton"
-                  onclick="filtrele('sosyal')"
-                  style="border: none; width: 130px; height: 40px"
-                >
-                  <th scope="row">
-                    <input type="checkbox" class="checkbox-item" />
-                  </th>
-                  Sosyal Tesisler
-                </button>
-                <button
-                  class="DHNbuton"
-                  onclick="filtrele('eğitim')"
-                  style="border: none; width: 80px; height: 40px"
-                >
-                  <th scope="row">
-                    <input type="checkbox" class="checkbox-item" />
-                  </th>
-                  Eğitim
-                </button>
-                <button
-                  class="DHNbuton"
-                  onclick="filtrele('diğer')"
-                  style="border: none; width: 200px; height: 40px"
-                >
-                  <th scope="row">
-                    <input type="checkbox" class="checkbox-item" />
-                  </th>
-                  Diğer
-                </button>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: center;
+                      gap: 16px;
+                      margin-top: 10px;
+                      padding: 0 10px;
+                    "
+                  >
+                    <button
+                      class="btn-sil"
+                      style="
+                        border: none;
+                        width: 80px;
+                        height: 40px;
+                        background-color: rgba(251, 47, 1, 0.684);
+                        color: rgba(205, 5, 5, 0.9);
+                        font-weight: bold;
+                        border-radius: 5px;
+                      "
+                    >
+                      Temizle
+                    </button>
+                    <button
+                      class="btn-uygula"
+                      style="
+                        border: none;
+                        width: 80px;
+                        height: 40px;
+                        background-color: rgba(1, 213, 251, 0.54);
+                        color: rgba(52, 181, 251, 0.9);
+                        font-weight: bold;
+                        border-radius: 5px;
+                      "
+                    >
+                      Uygula
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
             <table
@@ -895,7 +962,7 @@
                   <td colspan="4">Çarşı ve Seyyar Zabıta Amirliği</td>
                   <td
                     colspan="4"
-                    style="text-align: right; margin-right: 300px"
+                    style="text-align: right; margin-left: auto"
                     class="amirlik"
                   >
                     Amirlikler
@@ -1411,7 +1478,9 @@
                     </a>
                   </td>
                   <td colspan="4">Adem Yavuz Mezarlığı</td>
-                  <td colspan="4" class="diger2">Diğer</td>
+                  <td colspan="4" class="diger2" style="margin-left: auto">
+                    Diğer
+                  </td>
                   <td style="text-align: right" colspan="4">
                     <button class="editButton" onclick="toggleDropdown(this)">
                       Düzenle
@@ -2148,6 +2217,52 @@
                 }
               });
             }
+          </script>
+
+          <script>
+            // Kategori filtreleme fonksiyonu
+            function filtreleKategoriler(secilenKategoriler) {
+              const satirlar = document.querySelectorAll(
+                "#icerikTablosu tbody tr"
+              );
+
+              satirlar.forEach((satir) => {
+                const kategori =
+                  satir.getAttribute("data-kategori") || satir.className;
+
+                if (
+                  secilenKategoriler.length === 0 ||
+                  secilenKategoriler.includes(kategori)
+                ) {
+                  satir.style.display = "table-row";
+                } else {
+                  satir.style.display = "none";
+                }
+              });
+            }
+
+            // Uygula butonuna class ile tıklama olayını bağla
+            document.querySelectorAll(".btn-uygula").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                const secilenler = Array.from(
+                  document.querySelectorAll(".checkbox-item:checked")
+                ).map((cb) => cb.getAttribute("data-kategori"));
+
+                filtreleKategoriler(secilenler);
+              });
+            });
+
+            // Sil butonu tüm checkbox'ları temizler
+            document.querySelectorAll(".btn-sil").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                document.querySelectorAll(".checkbox-item").forEach((cb) => {
+                  cb.checked = false;
+                });
+
+                // Tüm satırları geri göster
+                filtreleKategoriler([]);
+              });
+            });
           </script>
         </div>
       </div>
