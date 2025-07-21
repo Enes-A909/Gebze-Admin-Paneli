@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Başkan Danışmanları</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background:  rgb(236, 236, 236);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 360px;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      color: #243b52;
+      margin-bottom: 15px;
+    }
+
+    .card img {
+      width: 180px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    .card input {
+      width: 90%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+   .degistir-btn {
+    background-color: #7180e1; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.degistir-btn:hover {
+  background-color: #5a4bcc; /* Hover rengi */
+} 
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .button-group button {
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+
+    .photo-btn {
+      background-color: #16a085;
+      color: white;
+    }
+
+    .kaydet {
+      background-color: #8e44ad;
+      color: white;
+    }
+
+    .iptal {
+      background-color: #2980b9;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center; color:#243b52;">Başkan Danışmanları Düzenle</h1>
+
+  <div class="container">
+    <!-- 1. Danışman -->
+       <div class="card">
+      <img id="danisman1Image" src="./danisman1.jpg" alt="Fotoğraf">
+      
+      <h3 contenteditable="true" id="danisman1Isim">Yusuf BURKUT</h3>
+      <input type="text" id="danisman1Email" placeholder="E-posta girin">
+      <input type="text" id="danisman1Telefon" placeholder="Telefon girin">
+      <input type="file" id="danisman1Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'danisman1')">
+      <button class="degistir-btn" onclick="document.getElementById('danisman1Upload').click()"> Fotoğraf Değiştir</button>
+
+      <div class="button-group">
+        <button class="kaydet" onclick="saveData('danisman1')">Kaydet</button>
+        <button class="iptal" onclick="cancelData('danisman1')">İptal</button>
+      </div>
+    </div>
+
+    <!-- 2. Danışman -->
+        <div class="card">
+      <img id="danisman2Image" src="./danisman2.jpg" alt="Fotoğraf">
+      
+      <h3 contenteditable="true" id="danisman2Isim">Remzi ŞEKER</h3>
+      <input type="text" id="danisman2Email" placeholder="E-posta girin">
+      <input type="text" id="danisman2Telefon" placeholder="Telefon girin">
+      <input type="file" id="danisman2Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'danisman2')">
+      <button class="degistir-btn" onclick="document.getElementById('danisman2Upload').click()"> Fotoğraf Değiştir</button>
+
+      <div class="button-group">
+        <button class="kaydet" onclick="saveData('danisman2')">Kaydet</button>
+        <button class="iptal" onclick="cancelData('danisman2')">İptal</button>
+      </div>
+    </div>
+
+  <script>
+    function previewImage(event, id) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        document.getElementById(id + 'Image').src = reader.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function saveData(id) {
+      const isim = document.getElementById(id + 'Isim').value;
+      const email = document.getElementById(id + 'Email').value;
+      const tel = document.getElementById(id + 'Telefon').value;
+      const img = document.getElementById(id + 'Image').src;
+      localStorage.setItem(id + '_isim', isim);
+      localStorage.setItem(id + '_email', email);
+      localStorage.setItem(id + '_tel', tel);
+      localStorage.setItem(id + '_img', img);
+      alert('Bilgiler kaydedildi: ' + isim);
+    }
+
+    function cancelData(id) {
+      document.getElementById(id + 'Isim').value = localStorage.getItem(id + '_isim') || '';
+      document.getElementById(id + 'Email').value = localStorage.getItem(id + '_email') || '';
+      document.getElementById(id + 'Telefon').value = localStorage.getItem(id + '_tel') || '';
+      document.getElementById(id + 'Image').src = localStorage.getItem(id + '_img') || './' + id + '.jpg';
+      alert('Değişiklikler geri alındı');
+    }
+
+    window.onload = function () {
+      for (let i = 1; i <= 2; i++) {
+        const id = 'danisman' + i;
+        if (localStorage.getItem(id + '_isim')) document.getElementById(id + 'Isim').value = localStorage.getItem(id + '_isim');
+        if (localStorage.getItem(id + '_email')) document.getElementById(id + 'Email').value = localStorage.getItem(id + '_email');
+        if (localStorage.getItem(id + '_tel')) document.getElementById(id + 'Telefon').value = localStorage.getItem(id + '_tel');
+        if (localStorage.getItem(id + '_img')) document.getElementById(id + 'Image').src = localStorage.getItem(id + '_img');
+      }
+    }
+  </script>
+</body>
+</html>

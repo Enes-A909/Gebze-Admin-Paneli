@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Müdürlükler</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      position: relative;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .card input {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .card button {
+      margin: 5px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .photo-btn {
+      background-color: #5a5ad4;
+      color: white;
+    }
+
+    .save-btn {
+      background-color: #6f42c1;
+      color: white;
+    }
+
+    .cancel-btn {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    .card button:hover {
+      opacity: 0.9;
+    }
+
+    .file-input {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Müdürlükler</h1>
+  <div class="container">
+    <!-- 6 Kart -->
+    <div class="card">
+      <img src="default.jpg" alt="Müdür Fotoğrafı">
+      <input type="file" class="file-input" accept="image/*">
+      <h2 contenteditable="true">Birim Adı</h2>
+      <input type="text" placeholder="İsim" value="">
+      <input type="email" placeholder="E-mail" value="">
+      <button class="photo-btn">Fotoğraf Değiştir</button>
+      <button class="save-btn">Kaydet</button>
+      <button class="cancel-btn">İptal</button>
+    </div>
+
+    <div class="card">
+      <img src="default.jpg" alt="Müdür Fotoğrafı">
+      <input type="file" class="file-input" accept="image/*">
+      <h2 contenteditable="true">Birim Adı</h2>
+      <input type="text" placeholder="İsim" value="">
+      <input type="email" placeholder="E-mail" value="">
+      <button class="photo-btn">Fotoğraf Değiştir</button>
+      <button class="save-btn">Kaydet</button>
+      <button class="cancel-btn">İptal</button>
+    </div>
+
+    <div class="card">
+      <img src="default.jpg" alt="Müdür Fotoğrafı">
+      <input type="file" class="file-input" accept="image/*">
+      <h2 contenteditable="true">Birim Adı</h2>
+      <input type="text" placeholder="İsim" value="">
+      <input type="email" placeholder="E-mail" value="">
+      <button class="photo-btn">Fotoğraf Değiştir</button>
+      <button class="save-btn">Kaydet</button>
+      <button class="cancel-btn">İptal</button>
+    </div>
+
+    <div class="card">
+      <img src="default.jpg" alt="Müdür Fotoğrafı">
+      <input type="file" class="file-input" accept="image/*">
+      <h2 contenteditable="true">Birim Adı</h2>
+      <input type="text" placeholder="İsim" value="">
+      <input type="email" placeholder="E-mail" value="">
+      <button class="photo-btn">Fotoğraf Değiştir</button>
+      <button class="save-btn">Kaydet</button>
+      <button class="cancel-btn">İptal</button>
+    </div>
+
+    <div class="card">
+      <img src="default.jpg" alt="Müdür Fotoğrafı">
+      <input type="file" class="file-input" accept="image/*">
+      <h2 contenteditable="true">Birim Adı</h2>
+      <input type="text" placeholder="İsim" value="">
+      <input type="email" placeholder="E-mail" value="">
+      <button class="photo-btn">Fotoğraf Değiştir</button>
+      <button class="save-btn">Kaydet</button>
+      <button class="cancel-btn">İptal</button>
+    </div>
+
+    <div class="card">
+      <img src="default.jpg" alt="Müdür Fotoğrafı">
+      <input type="file" class="file-input" accept="image/*">
+      <h2 contenteditable="true">Birim Adı</h2>
+      <input type="text" placeholder="İsim" value="">
+      <input type="email" placeholder="E-mail" value="">
+      <button class="photo-btn">Fotoğraf Değiştir</button>
+      <button class="save-btn">Kaydet</button>
+      <button class="cancel-btn">İptal</button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".card").forEach(card => {
+      const photoBtn = card.querySelector(".photo-btn");
+      const fileInput = card.querySelector(".file-input");
+      const img = card.querySelector("img");
+      const saveBtn = card.querySelector(".save-btn");
+
+      // Fotoğraf değiştir
+      photoBtn.addEventListener("click", () => fileInput.click());
+      fileInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = e => { img.src = e.target.result; };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Kaydet butonu
+      saveBtn.addEventListener("click", () => {
+        const birimAdi = card.querySelector("h2").innerText.trim();
+        const isim = card.querySelector('input[type="text"]').value.trim();
+        const email = card.querySelector('input[type="email"]').value.trim();
+
+        console.log("Kaydedilen Değerler:", { birimAdi, isim, email });
+        alert(`${birimAdi} kaydedildi!`);
+      });
+    });
+    
+  function loadData() {
+    const savedData = JSON.parse(localStorage.getItem("mudurlukler")) || [];
+    const cards = document.querySelectorAll(".card");
+
+    savedData.forEach((data, index) => {
+      if (cards[index]) {
+        cards[index].querySelector("h2").innerText = data.birimAdi;
+        cards[index].querySelector('input[type="text"]').value = data.isim;
+        cards[index].querySelector('input[type="email"]').value = data.email;
+        if (data.photo) cards[index].querySelector("img").src = data.photo;
+      }
+    });
+  }
+
+  function saveCard(card, index) {
+    const birimAdi = card.querySelector("h2").innerText.trim();
+    const isim = card.querySelector('input[type="text"]').value.trim();
+    const email = card.querySelector('input[type="email"]').value.trim();
+    const photo = card.querySelector("img").src;
+
+    let allData = JSON.parse(localStorage.getItem("mudurlukler")) || [];
+    allData[index] = { birimAdi, isim, email, photo };
+    localStorage.setItem("mudurlukler", JSON.stringify(allData));
+
+    alert(`${birimAdi} kaydedildi!`);
+  }
+
+  document.querySelectorAll(".card").forEach((card, index) => {
+    const photoBtn = card.querySelector(".photo-btn");
+    const fileInput = card.querySelector(".file-input");
+    const img = card.querySelector("img");
+    const saveBtn = card.querySelector(".save-btn");
+
+    photoBtn.addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => { img.src = e.target.result; };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    saveBtn.addEventListener("click", () => saveCard(card, index));
+  });
+
+  loadData();
+
+
+  </script>
+</body>
+</html>

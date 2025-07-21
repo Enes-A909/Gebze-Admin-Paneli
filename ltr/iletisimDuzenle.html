@@ -503,6 +503,108 @@
                     box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
                     margin-top: 20px;
                   "
+                  <tbody>
+  <tr>
+    <th scope="row">
+      <i data-feather="phone"></i>
+    </th>
+    <td scope="row">Telefon</td>
+    <td scope="row">
+      <input
+        type="text"
+        name="phone"
+        value="0262 642 04 30"
+        class="form-control"
+      />
+    </td>
+    <td scope="row"></td>
+    <td scope="row" style="text-align: right">
+      <img
+        src="../assets/images/rubbishSvg.svg"
+        alt="remove"
+        width="25px"
+        height="25px"
+        onclick="remove(this)"
+      />
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row">
+      <i data-feather="printer"></i>
+    </th>
+    <td scope="row">Fax</td>
+    <td scope="row">
+      <input
+        type="text"
+        name="fax"
+        value="0262 642 04 31"
+        class="form-control"
+      />
+    </td>
+    <td scope="row"></td>
+    <td scope="row" style="text-align: right">
+      <img
+        src="../assets/images/rubbishSvg.svg"
+        alt="remove"
+        width="25px"
+        height="25px"
+        onclick="remove(this)"
+      />
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row">
+      <i data-feather="mail"></i>
+    </th>
+    <td scope="row">E-Posta</td>
+    <td scope="row">
+      <input
+        type="email"
+        name="email"
+        value="gebze@gebze.bel.tr"
+        class="form-control"
+      />
+    </td>
+    <td scope="row"></td>
+    <td scope="row" style="text-align: right">
+      <img
+        src="../assets/images/rubbishSvg.svg"
+        alt="remove"
+        width="25px"
+        height="25px"
+        onclick="remove(this)"
+      />
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row">
+      <i data-feather="file"></i>
+    </th>
+    <td scope="row">E-Posta (KEP)</td>
+    <td scope="row">
+      <input
+        type="email"
+        name="kep"
+        value="gebzebelediyesi@hs01.kep.tr"
+        class="form-control"
+      />
+    </td>
+    <td scope="row"></td>
+    <td scope="row" style="text-align: right">
+      <img
+        src="../assets/images/rubbishSvg.svg"
+        alt="remove"
+        width="25px"
+        height="25px"
+        onclick="remove(this)"
+      />
+    </td>
+  </tr>
+</tbody>
+
                 >
                   <thead>
                     <tr>
@@ -511,137 +613,7 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">
-                        <i data-feather="phone"></i>
-                      </th>
-                      <td scope=" row">Telefon</td>
-                      <td scope="row">
-                        <span
-                          style="color: #5e5e5e"
-                          onclick="addInput(this,`text`)"
-                          id="phone"
-                          >0262 642 04 30</span
-                        >
-                      </td>
-                      <td scope="row"></td>
-                      <td scope="row" style="text-align: right">
-                        <img
-                          src="../assets/images/editFrameSvg.svg"
-                          alt="editIcon"
-                          width="25px"
-                          height="25px"
-                          style="margin-right: 20px"
-                          onclick="addInput(this,`text`)"
-                        />
-                        <img
-                          src="../assets/images/rubbishSvg.svg"
-                          alt="remove"
-                          width="25px"
-                          height="25px"
-                          onclick="remove(this)"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <i data-feather="printer"></i>
-                      </th>
-                      <td scope=" row">Fax</td>
-                      <td scope="row">
-                        <span
-                          style="color: #5e5e5e"
-                          onclick="addInput(this,`text`)"
-                          id="fax"
-                          >0262 642 04 31</span
-                        >
-                      </td>
-                      <td scope="row"></td>
-                      <td scope="row" style="text-align: right">
-                        <img
-                          src="../assets/images/editFrameSvg.svg"
-                          alt="editIcon"
-                          width="25px"
-                          height="25px"
-                          style="margin-right: 20px"
-                          onclick="addInput(this,`text`)"
-                        />
-                        <img
-                          src="../assets/images/rubbishSvg.svg"
-                          alt="remove"
-                          width="25px"
-                          height="25px"
-                          onclick="remove(this)"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <i data-feather="mail"></i>
-                      </th>
-                      <td scope=" row">E-Posta</td>
-                      <td scope="row">
-                        <span
-                          style="color: #5e5e5e"
-                          onclick="addInput(this,`email`)"
-                          id="eMail"
-                          >gebze@gebze.bel.tr</span
-                        >
-                      </td>
-                      <td scope="row"></td>
-                      <td scope="row" style="text-align: right">
-                        <img
-                          src="../assets/images/editFrameSvg.svg"
-                          alt="editIcon"
-                          width="25px"
-                          height="25px"
-                          style="margin-right: 20px"
-                          onclick="addInput(this,`email`)"
-                        />
-                        <img
-                          src="../assets/images/rubbishSvg.svg"
-                          alt="remove"
-                          width="25px"
-                          height="25px"
-                          onclick="remove(this)"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <i data-feather="file"></i>
-                      </th>
-                      <td scope=" row">E-Posta(KEP)</td>
-                      <td scope="row">
-                        <span
-                          style="color: #5e5e5e"
-                          onclick="addInput(this,`email`)"
-                          id="eMailKep"
-                          >gebzebelediyesi@hs01.kep.tr</span
-                        >
-                      </td>
-                      <td scope="row"></td>
-                      <td scope="row" style="text-align: right">
-                        <img
-                          src="../assets/images/editFrameSvg.svg"
-                          alt="editIcon"
-                          width="25px"
-                          height="25px"
-                          id="editFrameSvg"
-                          style="margin-right: 20px"
-                          onclick="addInput(this,`email`)"
-                        />
-                        <img
-                          src="../assets/images/rubbishSvg.svg"
-                          alt="remove"
-                          width="25px"
-                          height="25px"
-                          onclick="remove(this)"
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
+                 
                 </table>
 
                 <div
