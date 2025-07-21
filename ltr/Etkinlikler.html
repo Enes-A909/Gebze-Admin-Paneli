@@ -482,19 +482,13 @@
           <div class="container-fluid d-flex justify-content-end">
 
             <!-- EKLE -->
-            <button class="buton ekle-butonu">
+            <button class="buton ekle-butonu" onclick="ekle()">
               <div class="icon arti"></div>
               <span>Ekle</span>
             </button>
 
-            <!-- ARŞİVLE -->
-            <button class="buton arsivle-butonu">
-              <div class="icon kutu"></div>
-              <span>Arşivle</span>
-            </button>
-
             <!-- SİL -->
-            <button class="buton sil-butonu">
+            <button class="buton sil-butonu" onclick="sil()">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                 aria-hidden="true" focusable="false">
                 <path
@@ -516,6 +510,9 @@
               style="box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738); background-color: rgba(204, 204, 204, 0.186); border-radius: 10px;">
               <thead>
                 <tr>
+                  <th scope="col">
+                    <input type="checkbox" id="ana-checkbox" />
+                  </th>
                   <th scope="col"></th>
                   <th scope="col">Etkinlik Başlığı</th>
                   <th scope="col">Tarih</th>
@@ -524,141 +521,17 @@
                 </tr>
               </thead>
               <tbody>
+
                 <tr>
-                  <th scope="row">
+                  <th scope="col">
+                    <input type="checkbox" class="checkbox-item" />
+                  </th>
+                  <td scope="row">
                     <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
                       height="30px" />
-                  </th>
+                  </td>
                   <td scope=" row">etkinlik</td>
                   <td scope="row">19.05.2025</td>
-                  <td scope="row">...</td>
-                  <td scope="row" style="text-align: right">
-                    <div class="dropdown-container">
-                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                        İşlemler
-                      </button>
-                      <div class="dropdown-menu">
-                        <button onclick="duzenle()">
-                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                          Düzenle
-                        </button>
-                        <button onclick="sil()">
-                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                            height="10%" />
-                          Sil
-                        </button>
-                        <button onclick="icerik()">
-                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                            height="10%" />
-                          İçerik
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
-                      height="30px" />
-                  </th>
-                  <td scope=" row">etkinlik</td>
-                  <td scope="row">19.05.2025</td>
-                  <td scope="row">...</td>
-                  <td scope="row" style="text-align: right">
-                    <div class="dropdown-container">
-                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                        İşlemler
-                      </button>
-                      <div class="dropdown-menu">
-                        <button onclick="duzenle()">
-                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                          Düzenle
-                        </button>
-                        <button onclick="sil()">
-                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                            height="10%" />
-                          Sil
-                        </button>
-                        <button onclick="icerik()">
-                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                            height="10%" />
-                          İçerik
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
-                      height="30px" />
-                  </th>
-                  <td scope=" row">etkinlik</td>
-                  <td scope="row">19.05.2025</td>
-                  <td scope="row">...</td>
-                  <td scope="row" style="text-align: right">
-                    <div class="dropdown-container">
-                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                        İşlemler
-                      </button>
-                      <div class="dropdown-menu">
-                        <button onclick="duzenle()">
-                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                          Düzenle
-                        </button>
-                        <button onclick="sil()">
-                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                            height="10%" />
-                          Sil
-                        </button>
-                        <button onclick="icerik()">
-                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                            height="10%" />
-                          İçerik
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
-                      height="30px" />
-                  </th>
-                  <td scope=" row">etkinlik</td>
-                  <td scope="row">19.05.2025</td>
-                  <td scope="row">...</td>
-                  <td scope="row" style="text-align: right">
-                    <div class="dropdown-container">
-                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                        İşlemler
-                      </button>
-                      <div class="dropdown-menu">
-                        <button onclick="duzenle()">
-                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                          Düzenle
-                        </button>
-                        <button onclick="sil()">
-                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                            height="10%" />
-                          Sil
-                        </button>
-                        <button onclick="icerik()">
-                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                            height="10%" />
-                          İçerik
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
-                      height="30px" />
-                  </th>
-                  <td scope=" row">etkinlik</td>
-                  <td scope="row">30.02.2025</td>
                   <td scope="row">...</td>
                   <td scope="row" style="text-align: right">
                     <div class="dropdown-container">
@@ -667,7 +540,7 @@
                       </button>
                       <div class="dropdown-menu">
                         <button
-                          onclick="editNews('../assets/images/gebze-belediyesi.ico', 'etkinlik', '10.02.2025', '...')">
+                          onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')">
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                           Düzenle
                         </button>
@@ -686,12 +559,15 @@
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
+                  <th scope="col">
+                    <input type="checkbox" class="checkbox-item" />
+                  </th>
+                  <td scope="row">
                     <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
                       height="30px" />
-                  </th>
+                  </td>
                   <td scope=" row">etkinlik</td>
-                  <td scope="row">30.02.2025</td>
+                  <td scope="row">19.05.2025</td>
                   <td scope="row">...</td>
                   <td scope="row" style="text-align: right">
                     <div class="dropdown-container">
@@ -699,7 +575,8 @@
                         İşlemler
                       </button>
                       <div class="dropdown-menu">
-                        <button onclick="duzenle()">
+                        <button
+                          onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')">
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                           Düzenle
                         </button>
@@ -718,12 +595,15 @@
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
+                  <th scope="col">
+                    <input type="checkbox" class="checkbox-item" />
+                  </th>
+                  <td scope="row">
                     <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
                       height="30px" />
-                  </th>
+                  </td>
                   <td scope=" row">etkinlik</td>
-                  <td scope="row">30.02.2025</td>
+                  <td scope="row">19.05.2025</td>
                   <td scope="row">...</td>
                   <td scope="row" style="text-align: right">
                     <div class="dropdown-container">
@@ -731,7 +611,152 @@
                         İşlemler
                       </button>
                       <div class="dropdown-menu">
-                        <button onclick="duzenle()">
+                        <button
+                          onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                            height="10%" />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                            height="10%" />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="checkbox-item" />
+                  </th>
+                  <td scope="row">
+                    <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
+                      height="30px" />
+                  </td>
+                  <td scope=" row">etkinlik</td>
+                  <td scope="row">19.05.2025</td>
+                  <td scope="row">...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button
+                          onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                            height="10%" />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                            height="10%" />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="checkbox-item" />
+                  </th>
+                  <td scope="row">
+                    <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
+                      height="30px" />
+                  </td>
+                  <td scope=" row">etkinlik</td>
+                  <td scope="row">20.02.2025</td>
+                  <td scope="row">...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button
+                          onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '10.02.2025', '...')">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                            height="10%" />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                            height="10%" />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="checkbox-item" />
+                  </th>
+                  <td scope="row">
+                    <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
+                      height="30px" />
+                  </td>
+                  <td scope=" row">etkinlik</td>
+                  <td scope="row">30.03.2025</td>
+                  <td scope="row">...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button
+                          onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.02.2025', '...')">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                            height="10%" />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                            height="10%" />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="checkbox-item" />
+                  </th>
+                  <td scope="row">
+                    <img src="../assets/images/gebze-belediyesi.ico" alt="gebze-belediyesi-img" width="30px"
+                      height="30px" />
+                  </td>
+                  <td scope=" row">etkinlik</td>
+                  <td scope="row">30.04.2025</td>
+                  <td scope="row">...</td>
+                  <td scope="row" style="text-align: right">
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button
+                          onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.04.2025', '...')">
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                           Düzenle
                         </button>
@@ -794,19 +819,16 @@
     }
 
     // Dropdown seçenekler
-    function ekle() {
-      alert("Ekleme sayfasına yönlendiriliyor...");
-    }
 
-    function duzenle() {
+    function duzenleDrop() {
       alert("Düzenleme sayfasına yönlendiriliyor...");
     }
 
-    function sil() {
+    function silDrop() {
       alert("Silme işlemi yapılıyor...");
     }
 
-    function icerik() {
+    function icerikDrop() {
       alert("İçerik detayına yönlendiriliyor...");
     }
 
@@ -823,16 +845,22 @@
         menu.style.display === "block" ? "none" : "block";
     }
 
-    function ekle() {
-      alert("Ekle tıklandı");
-    }
 
-    function duzenle() {
-      alert("Düzenle tıklandı");
-    }
+
 
     function sil() {
-      alert("Sil tıklandı");
+      const checkboxes = document.querySelectorAll(".checkbox-item");
+      let seciliVar = false;
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          seciliVar = true;
+          const row = checkbox.closest("tr");
+          row.parentNode.removeChild(row);
+        }
+      });
+      if (!seciliVar) {
+        alert("Lütfen silmek için en az bir içerik seçin.");
+      }
     }
 
     function icerik() {
@@ -849,7 +877,111 @@
     });
   </script>
   <script>
-    function editNews(imgSrc, title, date, exp) {
+    function ekle() {
+      let content = document.getElementById("icerikler");
+
+      content.innerHTML = `<div class="container mt-5">
+              <div
+                class="card"
+                style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);"
+              >
+                 <div
+                  class="card-header text-white"
+                  style="background-color: rgba(48, 114, 184, 0.799)"
+                >
+                  <h5>Düzenle</h5>
+                </div>
+                <div class="card-body">
+                  <form id="editNewsForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Başlık</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        value=""
+                        placeholder="Haber başlığını giriniz"
+                        required
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="haberTarih" class="form-label">Tarih</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="haberTarih"
+                        value=""
+                        required
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="haberIcerik" class="form-label">Açıklama</label>
+                      <textarea
+                        class="form-control"
+                        id="haberIcerik"
+                        rows="5"
+                        placeholder="Haber içeriğini yazınız..."
+                        required
+                      ></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                      <img
+                        src=""
+                        class="img-fluid rounded preview-img d-flex justify-content-center"
+                        alt=""
+                        style="width: 50%; height: auto; margin-left:25%; max-height:300px"
+                      />
+                      <label
+                        for="resim"
+                        class="btn btn-outline-primary mt-2"
+                        style="width: 100%"
+                      >
+                        Fotoğraf Seç
+                      </label>
+                      <input
+                        type="file"
+                        name="resim"
+                        id="resim"
+                        style="display: none"
+                        accept="image/*"
+                        class="resim-input"
+                      />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                      Ekle
+                    </button>
+                    <a href="Etkinlikler.html" class="btn btn-secondary">İptal</a>
+                  </form>
+                </div>
+              </div>
+            </div>`;
+
+      const input = document.querySelector(".resim-input");
+      const imgPrev = document.querySelector(".preview-img");
+
+      input.addEventListener("change", function () {
+        const dosya = this.files[0];
+
+        if (dosya) {
+          const okuyucu = new FileReader();
+
+          okuyucu.onload = function (e) {
+            imgPrev.src = e.target.result;
+            imgPrev.style.display = "block";
+          };
+
+          okuyucu.readAsDataURL(dosya);
+        }
+      });
+    }
+
+  </script>
+  <script>
+    function editActivities(imgSrc, title, date, exp) {
       let content = document.getElementById("icerikler");
       date = date.split(".").reverse().join("-");
 
@@ -860,7 +992,7 @@
               >
                  <div
                   class="card-header text-white"
-                  style="background-color: rgba(208, 162, 10, 0.799)"
+                  style="background-color: rgba(48, 114, 184, 0.799)"
                 >
                   <h5>Düzenle</h5>
                 </div>
@@ -927,7 +1059,7 @@
                     <button type="submit" class="btn btn-success">
                       Güncelle
                     </button>
-                    <a href="Haberler.html" class="btn btn-secondary">İptal</a>
+                    <a href="Etkinlikler.html" class="btn btn-secondary">İptal</a>
                   </form>
                 </div>
               </div>
@@ -951,6 +1083,31 @@
         }
       });
     }
+  </script>
+  <script>
+    // Burada herhangi bir checkbox seçildiğinde Arşivle ve Sil butonlarının display özelliğini none olmaktan çıkaracağız.
+    const checkboxes = document.querySelectorAll(".checkbox-item");
+    const archiveButton = document.getElementById("archive-button");
+    const deleteButton = document.getElementById("delete-button");
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", () => {
+        const isChecked = Array.from(checkboxes).some(
+          (checkbox) => checkbox.checked
+        );
+        archiveButton.style.display = isChecked ? "block" : "none";
+        deleteButton.style.display = isChecked ? "block" : "none";
+      });
+    });
+
+    // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+    const anaCheckbox = document.getElementById("ana-checkbox");
+    anaCheckbox.addEventListener("change", () => {
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = anaCheckbox.checked;
+        checkbox.dispatchEvent(new Event("change"));
+      });
+    });
   </script>
 </body>
 
