@@ -16,6 +16,7 @@
 
       table {
         border-radius: 10px;
+        table-layout: fixed;
       }
 
       table tr {
@@ -39,6 +40,12 @@
       table tr button:hover {
         transition: transform 0.3s ease !important;
         transform: scale(1.2);
+      }
+
+      .dot {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .dropdown-container {
@@ -748,7 +755,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -804,7 +811,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -860,7 +867,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -972,7 +979,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.03.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.03.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -1028,7 +1035,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.04.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.04.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
