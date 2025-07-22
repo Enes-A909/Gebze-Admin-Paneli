@@ -789,7 +789,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editNews('../assets/images/gebze-belediyesi.ico','Basketbol Takımımız Gruplardan Çıktı','Başkanlık','15.09.2023','Turnuvada bir üst tura yükseldi')"
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','Basketbol Takımımız Gruplardan Çıktı','Başkanlık','15.09.2023','Turnuvada bir üst tura yükseldi',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -846,7 +846,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -903,7 +903,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -960,7 +960,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -1017,7 +1017,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -1074,7 +1074,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...')"
+                            onclick="editNews('../assets/images/gebze-belediyesi.ico','haber','Başkanlık','15.09.2023','...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -1126,6 +1126,184 @@
           <script src="../assets/js/script.js"></script>
           <!-- Bootstrap JS + Popper -->
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+          <script>
+            var oldContent = "";
+            function editNews(imgSrc, title, category, date, exp, element) {
+              const rowIndex = element.closest("tr").rowIndex;
+              sessionStorage.setItem("rowIndex", rowIndex);
+              let content = document.getElementById("icerikler");
+              date = date.split(".").reverse().join("-");
+              oldContent = content.innerHTML;
+
+              content.innerHTML = `
+              <div class="d-flex justify-content-center">
+              <div class="card " style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738); width:95%;">
+                <div class="card-body">
+                  <form id="editNewsForm">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Başlık</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        value="${title}"
+                        placeholder="Haber başlığını giriniz"
+                        required
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="kategori" class="form-label"
+                        >Kategori</label
+                      >
+                      <select class="select" id="kategori">
+                        <option id="yonetim">Yönetim</option>
+                        <option id="baskanlik">Başkanlık</option>
+                        <option id="halk">Halk</option>
+                        <option id="genel">Genel</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="haberTarih" class="form-label">Tarih</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="haberTarih"
+                        value="${date}"
+                        required
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="haberIcerik" class="form-label">Açıklama</label>
+                      <textarea
+                        class="form-control"
+                        id="haberIcerik"
+                        rows="5"
+                        placeholder="Haber içeriğini yazınız..."
+                        required
+                      >${exp}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                      <img
+                      id="image"
+                        src="${imgSrc}"
+                        class="img-fluid rounded preview-img d-flex justify-content-center"
+                        alt="${title}"
+                        style="width: 30%; height: auto; margin-left:35%; max-height:300px"
+                      />
+                      <label
+                        for="resim"
+                        class="btn btn-outline-primary mt-2"
+                        style="width: 100%"
+                      >
+                        Fotoğraf Seç
+                      </label>
+                      <input
+                      id="resim"
+                        type="file"
+                        name="resim"
+                        style="display: none"
+                        accept="image/*"
+                        class="resim-input"
+                      />
+                    </div>
+
+                    <span class="btn btn-success" id="submit">
+                      Güncelle
+                    </span>
+                    <a href="Haberler.html" class="btn btn-secondary">İptal</a>
+                  </form>
+                </div>
+              </div>
+              </div>
+            `;
+              document.getElementById("nav").innerHTML = ``;
+
+              if (category === "Yönetim") {
+                document.getElementById("yonetim").selected = true;
+              }
+              if (category === "Başkanlık") {
+                document.getElementById("baskanlik").selected = true;
+              }
+              if (category === "Halk") {
+                document.getElementById("halk").selected = true;
+              }
+              if (category === "Genel") {
+                document.getElementById("genel").selected = true;
+              }
+
+              const input = document.querySelector(".resim-input");
+              const imgPrev = document.querySelector(".preview-img");
+
+              input.addEventListener("change", function () {
+                const dosya = this.files[0];
+
+                if (dosya) {
+                  const okuyucu = new FileReader();
+
+                  okuyucu.onload = function (e) {
+                    imgPrev.src = e.target.result;
+                    imgPrev.style.display = "block";
+                  };
+
+                  okuyucu.readAsDataURL(dosya);
+                }
+              });
+
+              document
+                .getElementById("submit")
+                .addEventListener("click", function () {
+                  let title = document.querySelector("#title").value;
+                  let kategori = document.getElementById("kategori").value;
+                  let tarih = document.querySelector("#haberTarih").value;
+                  let icerik = document.querySelector("#haberIcerik").value;
+
+                  tarih = tarih.split("-").reverse().join(".");
+
+                  document.getElementById("icerikler").innerHTML = oldContent;
+
+                  const rowIndex = sessionStorage.getItem("rowIndex");
+                  const table = document.querySelector("table");
+                  const row = table.rows[rowIndex];
+                  const newTd = row.querySelectorAll("td");
+
+                  newTd[2].textContent = title;
+                  newTd[3].textContent = kategori;
+                  newTd[4].textContent = tarih;
+                  newTd[5].textContent = icerik;
+
+                  document.getElementById("nav").innerHTML = `
+                   <button class="buton ekle-butonu">
+                <div class="icon arti"></div>
+                <span>Ekle</span>
+              </button>
+
+              <!-- SİL -->
+              <button class="buton sil-butonu" onclick="sil()">
+                <svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z"
+                  />
+                </svg>
+                <span>Sil</span>
+              </button>`;
+
+                  sessionStorage.removeItem("rowIndex");
+                });
+            }
+          </script>
 
           <!-- Plugin used-->
           <script>
@@ -1299,185 +1477,7 @@
             }
           </script>
           <!-- DÜZENLE-->
-          <script>
-            var oldContent = "";
-            function editNews(imgSrc, title, category, date, exp, element) {
-              const rowIndex = element.closest("tr").rowIndex;
-              sessionStorage.setItem("rowIndex", rowIndex);
-              let content = document.getElementById("icerikler");
-              date = date.split(".").reverse().join("-");
-              oldContent = content.innerHTML;
 
-              content.innerHTML = `
-              <div class="d-flex justify-content-center">
-              <div class="card " style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738); width:95%;">
-                <div class="card-body">
-                  <form id="editNewsForm">
-                    <div class="mb-3">
-                      <label for="title" class="form-label">Başlık</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="title"
-                        value="${title}"
-                        placeholder="Haber başlığını giriniz"
-                        required
-                      />
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="kategori" class="form-label"
-                        >Kategori</label
-                      >
-                      <select class="select" id="kategori">
-                        <option id="yonetim">Yönetim</option>
-                        <option id="baskanlik">Başkanlık</option>
-                        <option id="halk">Halk</option>
-                        <option id="genel">Genel</option>
-                      </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="haberTarih" class="form-label">Tarih</label>
-                      <input
-                        type="date"
-                        class="form-control"
-                        id="haberTarih"
-                        value="${date}"
-                        required
-                      />
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="haberIcerik" class="form-label">Açıklama</label>
-                      <textarea
-                        class="form-control"
-                        id="haberIcerik"
-                        rows="5"
-                        placeholder="Haber içeriğini yazınız..."
-                        required
-                      >${exp}</textarea>
-                    </div>
-
-                    <div class="mb-3">
-                      <img
-                      id="image"
-                        src="${imgSrc}"
-                        class="img-fluid rounded preview-img d-flex justify-content-center"
-                        alt="${title}"
-                        style="width: 30%; height: auto; margin-left:35%; max-height:300px"
-                      />
-                      <label
-                        for="resim"
-                        class="btn btn-outline-primary mt-2"
-                        style="width: 100%"
-                      >
-                        Fotoğraf Seç
-                      </label>
-                      <input
-                      id="resim"
-                        type="file"
-                        name="resim"
-                        style="display: none"
-                        accept="image/*"
-                        class="resim-input"
-                      />
-                    </div>
-
-                    <span class="btn btn-success" id="submit">
-                      Güncelle
-                    </span>
-                    <a href="Haberler.html" class="btn btn-secondary">İptal</a>
-                  </form>
-                </div>
-              </div>
-              </div>
-            `;
-              document.getElementById("nav").innerHTML = ``;
-
-              if (category === "Yönetim") {
-                document.getElementById("yonetim").selected = true;
-              }
-              if (category === "Başkanlık") {
-                document.getElementById("baskanlik").selected = true;
-              }
-              if (category === "Halk") {
-                document.getElementById("halk").selected = true;
-              }
-              if (category === "Genel") {
-                document.getElementById("genel").selected = true;
-              }
-
-              const input = document.querySelector(".resim-input");
-              const imgPrev = document.querySelector(".preview-img");
-
-              input.addEventListener("change", function () {
-                const dosya = this.files[0];
-
-                if (dosya) {
-                  const okuyucu = new FileReader();
-
-                  okuyucu.onload = function (e) {
-                    imgPrev.src = e.target.result;
-                    imgPrev.style.display = "block";
-                  };
-
-                  okuyucu.readAsDataURL(dosya);
-                }
-              });
-
-              document
-                .getElementById("submit")
-                .addEventListener("click", function () {
-                  let title = document.querySelector("#title").value;
-                  let kategori = document.getElementById("kategori").value;
-                  let tarih = document.querySelector("#haberTarih").value;
-                  let icerik = document.querySelector("#haberIcerik").value;
-
-                  tarih = tarih.split("-").reverse().join(".");
-
-                  // Form kapat, eski tabloyu getir
-                  document.getElementById("icerikler").innerHTML = oldContent;
-
-                  // DOM geri geldi, şimdi ilgili satırı tekrar bul
-                  const rowIndex = sessionStorage.getItem("rowIndex");
-                  const table = document.querySelector("table"); // varsa table'a id ver daha sağlam olur
-                  const row = table.rows[rowIndex];
-                  const newTd = row.querySelectorAll("td");
-
-                  newTd[2].textContent = title;
-                  newTd[3].textContent = kategori;
-                  newTd[4].textContent = tarih;
-                  newTd[5].textContent = icerik;
-
-                  document.getElementById("nav").innerHTML = `
-                   <button class="buton ekle-butonu">
-                <div class="icon arti"></div>
-                <span>Ekle</span>
-              </button>
-
-              <!-- SİL -->
-              <button class="buton sil-butonu" onclick="sil()">
-                <svg
-                  class="icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z"
-                  />
-                </svg>
-                <span>Sil</span>
-              </button>`;
-
-                  sessionStorage.removeItem("rowIndex"); // temizlik
-                });
-            }
-          </script>
           <script>
             const checkboxes = document.querySelectorAll(".checkbox-item");
 
