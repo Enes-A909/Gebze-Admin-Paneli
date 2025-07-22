@@ -16,6 +16,7 @@
 
       table {
         border-radius: 10px;
+        table-layout: fixed;
       }
 
       table tr {
@@ -39,6 +40,12 @@
       table tr button:hover {
         transition: transform 0.3s ease !important;
         transform: scale(1.2);
+      }
+
+      .dot {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .dropdown-container {
@@ -575,11 +582,11 @@
             <div class="page-header">
               <div class="row">
                 <div class="col">
-                  <div class="page-header-left">
+                  <div class="page-header-left" style="margin-top: -30px">
                     <h3>Etkinlikler</h3>
                     <ol
                       class="breadcrumb"
-                      style="margin-top: 85px; margin-left: -160px"
+                      style="margin-top: 65px; margin-left: -160px"
                     >
                       <li class="breadcrumb-item">
                         <a href="index.html"><i data-feather="home"></i></a>
@@ -593,7 +600,10 @@
               </div>
             </div>
           </div>
-          <nav class="navbar navbar-expand-lg navbar-light">
+          <nav
+            class="navbar navbar-expand-lg navbar-light"
+            style="margin-top: -30px !important"
+          >
             <div class="container-fluid d-flex justify-content-end" id="nav">
               <button class="buton ekle-butonu" onclick="ekle()">
                 <div class="icon arti"></div>
@@ -621,7 +631,7 @@
 
           <!--İÇERİKLER-->
           <div id="icerikler">
-            <div class="container-sm ml-1">
+            <div class="container-sm ml-1" style="margin-top: -40px">
               <table
                 class="table"
                 id="editActForm"
@@ -748,7 +758,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -804,7 +814,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -860,7 +870,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '19.05.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -972,7 +982,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.03.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.03.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
@@ -1028,7 +1038,7 @@
                         </button>
                         <div class="dropdown-menu">
                           <button
-                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.04.2025', '...')"
+                            onclick="editActivities('../assets/images/gebze-belediyesi.ico', 'etkinlik', '30.04.2025', '...',this)"
                           >
                             <img
                               src="../assets/images/dropdown_svg/edit.svg"
