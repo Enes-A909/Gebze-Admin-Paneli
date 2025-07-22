@@ -1,227 +1,274 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Başkan</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #cfe0f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-    }
-    .container {
-      background: #fff;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 850px;
-    }
-    h1 {
-      margin-bottom: 20px;
-      color: #2c3e50;
-      text-align: center;
-    }
-    .card-container {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .card {
-      flex: 1;
-      background: #fafafa;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-    .card img {
-      width: 100%;
-      max-width: 250px;
-      height: 250px;
-      border-radius: 10px;
-      border: 2px solid #ddd;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-    
-    .dropdown-btn {
-      background-color: #6baad3;
-      color: rgb(1, 59, 67);
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .dropdown-btn:hover {
-      background-color: #519ed1;
-    }
-    .button-group {
-      margin-top: 10px;
-      display: none;
-    }
-    .kaydet {
-      background-color: #62ab5e;
-      color: rgb(2, 69, 0);
-      padding: 8px 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .iptal {
-      background-color: #d17c7c;
-      color: rgb(103, 0, 0);
-      padding: 8px 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-left: 10px;
-    }
-    .edit-section {
-      margin-top: 15px;
-    }
-   .edit-section label {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  color: #2c3e50;
-  font-weight: 600;
-  margin-bottom: 6px;
-  display: block;
-}
-
-.edit-section input,
-.edit-section textarea {
-  width: 98%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 15px;
-  color: #34495e;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: #fafafa;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-}
-
-   
-    textarea {
-      resize: none;
-      min-height: 100px;
-    }
-    .save-cancel-group {
-      text-align: center;
-      margin-top: 10px;
-    }
-    .save-cancel-group button {
-      margin: 0 5px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <h1>Başkan Düzenle</h1>
-
-    <div class="card-container">
-      <!-- Fotoğraf Kartı -->
-      <div class="card" id="fotoCard">
-        <img id="baskanImage" src="../assets/images/kurumsal gebze/zinnurbuyukgoz.jpg" alt="Başkan Fotoğrafı">
-        <input type="file" id="baskanUpload" accept="image/*" style="display:none;" onchange="previewImage(event, 'baskan')">
-        <button class="dropdown-btn" onclick="document.getElementById('baskanUpload').click()">Fotoğraf Seç</button>
-        <div class="button-group" id="baskanButtons">
-          <button class="kaydet" onclick="savePhoto('baskan')">Kaydet</button>
-          <button class="iptal" onclick="cancelChange('baskan')">İptal</button>
-        </div>
-      </div>
-
-      <!-- İmza Kartı -->
-      <div class="card" id="imzaCard">
-        <img id="imzaImage" src="./imza.png" alt="İmza Fotoğrafı">
-        <input type="file" id="imzaUpload" accept="image/*" style="display:none;" onchange="previewImage(event, 'imza')">
-        <button class="dropdown-btn" onclick="document.getElementById('imzaUpload').click()">İmza Seç</button>
-        <div class="button-group" id="imzaButtons">
-          <button class="kaydet" onclick="savePhoto('imza')">Kaydet</button>
-          <button class="iptal" onclick="cancelChange('imza')">İptal</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- İsim -->
-    <div class="edit-section">
-      <label for="isim">İsim:</label>
-      <input type="text" id="isim" placeholder="Başkanın İsmini Girin">
-    </div>
-
-    <!-- Biyografi -->
-    <div class="edit-section">
-      <label for="biyografi">Biyografi:</label>
-      <textarea id="biyografi" placeholder="Başkanın biyografisini buraya yazın..."></textarea>
-    </div>
-
-    <!-- Kaydet ve İptal -->
-    <div class="save-cancel-group">
-      <button class="kaydet" onclick="saveAll()">Kaydet</button>
-      <button class="iptal" onclick="cancelAll()">İptal</button>
-    </div>
-  </div>
-
-  <script>
-    const keys = { 
-      baskan: 'baskanImageData', 
-      imza: 'imzaImageData',
-      isim: 'baskanName',
-      bio: 'baskanBio'
-    };
-
-    window.onload = function() {
-      for (const key of ['baskan', 'imza']) {
-        const savedImage = localStorage.getItem(keys[key]);
-        if (savedImage) document.getElementById(key + 'Image').src = savedImage;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Başkan</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #cfe0f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
       }
-      const savedName = localStorage.getItem(keys.isim);
-      const savedBio = localStorage.getItem(keys.bio);
-      if (savedName) document.getElementById('isim').value = savedName;
-      if (savedBio) document.getElementById('biyografi').value = savedBio;
-    };
+      .container {
+        background: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 850px;
+      }
+      h1 {
+        margin-bottom: 20px;
+        color: #2c3e50;
+        text-align: center;
+      }
+      .card-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .card {
+        flex: 1;
+        background: #fafafa;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .card img {
+        width: 100%;
+        max-width: 250px;
+        height: 250px;
+        border-radius: 10px;
+        border: 2px solid #ddd;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
 
-    function previewImage(event, type) {
-      const reader = new FileReader();
-      reader.onload = function() {
-        document.getElementById(type + 'Image').src = reader.result;
-        document.getElementById(type + 'Buttons').style.display = 'block';
+      .dropdown-btn {
+        background-color: #6baad3;
+        color: rgb(1, 59, 67);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .dropdown-btn:hover {
+        background-color: #519ed1;
+      }
+      .button-group {
+        margin-top: 10px;
+        display: none;
+      }
+      .kaydet {
+        background-color: #62ab5e;
+        color: rgb(2, 69, 0);
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .iptal {
+        background-color: #d17c7c;
+        color: rgb(103, 0, 0);
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .edit-section {
+        margin-top: 15px;
+      }
+      .edit-section label {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        color: #2c3e50;
+        font-weight: 600;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .edit-section input,
+      .edit-section textarea {
+        width: 98%;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+        color: #34495e;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        background-color: #fafafa;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      textarea {
+        resize: none;
+        min-height: 100px;
+      }
+      .save-cancel-group {
+        text-align: center;
+        margin-top: 10px;
+      }
+      .save-cancel-group button {
+        margin: 0 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Başkan Düzenle</h1>
+
+      <div class="card-container">
+        <!-- Fotoğraf Kartı -->
+        <div class="card" id="fotoCard">
+          <img
+            id="baskanImage"
+            src="../assets/images/kurumsal gebze/zinnurbuyukgoz.jpg"
+            alt="Başkan Fotoğrafı"
+          />
+          <input
+            type="file"
+            id="baskanUpload"
+            accept="image/*"
+            style="display: none"
+            onchange="previewImage(event, 'baskan')"
+          />
+          <button
+            class="dropdown-btn"
+            onclick="document.getElementById('baskanUpload').click()"
+          >
+            Fotoğraf Seç
+          </button>
+          <div class="button-group" id="baskanButtons">
+            <button class="kaydet" onclick="savePhoto('baskan')">Kaydet</button>
+            <button class="iptal" onclick="cancelChange('baskan')">
+              İptal
+            </button>
+          </div>
+        </div>
+
+        <!-- İmza Kartı -->
+        <div class="card" id="imzaCard">
+          <img
+            id="imzaImage"
+            src="../assets/images/kurumsal gebze/imza.png"
+            alt="İmza Fotoğrafı"
+          />
+          <input
+            type="file"
+            id="imzaUpload"
+            accept="image/*"
+            style="display: none"
+            onchange="previewImage(event, 'imza')"
+          />
+          <button
+            class="dropdown-btn"
+            onclick="document.getElementById('imzaUpload').click()"
+          >
+            İmza Seç
+          </button>
+          <div class="button-group" id="imzaButtons">
+            <button class="kaydet" onclick="savePhoto('imza')">Kaydet</button>
+            <button class="iptal" onclick="cancelChange('imza')">İptal</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- İsim -->
+      <div class="edit-section">
+        <label for="isim">İsim:</label>
+        <input
+          type="text"
+          id="isim"
+          placeholder="Başkanın İsmini Girin"
+          value="Ahmet Hüseyin ÇELEBİ"
+        />
+      </div>
+
+      <!-- Biyografi -->
+      <div class="edit-section">
+        <label for="biyografi">Biyografi:</label>
+        <textarea
+          id="biyografi"
+          placeholder="Başkanın biyografisini buraya yazın..."
+        >
+1964 yılında Erzurum’da doğdu. İlköğretim tahsilini 1975’te Bakırköy Koca Sinan İlkokulu’nda ve 1978’de Kadıköy İmam Hatip Ortaokulu’nda tamamladı. 1983’te ise Gebze İmam Hatip Lisesi’nden mezun oldu. 1987’de Yıldız Teknik Üniversitesi Mimarlık Fakültesi’nden Şehir ve Bölge Plancısı unvanıyla mezun oldu. 1987-1989 yılları arasında aynı üniversitede Şehir ve Bölge Planlaması dalında yüksek lisansını tamamladı. 33 Yıldan bu yana ise Şehir Plancısı unvanıyla hizmet etmeye devam etmektedir. Evli ve dört çocuk babasıdır. Refah Partisi’nden Darıca Belde Başkanlığı ve Gebze Yönetim Kurulu Üyeliği ile Fazilet Partisi’nden Kocaeli İl Yönetimi İcra Kurulu Üyeliği yapmıştır. 2004-2009 yılları arasında Gebze Belediyesi Teknik Başkan Yardımcılığı ve Belediye Meclis Üyeliği, Kocaeli Büyükşehir Belediyesi Meclis Üyeliği ve İmar Komisyon Üyeliği görevlerinde bulunmuştur. Gebze ve Kocaeli’nde siyasi görevlerde bulunmanın yanı sıra, sivil toplum kuruluşlarında ve birçok farklı platformlarda faaliyetler sürdürmüştür. 2004’ten itibaren İstanbul Kültür Varlıklarını Koruma Bölge Kurulu ile Bursa ve Kocaeli Kültür Varlıklarını Koruma Bölge Kurulları’nda üyelik yapmıştır. Türkiye geneli İdare Mahkemeleri’nde Bilirkişi unvanıyla adaletin tecellisine yardımcı olmaya gayret etmiştir. 2014-2016 yılları arasında İstanbul Ticaret Odası Proje Danışma Kurul Üyesi olarak çalışmıştır. 2014’ten bu yana ise Teknopark İstanbul Teknoloji Bölgesi’nde Proje Danışma Kurulu Üyeliği yapmaktadır. Ocak 2019 itibarıyla Kültür Varlıklarını Koruma Bölge Kurulu Üyeliği’nden ayrılmıştır. 31 Mart 2019 Mahalli İdareler Seçimi’nde halkımızın teveccühü ile Gebze Belediye Başkanı seçilmiştir ve halen bu görevi yürütmeye devam etmektedir.</textarea
+        >
+      </div>
+
+      <!-- Kaydet ve İptal -->
+      <div class="save-cancel-group">
+        <button class="kaydet" onclick="saveAll()">Kaydet</button>
+        <button class="iptal" onclick="cancelAll()">İptal</button>
+      </div>
+    </div>
+
+    <script>
+      const keys = {
+        baskan: "baskanImageData",
+        imza: "imzaImageData",
+        isim: "baskanName",
+        bio: "baskanBio",
       };
-      reader.readAsDataURL(event.target.files[0]);
-    }
 
-    function savePhoto(type) {
-      localStorage.setItem(keys[type], document.getElementById(type + 'Image').src);
-      alert(type.charAt(0).toUpperCase() + type.slice(1) + ' kaydedildi!');
-      document.getElementById(type + 'Buttons').style.display = 'none';
-    }
+      window.onload = function () {
+        for (const key of ["baskan", "imza"]) {
+          const savedImage = localStorage.getItem(keys[key]);
+          if (savedImage)
+            document.getElementById(key + "Image").src = savedImage;
+        }
+        const savedName = localStorage.getItem(keys.isim);
+        const savedBio = localStorage.getItem(keys.bio);
+        if (savedName) document.getElementById("isim").value = savedName;
+        if (savedBio) document.getElementById("biyografi").value = savedBio;
+      };
 
-    function cancelChange(type) {
-      const saved = localStorage.getItem(keys[type]);
-      document.getElementById(type + 'Image').src = saved || (type === 'baskan' ? './zinnurbuyukgoz.jpg' : './imza.png');
-      document.getElementById(type + 'Buttons').style.display = 'none';
-      alert('Değişiklik iptal edildi.');
-    }
+      function previewImage(event, type) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          document.getElementById(type + "Image").src = reader.result;
+          document.getElementById(type + "Buttons").style.display = "block";
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
 
-    function saveAll() {
-      localStorage.setItem(keys.isim, document.getElementById('isim').value);
-      localStorage.setItem(keys.bio, document.getElementById('biyografi').value);
-      alert('Tüm bilgiler kaydedildi!');
-    }
+      function savePhoto(type) {
+        localStorage.setItem(
+          keys[type],
+          document.getElementById(type + "Image").src
+        );
+        alert(type.charAt(0).toUpperCase() + type.slice(1) + " kaydedildi!");
+        document.getElementById(type + "Buttons").style.display = "none";
+      }
 
-    function cancelAll() {
-      window.location.reload();
-    }
-  </script>
+      function cancelChange(type) {
+        const saved = localStorage.getItem(keys[type]);
+        document.getElementById(type + "Image").src =
+          saved || (type === "baskan" ? "./zinnurbuyukgoz.jpg" : "./imza.png");
+        document.getElementById(type + "Buttons").style.display = "none";
+        alert("Değişiklik iptal edildi.");
+      }
 
-</body>
+      function saveAll() {
+        localStorage.setItem(keys.isim, document.getElementById("isim").value);
+        localStorage.setItem(
+          keys.bio,
+          document.getElementById("biyografi").value
+        );
+        alert("Tüm bilgiler kaydedildi!");
+      }
+
+      function cancelAll() {
+        window.location.reload();
+      }
+    </script>
+  </body>
 </html>

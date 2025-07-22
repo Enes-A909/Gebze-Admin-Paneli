@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Müdürlükler</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+        position: relative;
+      }
+
+      .card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+
+      .card h2 {
+        font-size: 1.2em;
+        color: #333;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+
+      .card input {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+
+      .card button {
+        margin: 5px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .photo-btn {
+        background-color: #5a5ad4;
+        color: white;
+      }
+
+      .save-btn {
+        background-color: #6f42c1;
+        color: white;
+      }
+
+      .cancel-btn {
+        background-color: #6c757d;
+        color: white;
+      }
+
+      .card button:hover {
+        opacity: 0.9;
+      }
+
+      .file-input {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Müdürlükler</h1>
+    <div class="container">
+      <!-- 6 Kart -->
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/temizlik.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Temizlik İşleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Senay ALTINTAŞ" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="temizlikisleri@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/afet.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Afet İşleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Soner BİLİR" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="afet.isleri@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/basin.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">
+          Basın Yayın ve Halkla İlişkiler Müdürlüğü
+        </h2>
+        <input type="text" placeholder="Başkan Adı" value="Birsen VURDEM" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="basin@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/bilgi.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Bilgi İşlem Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Tümay AKSAN" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="bilgiislem@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/destek.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Destek Hizmetleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Carullah Recai ER" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="destek@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/emlak.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Emlak ve İstimlak Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Şaban SARIAY" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="emlak@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <!-- 6 Kart -->
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/isletme.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">İşletme ve İştirakler Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Hacı Key" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="isletme.istirak@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/etut.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Etüt Ve Proje Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Ömer Şahin" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="etutproje.@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/fen.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Fen İşleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Hafız ALTINTAŞ" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="fenisleri@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/genclik.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Gençlik ve Spor Hizmetleri Müdürlüğü</h2>
+        <input
+          type="text"
+          placeholder="Başkan Adı"
+          value="Burhanettin DEMİRCİ"
+        />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="genclik.spor@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/hukuk.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Hukuk İşleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Av. Murat TANCA" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="hukuk@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/iklim.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">
+          İklim Değişikliği Ve Sıfır Atık Müdürlüğü
+        </h2>
+        <input type="text" placeholder="Başkan Adı" value="Senay ALTINTAŞ" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="iklimdegisikligi@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <!-- 6 Kart -->
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/imar.png"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">İmar ve Şehircilik Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Mücahit KÖKSAL" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="imar@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/ik.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">İnsan Kaynakları ve Eğitim Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="İmran AYYILDIZ" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="personel@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/kadin.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Kadın ve Aile Hizmetleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Zeynep YILDIRIM" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="zeynep.yildirim@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/kültür.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Kültür İşleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Hasan GÜLER" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="kultur@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/makine.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Makine İkmal,Bakım ve Onarım Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Dursun Ali YAYLA" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="dursun.yayla@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/mali.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Mali Hizmetler Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Bilgin ALTAY" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="malihizmetler@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <!-- 6 Kart -->
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/teftis.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Teftiş Kurulu Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Kemal TETİK" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="temizlikisleri@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/veteriner.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Veteriner İşleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Cevat ALTINTAŞ" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="veteriner@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/yapi.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Yapı Kontrol Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Levent SARĞIN" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="yapi@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/yazi.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Yazı İşleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Bahar ÖZALP" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="yaziisleri@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/zabita.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Zabıta Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Burhan KANDEMİR" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="zabita@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/mezarliklar.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Mezarlıklar Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="İslam ÖZDAĞ" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="mezarlik@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <!-- 6 Kart -->
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/özelkalem.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Özel Kalem Müdürlüğü</h2>
+        <input
+          type="text"
+          placeholder="Başkan Adı"
+          value="Dr. Yusuf ATASEVEN"
+        />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="ozelkalem@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/perksandrecreation.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Park ve Bahçeler Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Tuncay TÜRETEN" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="parkbahceler@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/planproje.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Plan ve Proje Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Asker ÇOBAN" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="planproje@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/ruhsat.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Ruhsat ve Denetim Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Erhan HORUZ" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="ruhsat@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/sosyaldestel.jpg"
+          alt="Müdür Fotoğrafı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <h2 contenteditable="true">Sosyal Destek Hizmetleri Müdürlüğü</h2>
+        <input type="text" placeholder="Başkan Adı" value="Mecit KESKİNOĞLU" />
+        <input
+          type="email"
+          placeholder="Başkan E-mail Adresi"
+          value="sosyalyardim@gebze.bel.tr"
+        />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+        <button class="save-btn">Kaydet</button>
+        <button class="cancel-btn">İptal</button>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll(".card").forEach((card) => {
+        const photoBtn = card.querySelector(".photo-btn");
+        const fileInput = card.querySelector(".file-input");
+        const img = card.querySelector("img");
+        const saveBtn = card.querySelector(".save-btn");
+
+        // Fotoğraf değiştir
+        photoBtn.addEventListener("click", () => fileInput.click());
+        fileInput.addEventListener("change", (event) => {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        // Kaydet butonu
+        saveBtn.addEventListener("click", () => {
+          const birimAdi = card.querySelector("h2").innerText.trim();
+          const isim = card.querySelector('input[type="text"]').value.trim();
+          const email = card.querySelector('input[type="email"]').value.trim();
+
+          console.log("Kaydedilen Değerler:", { birimAdi, isim, email });
+          alert(`${birimAdi} kaydedildi!`);
+        });
+      });
+
+      function loadData() {
+        const savedData = JSON.parse(localStorage.getItem("mudurlukler")) || [];
+        const cards = document.querySelectorAll(".card");
+
+        savedData.forEach((data, index) => {
+          if (cards[index]) {
+            cards[index].querySelector("h2").innerText = data.birimAdi;
+            cards[index].querySelector('input[type="text"]').value = data.isim;
+            cards[index].querySelector('input[type="email"]').value =
+              data.email;
+            if (data.photo) cards[index].querySelector("img").src = data.photo;
+          }
+        });
+      }
+
+      function saveCard(card, index) {
+        const birimAdi = card.querySelector("h2").innerText.trim();
+        const isim = card.querySelector('input[type="text"]').value.trim();
+        const email = card.querySelector('input[type="email"]').value.trim();
+        const photo = card.querySelector("img").src;
+
+        let allData = JSON.parse(localStorage.getItem("mudurlukler")) || [];
+        allData[index] = { birimAdi, isim, email, photo };
+        localStorage.setItem("mudurlukler", JSON.stringify(allData));
+
+        alert(`${birimAdi} kaydedildi!`);
+      }
+
+      document.querySelectorAll(".card").forEach((card, index) => {
+        const photoBtn = card.querySelector(".photo-btn");
+        const fileInput = card.querySelector(".file-input");
+        const img = card.querySelector("img");
+        const saveBtn = card.querySelector(".save-btn");
+
+        photoBtn.addEventListener("click", () => fileInput.click());
+        fileInput.addEventListener("change", (event) => {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        saveBtn.addEventListener("click", () => saveCard(card, index));
+      });
+
+      loadData();
+    </script>
+  </body>
+</html>

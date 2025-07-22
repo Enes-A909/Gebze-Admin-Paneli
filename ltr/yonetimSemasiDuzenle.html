@@ -226,7 +226,219 @@
         <br><br>
 
         <!-- İçeriklerin Yükleneceği Alan -->
-        <div id="icerikler">       </div>
+        <div id="icerikler">  <!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baskan Yardımcısı ve Müdürlükler</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .photo-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .photo-section img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .photo-btn {
+      background-color: #5a5ad4;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .photo-btn:hover {
+      opacity: 0.9;
+    }
+
+    .info-section {
+      flex: 2;
+      text-align: left;
+    }
+
+    .info-section h2 {
+      margin: 0;
+      font-size: 1.4em;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 0.9em;
+      font-weight: 300;
+      margin-bottom: 15px;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #ddd;
+      margin: 10px 0 20px;
+    }
+
+    .mudurlukler-title {
+      color: #888;
+      font-size: 1em;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+
+    .mudurlukler {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .mudurluk-card {
+      background-color: #1336c1;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      flex: 1 1 calc(50% - 10px);
+      text-align: left;
+    }
+
+    .mudurluk-card h3,
+    .mudurluk-card p {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .edit-btn, .save-btn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .edit-btn {
+      background-color: #6f42c1;
+      color: white;
+    }
+
+    .save-btn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .edit-btn:hover, .save-btn:hover {
+      opacity: 0.9;
+    }
+
+    .file-input {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Fotoğraf ve Buton -->
+    <div class="photo-section">
+      <img src="../assets/images/kurumsal gebze/dursunali.jpg" alt="Baskan Yardımcısı">
+      <input type="file" class="file-input" accept="image/*">
+      <button class="photo-btn">Fotoğraf Değiştir</button>
+    </div>
+
+    <!-- İsim ve Müdürlükler -->
+    <div class="info-section">
+      <h2 contenteditable="true">Dursun Ali ARSLAN</h2>
+      <div class="subtitle">Başkan Yardımcısı</div>
+      <div class="divider"></div>
+      <div class="mudurlukler-title">İlgili Müdürlükler</div>
+      <div class="mudurlukler">
+        <div class="mudurluk-card" contenteditable="false">
+          <h3>Sosyal Destek Hizmetleri Müdürlüğü</h3>
+          <p>Mecit KESKİNOĞLU</p>
+        </div>
+        <div class="mudurluk-card" contenteditable="false">
+          <h3>Zabıta Müdürlüğü</h3>
+          <p>Burhan KANDEMİR</p>
+        </div>
+        <div class="mudurluk-card" contenteditable="false">
+          <h3>İklim Değişikliği ve Sıfır Atık Müdürlüğü</h3>
+          <p>Senay ALTINTAŞ</p>
+        </div>
+        <div class="mudurluk-card" contenteditable="false">
+          <h3>Temizlik İşleri Müdürlüğü</h3>
+          <p>Senay ALTINTAŞ</p>
+        </div>
+      </div>
+      <button class="edit-btn">Düzenle</button>
+      <button class="save-btn" style="display:none;">Kaydet</button>
+    </div>
+  </div>
+
+  <script>
+    const photoBtn = document.querySelector(".photo-btn");
+    const fileInput = document.querySelector(".file-input");
+    const img = document.querySelector(".photo-section img");
+    const editBtn = document.querySelector(".edit-btn");
+    const saveBtn = document.querySelector(".save-btn");
+    const mudurlukCards = document.querySelectorAll(".mudurluk-card");
+
+    // Fotoğraf Değiştir
+    photoBtn.addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => { img.src = e.target.result; };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Düzenle butonu
+    editBtn.addEventListener("click", () => {
+      mudurlukCards.forEach(card => card.setAttribute("contenteditable", "true"));
+      editBtn.style.display = "none";
+      saveBtn.style.display = "inline-block";
+    });
+
+    // Kaydet butonu
+    saveBtn.addEventListener("click", () => {
+      mudurlukCards.forEach(card => card.setAttribute("contenteditable", "false"));
+      editBtn.style.display = "inline-block";
+      saveBtn.style.display = "none";
+      alert("Değişiklikler kaydedildi!");
+    });
+  </script>
+
+</body>
+</html>
+     </div>
         <footer style="height: 200px; opacity: 0"></footer>
 
         <!-- latest jquery-->
