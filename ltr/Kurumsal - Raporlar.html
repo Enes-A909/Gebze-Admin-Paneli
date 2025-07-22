@@ -9,6 +9,11 @@
         box-shadow: none !important;
         border-color: transparent !important;
       }
+
+      html {
+        overflow-y: scroll;
+      }
+
       table {
         border-radius: 10px;
         border-collapse: separate;
@@ -136,7 +141,7 @@
 
       .arşiv {
         background-color: #7d373769;
-
+        color: white;
         padding: 4px 8px;
         border-radius: 15px;
         font-size: 13px;
@@ -154,6 +159,99 @@
       .dropdown-toggle:hover {
         background-color: rgba(68, 127, 245, 0.495);
         color: white;
+      }
+      .buton {
+        height: 36px;
+        border-radius: 12px;
+        border: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0 16px;
+        width: auto;
+        /* Genişlik içeriğe göre */
+        margin-right: 8px;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        user-select: none;
+      }
+
+      .buton:hover {
+        transform: scale(1.1);
+        filter: brightness(85%);
+      }
+
+      .icon {
+        width: 16px;
+        height: 16px;
+        position: relative;
+        flex-shrink: 0;
+        margin-right: 8px;
+      }
+
+      /* EKLE (artı) */
+      .arti::before,
+      .arti::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        border-radius: 1px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .arti::before {
+        width: 2px;
+        height: 14px;
+      }
+
+      .arti::after {
+        width: 14px;
+        height: 2px;
+      }
+
+      /* ARŞİVLE (kutu) */
+      .kutu::before,
+      .kutu::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        border-radius: 1px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .kutu::before {
+        width: 14px;
+        height: 4px;
+        top: 4px;
+      }
+
+      .kutu::after {
+        width: 14px;
+        height: 8px;
+        top: 9px;
+      }
+
+      /* SİL SVG path renk beyaz */
+      .sil-butonu svg path {
+        fill: white;
+      }
+
+      /* Renkler */
+      .ekle-butonu {
+        background-color: #4caf50;
+      }
+
+      .arsivle-butonu {
+        background-color: #2196f3;
+      }
+
+      .sil-butonu {
+        background-color: #f44336;
       }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -493,15 +591,20 @@
           </div>
         </div>
         <!-- Page Sidebar Ends-->
-
         <div class="page-body">
           <div class="container-fluid">
             <div class="page-header">
               <div class="row">
                 <div class="col">
-                  <div class="page-header-left">
+                  <div
+                    class="page-header-left"
+                    style="margin-top: -30px; float: left"
+                  >
                     <h3>Raporlar</h3>
-                    <ol class="breadcrumb">
+                    <ol
+                      class="breadcrumb"
+                      style="margin-top: 65px; margin-left: -140px"
+                    >
                       <li class="breadcrumb-item">
                         <a href="index.html"><i data-feather="home"></i></a>
                       </li>
@@ -517,104 +620,11 @@
           </div>
 
           <!-- Benim yaptığım navbar kısmı -->
-          <nav class="navbar navbar-expand-lg navbar-light">
+          <nav
+            class="navbar navbar-expand-lg navbar-light"
+            style="margin-top: -20px"
+          >
             <div class="container-fluid d-flex justify-content-end">
-              <style>
-                .buton {
-                  height: 36px;
-                  border-radius: 12px;
-                  border: none;
-                  display: flex;
-                  align-items: center;
-                  cursor: pointer;
-                  transition: all 0.3s ease;
-                  padding: 0 16px;
-                  width: auto;
-                  /* Genişlik içeriğe göre */
-                  margin-right: 8px;
-                  color: white;
-                  font-family: Arial, sans-serif;
-                  font-size: 14px;
-                  user-select: none;
-                }
-
-                .buton:hover {
-                  transform: scale(1.1);
-                  filter: brightness(85%);
-                }
-
-                .icon {
-                  width: 16px;
-                  height: 16px;
-                  position: relative;
-                  flex-shrink: 0;
-                  margin-right: 8px;
-                }
-
-                /* EKLE (artı) */
-                .arti::before,
-                .arti::after {
-                  content: "";
-                  position: absolute;
-                  background-color: white;
-                  border-radius: 1px;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%);
-                }
-
-                .arti::before {
-                  width: 2px;
-                  height: 14px;
-                }
-
-                .arti::after {
-                  width: 14px;
-                  height: 2px;
-                }
-
-                /* ARŞİVLE (kutu) */
-                .kutu::before,
-                .kutu::after {
-                  content: "";
-                  position: absolute;
-                  background-color: white;
-                  border-radius: 1px;
-                  left: 50%;
-                  transform: translateX(-50%);
-                }
-
-                .kutu::before {
-                  width: 14px;
-                  height: 4px;
-                  top: 4px;
-                }
-
-                .kutu::after {
-                  width: 14px;
-                  height: 8px;
-                  top: 9px;
-                }
-
-                /* SİL SVG path renk beyaz */
-                .sil-butonu svg path {
-                  fill: white;
-                }
-
-                /* Renkler */
-                .ekle-butonu {
-                  background-color: #4caf50;
-                }
-
-                .arsivle-butonu {
-                  background-color: #2196f3;
-                }
-
-                .sil-butonu {
-                  background-color: #f44336;
-                }
-              </style>
-
               <!-- EKLE -->
               <button class="buton ekle-butonu">
                 <div class="icon arti"></div>
@@ -652,7 +662,7 @@
           <!-- İçeriklerin Yükleneceği Alan -->
 
           <div id="icerikler">
-            <table class="table">
+            <table class="table" style="margin-top: -30px">
               <thead>
                 <tr>
                   <th scope="col">

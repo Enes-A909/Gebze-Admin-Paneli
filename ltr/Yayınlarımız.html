@@ -17,14 +17,29 @@
         margin-right: 100px;
       }
 
+      html {
+        overflow-y: scroll;
+      }
+
       table {
-        border: 1px solid white;
+        border-radius: 10px;
+        table-layout: fixed;
+        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+        background-color: rgba(204, 204, 204, 0.186);
+        border-radius: 10px;
+      }
+
+      table tr {
+        transition: background-color 0.3s ease;
+        border-radius: 10px;
       }
 
       table tr:hover {
         background-color: #cccccc;
-        cursor: pointer;
         transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 10px;
       }
 
       table tr button {
@@ -114,7 +129,7 @@
 
       .arşiv {
         background-color: #7d373769;
-
+        color: white;
         padding: 4px 8px;
         border-radius: 15px;
         font-size: 13px;
@@ -574,7 +589,7 @@
         </div>
         <!-- Page Sidebar Ends-->
 
-        <div class="page-body">
+        <div class="page-body mt-5">
           <div class="container-fluid">
             <div class="page-header">
               <div class="row">
@@ -583,7 +598,7 @@
                     <h3>Yayınlarımız</h3>
                     <ol
                       class="breadcrumb"
-                      style="margin-top: 85px; margin-left: -165px"
+                      style="margin-top: 65px; margin-left: -165px"
                     >
                       <li class="breadcrumb-item">
                         <a href="index.html"><i data-feather="home"></i></a>
@@ -599,7 +614,10 @@
           </div>
 
           <!-- Benim yaptığım navbar kısmı -->
-          <nav class="navbar navbar-expand-lg navbar-light">
+          <nav
+            class="navbar navbar-expand-lg navbar-light"
+            style="margin-top: -30px"
+          >
             <div class="container-fluid d-flex justify-content-end" id="nav">
               <!-- EKLE -->
               <button class="buton ekle-butonu" onclick="ekle()">
@@ -643,6 +661,7 @@
               style="
                 background-color: rgba(204, 204, 204, 0.186);
                 border-radius: 10px;
+                margin-top: -30px;
               "
             >
               <thead>

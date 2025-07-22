@@ -139,6 +139,100 @@
         background-color: rgba(68, 127, 245, 0.495);
         color: white;
       }
+
+      .buton {
+        height: 36px;
+        border-radius: 12px;
+        border: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0 16px;
+        width: auto;
+        /* Genişlik içeriğe göre */
+        margin-right: 8px;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        user-select: none;
+      }
+
+      .buton:hover {
+        transform: scale(1.1);
+        filter: brightness(85%);
+      }
+
+      .icon {
+        width: 16px;
+        height: 16px;
+        position: relative;
+        flex-shrink: 0;
+        margin-right: 8px;
+      }
+
+      /* EKLE (artı) */
+      .arti::before,
+      .arti::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        border-radius: 1px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .arti::before {
+        width: 2px;
+        height: 14px;
+      }
+
+      .arti::after {
+        width: 14px;
+        height: 2px;
+      }
+
+      /* ARŞİVLE (kutu) */
+      .kutu::before,
+      .kutu::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        border-radius: 1px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .kutu::before {
+        width: 14px;
+        height: 4px;
+        top: 4px;
+      }
+
+      .kutu::after {
+        width: 14px;
+        height: 8px;
+        top: 9px;
+      }
+
+      /* SİL SVG path renk beyaz */
+      .sil-butonu svg path {
+        fill: white;
+      }
+
+      /* Renkler */
+      .ekle-butonu {
+        background-color: #4caf50;
+      }
+
+      .arsivle-butonu {
+        background-color: #2196f3;
+      }
+
+      .sil-butonu {
+        background-color: #f44336;
+      }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -482,15 +576,21 @@
             <div class="page-header">
               <div class="row">
                 <div class="col">
-                  <div class="page-header-left">
+                  <div
+                    class="page-header-left"
+                    style="margin-top: -30px; float: left"
+                  >
                     <h3>Komisyonlar</h3>
-                    <ol class="breadcrumb">
+                    <ol
+                      class="breadcrumb"
+                      style="margin-top: 65px; margin-left: -165px"
+                    >
                       <li class="breadcrumb-item">
                         <a href="index.html"><i data-feather="home"></i></a>
                       </li>
                       <li class="breadcrumb-item">Kurumsal</li>
                       <li class="breadcrumb-item active">
-                        <a href="Kurumsal - Komisyonlar.html">Komisyonlar</a>
+                        <a href="Kurumsal - Raporlar.html">Komisyonlar</a>
                       </li>
                     </ol>
                   </div>
@@ -500,103 +600,12 @@
           </div>
 
           <!-- Benim yaptığım navbar kısmı -->
-          <nav class="navbar navbar-expand-lg navbar-light">
+          <nav
+            class="navbar navbar-expand-lg navbar-light"
+            style="margin-top: -20px"
+          >
             <div class="container-fluid d-flex justify-content-end">
-              <style>
-                .buton {
-                  height: 36px;
-                  border-radius: 12px;
-                  border: none;
-                  display: flex;
-                  align-items: center;
-                  cursor: pointer;
-                  transition: all 0.3s ease;
-                  padding: 0 16px;
-                  width: auto;
-                  /* Genişlik içeriğe göre */
-                  margin-right: 8px;
-                  color: white;
-                  font-family: Arial, sans-serif;
-                  font-size: 14px;
-                  user-select: none;
-                }
-
-                .buton:hover {
-                  transform: scale(1.1);
-                  filter: brightness(85%);
-                }
-
-                .icon {
-                  width: 16px;
-                  height: 16px;
-                  position: relative;
-                  flex-shrink: 0;
-                  margin-right: 8px;
-                }
-
-                /* EKLE (artı) */
-                .arti::before,
-                .arti::after {
-                  content: "";
-                  position: absolute;
-                  background-color: white;
-                  border-radius: 1px;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%);
-                }
-
-                .arti::before {
-                  width: 2px;
-                  height: 14px;
-                }
-
-                .arti::after {
-                  width: 14px;
-                  height: 2px;
-                }
-
-                /* ARŞİVLE (kutu) */
-                .kutu::before,
-                .kutu::after {
-                  content: "";
-                  position: absolute;
-                  background-color: white;
-                  border-radius: 1px;
-                  left: 50%;
-                  transform: translateX(-50%);
-                }
-
-                .kutu::before {
-                  width: 14px;
-                  height: 4px;
-                  top: 4px;
-                }
-
-                .kutu::after {
-                  width: 14px;
-                  height: 8px;
-                  top: 9px;
-                }
-
-                /* SİL SVG path renk beyaz */
-                .sil-butonu svg path {
-                  fill: white;
-                }
-
-                /* Renkler */
-                .ekle-butonu {
-                  background-color: #4caf50;
-                }
-
-                .arsivle-butonu {
-                  background-color: #2196f3;
-                }
-
-                .sil-butonu {
-                  background-color: #f44336;
-                }
-              </style>
+              <style></style>
 
               <!-- EKLE -->
               <button class="buton ekle-butonu">
@@ -639,6 +648,7 @@
               style="
                 background-color: rgba(204, 204, 204, 0.186);
                 border-radius: 10px;
+                margin-top: -30px;
               "
             >
               <thead>

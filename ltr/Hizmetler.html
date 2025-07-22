@@ -9,8 +9,15 @@
         box-shadow: none !important;
         border-color: transparent !important;
       }
+      html {
+        overflow-y: scroll;
+      }
 
       table {
+        border-radius: 10px;
+        table-layout: fixed;
+        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+        background-color: rgba(204, 204, 204, 0.186);
         border-radius: 10px;
       }
 
@@ -114,7 +121,7 @@
 
       .arşiv {
         background-color: #7d373769;
-
+        color: white;
         padding: 4px 8px;
         border-radius: 15px;
         font-size: 13px;
@@ -569,7 +576,7 @@
         </div>
         <!-- Page Sidebar Ends-->
 
-        <div class="page-body">
+        <div class="page-body mt-5">
           <div class="container-fluid">
             <div class="page-header">
               <div class="row">
@@ -578,7 +585,7 @@
                     <h3>Hizmetler</h3>
                     <ol
                       class="breadcrumb"
-                      style="margin-top: 85px; margin-left: -137px"
+                      style="margin-top: 65px; margin-left: -137px"
                     >
                       <li class="breadcrumb-item">
                         <a href="index.html"><i data-feather="home"></i></a>
@@ -594,7 +601,10 @@
           </div>
 
           <!-- Benim yaptığım navbar kısmı -->
-          <nav class="navbar navbar-expand-lg navbar-light">
+          <nav
+            class="navbar navbar-expand-lg navbar-light"
+            style="margin-top: -30px"
+          >
             <div class="container-fluid d-flex justify-content-end">
               <!-- EKLE -->
               <button class="buton ekle-butonu">
@@ -638,6 +648,7 @@
               style="
                 background-color: rgba(204, 204, 204, 0.186);
                 border-radius: 10px;
+                margin-top: -30px;
               "
             >
               <thead>
@@ -1161,7 +1172,7 @@
               </tbody>
             </table>
           </div>
-          <footer style="height: 200px"></footer>
+          <footer style="height: 200px; opacity: 0"></footer>
           <script>
             // Burada herhangi bir checkbox seçildiğinde Arşivle ve Sil butonlarının display özelliğini none olmaktan çıkaracağız.
             const checkboxes = document.querySelectorAll(".checkbox-item");
