@@ -824,6 +824,18 @@
         <!-- Bootstrap JS + Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<<<<<<< HEAD
+=======
+          <!-- DÜZENLE-->
+          <script>
+            var oldContent = "";
+            function editNews(imgSrc, title, category, date, exp, element) {
+              const rowIndex = element.closest("tr").rowIndex;
+              sessionStorage.setItem("rowIndex", rowIndex);
+              let content = document.getElementById("icerikler");
+              date = date.split(".").reverse().join("-");
+              oldContent = content.innerHTML;
+>>>>>>> 9793269bc90c272db53a6c953e30f3f764085554
 
 
         <script>
@@ -911,9 +923,9 @@
                       />
                     </div>
 
-                    <span class="btn btn-success" id="submit">
+                    <button class="btn btn-success" id="submit" type="button">
                       Güncelle
-                    </span>
+                    </button>
                     <a href="Haberler.html" class="btn btn-secondary">İptal</a>
                   </form>
                 </div>
@@ -1179,6 +1191,7 @@
                   </td>
                 </tr>`;
             }
+<<<<<<< HEAD
           }
         </script>
         <!-- REMOVE -->
@@ -1188,6 +1201,30 @@
             tr.remove();
           }
         </script>
+=======
+          </script>
+          <!-- REMOVE -->
+          <script>
+            function remove() {
+              let tr = document.getElementById("remove").closest("tr");
+              tr.remove();
+            }
+          </script>
+
+          <script>
+            const checkboxes = document.querySelectorAll(".checkbox-item");
+
+            // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+            const anaCheckbox = document.getElementById("ana-checkbox");
+            anaCheckbox.addEventListener("change", () => {
+              checkboxes.forEach((checkbox) => {
+                checkbox.checked = anaCheckbox.checked;
+                checkbox.dispatchEvent(new Event("change"));
+              });
+            });
+          </script>
+        </div>
+>>>>>>> 9793269bc90c272db53a6c953e30f3f764085554
       </div>
     </div>
   </div>
