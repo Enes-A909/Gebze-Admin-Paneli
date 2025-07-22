@@ -91,11 +91,12 @@
       font-weight: bold;
       padding: 10px 12px 5px;
       font-size: 13px;
-      color: #f24040;
+      color: black;
       border-bottom: 1px solid #eee;
       margin-bottom: 5px;
     }
-    .kategori{
+
+    .kategori {
       background-color: #21d18538;
 
       padding: 4px 8px;
@@ -108,7 +109,7 @@
 
     .arşiv {
       background-color: #7d373769;
-
+      color: white;
       padding: 4px 8px;
       border-radius: 15px;
       font-size: 13px;
@@ -377,7 +378,7 @@
             <div>
               <img class="img-60 rounded-circle" src="../assets/images/user/1.jpg" alt="#" />
               <div class="profile-edit">
-                <a href="edit-profile.html" target="_blank"><i data-feather="edit"></i></a>
+                <a href="Profil.html" target="_blank"><i data-feather="edit"></i></a>
               </div>
             </div>
             <h6 class="mt-3 f-14 text-dark">İsim Soyisim</h6>
@@ -461,33 +462,41 @@
       <!-- Page Sidebar Ends-->
 
       <div class="page-body">
-        <div class="container-fluid">
-          <div class="page-header">
-            <div class="row">
-              <div class="col">
-                <div class="page-header-left">
-                  <h3>Gebze Yönetim</h3>
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                      <a href="index.html"><i data-feather="home"></i></a>
-                    </li>
-                    <li class="breadcrumb-item">Gebze</li>
-                    <li class="breadcrumb-item active">
-                      <a href="Gebze - Gebze Yonetim.html">Gebze Yönetim</a>
-                    </li>
-                  </ol>
+          <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col">
+                  <div
+                    class="page-header-left"
+                    style="margin-top: -30px; float: left"
+                  >
+                    <h3>Gebze Yönetim</h3>
+                    <ol
+                      class="breadcrumb"
+                      style="margin-top: 65px; margin-left: -200px"
+                    >
+                      <li class="breadcrumb-item">
+                        <a href="index.html"><i data-feather="home"></i></a>
+                      </li>
+                      <li class="breadcrumb-item">Gebze</li>
+                      <li class="breadcrumb-item active">
+                        <a href="Kurumsal - Raporlar.html"
+                          >Gebze Yönetim</a
+                        >
+                      </li>
+                    </ol>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
         <!-- Benim yaptığım navbar kısmı -->
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light" style="margin: -20px;">
           <div class="container-fluid d-flex justify-content-end">
 
             <!-- EKLE -->
-            <button class="buton ekle-butonu">
+            <button class="buton ekle-butonu" onclick="ekle()">
               <div class="icon arti"></div>
               <span>Ekle</span>
             </button>
@@ -499,7 +508,7 @@
             </button>
 
             <!-- SİL -->
-            <button class="buton sil-butonu">
+            <button class="buton sil-butonu" onclick="sil()">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                 aria-hidden="true" focusable="false">
                 <path
@@ -516,7 +525,9 @@
 
         <!-- İçeriklerin Yükleneceği Alan -->
         <div id="icerikler">
-          <table class="table" style="background-color: rgba(204, 204, 204, 0.186); border-radius: 10px;">
+          <table class="table"
+            style="box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738); background-color: rgba(204, 204, 204, 0.186); border-radius: 10px; border: none;
+            margin-top: -20px;">
             <thead>
               <tr>
                 <th scope="col">
@@ -549,10 +560,19 @@
                     </button>
                     <div class="dropdown-menu">
                       <div class="menu-title">İçerikler</div>
-                      <button onclick="ekle()">➕ Ekle</button>
-                      <button onclick="duzenle()">✏️ Düzenle</button>
-                      <button onclick="sil()">🗑️ Sil</button>
-                      <button onclick="icerik()">📄 İçerik</button>
+                      <button onclick="duzenle()">
+                        <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                        Düzenle</button>
+                      <button onclick="sil()">
+                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                          height="10%" />
+                        Sil</button>
+                      <button onclick="archive()">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        Arşivle
+                      </button>
+
                     </div>
                   </div>
                 </td>
@@ -576,10 +596,19 @@
                     </button>
                     <div class="dropdown-menu">
                       <div class="menu-title">İçerikler</div>
-                      <button onclick="ekle()">➕ Ekle</button>
-                      <button onclick="duzenle()">✏️ Düzenle</button>
-                      <button onclick="sil()">🗑️ Sil</button>
-                      <button onclick="icerik()">📄 İçerik</button>
+                      <button onclick="duzenle()">
+                        <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                        Düzenle</button>
+                      <button onclick="sil()">
+                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                          height="10%" />
+                        Sil</button>
+                      <button onclick="archive()">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        Arşivle
+                      </button>
+
                     </div>
                   </div>
                 </td>
@@ -598,15 +627,23 @@
                 <td>...</td>
                 <td scope="row" style="text-align: right">
                   <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="">
+                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
                       <div class="menu-title">İçerikler</div>
-                      <button onclick="ekle()">➕ Ekle</button>
-                      <button onclick="duzenle()">✏️ Düzenle</button>
-                      <button onclick="sil()">🗑️ Sil</button>
-                      <button onclick="icerik()">📄 İçerik</button>
+                      <button onclick="duzenle()">
+                        <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                        Düzenle</button>
+                      <button onclick="sil()">
+                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                          height="10%" />
+                        Sil</button>
+                      <button onclick="archive()">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        Arşivle
+                      </button>
                     </div>
                 </td>
               </tr>
@@ -652,24 +689,9 @@
       <script src="../assets/js/sidebar-menu.js"></script>
       <script src="../assets/js/config.js"></script>
       <!-- Plugins JS start-->
-      <script src="../assets/js/chart/chartist/chartist.js"></script>
-      <script src="../assets/js/chart/knob/knob.min.js"></script>
-      <script src="../assets/js/chart/knob/knob-chart.js"></script>
-      <script src="../assets/js/prism/prism.min.js"></script>
-      <script src="../assets/js/clipboard/clipboard.min.js"></script>
-      <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
-      <script src="../assets/js/counter/jquery.counterup.min.js"></script>
-      <script src="../assets/js/counter/counter-custom.js"></script>
-      <script src="../assets/js/custom-card/custom-card.js"></script>
-      <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
-      <script src="../assets/js/dashboard/default.js"></script>
-      <script src="../assets/js/notify/index.js"></script>
-      <script src="../assets/js/typeahead/handlebars.js"></script>
+
       <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
       <script src="../assets/js/typeahead/typeahead.custom.js"></script>
-      <script src="../assets/js/chat-menu.js"></script>
-      <script src="../assets/js/height-equal.js"></script>
-      <script src="../assets/js/tooltip-init.js"></script>
       <script src="../assets/js/typeahead-search/handlebars.js"></script>
       <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
       <!-- Plugins JS Ends-->
@@ -678,7 +700,6 @@
       <!-- Bootstrap JS + Popper -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-      <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
       <!-- Plugin used-->
       <script>
         function toggleMenu(button) {
@@ -706,9 +727,6 @@
           alert("Silme işlemi yapılıyor...");
         }
 
-        function icerik() {
-          alert("İçerik detayına yönlendiriliyor...");
-        }
       </script>
       <script>
         function toggleDropdown(btn) {
@@ -734,10 +752,6 @@
 
         function sil() {
           alert("Sil tıklandı");
-        }
-
-        function icerik() {
-          alert("İçerik tıklandı");
         }
 
         // Sayfa dışında bir yere tıklanınca menü kapanır
