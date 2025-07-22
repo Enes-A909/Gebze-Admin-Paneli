@@ -122,15 +122,28 @@
         box-shadow: none !important;
         border-color: transparent !important;
       }
+      html {
+        overflow-y: scroll;
+      }
 
       table {
-        border: 1px solid rgb(255, 255, 255);
+        border-radius: 10px;
+        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+        background-color: rgba(204, 204, 204, 0.186);
+        border-radius: 10px;
+      }
+
+      table tr {
+        transition: background-color 0.3s ease;
+        border-radius: 10px;
       }
 
       table tr:hover {
         background-color: #cccccc;
-        cursor: pointer;
         transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 10px;
       }
 
       table tr button {
