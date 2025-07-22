@@ -2488,26 +2488,6 @@
           </script>
 
           <script>
-            let seciliAdres = null;
-
-            function acModal(link) {
-              seciliAdres = link; // düzenlenecek link
-              document.getElementById("adresLink").value = link;
-              var modal = new bootstrap.Modal(
-                document.getElementById("duzenleModal")
-              );
-              modal.show();
-            }
-
-            function kaydetLink() {
-              const yeniLink = document.getElementById("adresLink").value;
-              console.log("Kaydedilen yeni link:", yeniLink);
-              // burada artık veriyi backend'e gönder veya dizini güncelle
-              // örneğin:
-              // adresListesi[guncellenecekIndex].link = yeniLink;
-            }
-          </script>
-          <script>
             function filtreleKategori(kategori) {
               const satirlar = document.querySelectorAll(
                 "#icerikTablosu tbody tr"
