@@ -40,25 +40,45 @@ document.addEventListener('DOMContentLoaded', () => {
                         togglePassword('newPassword', 'toggleNewPassword');
                         togglePassword('confirmNewPassword', 'toggleConfirmNewPassword');
 
-                        // Telefon Numarası Maskeleme (isteğe bağlı, daha gelişmiş kütüphanelerle yapılabilir)
-                        const phoneInput = document.getElementById('phone');
-                        phoneInput.addEventListener('input', (e) => {
-                            let value = e.target.value.replace(/\D/g, ''); // Sadece rakamları al
-                            let formattedValue = '';
-                            if (value.length > 0) {
-                                formattedValue += '(' + value.substring(0, 3);
-                            }
-                            if (value.length > 3) {
-                                formattedValue += ') ' + value.substring(3, 6);
-                            }
-                            if (value.length > 6) {
-                                formattedValue += ' ' + value.substring(6, 8);
-                            }
-                            if (value.length > 8) {
-                                formattedValue += ' ' + value.substring(8, 10);
-                            }
-                            e.target.value = formattedValue;
-                        });
+                        
+
+
+
+  const phoneInput = document.getElementById('phone');
+  const phoneError = document.getElementById('phone-error');
+
+  phoneInput.addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\D/g, ''); // Sadece rakamlar
+    let formattedValue = '';
+
+    // Maskeleme işlemi
+    if (value.length > 0) {
+      formattedValue += '(' + value.substring(0, 3);
+    }
+    if (value.length > 3) {
+      formattedValue += ') ' + value.substring(3, 6);
+    }
+    if (value.length > 6) {
+      formattedValue += ' ' + value.substring(6, 8);
+    }
+    if (value.length > 8) {
+      formattedValue += ' ' + value.substring(8, 10);
+    }
+    e.target.value = formattedValue;
+
+    // Hata kontrolü
+    if (value.length > 0 && value[0] !== '5') {
+      phoneInput.style.borderColor = '#dc3545'; // kırmızı kenarlık
+      phoneError.textContent = 'Telefon numarası 5 ile başlamalıdır.';
+      phoneError.style.display = 'block';
+    } else {
+      phoneInput.style.borderColor = ''; // kenarlığı sıfırla
+      phoneError.textContent = '';
+      phoneError.style.display = 'none';
+    }
+  });
+
+
 
                         // Kaydet Butonu İşlevi (örnek)
                         const saveButton = document.querySelector('.save-button');
@@ -71,14 +91,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             // Basit validasyon örnekleri
                             if (!fullName || !email || !phone) {
-                                alert('Lütfen tüm alanları doldurun!');
+                                Swal.fire({
+                                    toast: true,
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Tüm alanları doldurun!',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: true,
+                                    background: '#f8d7da',
+                                    color: '#721c24',
+                                });
                                 return;
                             }
 
                             if (newPassword !== confirmNewPassword) {
-                                alert('Yeni şifreler uyuşmuyor!');
+                                Swal.fire({
+                                    toast: true,
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Yeni şifreler uyuşmuyor!',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: true,
+                                    background: '#f8d7da',
+                                    color: '#721c24',
+                                });
                                 return;
                             }
+
 
                             if (newPassword && !confirmNewPassword) {
 
@@ -128,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             overlay.style.display = 'flex';
                             overlay.style.justifyContent = 'center';
                             overlay.style.alignItems = 'center';
-                            overlay.style.zIndex = '9999';
+                            overlay.style.zIndex = '900';
 
                             overlay.innerHTML = `
                                 <div style="background:#fff; border-radius:10px; box-shadow:0 2px 16px rgba(0,0,0,0.2); padding:32px 24px; min-width:320px; text-align:center; position:relative;">
@@ -143,27 +184,36 @@ document.addEventListener('DOMContentLoaded', () => {
                             document.body.appendChild(overlay);
 
                             // Onayla butonuna tıklanınca kodu kontrol et
-                            document.getElementById('verify-code-btn').onclick = function () {
-                                const userCode = document.getElementById('verify-code-input').value.trim();
-                                if (userCode === kod.toString()) {
-                                    overlay.remove();
-                                    // Burada onaylandı ikonunu yeşile çevirebilirsiniz
-                                    const icon = document.querySelector('.fa-times-circle.unverified-icon');
-                                    if (icon) {
-                                        icon.classList.remove('fa-times-circle', 'red-icon', 'unverified-icon');
-                                        icon.classList.add('fa-check-circle', 'green-icon', 'verified-icon');
-                                        // Popup başlığını da değiştir
-                                        const popup = icon.closest('.icon-container').querySelector('.popup');
-                                        if (popup) {
-                                            popup.querySelector('.popup-header').className = 'popup-header-onaylandi';
-                                            popup.querySelector('.popup-header-onaylandi').textContent = 'Onaylandı!';
-                                            if (popup.querySelector('.popup-body')) popup.querySelector('.popup-body').remove();
-                                        }
-                                    }
-                                } else {
-                                    alert('Kod yanlış, tekrar deneyin.');
-                                }
-                            };
+document.getElementById('verify-code-btn').onclick = function () {
+    const userCode = document.getElementById('verify-code-input').value.trim();
+    if (userCode === kod.toString()) {
+        overlay.remove();
+
+        // Onaylandı ikonunu yeşile çevir
+        const icon = document.querySelector('.fa-times-circle.unverified-icon');
+        if (icon) {
+            icon.classList.remove('fa-times-circle', 'red-icon', 'unverified-icon');
+            icon.classList.add('fa-check-circle', 'green-icon', 'verified-icon');
+
+            // Popup başlığını değiştir
+            const popup = icon.closest('.icon-container').querySelector('.popup');
+            if (popup) {
+                popup.querySelector('.popup-header').className = 'popup-header-onaylandi';
+                popup.querySelector('.popup-header-onaylandi').textContent = 'Onaylandı!';
+                if (popup.querySelector('.popup-body')) popup.querySelector('.popup-body').remove();
+            }
+        }
+    } else {
+        // Kod yanlışsa SweetAlert2 uyarısı göster
+        Swal.fire({
+            title: 'Kod Hatalı!',
+            text: 'Girdiğiniz doğrulama kodu yanlış. Lütfen tekrar deneyin.',
+            icon: 'error',
+            confirmButtonText: 'Tekrar Dene',
+            
+        });
+    }
+};
 
                             // İptal butonu popup'ı kapatır
                             document.getElementById('verify-cancel-btn').onclick = function () {
@@ -197,3 +247,4 @@ document.addEventListener('DOMContentLoaded', () => {
                             document.getElementById('confirmNewPassword').style.borderColor = '';
                         }
                     }
+
