@@ -1034,33 +1034,44 @@
     <div class="col-6 col-md-2 mb-3">
       <img
         src="../assets/images/gebze-belediyesi.ico"
-        class="img-fluid rounded mb-2"
-        style="max-height: 100px"
+        class="img-fluid rounded mb-2 preview-img"
+        style="height:150px;width:150px"
         alt="resim${count}"
       />
       <div class="d-flex gap-2">
-        <label
-          for="resim${count}"
-          class="btn btn-outline-primary w-50 p-1"
-          >Değiştir</label
-        >
-        <label
-          for="resimSil${count}"
-          class="btn btn-outline-danger w-50 p-0 pt-1 remove"
-          >Sil</label
-        >
-        <input
-          type="file"
-          id="resim${count}"
-          style="display: none"
-        />
+        <label for="resim${count}" class="btn btn-outline-primary w-50 p-1">Değiştir</label>
+        <label for="resimSil${count}" class="btn btn-outline-danger w-50 p-0 pt-1 remove">Sil</label>
+        <input type="file" id="resim${count}" class="resim-input" style="display: none" />
       </div>
     </div>
-  `
+    `
           );
+
           remove();
         });
+
+        document
+          .querySelector("#images")
+          .addEventListener("change", function (e) {
+            if (e.target.classList.contains("resim-input")) {
+              const file = e.target.files[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                  const container = e.target.closest(".col-6");
+                  const img = container.querySelector(".preview-img");
+                  if (img) {
+                    img.src = ev.target.result;
+                    img.style.display = "block";
+                  }
+                };
+                reader.readAsDataURL(file);
+              }
+            }
+          });
       }
+
+      window.addEventListener("DOMContentLoaded", addEvent);
     </script>
 
     <!-- DÜZENLE-->
@@ -1150,168 +1161,7 @@
                         </div>
 
                         <div class="container mt-4" id="images">
-                          <div class="row text-center justify-content-start">
-                            <!--  -->
-                            <div class="col-6 col-md-2 mb-3">
-                              <img
-                                src="../assets/images/gebze-belediyesi.ico"
-                                class="img-fluid rounded mb-2"
-                                style="max-height: 100px"
-                                alt="resim1"
-                              />
-                              <div class="d-flex gap-2">
-                                <label
-                                  for="resim1"
-                                  class="btn btn-outline-primary w-50 p-1"
-                                  >Değiştir</label
-                                >
-                                <label
-                                  for="resimSil1"
-                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
-                                  >Sil</label
-                                >
-                                <input
-                                  type="file"
-                                  id="resim1"
-                                  style="display: none"
-                                />
-                              </div>
-                            </div>
-                            <!--  -->
-                            <div class="col-6 col-md-2 mb-3">
-                              <img
-                                src="../assets/images/gebze-belediyesi.ico"
-                                class="img-fluid rounded mb-2"
-                                style="max-height: 100px"
-                                alt="resim1"
-                              />
-                              <div class="d-flex gap-2">
-                                <label
-                                  for="resim1"
-                                  class="btn btn-outline-primary w-50 p-1"
-                                  style=""
-                                  >Değiştir</label
-                                >
-                                <label
-                                  for="resimSil1"
-                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
-                                  >Sil</label
-                                >
-                                <input
-                                  type="file"
-                                  id="resim1"
-                                  style="display: none"
-                                />
-                              </div>
-                            </div>
-                            <!--  -->
-                            <div class="col-6 col-md-2 mb-3">
-                              <img
-                                src="../assets/images/gebze-belediyesi.ico"
-                                class="img-fluid rounded mb-2"
-                                style="max-height: 100px"
-                                alt="resim1"
-                              />
-                              <div class="d-flex gap-2">
-                                <label
-                                  for="resim1"
-                                  class="btn btn-outline-primary w-50 p-1"
-                                  style=""
-                                  >Değiştir</label
-                                >
-                                <label
-                                  for="resimSil1"
-                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
-                                  >Sil</label
-                                >
-                                <input
-                                  type="file"
-                                  id="resim1"
-                                  style="display: none"
-                                />
-                              </div>
-                            </div>
-                            <!--  -->
-                            <div class="col-6 col-md-2 mb-3">
-                              <img
-                                src="../assets/images/gebze-belediyesi.ico"
-                                class="img-fluid rounded mb-2"
-                                style="max-height: 100px"
-                                alt="resim1"
-                              />
-                              <div class="d-flex gap-2">
-                                <label
-                                  for="resim1"
-                                  class="btn btn-outline-primary w-50 p-1"
-                                  style=""
-                                  >Değiştir</label
-                                >
-                                <label
-                                  for="resimSil1"
-                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
-                                  >Sil</label
-                                >
-                                <input
-                                  type="file"
-                                  id="resim1"
-                                  style="display: none"
-                                />
-                              </div>
-                            </div>
-                            <!--  -->
-                            <div class="col-6 col-md-2 mb-3">
-                              <img
-                                src="../assets/images/gebze-belediyesi.ico"
-                                class="img-fluid rounded mb-2"
-                                style="max-height: 100px"
-                                alt="resim1"
-                              />
-                              <div class="d-flex gap-2">
-                                <label
-                                  for="resim1"
-                                  class="btn btn-outline-primary w-50 p-1"
-                                  style=""
-                                  >Değiştir</label
-                                >
-                                <label
-                                  for="resimSil1"
-                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
-                                  >Sil</label
-                                >
-                                <input
-                                  type="file"
-                                  id="resim1"
-                                  style="display: none"
-                                />
-                              </div>
-                            </div>
-                            <!--  -->
-                            <div class="col-6 col-md-2 mb-3">
-                              <img
-                                src="../assets/images/gebze-belediyesi.ico"
-                                class="img-fluid rounded mb-2"
-                                style="max-height: 100px"
-                                alt="resim1"
-                              />
-                              <div class="d-flex gap-2">
-                                <label
-                                  for="resim1"
-                                  class="btn btn-outline-primary w-50 p-1"
-                                  style=""
-                                  >Değiştir</label
-                                >
-                                <label
-                                  for="resimSil1"
-                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
-                                  >Sil</label
-                                >
-                                <input
-                                  type="file"
-                                  id="resim1"
-                                  style="display: none"
-                                />
-                              </div>
-                            </div>
+                          <div class="row text-center justify-content-start" id="photos">
                           </div>
                         </div>
 
@@ -1324,7 +1174,62 @@
                   </div>
                 </div>
                     `;
+
+        for (let i = 0; i < 6; i++) {
+          document.getElementById("photos").innerHTML += `
+          <div class="col-6 col-md-2 mb-3">
+          <img
+          src="../assets/images/gebze-belediyesi.ico"
+          class="img-fluid rounded mb-2 preview-img"
+          style=" width:150px;height:150px;"
+          alt="resim${i}"
+          />
+          <div class="d-flex gap-2">
+          <label
+          for="resim${i}"
+          class="btn btn-outline-primary w-50 p-1"
+          style=""
+          >Değiştir</label
+          >
+          <label
+          for="resim${i}"
+          class="btn btn-outline-danger w-50 p-0 pt-1 remove"
+          >Sil</label
+          >
+          <input
+          type="file"
+          id="resim${i}"
+          class="resim-input"
+          style="display: none"
+          />
+          </div>
+          </div>`;
+        }
         document.getElementById("nav").innerHTML = ``;
+
+        const inputs = document.querySelectorAll(".resim-input");
+
+        inputs.forEach((input) => {
+          input.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+              const reader = new FileReader();
+              const self = this;
+
+              reader.onload = function (e) {
+                const container = self.closest(".col-6");
+                const img = container.querySelector(".preview-img");
+
+                if (img) {
+                  img.src = e.target.result;
+                  img.style.display = "block";
+                }
+              };
+
+              reader.readAsDataURL(file);
+            }
+          });
+        });
 
         remove();
 
@@ -1359,6 +1264,8 @@
           });
         });
       }
+
+      function img() {}
     </script>
   </body>
 </html>
