@@ -1,251 +1,440 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Başkan Yardımcıları</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Başkan Yardımcıları</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 20px;
+      }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
 
-    .card {
-      background: rgb(236, 236, 236);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
+      .card {
+        background: rgb(236, 236, 236);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
 
-    .card img {
-      width: 200px;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid #000000;
-      margin-bottom: 10px;
-    }
+      .card img {
+        width: 200px;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 2px solid #000000;
+        margin-bottom: 10px;
+      }
 
-    .card h3 {
-      font-size: 22px;
-      margin: 10px 0;
-      color: #000000;
-    }
+      .card h3 {
+        font-size: 22px;
+        margin: 10px 0;
+        color: #000000;
+      }
 
-    .card input {
-      width: 90%;
-      padding: 8px;
-      margin: 5px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
+      .card input {
+        width: 90%;
+        padding: 8px;
+        margin: 5px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
 
-   .degistir-btn {
-    background-color: #7180e1; 
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.3s;
-}
+      .degistir-btn {
+        background-color: #7180e1;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.3s;
+      }
 
-.degistir-btn:hover {
-  background-color: #5a4bcc; /* Hover rengi */
-}
+      .degistir-btn:hover {
+        background-color: #5a4bcc; /* Hover rengi */
+      }
 
-    .button-group {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
+      .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
 
-    button.kaydet {
-      background-color: #825aa7;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+      button.kaydet {
+        background-color: #825aa7;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
 
-    button.iptal {
-      background-color: #5961d3;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+      button.iptal {
+        background-color: #5961d3;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
 
-    /* 7. Kart ortalanmış */
-    .full-width {
-      grid-column: span 2;
-      justify-self: center;
-      width: 50%;
-    }
-  </style>
-</head>
-<body>
-<h1 style="text-align:center; color:#243b52;">Başkan Yardımcıları</h1>
-  <div class="container">
-    <!-- Yardımcılar (1-6) -->
-    <div class="card">
-      <img id="yardimci1Image" src="./yardimci1.jpg" alt="Fotoğraf">
-      
-      <h3 contenteditable="true" id="yardimci1Isim">Başkan Yardımcısı 1</h3>
-      <input type="text" id="yardimci1Email" placeholder="E-posta girin">
-      <input type="text" id="yardimci1Telefon" placeholder="Telefon girin">
-      <input type="file" id="yardimci1Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'yardimci1')">
-      <button class="degistir-btn" onclick="document.getElementById('yardimci1Upload').click()"> Fotoğraf Değiştir</button>
+      /* 7. Kart ortalanmış */
+      .full-width {
+        grid-column: span 2;
+        justify-self: center;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center; color: #243b52">Başkan Yardımcıları</h1>
+    <div class="container">
+      <!-- Yardımcılar (1-6) -->
+      <div class="card">
+        <img
+          id="yardimci1Image"
+          src="../assets/images/kurumsal gebze/dursunali.jpg"
+          alt="Fotoğraf"
+        />
 
-      <div class="button-group">
-        <button class="kaydet" onclick="saveData('yardimci1')">Kaydet</button>
-        <button class="iptal" onclick="cancelData('yardimci1')">İptal</button>
+        <h3 contenteditable="true" id="yardimci1Isim">Dursun Ali Arslan</h3>
+        <input
+          type="text"
+          id="yardimci1Email"
+          placeholder="E-posta girin"
+          value="dursunali.arslan@gebze.bel.tr"
+        />
+        <input
+          type="text"
+          id="yardimci1Telefon"
+          placeholder="Telefon girin"
+          value="0 262 642 04 30"
+        />
+        <input
+          type="file"
+          id="yardimci1Upload"
+          accept="image/*"
+          style="display: none"
+          onchange="previewImage(event, 'yardimci1')"
+        />
+        <button
+          class="degistir-btn"
+          onclick="document.getElementById('yardimci1Upload').click()"
+        >
+          Fotoğraf Değiştir
+        </button>
+
+        <div class="button-group">
+          <button class="kaydet" onclick="saveData('yardimci1')">Kaydet</button>
+          <button class="iptal" onclick="cancelData('yardimci1')">İptal</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          id="yardimci2Image"
+          src="../assets/images/kurumsal gebze/meclis/ahmetcelebi.jpg"
+          alt="Fotoğraf"
+        />
+        <h3 contenteditable="true" id="yardimci2Isim">Ahmet Hüseyin Çelebi</h3>
+        <input
+          type="text"
+          id="yardimci2Email"
+          placeholder="E-posta girin"
+          value="ahmet.huseyincelebi@gebze.bel.tr"
+        />
+        <input
+          type="text"
+          id="yardimci2Telefon"
+          placeholder="Telefon girin"
+          value="0 262 642 04 30"
+        />
+        <input
+          type="file"
+          id="yardimci2Upload"
+          accept="image/*"
+          style="display: none"
+          onchange="previewImage(event, 'yardimci2')"
+        />
+        <button
+          class="degistir-btn"
+          onclick="document.getElementById('yardimci1Upload').click()"
+        >
+          Fotoğraf Değiştir
+        </button>
+
+        <div class="button-group">
+          <button class="kaydet" onclick="saveData('yardimci2')">Kaydet</button>
+          <button class="iptal" onclick="cancelData('yardimci2')">İptal</button>
+        </div>
+      </div>
+
+      <!-- 3-4 -->
+      <div class="card">
+        <img
+          id="yardimci3Image"
+          src="../assets/images/kurumsal gebze/serifcanpolat.jpg"
+          alt="Fotoğraf"
+        />
+        <h3 contenteditable="true" id="yardimci3Isim">Şerif Canpolat</h3>
+        <input
+          type="text"
+          id="yardimci3Email"
+          placeholder="E-posta girin"
+          value="serif.canpolat@gebze.bel.tr"
+        />
+        <input
+          type="text"
+          id="yardimci3Telefon"
+          placeholder="Telefon girin"
+          value="0 262 642 04 30"
+        />
+        <input
+          type="file"
+          id="yardimci3Upload"
+          accept="image/*"
+          style="display: none"
+          onchange="previewImage(event, 'yardimci3')"
+        />
+        <button
+          class="degistir-btn"
+          onclick="document.getElementById('yardimci1Upload').click()"
+        >
+          Fotoğraf Değiştir
+        </button>
+
+        <div class="button-group">
+          <button class="kaydet" onclick="saveData('yardimci3')">Kaydet</button>
+          <button class="iptal" onclick="cancelData('yardimci3')">İptal</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          id="yardimci4Image"
+          src="../assets/images/kurumsal gebze/muharrembaltaci.jpg"
+          alt="Fotoğraf"
+        />
+        <h3 contenteditable="true" id="yardimci4Isim">Muharrem Baltacıoğlu</h3>
+        <input
+          type="text"
+          id="yardimci4Email"
+          placeholder="E-posta girin"
+          value="muharrem.baltacioglu@gebze.bel.tr"
+        />
+        <input
+          type="text"
+          id="yardimci4Telefon"
+          placeholder="Telefon girin"
+          value="0 262 642 04 30"
+        />
+        <input
+          type="file"
+          id="yardimci4Upload"
+          accept="image/*"
+          style="display: none"
+          onchange="previewImage(event, 'yardimci4')"
+        />
+        <button
+          class="degistir-btn"
+          onclick="document.getElementById('yardimci1Upload').click()"
+        >
+          Fotoğraf Değiştir
+        </button>
+
+        <div class="button-group">
+          <button class="kaydet" onclick="saveData('yardimci4')">Kaydet</button>
+          <button class="iptal" onclick="cancelData('yardimci4')">İptal</button>
+        </div>
+      </div>
+
+      <!-- 5-6 -->
+      <div class="card">
+        <img
+          id="yardimci5Image"
+          src="../assets/images/kurumsal gebze/yandikmahmut.jpg"
+          alt="Fotoğraf"
+        />
+        <h3 contenteditable="true" id="yardimci5Isim">Mahmut Yandık</h3>
+        <input
+          type="text"
+          id="yardimci5Email"
+          placeholder="E-posta girin"
+          value="mahmut.yandik@gebze.bel.tr"
+        />
+        <input
+          type="text"
+          id="yardimci5Telefon"
+          placeholder="Telefon girin"
+          value="0 262 642 04 30"
+        />
+        <input
+          type="file"
+          id="yardimci5Upload"
+          accept="image/*"
+          style="display: none"
+          onchange="previewImage(event, 'yardimci5')"
+        />
+        <button
+          class="degistir-btn"
+          onclick="document.getElementById('yardimci1Upload').click()"
+        >
+          Fotoğraf Değiştir
+        </button>
+
+        <div class="button-group">
+          <button class="kaydet" onclick="saveData('yardimci5')">Kaydet</button>
+          <button class="iptal" onclick="cancelData('yardimci5')">İptal</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          id="yardimci6Image"
+          src="../assets/images/kurumsal gebze/senerakin.jpg"
+          alt="Fotoğraf"
+        />
+        <h3 contenteditable="true" id="yardimci6Isim">Şener Akın</h3>
+        <input
+          type="text"
+          id="yardimci6Email"
+          placeholder="E-posta girin"
+          value="sener.akin@gebze.bel.tr"
+        />
+        <input
+          type="text"
+          id="yardimci6Telefon"
+          placeholder="Telefon girin"
+          value="0 262 642 04 30"
+        />
+        <input
+          type="file"
+          id="yardimci6Upload"
+          accept="image/*"
+          style="display: none"
+          onchange="previewImage(event, 'yardimci6')"
+        />
+        <button
+          class="degistir-btn"
+          onclick="document.getElementById('yardimci1Upload').click()"
+        >
+          Fotoğraf Değiştir
+        </button>
+
+        <div class="button-group">
+          <button class="kaydet" onclick="saveData('yardimci6')">Kaydet</button>
+          <button class="iptal" onclick="cancelData('yardimci6')">İptal</button>
+        </div>
+      </div>
+
+      <!-- 7. Yardımcı -->
+      <div class="card full-width">
+        <img
+          id="yardimci7Image"
+          src="../assets/images/kurumsal gebze/mucahitbirben.jpg"
+          alt="Fotoğraf"
+        />
+        <h3 contenteditable="true" id="yardimci7Isim">Mücahit Birben</h3>
+        <input
+          type="text"
+          id="yardimci7Email"
+          placeholder="E-posta girin"
+          value="mucahit.birben@gebze.bel.tr"
+        />
+        <input
+          type="text"
+          id="yardimci7Telefon"
+          placeholder="Telefon girin"
+          value="0 262 642 04 30"
+        />
+        <input
+          type="file"
+          id="yardimci7Upload"
+          accept="image/*"
+          style="display: none"
+          onchange="previewImage(event, 'yardimci7')"
+        />
+        <button
+          class="degistir-btn"
+          onclick="document.getElementById('yardimci1Upload').click()"
+        >
+          Fotoğraf Değiştir
+        </button>
+
+        <div class="button-group">
+          <button class="kaydet" onclick="saveData('yardimci7')">Kaydet</button>
+          <button class="iptal" onclick="cancelData('yardimci7')">İptal</button>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <img id="yardimci2Image" src="./yardimci2.jpg" alt="Fotoğraf">
-      <h3 contenteditable="true" id="yardimci2Isim">Başkan Yardımcısı 2</h3>
-      <input type="text" id="yardimci2Email" placeholder="E-posta girin">
-      <input type="text" id="yardimci2Telefon" placeholder="Telefon girin">
-      <input type="file" id="yardimci2Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'yardimci2')">
-       <button class="degistir-btn" onclick="document.getElementById('yardimci1Upload').click()"> Fotoğraf Değiştir</button>
+    <script>
+      function previewImage(event, id) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          document.getElementById(id + "Image").src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
 
-      <div class="button-group">
-        <button class="kaydet" onclick="saveData('yardimci2')">Kaydet</button>
-        <button class="iptal" onclick="cancelData('yardimci2')">İptal</button>
-      </div>
-    </div>
+      function saveData(id) {
+        const isim = document.getElementById(id + "Isim").innerText;
+        const email = document.getElementById(id + "Email").value;
+        const tel = document.getElementById(id + "Telefon").value;
+        const img = document.getElementById(id + "Image").src;
+        localStorage.setItem(id + "_isim", isim);
+        localStorage.setItem(id + "_email", email);
+        localStorage.setItem(id + "_tel", tel);
+        localStorage.setItem(id + "_img", img);
+        alert("Bilgiler kaydedildi: " + isim);
+      }
 
-    <!-- 3-4 -->
-    <div class="card">
-      <img id="yardimci3Image" src="./yardimci3.jpg" alt="Fotoğraf">
-      <h3 contenteditable="true" id="yardimci3Isim">Başkan Yardımcısı 3</h3>
-      <input type="text" id="yardimci3Email" placeholder="E-posta girin">
-      <input type="text" id="yardimci3Telefon" placeholder="Telefon girin">
-      <input type="file" id="yardimci3Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'yardimci3')">
-       <button class="degistir-btn" onclick="document.getElementById('yardimci1Upload').click()"> Fotoğraf Değiştir</button>
+      function cancelData(id) {
+        document.getElementById(id + "Isim").innerText =
+          localStorage.getItem(id + "_isim") ||
+          "Başkan Yardımcısı " + id.replace("yardimci", "");
+        document.getElementById(id + "Email").value =
+          localStorage.getItem(id + "_email") || "";
+        document.getElementById(id + "Telefon").value =
+          localStorage.getItem(id + "_tel") || "";
+        document.getElementById(id + "Image").src =
+          localStorage.getItem(id + "_img") || "./" + id + ".jpg";
+        alert("Değişiklikler geri alındı");
+      }
 
-      <div class="button-group">
-        <button class="kaydet" onclick="saveData('yardimci3')">Kaydet</button>
-        <button class="iptal" onclick="cancelData('yardimci3')">İptal</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img id="yardimci4Image" src="./yardimci4.jpg" alt="Fotoğraf">
-      <h3 contenteditable="true" id="yardimci4Isim">Başkan Yardımcısı 4</h3>
-      <input type="text" id="yardimci4Email" placeholder="E-posta girin">
-      <input type="text" id="yardimci4Telefon" placeholder="Telefon girin">
-      <input type="file" id="yardimci4Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'yardimci4')">
-      <button class="degistir-btn" onclick="document.getElementById('yardimci1Upload').click()"> Fotoğraf Değiştir</button>
-
-      <div class="button-group">
-        <button class="kaydet" onclick="saveData('yardimci4')">Kaydet</button>
-        <button class="iptal" onclick="cancelData('yardimci4')">İptal</button>
-      </div>
-    </div>
-
-    <!-- 5-6 -->
-    <div class="card">
-      <img id="yardimci5Image" src="./yardimci5.jpg" alt="Fotoğraf">
-      <h3 contenteditable="true" id="yardimci5Isim">Başkan Yardımcısı 5</h3>
-      <input type="text" id="yardimci5Email" placeholder="E-posta girin">
-      <input type="text" id="yardimci5Telefon" placeholder="Telefon girin">
-      <input type="file" id="yardimci5Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'yardimci5')">
-       <button class="degistir-btn" onclick="document.getElementById('yardimci1Upload').click()"> Fotoğraf Değiştir</button>
-
-      <div class="button-group">
-        <button class="kaydet" onclick="saveData('yardimci5')">Kaydet</button>
-        <button class="iptal" onclick="cancelData('yardimci5')">İptal</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img id="yardimci6Image" src="./yardimci6.jpg" alt="Fotoğraf">
-      <h3 contenteditable="true" id="yardimci6Isim">Başkan Yardımcısı 6</h3>
-      <input type="text" id="yardimci6Email" placeholder="E-posta girin">
-      <input type="text" id="yardimci6Telefon" placeholder="Telefon girin">
-      <input type="file" id="yardimci6Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'yardimci6')">
-       <button class="degistir-btn" onclick="document.getElementById('yardimci1Upload').click()"> Fotoğraf Değiştir</button>
-
-      <div class="button-group">
-        <button class="kaydet" onclick="saveData('yardimci6')">Kaydet</button>
-        <button class="iptal" onclick="cancelData('yardimci6')">İptal</button>
-      </div>
-    </div>
-
-    <!-- 7. Yardımcı -->
-    <div class="card full-width">
-      <img id="yardimci7Image" src="./yardimci7.jpg" alt="Fotoğraf">
-      <h3 contenteditable="true" id="yardimci7Isim">Başkan Yardımcısı 7</h3>
-      <input type="text" id="yardimci7Email" placeholder="E-posta girin">
-      <input type="text" id="yardimci7Telefon" placeholder="Telefon girin">
-      <input type="file" id="yardimci7Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'yardimci7')">
-      <button class="degistir-btn" onclick="document.getElementById('yardimci1Upload').click()"> Fotoğraf Değiştir</button>
-
-      <div class="button-group">
-        <button class="kaydet" onclick="saveData('yardimci7')">Kaydet</button>
-        <button class="iptal" onclick="cancelData('yardimci7')">İptal</button>
-      </div>
-    </div>
-  </div>
-
-<script>
-  function previewImage(event, id) {
-    const reader = new FileReader();
-    reader.onload = function () {
-      document.getElementById(id + 'Image').src = reader.result;
-    }
-    reader.readAsDataURL(event.target.files[0]);
-  }
-
-  function saveData(id) {
-    const isim = document.getElementById(id + 'Isim').innerText;
-    const email = document.getElementById(id + 'Email').value;
-    const tel = document.getElementById(id + 'Telefon').value;
-    const img = document.getElementById(id + 'Image').src;
-    localStorage.setItem(id + '_isim', isim);
-    localStorage.setItem(id + '_email', email);
-    localStorage.setItem(id + '_tel', tel);
-    localStorage.setItem(id + '_img', img);
-    alert('Bilgiler kaydedildi: ' + isim);
-  }
-
-  function cancelData(id) {
-    document.getElementById(id + 'Isim').innerText = localStorage.getItem(id + '_isim') || ('Başkan Yardımcısı ' + id.replace('yardimci',''));
-    document.getElementById(id + 'Email').value = localStorage.getItem(id + '_email') || '';
-    document.getElementById(id + 'Telefon').value = localStorage.getItem(id + '_tel') || '';
-    document.getElementById(id + 'Image').src = localStorage.getItem(id + '_img') || ('./' + id + '.jpg');
-    alert('Değişiklikler geri alındı');
-  }
-
-  window.onload = function () {
-    for (let i = 1; i <= 7; i++) {
-      const id = 'yardimci' + i;
-      if (localStorage.getItem(id + '_isim')) document.getElementById(id + 'Isim').innerText = localStorage.getItem(id + '_isim');
-      if (localStorage.getItem(id + '_email')) document.getElementById(id + 'Email').value = localStorage.getItem(id + '_email');
-      if (localStorage.getItem(id + '_tel')) document.getElementById(id + 'Telefon').value = localStorage.getItem(id + '_tel');
-      if (localStorage.getItem(id + '_img')) document.getElementById(id + 'Image').src = localStorage.getItem(id + '_img');
-    }
-  }
-</script>
-
-</body>
+      window.onload = function () {
+        for (let i = 1; i <= 7; i++) {
+          const id = "yardimci" + i;
+          if (localStorage.getItem(id + "_isim"))
+            document.getElementById(id + "Isim").innerText =
+              localStorage.getItem(id + "_isim");
+          if (localStorage.getItem(id + "_email"))
+            document.getElementById(id + "Email").value = localStorage.getItem(
+              id + "_email"
+            );
+          if (localStorage.getItem(id + "_tel"))
+            document.getElementById(id + "Telefon").value =
+              localStorage.getItem(id + "_tel");
+          if (localStorage.getItem(id + "_img"))
+            document.getElementById(id + "Image").src = localStorage.getItem(
+              id + "_img"
+            );
+        }
+      };
+    </script>
+  </body>
 </html>

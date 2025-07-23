@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belediye Meclisi</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+      }
+
+      .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 250px;
+        text-align: center;
+      }
+
+      .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .card h2 {
+        font-size: 1.2em;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .card input {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+
+      .card button {
+        margin: 5px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .card p {
+        font-size: 0.95em;
+        font-weight: 300;
+        color: #666; /* Daha gri ve ince yazı */
+        margin: 0 0 10px;
+      }
+
+      .photo-btn {
+        background-color: #5a5ad4;
+        color: white;
+      }
+
+      .save-btn {
+        background-color: #6f42c1;
+        color: white;
+      }
+
+      .cancel-btn {
+        background-color: #6c757d;
+        color: white;
+      }
+
+      .card button:hover {
+        opacity: 0.9;
+      }
+
+      .file-input {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Belediye Meclisi Düzenle</h1>
+
+    <!-- Belediye Başkanı -->
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/zinnurbuyukgoz.jpg"
+          alt="Belediye Başkanı"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Başkan</p>
+        <input type="text" placeholder="Başkan Adı" value="Zinnur BÜYÜKGÖZ" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <!-- Meclis Üyeleri -->
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/soba.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Hasan SOBA" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/yandikmahmut.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Mahmut YANDIK" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/demirhan.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Mustafa DEMİRHAN" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/kavak.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Ömer Cihan KAVAK" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/cirak.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Habibe ÇIRAK" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/malkoc.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Selim MALKOÇ" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/islek.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Mehmet Fatih İŞLEK" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/demir.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Talip DEMİR" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/uysal.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Azim UYSAL" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/bahcevan.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Efari BAHÇEVAN" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/gencay.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Güler Şahin GENCAY" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/guner.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Selamet GÜNER" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/tokmak.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Birgül TOKMAK" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/ahmetcelebi.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Ahmet Hüseyin ÇELEBİ" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/mdemir.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Mustafa DEMİR" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/onal.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Mustafa ÖNAL" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/ayilmaz.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Ayhan YILMAZ" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/aydin.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Vasfiye AYDIN" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/senerakin.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Şener AKIN" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/dinc.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Mehmet DİNÇ" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/sen.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Okan ŞEN" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/aytac.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Halil AYTAÇ" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/sezer.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Osman SEZER" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/ates.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Mustafa ATEŞ" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/ozdemir.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Hasan ÖZDEMİR" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/bilgin.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Emrullah BİLGİN" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/onder.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Hüseyin ÖNDER" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/irtegun.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="İrfan İRTEGÜN" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/kadi.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Ahmet KADI" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/aksu.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Gülcan AKSU" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/sozbir.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Engin SÖZBİR" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/torun.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Ferman TORUN" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/gokdemir.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Nuran GÖKDEMİR" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/elustu.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Birol ELÜSTÜ" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/capci.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Zeynep Aslan ÇAPÇI" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/aydogdu.png"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Yunus Umut AYDOĞDU" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <img
+          src="../assets/images/kurumsal gebze/meclis/kahraman.jpg"
+          alt="Meclis Üyesi"
+        />
+        <input type="file" class="file-input" accept="image/*" />
+        <p>Meclis Üyesi</p>
+        <input type="text" placeholder="Üye Adı" value="Hakan KAHRAMAN" />
+        <button class="photo-btn">Fotoğraf Değiştir</button>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".card").forEach((card) => {
+        const photoBtn = card.querySelector(".photo-btn");
+        const fileInput = card.querySelector(".file-input");
+        const img = card.querySelector("img");
+        const saveBtn = card.querySelector(".save-btn");
+        const cancelBtn = card.querySelector(".cancel-btn");
+
+        // Fotoğraf Değiştir
+        photoBtn.addEventListener("click", () => fileInput.click());
+        fileInput.addEventListener("change", (event) => {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        // Kaydet
+        saveBtn.addEventListener("click", () => {
+          alert(`${card.querySelector("h2").innerText} kaydedildi!`);
+        });
+
+        // İptal
+        cancelBtn.addEventListener("click", () => {
+          window.location.reload();
+        });
+      });
+    </script>
+  </body>
+</html>

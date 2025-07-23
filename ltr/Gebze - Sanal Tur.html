@@ -220,6 +220,15 @@
       .sil-butonu {
         background-color: #f44336;
       }
+
+      .select {
+        margin-left: 10px;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        background-color: #f0f0f0;
+        font-size: 16px;
+      }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -679,7 +688,9 @@
                         İşlemler
                       </button>
                       <div class="dropdown-menu">
-                        <button onclick="duzenle()">
+                        <button
+                          onclick="edit('360 Sanal Tur','Sanal Tur','Arşivlendi')"
+                        >
                           <img
                             src="../assets/images/dropdown_svg/edit.svg"
                             alt="edit"
@@ -779,23 +790,6 @@
 
         menu.style.display = menu.style.display === "block" ? "none" : "block";
       }
-
-      // Örnek fonksiyonlar
-      function ekle() {
-        alert("Ekleme sayfasına yönlendiriliyor...");
-      }
-
-      function duzenle() {
-        alert("Düzenleme sayfasına yönlendiriliyor...");
-      }
-
-      function sil() {
-        alert("Silme işlemi yapılıyor...");
-      }
-
-      function icerik() {
-        alert("İçerik detayına yönlendiriliyor...");
-      }
     </script>
     <script>
       function toggleDropdown(btn) {
@@ -810,22 +804,6 @@
         menu.style.display = menu.style.display === "block" ? "none" : "block";
       }
 
-      function ekle() {
-        alert("Ekle tıklandı");
-      }
-
-      function duzenle() {
-        alert("Düzenle tıklandı");
-      }
-
-      function sil() {
-        alert("Sil tıklandı");
-      }
-
-      function icerik() {
-        alert("İçerik tıklandı");
-      }
-
       // Sayfa dışında bir yere tıklanınca menü kapanır
       document.addEventListener("click", function (e) {
         if (!e.target.closest(".dropdown-container")) {
@@ -834,6 +812,70 @@
             .forEach((el) => (el.style.display = "none"));
         }
       });
+    </script>
+    <!-- DÜZENLE-->
+    <script>
+      function edit(title, category, situation, element) {
+        let content = document.getElementById("icerikler");
+
+        content.innerHTML = `
+              <div class="d-flex justify-content-center">
+                <div class="card " style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738); width:95%;">
+                  <div class="card-body">
+                    <form id="editNewsForm">
+                      <div class="mb-3">
+                        <label for="title" class="form-label">Başlık</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="title"
+                          value="${title}"
+                          placeholder="Haber başlığını giriniz"
+                          required
+                        />
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="kategori" class="form-label"
+                        >Kategori</label
+                        >
+                        <select class="select" id="kategori">
+                          <option id="gebze">${category}</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="situtaion" class="form-label"
+                        >${situation}</label
+                        >
+                        <select class="select" id="situation">
+                          <option disabled selected hidden>Durum</option>
+                          <option id="arsivle">Arşivle</option>
+                          <option id="arsivCikar">Arşivden Çıkar</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="haberIcerik" class="form-label">Link</label>
+                        <textarea
+                          class="form-control"
+                          id="link"
+                          rows="5"
+                          placeholder="Link"
+                          required
+                        >https://www.google.com/maps/@40.8007673,29.4316691,3a,75y,182.96h,92.31t/data=!3m7!1e1!3m5!1sZbDIcW-1ysGMB8w8oYMJfg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-2.3140903915030577%26panoid%3DZbDIcW-1ysGMB8w8oYMJfg%26yaw%3D182.96368452373773!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D</textarea>
+                      </div>
+
+                      <button class="btn btn-success" id="submit" type="submit">
+                        Güncelle
+                      </button>
+                      <a href="Haberler.html" class="btn btn-secondary">İptal</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              `;
+        document.getElementById("nav").innerHTML = ``;
+      }
     </script>
   </body>
 </html>
