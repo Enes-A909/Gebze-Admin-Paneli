@@ -1023,7 +1023,7 @@
     <script>
       function addEvent() {
         document.getElementById("add").addEventListener("click", function () {
-          const row = document.querySelector("#images .row");
+          const row = document.querySelector("#photos");
           if (!row) return;
 
           const count = row.children.length + 1;
@@ -1136,7 +1136,6 @@
                               style="float: right; margin-left: 1%"
                               >Fotoğraf Ekle</label
                             ><label
-                              id="add"
                               class="btn btn-primary w-10 p-1"
                               style="float: right; margin-left: 1%"
                               onclick="addPopulation()";
@@ -1149,11 +1148,14 @@
                           <div class="row text-center justify-content-start" id="photos">
                           </div>
                         </div>
-
-                        <button class="btn btn-success" id="submit" type="button">
+                        <div class="d-flex gap-2 mt-3">
+                        <button class="btn btn-success w-15 ml-2 mb-2" style="width:10%" id="submit" type="button">
                           Güncelle
                         </button>
-                        <a href="Gebze - Tarihce.html" class="btn btn-secondary">İptal</a>
+                        <a href="Gebze - Tarihce.html" class="btn btn-secondary w-15 ml-1 mb-2" style="width:10%">
+                          İptal
+                        </a>
+                      </div>
                       </form>
                     </div>
                   </div>
@@ -1241,43 +1243,50 @@
           });
         });
       }
-      var populationCount = 0;
+
+      var popCount = 0;
+
       function addPopulation() {
         const popDiv = document.getElementById("population");
 
-        if (populationCount === 0) {
+        if (popCount === 0) {
           popDiv.innerHTML += `
-        <div class="d-flex justify-content-between" style="width: 1500px; ">
-        <label for="nüfus" class="form-label">Nüfus</label>
-        <label for="year" class="form-label" style="margin-right:69.6%;  ">Yıl</label>
-        </div>
-    `;
+            <div class="d-flex justify-content-between" style="width: 200%; margin-bottom:-2%;">
+              <label for="nüfus" class="form-label">Nüfus</label>
+              <label for="year" class="form-label" style="margin-right:76.7%;">Yıl</label>
+            </div>
+          `;
         }
 
-        popDiv.innerHTML += `
-        <div class="d-flex gap-2 mt-3">
-        <input
-        type="number"
-        class="form-control"
-        id="nüfus${populationCount}"
-        value="10000"
-        placeholder="Nüfus giriniz"
-        style="width: 40%"
-        />
-        <select
-        name="year"
-        id="year${populationCount}"
-        style="width: 20%; margin-left: 5%"
-        ></select>`;
-        populationCount++;
+        popCount++;
 
-        let select = document.getElementById("year");
+        popDiv.innerHTML += `
+          <div class="d-flex gap-2 mt-3">
+            <input
+              type="number"
+              class="form-control"
+              name="nüfus"
+              value="10000"
+              placeholder="Nüfus giriniz"
+              style="width: 40%"
+            />
+            <select
+              name="year"
+              id="year${popCount}"
+              style="width: 20%; margin-left: 5%"
+            ></select>
+          </div>
+        `;
+
+        let select = document.getElementById(`year${popCount}`);
+
         for (let i = 2025; i > 2008; i--) {
           let option = document.createElement("option");
           option.value = i;
           option.textContent = i;
           select.appendChild(option);
         }
+        addEvent();
       }
     </script>
   </body>
