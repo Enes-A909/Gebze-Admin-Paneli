@@ -948,6 +948,16 @@
                   </td>
                 </tr>`;
       }
+
+      const checkboxes = document.querySelectorAll(".checkbox-item");
+
+      const anaCheckbox = document.getElementById("ana-checkbox");
+      anaCheckbox.addEventListener("change", () => {
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = anaCheckbox.checked;
+          checkbox.dispatchEvent(new Event("change"));
+        });
+      });
     }
   </script>
 
@@ -1087,8 +1097,18 @@
           newTd[3].textContent = tarih;
           newTd[4].textContent = icerik;
 
+          const checkboxes = document.querySelectorAll(".checkbox-item");
+
+          const anaCheckbox = document.getElementById("ana-checkbox");
+          anaCheckbox.addEventListener("change", () => {
+            checkboxes.forEach((checkbox) => {
+              checkbox.checked = anaCheckbox.checked;
+              checkbox.dispatchEvent(new Event("change"));
+            });
+          });
+
           document.getElementById("nav").innerHTML = `
-                   <button class="buton ekle-butonu">
+                   <button class="buton ekle-butonu" onclick="ekle()">
                 <div class="icon arti"></div>
                 <span>Ekle</span>
               </button>
@@ -1247,6 +1267,21 @@
 
 
       const formattedDate = date.split("-").reverse().join(".");
+
+      let nav = document.getElementById("nav");
+
+      nav.innerHTML = `<button class="buton ekle-butonu" onclick="ekle()">
+              <div class="icon arti"></div>
+              <span>Ekle</span>
+            </button>
+            <button class="buton sil-butonu" onclick="sil()">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                aria-hidden="true" focusable="false">
+                <path
+                  d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z" />
+              </svg>
+              <span>Sil</span>
+            </button>`
 
       let content = document.getElementById("icerikler");
       content.innerHTML = `
@@ -1507,11 +1542,12 @@
       `;
 
       const checkboxes = document.querySelectorAll(".checkbox-item");
+
       const anaCheckbox = document.getElementById("ana-checkbox");
       anaCheckbox.addEventListener("change", () => {
         checkboxes.forEach((checkbox) => {
           checkbox.checked = anaCheckbox.checked;
-          checkbox.dispatchEvent(new Event("change"))
+          checkbox.dispatchEvent(new Event("change"));
         });
       });
     }

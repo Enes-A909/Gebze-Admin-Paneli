@@ -585,7 +585,7 @@
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
-                      <button onclick="remove()">
+                      <button onclick="remove(this)">
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
@@ -593,7 +593,7 @@
                       <button onclick="archive()">
                         <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
                           height="10%" />
-                        İçerik
+                        Arşivle
                       </button>
                     </div>
                   </div>
@@ -682,9 +682,13 @@
             }, 0);
           }
 
-          function remove() {
-            let tr = document.getElementById("remove").closest("tr");
-            tr.remove();
+          function remove(btn) {
+            // Eğer parametre gelirse, sadece o satırı sil
+            if (btn) {
+              const row = btn.closest("tr");
+              row.parentNode.removeChild(row);
+            }
+
           }
 
           // Yeni yayını kaydetme ve tabloya ekleme
@@ -753,14 +757,11 @@
           <td scope="row"><span class="badge" style="margin-top: 7px">Yayınlarımız</span></td>
           <td scope="row"><span class="arşiv" style="margin-top: 7px">Arşivlendi</span></td>
           <td scope="row">...</td>
-          <td scope="row" style="text-align: right">
-            <div class="dropdown-container">
-              <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
               <div class="dropdown-menu">
                 <button onclick="duzenle()">
                   <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" /> Düzenle
                 </button>
-                <button onclick="remove()">
+                <button onclick="remove(this)">
                   <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" /> Sil
                 </button>
                 <button onclick="archive()">
@@ -791,7 +792,7 @@
           <button onclick="duzenle()">
             <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" /> Düzenle
           </button>
-          <button onclick="remove()
+          <button onclick="remove(this)
           ">
             <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" /> Sil
           </button>
