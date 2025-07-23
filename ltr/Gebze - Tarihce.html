@@ -655,153 +655,6 @@
           </nav>
 
           <br /><br />
-          <!-- ashfjdsfbadgknfksjbvn.mbsfnjknsbfaşknsbfakbnamsnvmödan vmçök snd-->
-          <div class="d-flex justify-content-center">
-            <div
-              class="card"
-              style="
-                box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);
-                width: 95%;
-              "
-            >
-              <div class="card-body">
-                <form id="editNewsForm">
-                  <div class="mb-3">
-                    <label for="title" class="form-label">Başlık</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="title"
-                      value="${title}"
-                      placeholder="Başlık giriniz"
-                      required
-                    />
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="kategori" class="form-label">Kategori</label>
-                    <select class="select" id="kategori">
-                      <option id="gebze">Tarihten Günümüze Gebze</option>
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <label for="situtaion" class="form-label">Durum</label>
-                    <select class="select" id="situation">
-                      <option disabled selected hidden>Durum</option>
-                      <option id="arsivle">Arşivle</option>
-                      <option id="arsivCikar">Arşivden Çıkar</option>
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <label for="link" class="form-label">Yazı</label>
-                    <textarea
-                      name="link"
-                      id="link"
-                      class="form-control"
-                      placeholder="Yazı"
-                      rows="5"
-                      required
-                    >
-yazı</textarea
-                    >
-                  </div>
-                  <div class="mb-3" style="margin-left: 23%">
-                    <label for="title" class="form-label">Başlık</label>
-                    <label
-                      for="year"
-                      class="form-label"
-                      style="margin-left: 41.5%"
-                      >Yıl</label
-                    >
-                    <div class="d-flex gap-2">
-                      <input
-                        type="number"
-                        class="form-control"
-                        id="nüfus"
-                        value="10000"
-                        placeholder="Nüfus giriniz"
-                        style="width: 40%"
-                      />
-
-                      <select
-                        name="year"
-                        id="year"
-                        style="width: 20%; margin-left: 5%"
-                      >
-                        <option></option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="container mt-4" id="images">
-                    <div class="row text-center justify-content-start">
-                      <!-- Görsel Kutusu Başlangıç -->
-                      <div class="col-6 col-md-2 mb-3">
-                        <img
-                          src="../assets/images/gebze-belediyesi.ico"
-                          class="img-fluid rounded mb-2"
-                          style="max-height: 100px"
-                          alt="resim1"
-                        />
-                        <div class="d-flex gap-2">
-                          <label
-                            for="resim1"
-                            class="btn btn-outline-primary w-50 p-0 pt-1"
-                            >Değiştir</label
-                          >
-                          <label
-                            for="resimSil1"
-                            class="btn btn-outline-danger w-50 p-0 pt-1"
-                            >Sil</label
-                          >
-                          <input
-                            type="file"
-                            id="resim1"
-                            style="display: none"
-                          />
-                        </div>
-                      </div>
-                      <!-- Görsel Kutusu Bitiş -->
-
-                      <!-- Görsel Kutusu -->
-                      <div class="col-6 col-md-2 mb-3">
-                        <img
-                          src="../assets/images/gebze-belediyesi.ico"
-                          class="img-fluid rounded mb-2"
-                          style="max-height: 100px"
-                          alt="resim2"
-                        />
-                        <div class="d-flex gap-2">
-                          <label
-                            for="resim2"
-                            class="btn btn-outline-primary w-50 p-0 pt-1"
-                            >Değiştir</label
-                          >
-                          <label
-                            for="resimSil2"
-                            class="btn btn-outline-danger w-50 p-0 pt-1"
-                            >Sil</label
-                          >
-                          <input
-                            type="file"
-                            id="resim2"
-                            style="display: none"
-                          />
-                        </div>
-                      </div>
-
-                      <!-- Aynı şekilde diğer resimleri çoğaltabilirsin -->
-                    </div>
-                  </div>
-
-                  <button class="btn btn-success" id="submit" type="button">
-                    Güncelle
-                  </button>
-                  <a href="Haberler.html" class="btn btn-secondary">İptal</a>
-                </form>
-              </div>
-            </div>
-          </div>
 
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler">
@@ -1166,15 +1019,320 @@ yazı</textarea
       });
     </script>
 
+    <!--    fotoğraf ekleme-->
+    <script>
+      function addEvent() {
+        document.getElementById("add").addEventListener("click", function () {
+          const row = document.querySelector("#images .row");
+          if (!row) return;
+
+          const count = row.children.length + 1;
+
+          row.insertAdjacentHTML(
+            "beforeend",
+            `
+    <div class="col-6 col-md-2 mb-3">
+      <img
+        src="../assets/images/gebze-belediyesi.ico"
+        class="img-fluid rounded mb-2"
+        style="max-height: 100px"
+        alt="resim${count}"
+      />
+      <div class="d-flex gap-2">
+        <label
+          for="resim${count}"
+          class="btn btn-outline-primary w-50 p-1"
+          >Değiştir</label
+        >
+        <label
+          for="resimSil${count}"
+          class="btn btn-outline-danger w-50 p-0 pt-1"
+          >Sil</label
+        >
+        <input
+          type="file"
+          id="resim${count}"
+          style="display: none"
+        />
+      </div>
+    </div>
+  `
+          );
+        });
+      }
+    </script>
+
     <!-- DÜZENLE-->
     <script>
       function edit(title, category, situation, date, element) {
         let content = document.getElementById("icerikler");
 
         content.innerHTML = `
-              
-              `;
+                  <div class="d-flex justify-content-center">
+                    <div
+                    class="card"
+                    style="
+                      box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);
+                      width: 95%;
+                    "
+                  >
+                    <div class="card-body">
+                      <form id="editNewsForm">
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Başlık</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="title"
+                            value="${title}"
+                            placeholder="Başlık giriniz"
+                            required
+                          />
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="kategori" class="form-label">Kategori</label>
+                          <select class="select" id="kategori">
+                            <option id="gebze">Tarihten Günümüze Gebze</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="situtaion" class="form-label">Durum</label>
+                          <select class="select" id="situation">
+                            <option disabled selected hidden>Durum</option>
+                            <option id="arsivle">Arşivle</option>
+                            <option id="arsivCikar">Arşivden Çıkar</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="link" class="form-label">Yazı</label>
+                          <textarea
+                            name="link"
+                            id="link"
+                            class="form-control"
+                            placeholder="Yazı"
+                            rows="5"
+                            required
+                          >yazı</textarea
+                          >
+                        </div>
+                        <div class="mb-3" style="margin-left: 23%">
+                          <label for="title" class="form-label">Başlık</label>
+                          <label
+                            for="year"
+                            class="form-label"
+                            style="margin-left: 41.5%"
+                            >Yıl</label
+                          >
+                          <div class="d-flex gap-2">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="nüfus"
+                              value="10000"
+                              placeholder="Nüfus giriniz"
+                              style="width: 40%"
+                            />
+
+                            <select
+                              name="year"
+                              id="year"
+                              style="width: 20%; margin-left: 5%"
+                            ></select>
+                            <label
+                              id="add"
+                              class="btn btn-primary w-10 p-1"
+                              style="float: right; margin-left: 15%"
+                              >Fotoğraf Ekle</label
+                            >
+                          </div>
+                        </div>
+
+                        <div class="container mt-4" id="images">
+                          <div class="row text-center justify-content-start">
+                            <!--  -->
+                            <div class="col-6 col-md-2 mb-3">
+                              <img
+                                src="../assets/images/gebze-belediyesi.ico"
+                                class="img-fluid rounded mb-2"
+                                style="max-height: 100px"
+                                alt="resim1"
+                              />
+                              <div class="d-flex gap-2">
+                                <label
+                                  for="resim1"
+                                  class="btn btn-outline-primary w-50 p-1"
+                                  >Değiştir</label
+                                >
+                                <label
+                                  for="resimSil1"
+                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
+                                  >Sil</label
+                                >
+                                <input
+                                  type="file"
+                                  id="resim1"
+                                  style="display: none"
+                                />
+                              </div>
+                            </div>
+                            <!--  -->
+                            <div class="col-6 col-md-2 mb-3">
+                              <img
+                                src="../assets/images/gebze-belediyesi.ico"
+                                class="img-fluid rounded mb-2"
+                                style="max-height: 100px"
+                                alt="resim1"
+                              />
+                              <div class="d-flex gap-2">
+                                <label
+                                  for="resim1"
+                                  class="btn btn-outline-primary w-50 p-1"
+                                  style=""
+                                  >Değiştir</label
+                                >
+                                <label
+                                  for="resimSil1"
+                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
+                                  >Sil</label
+                                >
+                                <input
+                                  type="file"
+                                  id="resim1"
+                                  style="display: none"
+                                />
+                              </div>
+                            </div>
+                            <!--  -->
+                            <div class="col-6 col-md-2 mb-3">
+                              <img
+                                src="../assets/images/gebze-belediyesi.ico"
+                                class="img-fluid rounded mb-2"
+                                style="max-height: 100px"
+                                alt="resim1"
+                              />
+                              <div class="d-flex gap-2">
+                                <label
+                                  for="resim1"
+                                  class="btn btn-outline-primary w-50 p-1"
+                                  style=""
+                                  >Değiştir</label
+                                >
+                                <label
+                                  for="resimSil1"
+                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
+                                  >Sil</label
+                                >
+                                <input
+                                  type="file"
+                                  id="resim1"
+                                  style="display: none"
+                                />
+                              </div>
+                            </div>
+                            <!--  -->
+                            <div class="col-6 col-md-2 mb-3">
+                              <img
+                                src="../assets/images/gebze-belediyesi.ico"
+                                class="img-fluid rounded mb-2"
+                                style="max-height: 100px"
+                                alt="resim1"
+                              />
+                              <div class="d-flex gap-2">
+                                <label
+                                  for="resim1"
+                                  class="btn btn-outline-primary w-50 p-1"
+                                  style=""
+                                  >Değiştir</label
+                                >
+                                <label
+                                  for="resimSil1"
+                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
+                                  >Sil</label
+                                >
+                                <input
+                                  type="file"
+                                  id="resim1"
+                                  style="display: none"
+                                />
+                              </div>
+                            </div>
+                            <!--  -->
+                            <div class="col-6 col-md-2 mb-3">
+                              <img
+                                src="../assets/images/gebze-belediyesi.ico"
+                                class="img-fluid rounded mb-2"
+                                style="max-height: 100px"
+                                alt="resim1"
+                              />
+                              <div class="d-flex gap-2">
+                                <label
+                                  for="resim1"
+                                  class="btn btn-outline-primary w-50 p-1"
+                                  style=""
+                                  >Değiştir</label
+                                >
+                                <label
+                                  for="resimSil1"
+                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
+                                  >Sil</label
+                                >
+                                <input
+                                  type="file"
+                                  id="resim1"
+                                  style="display: none"
+                                />
+                              </div>
+                            </div>
+                            <!--  -->
+                            <div class="col-6 col-md-2 mb-3">
+                              <img
+                                src="../assets/images/gebze-belediyesi.ico"
+                                class="img-fluid rounded mb-2"
+                                style="max-height: 100px"
+                                alt="resim1"
+                              />
+                              <div class="d-flex gap-2">
+                                <label
+                                  for="resim1"
+                                  class="btn btn-outline-primary w-50 p-1"
+                                  style=""
+                                  >Değiştir</label
+                                >
+                                <label
+                                  for="resimSil1"
+                                  class="btn btn-outline-danger w-50 p-0 pt-1 remove"
+                                  >Sil</label
+                                >
+                                <input
+                                  type="file"
+                                  id="resim1"
+                                  style="display: none"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <button class="btn btn-success" id="submit" type="button">
+                          Güncelle
+                        </button>
+                        <a href="Gebze - Tarihce.html" class="btn btn-secondary">İptal</a>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                    `;
         document.getElementById("nav").innerHTML = ``;
+
+        const remove = document.querySelectorAll(".remove");
+
+        remove.forEach((removeBtn) => {
+          removeBtn.addEventListener("click", function () {
+            const targetDiv = removeBtn.closest(".col-6");
+            if (removeBtn) targetDiv.remove();
+          });
+        });
 
         let today = new Date();
 
@@ -1185,6 +1343,15 @@ yazı</textarea
         const month = today.getMonth();
         const year = today.getFullYear();
         let formattedDate = `${hours}:${minute}:${ms}s - ${day}.${month}.${year}`;
+        addEvent();
+
+        let select = document.getElementById("year");
+        for (let i = 2025; i > 2008; i--) {
+          let option = document.createElement("option");
+          option.value = i;
+          option.textContent = i;
+          select.appendChild(option);
+        }
       }
     </script>
   </body>
