@@ -1128,34 +1128,19 @@
                           >yazı</textarea
                           >
                         </div>
-                        <div class="mb-3" style="margin-left: 23%">
-                          <label for="title" class="form-label">Başlık</label>
-                          <label
-                            for="year"
-                            class="form-label"
-                            style="margin-left: 41.5%"
-                            >Yıl</label
-                          >
-                          <div class="d-flex gap-2">
-                            <input
-                              type="number"
-                              class="form-control"
-                              id="nüfus"
-                              value="10000"
-                              placeholder="Nüfus giriniz"
-                              style="width: 40%"
-                            />
-
-                            <select
-                              name="year"
-                              id="year"
-                              style="width: 20%; margin-left: 5%"
-                            ></select>
+                        <div class="mb-3" id="population" style="margin-left: 23%">
+                          
                             <label
                               id="add"
                               class="btn btn-primary w-10 p-1"
-                              style="float: right; margin-left: 15%"
+                              style="float: right; margin-left: 1%"
                               >Fotoğraf Ekle</label
+                            ><label
+                              id="add"
+                              class="btn btn-primary w-10 p-1"
+                              style="float: right; margin-left: 1%"
+                              onclick="addPopulation()";
+                              >Nüfus Bilgisi Ekle</label
                             >
                           </div>
                         </div>
@@ -1243,14 +1228,6 @@
         const year = today.getFullYear();
         let formattedDate = `${hours}:${minute}:${ms}s - ${day}.${month}.${year}`;
         addEvent();
-
-        let select = document.getElementById("year");
-        for (let i = 2025; i > 2008; i--) {
-          let option = document.createElement("option");
-          option.value = i;
-          option.textContent = i;
-          select.appendChild(option);
-        }
       }
     </script>
     <script>
@@ -1264,8 +1241,44 @@
           });
         });
       }
+      var populationCount = 0;
+      function addPopulation() {
+        const popDiv = document.getElementById("population");
 
-      function img() {}
+        if (populationCount === 0) {
+          popDiv.innerHTML += `
+        <div class="d-flex justify-content-between" style="width: 1500px; ">
+        <label for="nüfus" class="form-label">Nüfus</label>
+        <label for="year" class="form-label" style="margin-right:69.6%;  ">Yıl</label>
+        </div>
+    `;
+        }
+
+        popDiv.innerHTML += `
+        <div class="d-flex gap-2 mt-3">
+        <input
+        type="number"
+        class="form-control"
+        id="nüfus${populationCount}"
+        value="10000"
+        placeholder="Nüfus giriniz"
+        style="width: 40%"
+        />
+        <select
+        name="year"
+        id="year${populationCount}"
+        style="width: 20%; margin-left: 5%"
+        ></select>`;
+        populationCount++;
+
+        let select = document.getElementById("year");
+        for (let i = 2025; i > 2008; i--) {
+          let option = document.createElement("option");
+          option.value = i;
+          option.textContent = i;
+          select.appendChild(option);
+        }
+      }
     </script>
   </body>
 </html>
