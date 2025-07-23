@@ -1046,7 +1046,7 @@
         >
         <label
           for="resimSil${count}"
-          class="btn btn-outline-danger w-50 p-0 pt-1"
+          class="btn btn-outline-danger w-50 p-0 pt-1 remove"
           >Sil</label
         >
         <input
@@ -1058,6 +1058,7 @@
     </div>
   `
           );
+          remove();
         });
       }
     </script>
@@ -1325,14 +1326,7 @@
                     `;
         document.getElementById("nav").innerHTML = ``;
 
-        const remove = document.querySelectorAll(".remove");
-
-        remove.forEach((removeBtn) => {
-          removeBtn.addEventListener("click", function () {
-            const targetDiv = removeBtn.closest(".col-6");
-            if (removeBtn) targetDiv.remove();
-          });
-        });
+        remove();
 
         let today = new Date();
 
@@ -1352,6 +1346,18 @@
           option.textContent = i;
           select.appendChild(option);
         }
+      }
+    </script>
+    <script>
+      function remove() {
+        const remove = document.querySelectorAll(".remove");
+
+        remove.forEach((removeBtn) => {
+          removeBtn.addEventListener("click", function () {
+            const targetDiv = removeBtn.closest(".col-6");
+            if (removeBtn) targetDiv.remove();
+          });
+        });
       }
     </script>
   </body>
