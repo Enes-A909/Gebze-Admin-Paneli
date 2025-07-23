@@ -122,28 +122,15 @@
         box-shadow: none !important;
         border-color: transparent !important;
       }
-      html {
-        overflow-y: scroll;
-      }
 
       table {
-        border-radius: 10px;
-        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
-        background-color: rgba(204, 204, 204, 0.186);
-        border-radius: 10px;
-      }
-
-      table tr {
-        transition: background-color 0.3s ease;
-        border-radius: 10px;
+        border: 1px solid rgb(255, 255, 255);
       }
 
       table tr:hover {
         background-color: #cccccc;
-        transition: background-color 0.3s ease;
-        transition: all 0.3s ease;
         cursor: pointer;
-        border-radius: 10px;
+        transition: background-color 0.3s ease;
       }
 
       table tr button {
@@ -2541,7 +2528,7 @@
               });
             }
 
-            // Uygula butonuna class ile tıklama olayını bağla
+            // Uygula butonuna tıklandığında seçili checkbox'lara göre filtreleme yapar onların içeriğini ekrana getirir
             document.querySelectorAll(".btn-uygula").forEach((btn) => {
               btn.addEventListener("click", function () {
                 const secilenler = Array.from(
@@ -2552,7 +2539,7 @@
               });
             });
 
-            // Sil butonu tüm checkbox'ları temizler
+            // Sil butonu tüm checkbox'ları temizler.
             document.querySelectorAll(".btn-sil").forEach((btn) => {
               btn.addEventListener("click", function () {
                 document.querySelectorAll(".checkbox-item").forEach((cb) => {

@@ -619,10 +619,10 @@
               <thead>
                 <tr>
                   <th scope="col" colspan="1">Bina Resmi</th>
-                  <th scope="col" colspan="2" style="text-align: center">
+                  <th scope="col" colspan="1" style="margin-left: 10px">
                     Konum
                   </th>
-                  <th scope="col" colspan="4">Bina İsmi</th>
+                  <th scope="col" colspan="5">Bina İsmi</th>
                   <th scope="col" colspan="5"></th>
                 </tr>
               </thead>
@@ -637,8 +637,9 @@
                     />
                   </td>
                   <td
-                    style="text-align: center; width: 40px; padding-left: 10px"
-                    colspan="2"
+                    style="margin-left: 1px; width: 40px"
+                    colspan="1"
+                    id="locLink"
                   >
                     <a
                       href="https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.8059682,29.4382733,514m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D"
@@ -658,12 +659,12 @@
                       </svg>
                     </a>
                   </td>
-                  <td colspan="4">Gebze Belediye Başkanlığı</td>
+                  <td colspan="5" class="binalar">Gebze Belediye Başkanlığı</td>
 
                   <td style="text-align: right" colspan="5">
                     <button
                       class="editButton"
-                      onclick="hizmetNoktalari('https://www.google.com/maps/place/Gebze+K%C3%BClt%C3%BCr+Merkezi/@40.7975725,29.4297499,333m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088792c7b75:0x6f17b50e45cc6c97!8m2!3d40.7982109!4d29.43007!16s%2Fg%2F11cltwggz7?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D', 'Çarşı ve Seyyar Zabıta Amirliği', 'Amirlikler')"
+                      onclick="gebzeBelediyeleri('../assets/images/contact-img/gebzeBelediyeBaskanligi.jpeg', 'https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.805905,29.4376201,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D', 'Gebze Belediye Başkanlığı','Güzeller Mahallesi, Belediye Caddesi, No:1 41400 Gebze/Kocaeli', '0 262 642 04 30 ','gebze@gebze.bel.tr',  this)"
                     >
                       Düzenle
                     </button>
@@ -678,7 +679,11 @@
                       style="width: 40px; height: 40px; margin-left: 10px"
                     />
                   </td>
-                  <td style="text-align: center; width: 40px" colspan="2">
+                  <td
+                    style="margin-right: 3px; width: 40px"
+                    colspan="1"
+                    id="locLink"
+                  >
                     <a
                       href="https://www.google.com/maps/place/T.C.+GEBZE+BELED%C4%B0YES%C4%B0+EK+H%C4%B0ZMET+B%C4%B0NASI/@40.8104203,29.4228192,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb219420d2a451:0x1ffbb472e940fc95!8m2!3d40.8104203!4d29.4253941!16s%2Fg%2F11r3nb7p3x?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D"
                       target="_blank"
@@ -697,12 +702,14 @@
                       </svg>
                     </a>
                   </td>
-                  <td colspan="4">Mevlana Ek Hizmet Binası</td>
+                  <td colspan="5" style="margin-left: 10px" class="binalar">
+                    Mevlana Ek Hizmet Binası
+                  </td>
 
                   <td style="text-align: right" colspan="5">
                     <button
                       class="editButton"
-                      onclick="hizmetNoktalari('https://www.google.com/maps/place/Zab%C4%B1ta+M%C3%BCd%C3%BCrl%C3%BC%C4%9F%C3%BC+%C3%87ocuk+Trafik+E%C4%9Fitim+Okulu/@40.8049925,29.4428919,333m/data=!3m1!1e3!4m6!3m5!1s0x14cb20ec9006cb7d:0xd6ffdfe862f20282!8m2!3d40.804962!4d29.4434921!16s%2Fg%2F1t_rytcp?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D' , 'Trafik ve Eğitim Okulu Zabıta Amirliği' , 'Amirlikler')"
+                      onclick="gebzeBelediyeleri('../assets/images/mevlanaEkHizmet.jpeg', 'https://www.google.com/maps/place/T.C.+GEBZE+BELED%C4%B0YES%C4%B0+EK+H%C4%B0ZMET+B%C4%B0NASI/@40.8104202,29.4205232,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb219420d2a451:0x1ffbb472e940fc95!8m2!3d40.8104203!4d29.4253941!16s%2Fg%2F11r3nb7p3x?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D', 'Mevlana Ek Hizmet Binası','Mevlana, Issıkgöl Cd. No:111, 41400 Gebze/Kocaeli','0 262 642 04 30 ','gebze@gebze.bel.tr' ,this)"
                     >
                       Düzenle
                     </button>
@@ -716,7 +723,11 @@
                       style="width: 40px; height: 40px; margin-left: 10px"
                     />
                   </td>
-                  <td style="text-align: center; width: 40px" colspan="2">
+                  <td
+                    style="padding-right: 10px; width: 40px"
+                    colspan="1"
+                    id="locLink"
+                  >
                     <a
                       href="https://www.google.com/maps/place/Hac%C4%B1halil,+Gebze+Belediyesi,+41400+Gebze%2FKocaeli/@40.7962465,29.4290811,2907m/data=!3m1!1e3!4m14!1m7!3m6!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!2zR2ViemUgQmVsZWRpeWUgQmHFn2thbmzEscSfxLE!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw!3m5!1s0x14cb2088efaa11cd:0x30c0f205996fbb24!8m2!3d40.7979269!4d29.4316652!16s%2Fg%2F11bymvkx0g?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3Ds"
                       target="_blank"
@@ -736,12 +747,12 @@
                     </a>
                   </td>
 
-                  <td colspan="4">Gebze Belediyesi</td>
+                  <td colspan="5" class="binalar">Gebze Belediyesi</td>
 
                   <td style="text-align: right" colspan="5">
                     <button
                       class="editButton"
-                      onclick="hizmetNoktalari('https://www.google.com/maps/place/Gebze+Terminali/@40.7948829,29.4573284,667m/data=!3m1!1e3!4m6!3m5!1s0x14cb20fac8ab9801:0x266fc5bbb55d7ee8!8m2!3d40.7948789!4d29.4595171!16s%2Fg%2F1ptz5924m?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D', 'Terminal Zabıta Amirliği.', 'Amirlikler')"
+                      onclick="gebzeBelediyeleri('../assets/images/KentMeydanı.jpeg', 'https://www.google.com/maps/place/Hac%C4%B1halil,+Gebze+Belediyesi,+41400+Gebze%2FKocaeli/@40.7976694,29.4321076,15.25z/data=!4m15!1m8!3m7!1s0x14cb219420d2a451:0x1ffbb472e940fc95!2zVC5DLiBHRUJaRSBCRUxFRMSwWUVTxLAgRUsgSMSwWk1FVCBCxLBOQVNJ!8m2!3d40.8104203!4d29.4253941!10e5!16s%2Fg%2F11r3nb7p3x!3m5!1s0x14cb2088efaa11cd:0x30c0f205996fbb24!8m2!3d40.7979269!4d29.4316652!16s%2Fg%2F11bymvkx0g?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D', 'Gebze Belediyesi ','Hacıhalil, 1222/2. Sk. No:4, 41400 Gebze/Kocaeli', '0 262 642 04 30', 'gebze@gebze.bel.tr',this)"
                     >
                       Düzenle
                     </button>
@@ -812,7 +823,7 @@
             function toggleDropdown(btn) {
               const menu = btn.nextElementSibling;
 
-              // Diğer tüm açık menüleri kapat
+              // Diğer tüm açık menüleri kapat el=> burada imleçin menü üzerine gelindiğinde el işareti çıktığı için sınıf ismi el verildi
               document.querySelectorAll(".dropdown-menu").forEach((el) => {
                 if (el !== menu) el.style.display = "none";
               });
@@ -831,183 +842,131 @@
               }
             });
           </script>
+          <!-- DÜZENLE-->
           <script>
-            function addEdit(
-              img,
-              title,
-              addressLink,
-              addressTitle,
-              phone,
-              photoId,
-              listMudurluk
+            var oldContent = "";
+            function gebzeBelediyeleri(
+              imgSRC,
+              locLink,
+              binaİsmi,
+              adres,
+              telefon,
+              email,
+              element
             ) {
-              console.log(
-                "crd length:",
-                document.getElementsByClassName("crd").length
-              );
+              const rowIndex = element.closest("tr").rowIndex;
+              sessionStorage.setItem("rowIndex", rowIndex);
+              let content = document.getElementById("icerikler");
+              oldContent = content.innerHTML;
 
-              const crd = document.getElementsByClassName("crd")[photoId];
-              const mudurlukList =
-                document.getElementsByClassName(listMudurluk);
-
-              let mudurluk = [];
-
-              for (let i = 0; i < mudurlukList.length; i++) {
-                const liElements = mudurlukList[i].getElementsByTagName("li");
-
-                for (let j = 0; j < liElements.length; j++) {
-                  mudurluk.push(liElements[j].textContent.trim());
-                }
-              }
-
-              crd.innerHTML = `
-                    <div style="flex: 0 0 300px">
-                      <img
-                        src="${img}"
-                        class="img-fluid rounded preview-img"
-                        alt="${title}"
-                        style="width: 100%; height: 230px"
-                      />
-                      <label
-                        for="resim-${photoId}"
-                        class="btn btn-outline-primary mt-2"
-                        style="width: 100%"
-                      >
-                        Fotoğraf Seç
-                      </label>
-                      <input
-                        type="file"
-                        name="resim"
-                        id="resim-${photoId}"
-                        style="display: none"
-                        accept="image/*"
-                        class="resim-input"
-                      />
-                    </div>
-                    <div style="flex: 1; padding-left: 20px">
-                      <h4 style="margin-bottom: 16px">
+              content.innerHTML = `
+              <div class="d-flex justify-content-center">
+                <div class="card " style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738); width:95%;">
+                  <div class="card-body">
+                    <form id="editBelForm">
+                      <div class="mb-3">
+                        <img
+                          id="image"
+                          src="${imgSRC}"
+                          class="img-fluid rounded preview-img"
+                          alt="Fotoğraf Önizleme"
+                          style="width: 30%; height: auto; margin-right:35%; max-height:300px"
+                        />
+                        <label
+                          for="resim"
+                          class="btn btn-outline-primary mt-2"
+                          style="width: 30%; margin-right: 35%;"
+                        >
+                          Fotoğraf Seç
+                        </label>
+                        <input
+                          id="resim"
+                          type="file"
+                          name="resim"
+                          style="display: none"
+                          accept="image/*"
+                          class="resim-input"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="title" class="form-label">Bina İsmi</label>
                         <input
                           type="text"
-                          name="title"
+                          class="form-control"
                           id="title"
-                          value="${title}"
-                          class="input"
-                          style="width:600px"
+                          value="${binaİsmi}"
+                          placeholder="Yeni Bina İsmi Giriniz"
+                          required
                         />
-                      </h4>
-
-                      <p style="margin-bottom: 12px; font-size: 16px">
-                        <strong>Adres:</strong>
+                      </div>
+                      <div class="mb-3">
+                        <label for="title" class="form-label">Bina Adresi</label>
                         <input
                           type="text"
-                          name="addressLink"
-                          id="addressLink-${photoId}"
-                          style="width: 58%"
-                          placeholder="Adres Linki"
-                          class="input"
-                          value="${addressLink}"
-                        /><img
-                          src="../assets/images/rubbishSvg.svg"
-                          style="margin-left: 4px"
-                          width="18px"
-                          height="18px"
-                          alt="remove"
-                          class="remove"
-                          onclick="document.getElementById('addressLink-${photoId}').value=''"
-                        /><br />
-
+                          class="form-control"
+                          id="title"
+                          value="${adres}"
+                          placeholder="Yeni Bina Adresi Giriniz"
+                          required
+                        />
+                      </div><div class="mb-3">
+                        <label for="title" class="form-label">Telefon Numarası</label>
                         <input
                           type="text"
-                          placeholder="Adres Başlığı"
-                          value="${addressTitle}"
-                          id="addressTitle-${photoId}"
-                          style="
-                            margin-top: 5px !important;
-                            margin-left: 60px !important;
-                            width: 58% !important;
-                          "
-                          class="input"
-                        /><img
-                          src="../assets/images/rubbishSvg.svg"
-                          style="margin-left: 4px;"
-                          width="18px"
-                          height="18px"
-                          alt="remove"
-                          class="remove"
-                          onclick="document.getElementById('addressTitle-${photoId}').value=''"
+                          class="form-control"
+                          id="title"
+                          value="${telefon}"
+                          placeholder="Yeni Telefon Numarası Giriniz"
+                          required
                         />
-                      </p>
-                      <p style="margin-bottom: 12px; font-size: 14px">
-                        <strong>Telefon Numarası:</strong>
-
+                      </div>
+                      <div class="mb-3">
+                        <label for="title" class="form-label">eMAil</label>
                         <input
                           type="text"
-                          name="phone"
-                          id="phone"
-                          placeholder="Telefon Numarası"
-                          value="${phone}"
-                          style="width: 125px !important"
-                          class="input"
+                          class="form-control"
+                          id="title"
+                          value="${email}"
+                          placeholder="Yeni eMail Giriniz"
+                          required
                         />
-                      </p>
-
-                      <!-- Müdürlükler -->
-                      <p style="margin-bottom: 8px">
-                        <strong>Binada Bulunan Müdürlükler:</strong>
-                        <button
-                          type="button"
-                          class="btn btn-primary add"
-                          style="width: 40px; padding: 3px; "
-                        >
-                          Ekle
-                        </button>
-                      </p>
-
-                        <div
-                          style="
-                            display: grid;
-                            grid-template-columns: repeat(3, 1fr);
-                            gap: 16px;
-                            list-style-type:none;
-                          "
-                          class="mudurlukUl"
-                        >
-                        </div>
-                        `;
-
-              const mudUl = crd.querySelector(".mudurlukUl");
-              for (let i = 0; i < mudurluk.length; i++) {
-                mudUl.innerHTML += `<li style="display: flex; align-items: center; gap: 6px;">
+                      </div>
+                      <div class="mb-3">
+                      <label for="title" class="form-label">Konum Linki</label>
                       <input
-                      type="text"
-                      name="list"
-                      id="list"
-                      class="input"
-                      value="${mudurluk[i]}"
-                      placeholder="Müdürlük"
-                      style="width: 150px !important"
-                      /><img
-                      src="../assets/images/rubbishSvg.svg"
-                      style="margin-left: 2px"
-                      alt="sil"
-                      width="15px"
-                      height="15px"
-                      class="remove"
-                                />
-                    </li>`;
+                        type="text"
+                        class="form-control"
+                        ;
+                        "
+                        id="nav"
+                        value="${locLink}"
+                       
+                        required
+                      />
+                    </div>  
+                     
+                      <button class="btn btn-success" id="submit" type="button">
+                        Güncelle
+                      </button>
+                      <a href="Haberler.html" class="btn btn-secondary">İptal</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              `;
+
+              if (category === "Belediyeler") {
+                document.getElementById("belediyeler").selected = true;
+              }
+              if (category === "locLink") {
+                document.getElementById("locLink").selected = true;
+              }
+              if (category === "Bina Resimleri") {
+                document.getElementById("binaResim").selected = true;
               }
 
-              document.querySelectorAll(".remove").forEach((btn) => {
-                btn.addEventListener("click", function () {
-                  const li = this.closest("li");
-                  if (li) {
-                    li.remove();
-                  }
-                });
-              });
-
-              const input = crd.querySelector(".resim-input");
-              const imgSrc = crd.querySelector(".preview-img");
+              const input = document.querySelector(".resim-input");
+              const imgPrev = document.querySelector(".preview-img");
 
               input.addEventListener("change", function () {
                 const dosya = this.files[0];
@@ -1016,42 +975,52 @@
                   const okuyucu = new FileReader();
 
                   okuyucu.onload = function (e) {
-                    imgSrc.src = e.target.result;
-                    imgSrc.style.display = "block";
+                    imgPrev.src = e.target.result;
+                    imgPrev.style.display = "block";
                   };
 
                   okuyucu.readAsDataURL(dosya);
                 }
               });
 
-              const liste = crd.querySelector(".mudurlukUl");
-              const ekleBtn = crd.querySelector(".add");
+              document
+                .getElementById("submit")
+                .addEventListener("click", function () {
+                  let title = document.querySelector("#title").value;
+                  let kategori = document.querySelector("#kategori").value;
+                  let tarih = document.querySelector("#haberTarih").value;
+                  let icerik = document.querySelector("#haberIcerik").value;
 
-              ekleBtn.addEventListener("click", function () {
-                const yeniLi = document.createElement("li");
-                yeniLi.innerHTML = `<input
-                                  type="text"
-                                  name="list"
-                                  id="list"
-                                  class="input"
-                                  placeholder="Müdürlük"
-                                  style="width: 150px !important; list-style-type:none;"
-                                /><img
-                                  src="../assets/images/rubbishSvg.svg"
-                                  style="margin-left: 2px"
-                                  alt="sil"
-                                  width="15px"
-                                  height="15px"
-                                  class="remove"
-                                />`;
+                  tarih = tarih.split("-").reverse().join(".");
 
-                liste.appendChild(yeniLi);
+                  document.getElementById("icerikler").innerHTML = oldContent;
 
-                const silBtn = yeniLi.querySelector(".remove");
-                silBtn.addEventListener("click", function () {
-                  yeniLi.remove();
+                  document.getElementById("nav").innerHTML = `
+              <button class="buton ekle-butonu">
+                <div class="icon arti"></div>
+                <span>Ekle</span>
+              </button>
+
+              <!-- SİL -->
+              <button class="buton sil-butonu" onclick="sil()">
+                <svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z"
+                  />
+                </svg>
+                <span>Sil</span>
+              </button>`;
+
+                  sessionStorage.removeItem("rowIndex");
                 });
-              });
             }
           </script>
         </div>
