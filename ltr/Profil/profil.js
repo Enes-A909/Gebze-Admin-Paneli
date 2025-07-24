@@ -146,9 +146,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             hedef = email;
                             tip = 'E-posta';
                         } else {
-                            alert('Telefon numarası veya e-posta giriniz.');
-                            return;
-                        }
+  Swal.fire({
+    icon: 'warning',
+    title: 'Eksik Bilgi',
+    text: 'Lütfen telefon numarası veya e-posta giriniz.',
+    confirmButtonText: 'Tamam',
+    customClass: {
+      popup: 'rounded-3',
+      confirmButton: 'btn btn-warning'
+    }
+  });
+  return;
+}
+
 
                         // 6 haneli rastgele kod üret
                         const kod = Math.floor(100000 + Math.random() * 900000);
