@@ -697,23 +697,124 @@
         renderActivities();
       }
 
-
-
       function renderActivities() {
         const activitiesContainer = document.getElementById("activities");
-        var activitesName = [
-          "Kaya Tırmanışı",
-          "Doğa Yürüyüşü",
-          "Kamp ve Piknik",
-          "Fotoğrafçılık"
-        ];
+        
+        const balliKayalar = {
+        name: "Ballı Kayalar",
+        info: "Gebze - İzmit yolu üzerindeki Tavşanlı Köyü sınırlarında bulunan kampçılık ve trekking gibi doğa sporları için oldukça elverişli arazi yapısına sahip bir vadidir.",
+        tarif: "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
+        link: "https://www.google.com/maps/place/Ball%C4%B1kayalar+Tabiat+Park%C4%B1/@40.8299347,29.515808,15z/data=!4m6!3m5!1s0x14cb242bfea49fbf:0x8a949c7858da831d!8m2!3d40.8332309!4d29.5168155!16s%2Fg%2F1thm0p0_?entry=ttu&g_ep=EgoyMDI1MDMyMy4wIKXMDSoASAFQAw%3D%3D",
+        activities: [
+          {
+            name: "Kaya Tırmanışı",
+            exp: "Türkiye'nin en önemli kaya tırmanış merkezlerinden biridir. 100+ rotalı kayalıklarda her seviyeye uygun parkurlar bulunur."
+          },
+          {
+            name: "Doğa Yürüyüşü",
+            exp: "Vadi boyunca uzanan patikalarda doğa ile başbaşa yürüyüş yapabilirsiniz. İşaretli rotalar güvenli bir deneyim sunar."
+          },
+          {
+            name: "Kamp ve Piknik",
+            exp: "Belirlenen alanlarda kamp ve piknik yapabilirsiniz. Temiz hava ve doğal ortamda dinlenme imkanı bulunur."
+          },
+          {
+            name: "Fotoğrafçılık",
+            exp: "Eşsiz manzaralar ve doğal güzellikler fotoğraf tutkunları için mükemmel kareler sunmaktadır."
+          }
+        ],images: [
+          {imageSrc: "../assets/images/locationImages/balliKayalar1.png"},
+          {imageSrc: "../assets/images/locationImages/balliKayalar2.png"},
+          {imageSrc: "../assets/images/locationImages/balliKayalar3.png"},
+          {imageSrc: "../assets/images/locationImages/balliKayalar4.png"}
+        ]
+        };
 
-        var explainOfActivities = [
-          "Türkiye'nin en önemli kaya tırmanış merkezlerinden biridir. 100+ rotalı kayalıklarda her seviyeye uygun parkurlar bulunur.",
-          "Vadi boyunca uzanan patikalarda doğa ile başbaşa yürüyüş yapabilirsiniz. İşaretli rotalar güvenli bir deneyim sunar.",
-          "Belirlenen alanlarda kamp ve piknik yapabilirsiniz. Temiz hava ve doğal ortamda dinlenme imkanı bulunur.",
-          "Eşsiz manzaralar ve doğal güzellikler fotoğraf tutkunları için mükemmel kareler sunmaktadır."
-        ];
+        const mustafaPasaKulliyesi = {
+        name: "Mustafa Paşa Külliyesi",
+        info: "Camii, yapılar topluluğunun merkezinde ve Gebze'ye hakim bir mevkide yer alır.",
+        tarif: "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
+        link: "https://www.google.com/maps/place/%C3%87oban+Mustafa+Pa%C5%9Fa+K%C3%BClliyesi/@40.799884,29.432153,15z/data=!4m5!3m4!1s0x0:0x1ab84b48f6e54236!8m2!3d40.799884!4d29.432153?shorturl=1",
+        activities: [
+          {
+            name: "Tarihi Keşif",
+            exp: "Caminin mimari detaylarını inceleyerek Osmanlı dönemi yapılarının özelliklerini keşfedebilirsiniz."
+          },
+          {
+            name: "Ruhsal ve Dini",
+            exp: "Sessiz ve huzurlu ortamda namaz kılabilir, manevi bir atmosferde zaman geçirebilirsiniz."
+          },
+          {
+            name: "Sosyal ve Dinlendirici",
+            exp: "Külliye bahçesindeki çınar ağaçlarının altında oturup huzurlu bir ortamda dinlenebilirsiniz."
+          },
+          {
+            name: "Fotoğrafçılık",
+            exp: "Çoban Mustafa Paşa Külliyesi, Osmanlı mimarisinin zarif detaylarını, ışık ve gölge oyunlarının büyüleyici etkisini ve tarihi dokusuyla eşsiz bir atmosfer sunar."
+          }
+        ],
+        images: [
+          {imageSrc: "../assets/images/locationImages/mustafaPasa1.png"},
+          {imageSrc: "../assets/images/locationImages/mustafaPasa2.png"},
+          {imageSrc: "../assets/images/locationImages/mustafaPasa3.png"},
+          {imageSrc: "../assets/images/locationImages/mustafaPasa4.png"}
+        ]
+        };
+
+     const sultanOrhanCami = {
+        name: "Sultan Orhan Cami",
+        info: "Gebze'nin batısında yer alan cami, tahmini olarak 1323-1331 yılları arasında inşa edilmiştir. Osmanlı mimarisinin ilk örneklerinden olan camiyi, Gebze'nin kurucusu olan Sultan Orhan yaptırmıştır",
+        tarif: "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
+        link: "https://www.google.com/maps/place/Sultan+Orhan+Cami/@40.798079,29.4377681,714m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb208c7bb7f3d5:0x805bf82146b0c733!8m2!3d40.798079!4d29.4377681!16s%2Fg%2F1tf8j0hn?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D",
+        activities: [
+          {
+            name: "Tarihi Keşif",
+            exp: "Erken Osmanlı mimarisini yerinde inceleyerek tarihî bir yolculuğa çıkabilirsiniz."
+          },
+          {
+            name: "Fotoğrafçılık",
+            exp: "Caminin sade ve etkileyici mimarisi, fotoğraf tutkunları için güzel kareler sunar."
+          },
+          {
+            name: "Kültürel Gezi",
+            exp: "Cami çevresindeki diğer tarihî yapılarla birlikte kültürel bir rota oluşturabilirsiniz."
+          }
+        ],
+        images: [
+          {imageSrc: "../assets/images/locationImages/.png"},
+          {imageSrc: "../assets/images/locationImages/.png"},
+          {imageSrc: "../assets/images/locationImages/.png"},
+          {imageSrc: "../assets/images/locationImages/.png"}
+        ]
+        };
+
+        const anibalinMezari = {
+        name: "Anibalın Mezarı",
+        info: "Kartacalı ünlü komutan Anibal'ın Anıt Mezarı, Gebze'nin güneydoğusunda, çevresi daire şeklinde selvilerle çevrili sahanın ortasında yer alan 24 ton ağırlığındaki bir taş lahit ve şekillendirilen taşın üzerindeki Kartacalı Komutana ait aplike edilen bir masktan, Türkçe, İngilizce, Fransızca, Almanca ve İtalyanca yazılı birer mermer kitabeden oluşmaktadır.",
+        tarif: "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
+        link: "https://www.google.com/maps/place/Hannibal+an%C4%B1t%C4%B1/@40.782282,29.4417079,715m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb2042af222be3:0xd11c044aa3d2711!8m2!3d40.782282!4d29.4417079!16s%2Fg%2F11cftyh3b?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D",
+        activities: [
+          {
+            name: "Fotoğrafçılık",
+            exp: "Çevredeki doğal patikalarda kısa yürüyüşler yapabilir, doğayla baş başa kalabilirsiniz."
+          },
+          {
+            name: "Tarihi Gezi",
+            exp: "Anibal'in anıt mezarını ve çevresindeki Eskihisar Kalesi gibi tarihi yapıları gezebilirsiniz."
+          },
+          {
+            name: "Panolarını İnceleme",
+            exp: "Anıt çevresinde yer alan panolar aracılığıyla Anibal'in hayatı ve ölümü hakkında bilgi edinebilirsiniz."
+          }
+        ],
+        images: [
+          {imageSrc: "../assets/images/locationImages/anibal1.png"},
+          {imageSrc: "../assets/images/locationImages/anibal2.png"},
+          {imageSrc: "../assets/images/locationImages/anibal3.png"},
+          {imageSrc: "../assets/images/locationImages/anibal4.png"}
+        ],
+        
+        };
 
         for (let i = 0; i < activitesName.length; i++) {
           if(i===0){
@@ -749,6 +850,12 @@
         }
       }
 
+     let sultanOrhanCami = [
+      "Gebze'nin batısında yer alan cami, tahmini olarak 1323-1331 yılları arasında inşa edilmiştir. Osmanlı mimarisinin ilk örneklerinden olan camiyi, Gebze'nin kurucusu olan Sultan Orhan yaptırmıştır",
+      "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
+      "https://www.google.com/maps/place/Sultan+Orhan+Cami/@40.798079,29.4377681,714m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb208c7bb7f3d5:0x805bf82146b0c733!8m2!3d40.798079!4d29.4377681!16s%2Fg%2F1tf8j0hn?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D"
+     ]
+     
 
       function addActivities(){
         const activitiesContainer = document.getElementById("activities");
