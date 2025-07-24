@@ -1,4 +1,3 @@
-
       function toggleMenu(button) {
         const menu = button.nextElementSibling;
         const allMenus = document.querySelectorAll(".islem-menu");
@@ -47,7 +46,7 @@
       <img
         src=""
         class="img-fluid rounded mb-2 preview-img"
-        style="height:150px;width:150px"
+        style="min-height:150px;min-width:150px"
         alt="resim${count}"
       />
       <div class="d-flex gap-2">
@@ -94,19 +93,19 @@
           row.insertAdjacentHTML(
             "beforeend",
             `
-    <div class="col-6 col-md-2 mb-3">
-      <img
-        src="../assets/images/ballikayalar.png"
-        class="img-fluid rounded mb-2 preview-img"
-        style="height:150px;width:150px"
-        alt="resim${count}"
-      />
-      <label for="resim${count}" class="w-100 p-1">Ballı Kayalar</label>
-      <div class="d-flex gap-2">
-        <label for="resim${count}" class="btn btn-outline-primary w-100 p-1">Değiştir</label>
-      </div>
-    </div>
-    `
+            <div class="col-6 col-md-2 mb-3">
+              <img
+                src="../assets/images/ballikayalar.png"
+                class="img-fluid rounded mb-2 preview-img"
+                style="height:150px;width:150px"
+                alt="resim${count}"
+              />
+              <label for="resim${count}" class="w-100 p-1">Ballı Kayalar</label>
+              <div class="d-flex gap-2">
+                <label for="resim${count}" class="btn btn-outline-primary w-100 p-1">Değiştir</label>
+              </div>
+            </div>
+            `
           );
 
           remove();
@@ -210,11 +209,11 @@
                           <div class="row text-center justify-content-start" id="photos">
                           </div>
                         </div>
-                        <div class="d-flex gap-2 mt-3">
-                        <button class="btn btn-success w-15 ml-2 mb-2" style="width:10%" id="submit" type="button">
+                       <div class="d-flex gap-2 mt-3">
+                        <button class="btn btn-success ml-2 mb-2" style="width:150px" id="submit" type="button">
                           Güncelle
                         </button>
-                        <a href="Gebze - Tarihce.html" class="btn btn-secondary w-15 ml-1 mb-2" style="width:10%">
+                        <a href="Gebze - Tarihce.html" class="btn btn-secondary ml-1 mb-2" style="width:150px">
                           İptal
                         </a>
                       </div>
@@ -308,10 +307,10 @@
                           </div>
                         </div>
                         <div class="d-flex gap-2 mt-3">
-                        <button class="btn btn-success w-15 ml-2 mb-2" style="width:10%" id="submit" type="button">
+                        <button class="btn btn-success ml-2 mb-2" style="width:150px" id="submit" type="button">
                           Güncelle
                         </button>
-                        <a href="Gebze - Tarihce.html" class="btn btn-secondary w-15 ml-1 mb-2" style="width:10%">
+                        <a href="Gebze - Tarihce.html" class="btn btn-secondary ml-1 mb-2" style="width:150px">
                           İptal
                         </a>
                       </div>
@@ -523,11 +522,11 @@
                           <div class="row text-center justify-content-start" id="photos">
                           </div>
                         </div>
-                        <div class="d-flex gap-2 mt-3">
-                        <button class="btn btn-success w-15 ml-2 mb-2" style="width:10%" id="submit" type="button">
+                       <div class="d-flex gap-2 mt-3">
+                        <button class="btn btn-success ml-2 mb-2" style="width:150px" id="submit" type="button">
                           Güncelle
                         </button>
-                        <a href="Gebze - Tarihce.html" class="btn btn-secondary w-15 ml-1 mb-2" style="width:10%">
+                        <a href="Gebze - Tarihce.html" class="btn btn-secondary ml-1 mb-2" style="width:150px">
                           İptal
                         </a>
                       </div>
@@ -630,16 +629,32 @@
                           >${link}</textarea
                           >
                         </div>
+                        <label
+                              id="addAct"
+                              onclick="addActivities()"
+                              class="btn btn-primary w-10 p-1"
+                              style="float: right; margin-left: 1%"
+                              >Aktivite Ekle</label
+                            >
+                        <div id="activities" class="mt-5 mb-5">
+                        
+                        </div>
+                        <label
+                              id="add"
+                              class="btn btn-primary w-10 p-1"
+                              style="float: right; margin-left: 1%"
+                              >Fotoğraf Ekle</label
+                            >
 
                         <div class="container mt-4" id="images">
                           <div class="row text-center justify-content-start" id="photos">
                           </div>
                         </div>
                         <div class="d-flex gap-2 mt-3">
-                        <button class="btn btn-success w-15 ml-2 mb-2" style="width:10%" id="submit" type="button">
+                        <button class="btn btn-success ml-2 mb-2" style="width:150px" id="submit" type="button">
                           Güncelle
                         </button>
-                        <a href="Gebze - Tarihce.html" class="btn btn-secondary w-15 ml-1 mb-2" style="width:10%">
+                        <a href="Gebze - Tarihce.html" class="btn btn-secondary ml-1 mb-2" style="width:150px">
                           İptal
                         </a>
                       </div>
@@ -678,5 +693,91 @@
         });
 
         remove();
+        addEvent();
+        renderActivities();
       }
 
+
+
+      function renderActivities() {
+        const activitiesContainer = document.getElementById("activities");
+        var activitesName = [
+          "Kaya Tırmanışı",
+          "Doğa Yürüyüşü",
+          "Kamp ve Piknik",
+          "Fotoğrafçılık"
+        ];
+
+        var explainOfActivities = [
+          "Türkiye'nin en önemli kaya tırmanış merkezlerinden biridir. 100+ rotalı kayalıklarda her seviyeye uygun parkurlar bulunur.",
+          "Vadi boyunca uzanan patikalarda doğa ile başbaşa yürüyüş yapabilirsiniz. İşaretli rotalar güvenli bir deneyim sunar.",
+          "Belirlenen alanlarda kamp ve piknik yapabilirsiniz. Temiz hava ve doğal ortamda dinlenme imkanı bulunur.",
+          "Eşsiz manzaralar ve doğal güzellikler fotoğraf tutkunları için mükemmel kareler sunmaktadır."
+        ];
+
+        for (let i = 0; i < activitesName.length; i++) {
+          if(i===0){
+            activitiesContainer.innerHTML += `
+            <div class="d-flex justify-content-between" style="width: 200%; margin-bottom:-2%;">
+              <label for="title" class="form-label" style="margin-left:0.3%">Aktivite Başlığı</label>
+              <label for="explain" class="form-label" style="margin-right:81.7%; margin-bottom:10px">Aktivite Açıklaması</label>
+            </div>
+            `
+          }
+          activitiesContainer.innerHTML += `
+            <div class="d-flex gap-2 mt-3">
+              <input
+                type="text"
+                class="form-control"
+                name="activity"
+                value="${activitesName[i]}"
+                placeholder="Aktivite başlığını giriniz"
+                style="max-width: 20%"
+              />
+              <input
+                type="text"
+                name="expOfActivity"
+                id="exp${i}"
+                class="form-control"
+                value="${explainOfActivities[i]}"
+                style="min-width: 70%; margin-left: 5%"
+              /><label for="exp${[i]}" onclick="removeSvg(this)"
+               ><img src="../assets/images/rubbishSvg.svg" alt="remove" width="20px" height="20px" style="margin-left:10px; margin-top:10px; cursor:pointer;"
+               /></label>
+            </div>
+          `;
+        }
+      }
+
+
+      function addActivities(){
+        const activitiesContainer = document.getElementById("activities");
+        activitiesContainer.innerHTML += `
+            <div class="d-flex gap-2 mt-3">
+              <input
+                type="text"
+                class="form-control"
+                name="activity"
+                value=""
+                placeholder="Aktivite başlığını giriniz"
+                style="max-width: 20%"
+              />
+              <input
+                type="text"
+                name="expOfActivity"
+                id="exp"
+                class="form-control"
+                value=""
+                placeholder="Aktivite açıklamasını giriniz"
+                style="min-width: 70%; margin-left: 5%"
+              /><label for="exp" onclick="removeSvg(this)"
+               ><img src="../assets/images/rubbishSvg.svg" alt="remove" width="20px" height="20px" style="margin-top:10px; margin-left:10px; cursor:pointer;"
+               /></label>
+            </div>
+          `;
+}
+
+          function removeSvg(element){
+            const removeAct = element.closest("div");
+            removeAct.remove();
+          }
