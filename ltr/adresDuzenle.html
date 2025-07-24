@@ -2,6 +2,16 @@
 <html lang="tr">
   <head>
     <style>
+      .müdürlükButton {
+        width: 1px !important;
+        border: none;
+        background-color: goldenrod !important;
+        border-radius: 50px !important;
+        font-size: 1px;
+        cursor: pointer;
+
+        transition: background-color 0.3s ease;
+      }
       .adresTablosu {
         width: 100%;
         border-collapse: collapse;
@@ -857,33 +867,12 @@
               belId,
               element
             ) {
-              // Login kontrolü
-              let kullaniciAdi = sessionStorage.getItem("kullanici");
-              const users = {
-                ahmet: { yetki: "tam" },
-                mehmet: { yetki: "duzenle" },
-              };
-
-              if (!kullaniciAdi || !users[kullaniciAdi]) {
-                document.getElementById("icerikler").innerHTML = `
-        <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
-          <div class="card p-4 shadow" style="width: 350px">
-            <h5 class="mb-3">Lütfen Giriş Yapın</h5>
-            <input id="username" type="text" class="form-control mb-3" placeholder="Kullanıcı Adı">
-            <button class="btn btn-primary w-100" onclick="girisYap()">Giriş</button>
-          </div>
-        </div>
-      `;
-                return;
-              }
-
-              const yetki = users[kullaniciAdi].yetki;
-
               const rowIndex = element.closest("tr").rowIndex;
               sessionStorage.setItem("rowIndex", rowIndex);
               let content = document.getElementById("icerikler");
               oldContent = content.innerHTML;
 
+              // Müdürlük dizisini seç
               let mudurlukler = [];
               if (belId === "gebzeBelBaskanligi")
                 mudurlukler = gebzeBelediyesiBaşkanlığı;
@@ -891,101 +880,150 @@
                 mudurlukler = mevlanaEkHizmet;
               else mudurlukler = gebzeBelediyesi;
 
+              // Müdürlük inputlarını oluştur
               let mudurlukInputs = '<div class="row">';
-              mudurlukler.forEach((m) => {
+
+              mudurlukler.forEach((m, i) => {
                 mudurlukInputs += `
-        <div class="col-md-4 mb-3 w-50">
-          <label class="form-label"></label>
-          <input type="text" class="form-control" value="${m}" />
-        </div>
-      `;
+              <div class="col-md-4   mb-3 w-50">
+              <label class="form-label"></label>
+              <input type="text" class="form-control" value="${m}" />
+              </div>
+ 
+            `;
               });
               mudurlukInputs += "</div>";
-
               content.innerHTML = `
-      <div class="d-flex justify-content-center">
-        <div class="card" style="box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738); width: 95%;">
-          <div class="card-body">
-            <form id="editBelForm">
-              <div class="d-flex">
-                <div>
-                  <img id="image" src="${imgSRC}" class="img-fluid rounded preview-img" alt="Fotoğraf Önizleme" style="width: 70%; height: 270px" />
-                  <label for="resim" class="btn btn-outline-primary mt-2" style="width: 70%">Fotoğraf Seç</label>
-                  <input id="resim" type="file" name="resim" style="display: none" accept="image/*" class="resim-girdi" />
-                </div>
-                <div style="margin-left: -100px; flex: 1">
-                  <div class="mb-3">
-                    <label class="form-label">Bina İsmi</label>
-                    <input type="text" class="form-control" id="binaİsmi" value="${binaİsmi}" required />
+              <div class="d-flex justify-content-center">
+            <div
+              class="card"
+              style="
+                box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);
+                width: 95%;
+              "
+            >
+              <div class="card-body">
+                <form id="editBelForm">
+                  <div class="d-flex">
+                    <div>
+                      <img
+                        id="image"
+                        src="${imgSRC}"
+                        class="img-fluid rounded preview-img"
+                        alt="Fotoğraf Önizleme"
+                        style="width: 70%; height: 270px"
+                      />
+                      <label
+                        for="resim"
+                        class="btn btn-outline-primary mt-2"
+                        style="width: 70%"
+                        >Fotoğraf Seç</label
+                      >
+                      <input
+                        id="resim"
+                        type="file"
+                        name="resim"
+                        style="display: none"
+                        accept="image/*"
+                        class="resim-girdi"
+                      />
+                    </div>
+                    <div style="margin-left: -100px; flex: 1">
+                      <div class="mb-3">
+                        <label class="form-label">Bina İsmi</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="binaİsmi"
+                          value="${binaİsmi}"
+                          placeholder="Yeni Bina İsmi Giriniz"
+                          required
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Bina Adresi</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="adres"
+                          value="${adres}"
+                          placeholder="Yeni Bina Adresi Giriniz"
+                          required
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Telefon Numarası</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="telefon"
+                          value="${telefon}"
+                          placeholder="Yeni Telefon Numarası Giriniz"
+                          required
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">eMail</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="email"
+                          value="${email}"
+                          placeholder="Yeni eMail Giriniz"
+                          required
+                        />
+                      </div>
+                    </div>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Bina Adresi</label>
-                    <input type="text" class="form-control" id="adres" value="${adres}" required />
+                    <label class="form-label">Konum Linki</label>
+                    <textarea class="form-control" id="loc" rows="3" required>${locLink}</textarea
+                    >
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">Telefon Numarası</label>
-                    <input type="text" class="form-control" id="telefon" value="${telefon}" required />
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">eMail</label>
-                    <input type="text" class="form-control" id="email" value="${email}" required />
-                  </div>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Konum Linki</label>
-                <textarea class="form-control" id="loc" rows="3" required>${locLink}</textarea>
-              </div>
 
-              <hr />
-              <div class="mb-3">
-                <h5 class="mb-3">Bağlı Müdürlükler</h5>
-                <div class="müdürlükText">${mudurlukInputs}</div>
+                  <hr />
+            
+                  
+                  <div class="mb-3 d-flex align-items-center">
+          <h5 class="mb-0 me-3">Bağlı Müdürlükler</h5>
+          <button
+          colspan="6"
+            class="btn müdürlükButton"
+            type="button"
+          >
+            <img src="../assets/images/window.png" alt="Ekle" style="width: 20px; height: 20px" />
+                  </button>
+                  </div>
+                  <div class="müdürlükText">
+                    ${mudurlukInputs}
+                   </div>
+                
+                  <button class="btn btn-success" id="submit" type="button">
+                    Güncelle
+                  </button>
+                  <a href="adresDuzenle.html" class="btn btn-secondary"
+                    >İptal</a
+                  >
+                </form>
               </div>
-
-              <button class="btn btn-success" id="submit" type="button">Güncelle</button>
-              <a href="adresDuzenle.html" class="btn btn-secondary">İptal</a>
-            </form>
+            </div>
           </div>
-        </div>
-      </div>
-    `;
+          `;
 
+              // Güncelle butonu işlevi
               document
                 .getElementById("submit")
                 .addEventListener("click", function () {
-                  if (yetki === "duzenle" || yetki === "tam") {
-                    // Güncelle işlemi yapılabilir
-                    let title = document.querySelector("#binaİsmi").value;
-                    let kategori = document.querySelector("#adres").value;
-                    let tarih = document.querySelector("#telefon").value;
-                    let icerik = document.querySelector("#email").value;
-                    let link = document.querySelector("#loc").value;
+                  let title = document.querySelector("#binaİsmi").value;
+                  let kategori = document.querySelector("#adres").value;
+                  let tarih = document.querySelector("#telefon").value;
+                  let icerik = document.querySelector("#email").value;
+                  let link = document.querySelector("#loc").value;
 
-                    document.getElementById("icerikler").innerHTML = oldContent;
-                    sessionStorage.removeItem("rowIndex");
-                  } else {
-                    alert("Bu işlemi yapmaya yetkiniz yok!");
-                  }
+                  document.getElementById("icerikler").innerHTML = oldContent;
+
+                  sessionStorage.removeItem("rowIndex");
                 });
-            }
-
-            function girisYap() {
-              const username = document
-                .getElementById("username")
-                .value.trim()
-                .toLowerCase();
-              const users = {
-                ahmet: { yetki: "tam" },
-                mehmet: { yetki: "duzenle" },
-              };
-
-              if (users[username]) {
-                sessionStorage.setItem("kullanici", username);
-                location.reload();
-              } else {
-                alert("Geçersiz kullanıcı adı.");
-              }
             }
 
             // Müdürlük listeleri
