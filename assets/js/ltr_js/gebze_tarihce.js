@@ -1,3 +1,6 @@
+      // tarihi yerler için gerekli sabit değişken
+      const locations = getLoc(); 
+      
       function toggleMenu(button) {
         const menu = button.nextElementSibling;
         const allMenus = document.querySelectorAll(".islem-menu");
@@ -42,20 +45,20 @@
           row.insertAdjacentHTML(
             "beforeend",
             `
-    <div class="col-6 col-md-2 mb-3">
-      <img
-        src=""
-        class="img-fluid rounded mb-2 preview-img"
-        style="min-height:150px;min-width:150px"
-        alt="resim${count}"
-      />
-      <div class="d-flex gap-2">
-        <label for="resim${count}" class="btn btn-outline-primary w-50 p-1">Değiştir</label>
-        <label for="resimSil${count}" class="btn btn-outline-danger w-50 p-0 pt-1 remove">Sil</label>
-        <input type="file" id="resim${count}" class="resim-input" style="display: none" />
-      </div>
-    </div>
-    `
+            <div class="col-6 col-md-2 mb-3">
+              <img
+                src="../assets/images/gebze-belediyesi.ico"
+                class="img-fluid rounded mb-2 preview-img"
+                style="min-height:150px;min-width:150px"
+                alt="resim${count}"
+              />
+              <div class="d-flex gap-2">
+                <label for="resim${count}" class="btn btn-outline-primary w-50 p-1">Değiştir</label>
+                <label for="resimSil${count}" class="btn btn-outline-danger w-50 p-0 pt-1 remove">Sil</label>
+                <input type="file" id="resim${count}" class="resim-input" style="display: none" />
+              </div>
+            </div>
+            `
           );
 
           remove();
@@ -90,27 +93,23 @@
 
           const count = row.children.length + 1;
         
-
-        locations.forEach(loc => {
           row.insertAdjacentHTML(
             "beforeend",
             `
             <div class="col-6 col-md-2 mb-3">
               <img
-                src="${loc.titleImage}"
+                src="../assets/images/gebze-belediyesi.ico"
                 class="img-fluid rounded mb-2 preview-img"
                 style="height:150px;width:150px"
-                alt="resim${loc.name}"
+                alt="resim${count}"
               />
-              <label for="resim${loc.name}" class="w-100 p-1">${loc.name}</label>
+              <label for="resim${count}" class="w-100 p-1"></label>
               <div class="d-flex gap-2">
-                <label for="resim${loc.name}" class="btn btn-outline-primary w-100 p-1">Değiştir</label>
+                <label for="resim${count}" class="btn btn-outline-primary w-100 p-1">Düzenle</label>
               </div>
             </div>
             `
           );
-        });
-          
 
           remove();
         });
@@ -138,10 +137,7 @@
 
       window.addEventListener("DOMContentLoaded", addEvent);
 
-
     // DÜZENLE
-
-    const locations = getLoc();
 
       function edit(title, category, situation, date, photoNum, element) {
         let content = document.getElementById("icerikler");
@@ -379,12 +375,12 @@
         });
       }
 
-      function getPhotos(num,arr=[]) {
+      function getPhotos(num) {
         for (let i = 0; i < num; i++) {
           document.getElementById("photos").innerHTML += `
           <div class="col-6 col-md-2 mb-3">
         <img
-        src="${arr[i]}"
+        src="../assets/images/gebze-belediyesi.ico"
         class="img-fluid rounded mb-2 preview-img"
         style="min-height:150px;min-width:150px"
         alt="resim${i}"
@@ -442,12 +438,6 @@
         }
         addEvent();
       }
-
-
-
-// ACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJ
-
-
 
       function getLocPhotos(num) {
       
@@ -680,7 +670,7 @@
                 </div>
                     `;
 
-        getPhotos(images.length,images);
+        getPhotos(6);
 
         document.getElementById("nav").innerHTML = ``;
 
@@ -711,7 +701,6 @@
         remove();
         addEvent();
         renderActivities();
-
       }
 
       function renderActivities(element) {        
@@ -719,40 +708,42 @@
 
         for (let i = 0; i < 4; i++) {
           if(i===0){
-            activitiesContainer.innerHTML += `
+          activitiesContainer.innerHTML = `
             <div class="d-flex justify-content-between" style="width: 200%; margin-bottom:-2%;">
               <label for="title" class="form-label" style="margin-left:0.3%">Aktivite Başlığı</label>
               <label for="explain" class="form-label" style="margin-right:81.7%; margin-bottom:10px">Aktivite Açıklaması</label>
             </div>
-            `
-          }
-          getLoc().forEach(act => {
-             activitiesContainer.innerHTML += `
-            <div class="d-flex gap-2 mt-3">
-              <input
-                type="text"
-                class="form-control"
-                name="activity"
-                value="${element.act.activities[i]}"
-                placeholder="Aktivite başlığını giriniz"
-                style="max-width: 20%"
-              />
-              <input
-                type="text"
-                name="expOfActivity"
-                id="exp${i}"
-                class="form-control"
-                value="${explainOfActivities[i]}"
-                style="min-width: 70%; margin-left: 5%"
-              /><label for="exp${[i]}" onclick="removeSvg(this)"
-               ><img src="../assets/images/rubbishSvg.svg" alt="remove" width="20px" height="20px" style="margin-left:10px; margin-top:10px; cursor:pointer;"
-               /></label>
-            </div>
           `;
-          });
-         
-        }
 
+          const activities = locations[0].activities;
+            
+          } 
+             activities.forEach((act, i) => {
+    activitiesContainer.innerHTML += `
+      <div class="d-flex gap-2 mt-3">
+        <input
+          type="text"
+          class="form-control"
+          name="activity"
+          value="${act.name}"
+          placeholder="Aktivite başlığını giriniz"
+          style="max-width: 20%"
+        />
+        <input
+          type="text"
+          name="expOfActivity"
+          id="exp${i}"
+          class="form-control"
+          value="${act.exp}"
+          style="min-width: 70%; margin-left: 5%"
+        />
+        <label for="exp${i}">
+          <img src="../assets/images/rubbishSvg.svg" alt="remove" width="20px" height="20px" style="margin-left:10px; margin-top:10px; cursor:pointer;" onclick="removeSvg(this)" />
+        </label>
+      </div>
+    `;
+  });
+        }
       }
 
       // JSON FORMATINDAKİ VERİLER VE GETTER FONKSİYONU
@@ -893,23 +884,27 @@
       function addActivities(){
         const activitiesContainer = document.getElementById("activities");
         activitiesContainer.innerHTML += `
-            <div class="d-flex align-items-center gap-2 mt-3">
-      <input
-        type="text"
-        class="form-control"
-        name="activity"
-        placeholder="Aktivite başlığını giriniz"
-      />
-      <input
-        type="text"
-        name="expOfActivity"
-        class="form-control"
-        placeholder="Aktivite açıklamasını giriniz"
-      />
-      <label onclick="removeSvg(this)" style="cursor:pointer;">
-        <img src="../assets/images/rubbishSvg.svg" alt="remove" width="20" height="20"/>
-      </label>
-    </div>
+            <div class="d-flex gap-2 mt-3">
+              <input
+                type="text"
+                class="form-control"
+                name="activity"
+                value=""
+                placeholder="Aktivite başlığını giriniz"
+                style="max-width: 20%"
+              />
+              <input
+                type="text"
+                name="expOfActivity"
+                id="exp"
+                class="form-control"
+                value=""
+                placeholder="Aktivite açıklaması giriniz"
+                style="min-width: 70%; margin-left: 5%"
+              /><label for="" onclick="removeSvg(this)"
+               ><img src="../assets/images/rubbishSvg.svg" alt="remove" width="20px" height="20px" style="margin-left:10px; margin-top:10px; cursor:pointer;"
+               /></label>
+            </div>  
           `;
 }
 
@@ -959,15 +954,15 @@
                           </select>
                         </div>
                         <div class="mb-3">
-                          <label for="link" class="form-label">Yazı</label>
+                          <label for="link" class="form-label">Tarihçe</label> 
                           <textarea
                             name="link"
                             id="link"
                             class="form-control"
                             placeholder="Yazı"
-                            rows="5"
+                            rows="15"
                             required
-                          >yazı</textarea
+                          >Gebze'nin de içinde bulunduğu, eski Yunanlılar'ın ve Romalılar'ın Bitinya (Bithynie) dedikleri coğrafi bölgenin bilinen en eski tarihi, M.Ö. XII yüzyıla kadar dayanır. Bölge, özellikle Kocaeli Yarımadası, coğrafi konumunun öneminden dolayı, tarihin hemen hemen bütün dönemlerinde, birçok ulusa yurt olmuştur. Asya ile Avrupa kıtaları arasındaki en önemli geçit yeri olan Kocaeli Yarımadası ya bir çok ulusun yurdu, ya da gelip geçtikleri, medeniyetlerinden izler bıraktığı bir yer olmuştur. Bilinen ilk ulus göçü de M.Ö. XII. yüzyılın başlarındadır. Bu ulus Yunan kökenli Frikler'dir. Boğaz (Bosforos) yoluyla Anadolu'ya inmişlerdir. XII yüzyıla kadar Trakya'dan İzmit dolaylarına göçler devam etmiştir. Fakat bu dönemde eski Gebze'nin yerine dair hiçbir bilgi edinilememiştir. Kısaca antik çağ Gebze'sinin yeri kesinlikle bilinememektedir. Bugün Gebze'nin olduğu yerde, M.Ö. 281-246 yıllarında Kral 1. Nicomede'nin egemenliğindeki Bitinya Krallığı döneminde Dakibyza ve Libyssa adında yerleşmeler vardır. Eski Gebze'nin yerine dair söylenenler, işte bu tarihlere aittir. Daha eski tarihlere ait bilgiler ise çelişkilidir. Bu yerleşim alanlarının araştırmalara konu olmasının en önemli nedeni ise, ünlü Kartacalı komutan Hannibal'ın krallık döneminde burada yerleşmiş olmasıdır. Hannibal Zama harbindeki yenilgisinden sonra ülkesinde itibar görmemiş ve Bitinya Krallığı'na iltica etmek zorunda kalmıştır. Bitinya Kralları I. ve II. Prusias'ın savaş danışmanlıklarını yapmıştır. II. Prusias'ın ihaneti sonucu düşmanın eline düşmemek için intihar etmiş ve Lybissa'ya gömülmüştür. İşte birçok tarihçinin ve araştırmacının eski Gebze olduğu iddia edilen bu yeri araştırmasının en büyük nedeni budur. Hannibal'ın burayı seçmesinin birçok nedeni vardır. Devamlı izlenme kuşkusu, Nicomedia başkent olduğu için gelenin gidenin çok olması ve tanınma ihtimalinin fazla olması, yönetime güvenmemesi bu nedenlerin başlıcalarıdır. Roma kuvvetlerinden gizlenen Hannibal, korunaklı, kaçışı kolay ve denizle ilişkili bir yer aramıştır. Sonunda bu özelliklere sahip Libyssa'yı seçmiştir. O dönemde Libyssa'nın kurulduğu yer, hem denize hem de karaya hakim bir tepe üzerindedir. Tepe, körfezin en dar yeridir. 1330 yılında Osmanlılarla Bizans arasında yapılan savaştan sonra Gebze'nin de içinde bulunduğu bölge, Osmanlı idaresine dahil edilmiştir. Bugünkü Gebze'nin kurucusu Orhan Gazi'dir. Gebze'de kendi adına cami de yaptıran Orhan Gazi, bölgede izler bırakan ilk Türk büyüğüdür. Orhan Gazi, bölgenin imarı ve yaşaması için büyük çabalar göstermiştir. Bu amaçla işletmeler kurmuş, vakıfları desteklemiştir Osmanlıların devlet olma çabaları sırasında, Gebze yine ordugah yerleşimi olarak kullanılmıştır. Osmanlı Beyliğinin kurulmasında büyük emekleri geçen Akçakoca Bey'in oğlu olan İlyas Çelebi de hem Gebze'nin fethinde hem de kuruluşunda büyük rol oynamıştır. Gebze Osmanlı İmparatorluğunun son yıllarına kadar kimi zaman İstanbul'a, daha çok da Kocaeli'ye bağlı bir kaza olarak, önemli bir yer niteliğini uzun yıllar korumuştur. 1. Dünya Savaşı'nda Osmanlı İmparatorluğunun yenik düşmesi üzerine Anadolu ve Trakya'nın birçok yöresi gibi Gebze'de düşman kuvvetleri tarafından işgal edilmiştir. 1920 yılznda İngilizler'in bölgeyi işgaline, 1921 yılının başlarında Yunanlılar da katılmıştır. Daha sonra Anadolu içerisinde yenilgiye uğrayan Yunan kuvvetleri, amaçlarına ulaşamamanın üzüntüsüyle geldikleri yoldan geriye kaçmışlardır. Bu yıllarda Gebze, Anadolu'nun en dikkate değer yerlerinden biridir. Türk kuvvetlerinin biraz ilerisinde İngiliz askerleri bulunmaktaydı. 18-19 Ocak 1923 tarihli Hakimiyet-i Milliye-Ankara Gazetesi'nde Atatürk'ün bölgeyi ve Gebze'yi ziyaret ettiğinden bahsedilir. Atatürk Gebze'deki askeri birliklerin durumundan memnun kalarak geri dönmüştür. İstanbul'un terk edilmesinden sonra Gebze ve Çevresi tamamen emniyet altına alınmıştır. Cumhuriyet'in ilanına kadar kimi zaman İstanbul, kimi zaman da Kocaeli'ye bağlı bir kaza olan Gebze, Cumhuriyet'in ilanından sonra yeni iller kanununa göre il olan İzmit'e bağlanmıştır. Libyssa'dan Gebze'ye Gebze adı köken olarak, diğer eski yerleşmelerin ismine bağlanmaktadır. Araştırmacıların bir çoğu bu görüştedir.</textarea
                           >
                         </div>
                         <div class="mb-3" id="population" style="margin-left: 23%">
@@ -977,13 +972,7 @@
                               class="btn btn-primary w-10 p-1"
                               style="float: right; margin-left: 1%"
                               >Fotoğraf Ekle</label
-                            ><label
-                              class="btn btn-primary w-10 p-1"
-                              style="float: right; margin-left: 1%"
-                              onclick="addPopulation()";
-                              >Nüfus Bilgisi Ekle</label
                             >
-                          </div>
                         </div>
 
                         <div class="container mt-4" id="images">
@@ -1004,6 +993,32 @@
                 </div>
                     `;
 
-        getPhotos(number);
+           const photo = [
+              "../assets/images/tarihce/tarihce1.png",
+              "../assets/images/tarihce/tarihce2.png",
+              "../assets/images/tarihce/tarihce3.png"
+            ]
 
+        remove();
+        addEventHistory(photo);
+        addEvent();
           }
+
+          function addEventHistory(arr) {
+          for (let i = 0; i < arr.length; i++) {
+          document.getElementById("photos").innerHTML += `
+          <div class="col-6 col-md-2 mb-3">
+          <img
+          src="${arr[i]}"
+          class="img-fluid rounded mb-2 preview-img"
+          style="min-height:150px;min-width:150px"
+          alt="resim${i}"
+          />
+          <div class="d-flex gap-2">
+          <label for="resim${i}" class="btn btn-outline-primary w-50 p-1">Değiştir</label>
+          <label for="resimSil${i}" class="btn btn-outline-danger w-50 p-0 pt-1 remove">Sil</label>
+          <input type="file" id="resim${i}" class="resim-input" style="display: none" />
+         </div>
+        </div>`;
+        }
+        }
