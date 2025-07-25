@@ -378,16 +378,16 @@
       function getPhotos(num) {
         for (let i = 0; i < num; i++) {
           document.getElementById("photos").innerHTML += `
-          <div class="col-6 col-md-2 mb-3">
+          <div class="col-6 col-md-2 mb-3" style="border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;">
         <img
         src="../assets/images/gebze-belediyesi.ico"
         class="img-fluid rounded mb-2 preview-img"
         style="min-height:150px;min-width:150px"
         alt="resim${i}"
         />
-      <div class="d-flex gap-2">
-        <label for="resim${i}" class="btn btn-outline-primary w-50 p-1">Değiştir</label>
-        <label for="resimSil${i}" class="btn btn-outline-danger w-50 p-0 pt-1 remove">Sil</label>
+      <div class="d-flex gap-2"   >
+        <label for="resim${i}" class="btn btn-primary w-50 p-1" >Değiştir</label>
+        <label for="resimSil${i}" class="btn btn-danger w-50 p-1 pt-1 remove ml-1" >Sil</label>
         <input type="file" id="resim${i}" class="resim-input" style="display: none" />
       </div>
     </div>`;
