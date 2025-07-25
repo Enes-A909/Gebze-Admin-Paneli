@@ -3,16 +3,14 @@
   <head>
     <style>
       .müdürlükText {
-        padding: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
       }
       #ekleBtn:focus {
         outline: none;
       }
       #silBtn:focus {
         outline: none;
-      }
-      #silBtn {
-        display: none;
       }
       #submit,
       .btn-secondary {
@@ -966,30 +964,8 @@
               <div class="card-body">
                 <form id="editBelForm">
                   <div class="d-flex">
-                    <div>
-                      <img
-                        id="image"
-                        src="${imgSRC}"
-                        class="img-fluid rounded preview-img"
-                        alt="Fotoğraf Önizleme"
-                        style="width: 70%; height: 270px"
-                      />
-                      <label
-                        for="resim"
-                        class="btn btn-outline-primary mt-2"
-                        style="width: 70%"
-                        >Fotoğraf Seç</label
-                      >
-                      <input
-                        id="resim"
-                        type="file"
-                        name="resim"
-                        style="display: none"
-                        accept="image/*"
-                        class="resim-girdi"
-                      />
-                    </div>
-                    <div style="margin-left: -100px; flex: 1">
+                   
+                    <div style="width=100%; flex: 1">
                       <div class="mb-3">
                         <label class="form-label">Bina İsmi</label>
                         <input
@@ -1045,7 +1021,7 @@
                   <hr />
             
                   
-                  <div class="mb-3 d-flex align-items-center">
+                  <div class="mb-3 d-flex align-items-center justify-content-between">
                   <h5 class="mb-0 me-3">Bağlı Müdürlükler</h5>
                             
                   <div class="dropdown-wrapper">
@@ -1061,12 +1037,35 @@
                  
                </div>
                   </div>
-                  <div class="müdürlükText" id="mudurlukContainer">
+                  <div class="müdürlükText" id="mudurlukContainer" >
                     ${mudurlukInputs}
                    </div>
+                    <div>
+                      <img
+                        id="image"
+                        src="${imgSRC}"
+                        class="img-fluid rounded preview-img"
+                        alt="Fotoğraf Önizleme"
+                        style="width: 50%; height: 270px; margin-left: 25%"
+                      />
+                      <label
+                        for="resim"
+                        class="btn btn-outline-primary mt-2"
+                        style="width: 50%; margin-left: 25%"
+                        >Fotoğraf Seç</label
+                      >
+                      <input
+                        id="resim"
+                        type="file"
+                        name="resim"
+                        style="display: none"
+                        accept="image/*"
+                        class="resim-girdi"
+                      />
+                    </div>
                 
              <div class="d-flex justify-content-start gap-2 mt-2" style="padding-left: 8px; margin-bottom: 20px;">
-  <button class="btn btn-success" id="submit" type="button" style="padding: 8px 20px; font-size: 15px;">
+  <button class="btn btn-success" id="submit" type="button" style="padding: 8px 20px; font-size: 15px; margin-left:35px">
     Güncelle
   </button>
   <a href="adresDuzenle.html" class="btn btn-secondary" role="button" style="padding: 8px 20px; font-size: 15px; margin-left:2px">
@@ -1080,7 +1079,39 @@
             </div>
           </div>
           `;
-              yetkiKontrolEt();
+              // document.getElementById("").innerHTML = ``;
+
+              // if (category === "Yönetim") {
+              //   document.getElementById("yonetim").selected = true;
+              // }
+              // if (category === "Başkanlık") {
+              //   document.getElementById("baskanlik").selected = true;
+              // }
+              // if (category === "Halk") {
+              //   document.getElementById("halk").selected = true;
+              // }
+              // if (category === "Genel") {
+              //   document.getElementById("genel").selected = true;
+              // }
+
+              // const input = document.querySelector(".resim-input");
+              // const imgPrev = document.querySelector(".preview-img");
+
+              // input.addEventListener("change", function () {
+              //   const dosya = this.files[0];
+
+              //   if (dosya) {
+              //     const okuyucu = new FileReader();
+
+              //     okuyucu.onload = function (e) {
+              //       imgPrev.src = e.target.result;
+              //       imgPrev.style.display = "block";
+              //     };
+
+              //     okuyucu.readAsDataURL(dosya);
+              //   }
+              // });
+
               // Güncelle butonu işlevi
               document
                 .getElementById("submit")
@@ -1153,29 +1184,6 @@
                 dropdown.style.display = "none";
               }
             });
-          </script>
-          <script>
-            function yetkiKontrolEt() {
-              const kullaniciAdi = prompt("Kullanıcı adınızı girin:");
-              if (!kullaniciAdi) {
-                alert("Kullanıcı adı girilmedi, sayfa yenileniyor.");
-                location.reload();
-                return;
-              }
-              const silButonunuGorebilirler = ["admin"];
-              const silButon = document.getElementById("silBtn");
-              if (!silButon) {
-                console.error("Sil butonu bulunamadı!");
-                return;
-              }
-              if (
-                silButonunuGorebilirler.includes(kullaniciAdi.toLowerCase())
-              ) {
-                silButon.style.display = "inline-block";
-              } else {
-                silButon.style.display = "none";
-              }
-            }
           </script>
 
           <script>
