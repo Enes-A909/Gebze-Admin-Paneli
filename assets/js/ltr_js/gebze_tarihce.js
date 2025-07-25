@@ -89,24 +89,28 @@
           if (!row) return;
 
           const count = row.children.length + 1;
+        
 
+        locations.forEach(loc => {
           row.insertAdjacentHTML(
             "beforeend",
             `
             <div class="col-6 col-md-2 mb-3">
               <img
-                src="../assets/images/ballikayalar.png"
+                src="${loc.titleImage}"
                 class="img-fluid rounded mb-2 preview-img"
                 style="height:150px;width:150px"
-                alt="resim${count}"
+                alt="resim${loc.name}"
               />
-              <label for="resim${count}" class="w-100 p-1">Ballı Kayalar</label>
+              <label for="resim${loc.name}" class="w-100 p-1">${loc.name}</label>
               <div class="d-flex gap-2">
-                <label for="resim${count}" class="btn btn-outline-primary w-100 p-1">Değiştir</label>
+                <label for="resim${loc.name}" class="btn btn-outline-primary w-100 p-1">Değiştir</label>
               </div>
             </div>
             `
           );
+        });
+          
 
           remove();
         });
@@ -136,6 +140,8 @@
 
 
     // DÜZENLE
+
+    const locations = getLoc();
 
       function edit(title, category, situation, date, photoNum, element) {
         let content = document.getElementById("icerikler");
@@ -373,40 +379,24 @@
         });
       }
 
-      function getPhotos(num) {
+      function getPhotos(num,arr=[]) {
         for (let i = 0; i < num; i++) {
           document.getElementById("photos").innerHTML += `
           <div class="col-6 col-md-2 mb-3">
-          <img
-          src="../assets/images/gebze-belediyesi.ico"
-          class="img-fluid rounded mb-2 preview-img"
-          style=" width:150px;height:150px;"
-          alt="resim${i}"
-          />
-          <div class="d-flex gap-2">
-          <label
-          for="resim${i}"
-          class="btn btn-outline-primary w-50 p-1"
-          style=""
-          >Değiştir</label
-          >
-          <label
-          for="resim${i}"
-          class="btn btn-outline-danger w-50 p-0 pt-1 remove"
-          >Sil</label
-          >
-          <input
-          type="file"
-          id="resim${i}"
-          class="resim-input"
-          style="display: none"
-          />
-          </div>
-          </div>`;
+        <img
+        src="${arr[i]}"
+        class="img-fluid rounded mb-2 preview-img"
+        style="min-height:150px;min-width:150px"
+        alt="resim${i}"
+        />
+      <div class="d-flex gap-2">
+        <label for="resim${i}" class="btn btn-outline-primary w-50 p-1">Değiştir</label>
+        <label for="resimSil${i}" class="btn btn-outline-danger w-50 p-0 pt-1 remove">Sil</label>
+        <input type="file" id="resim${i}" class="resim-input" style="display: none" />
+      </div>
+    </div>`;
         }
       }
-
-      
 
       var popCount = 0;
 
@@ -453,37 +443,61 @@
         addEvent();
       }
 
+
+
+// ACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJACSFDVGYBUHNJ
+
+
+
       function getLocPhotos(num) {
-        for (let i = 0; i < num; i++) {
-          document.getElementById("photos").innerHTML += `
-          <div class="col-6 col-md-2 mb-3">
-          <img
-          src="../assets/images/ballikayalar.png"
-          class="img-fluid rounded mb-2 preview-img"
-          style=" width:150px;height:150px;"
-          alt="resim${i}"
-          />
-          <label
-          for="resim${i}"
-          class="w-100 p-1"
-          >Ballı Kayalar</label
-          >
-          <div class="d-flex gap-2">
-          <label
-          for="resim${i}"
-          class="btn btn-outline-primary w-100 p-1"
-          style=""
-          onclick="editLocation('Tarihi Yerler',4,'https://www.google.com/maps/place/Ball%C4%B1kayalar+Tabiat+Park%C4%B1/@40.8299347,29.515808,2856m/data=!3m1!1e3!4m6!3m5!1s0x14cb242bfea49fbf:0x8a949c7858da831d!8m2!3d40.8332309!4d29.5168155!16s%2Fg%2F1thm0p0_?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D','Gebze - İzmit yolu üzerindeki Tavşanlı Köyü sınırlarında bulunan kampçılık ve trekking gibi doğa sporları için oldukça elverişli arazi yapısına sahip bir vadidir.','İstanbuldan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.',this)";
-          >Düzenle</label
-          >
-          </div>
-          </div>`;
-        }
+      
+      const photosContainer = document.getElementById("photos");
+      photosContainer.innerHTML = ""; 
+
+      for (let i = 0; i < num; i++) {
+        locations.forEach((loc, index) => {
+          
+          const imageId = `resim${i}_${index}`;   // benzersiz id oluşturmak için yapıldı
+          const buttonId = `editBtn${i}_${index}`;
+          
+          const div = document.createElement("div"); 
+          div.className = "col-6 col-md-2 mb-3";
+          div.innerHTML = `
+            <img
+              src="${loc.titleImage}"
+              class="img-fluid rounded mb-2 preview-img"
+              style="width:150px;height:150px;"
+              alt="${imageId}"
+            />
+            <label
+              for="${imageId}"
+              class="w-100 p-1"
+            >${loc.name}</label>
+            <div class="d-flex gap-2">
+              <button
+                class="btn btn-outline-primary w-100 p-1"
+                id="${buttonId}"
+                data-index="${i}${index}"
+              >Düzenle</button>
+            </div>
+          `;
+
+          photosContainer.appendChild(div); // yukarıda oluşturulan div ana dive eklendi
+          
+          const editButton = document.getElementById(buttonId);
+            editButton.addEventListener("click", function () {
+              const idx = this.dataset.index;
+              console.log(idx)
+              editLocation(loc);
+            });
+          
+        });
       }
+    }
       
       function editTarihiYerler(photoNum){
         let content = document.getElementById("icerikler");
-
+        
         content.innerHTML = `
                   <div class="d-flex justify-content-center">
                     <div
@@ -568,9 +582,9 @@
         addEventLoc();
       }
 
-      function editLocation(title,photoLocNum,link,info,tarif,element){
+      function editLocation(loc){
         let content = document.getElementById("icerikler");
-
+        const { name, images = [], link, info, tarif, activities } = loc;
         content.innerHTML = `
                   <div class="d-flex justify-content-center">
                     <div
@@ -588,7 +602,7 @@
                             type="text"
                             class="form-control"
                             id="title"
-                            value="${title}"
+                            value="${name}"
                             placeholder="Başlık giriniz"
                             required
                           />
@@ -629,6 +643,7 @@
                           >${link}</textarea
                           >
                         </div>
+                        <div>
                         <label
                               id="addAct"
                               onclick="addActivities()"
@@ -636,15 +651,16 @@
                               style="float: right; margin-left: 1%"
                               >Aktivite Ekle</label
                             >
+                            <label
+                              id="add"
+                              class="btn btn-primary w-10 p-1"
+                              style="float: right;"
+                              >Fotoğraf Ekle</label
+                            >
+                        </div>
                         <div id="activities" class="mt-5 mb-5">
                         
                         </div>
-                        <label
-                              id="add"
-                              class="btn btn-primary w-10 p-1"
-                              style="float: right; margin-left: 1%"
-                              >Fotoğraf Ekle</label
-                            >
 
                         <div class="container mt-4" id="images">
                           <div class="row text-center justify-content-start" id="photos">
@@ -664,7 +680,7 @@
                 </div>
                     `;
 
-        getPhotos(photoLocNum);
+        getPhotos(images.length,images);
 
         document.getElementById("nav").innerHTML = ``;
 
@@ -695,16 +711,59 @@
         remove();
         addEvent();
         renderActivities();
+
       }
 
-      function renderActivities() {
+      function renderActivities(element) {        
         const activitiesContainer = document.getElementById("activities");
-        
-        const balliKayalar = {
+
+        for (let i = 0; i < 4; i++) {
+          if(i===0){
+            activitiesContainer.innerHTML += `
+            <div class="d-flex justify-content-between" style="width: 200%; margin-bottom:-2%;">
+              <label for="title" class="form-label" style="margin-left:0.3%">Aktivite Başlığı</label>
+              <label for="explain" class="form-label" style="margin-right:81.7%; margin-bottom:10px">Aktivite Açıklaması</label>
+            </div>
+            `
+          }
+          getLoc().forEach(act => {
+             activitiesContainer.innerHTML += `
+            <div class="d-flex gap-2 mt-3">
+              <input
+                type="text"
+                class="form-control"
+                name="activity"
+                value="${element.act.activities[i]}"
+                placeholder="Aktivite başlığını giriniz"
+                style="max-width: 20%"
+              />
+              <input
+                type="text"
+                name="expOfActivity"
+                id="exp${i}"
+                class="form-control"
+                value="${explainOfActivities[i]}"
+                style="min-width: 70%; margin-left: 5%"
+              /><label for="exp${[i]}" onclick="removeSvg(this)"
+               ><img src="../assets/images/rubbishSvg.svg" alt="remove" width="20px" height="20px" style="margin-left:10px; margin-top:10px; cursor:pointer;"
+               /></label>
+            </div>
+          `;
+          });
+         
+        }
+
+      }
+
+      // JSON FORMATINDAKİ VERİLER VE GETTER FONKSİYONU
+      function getLoc(){
+
+        var balliKayalar = {
         name: "Ballı Kayalar",
         info: "Gebze - İzmit yolu üzerindeki Tavşanlı Köyü sınırlarında bulunan kampçılık ve trekking gibi doğa sporları için oldukça elverişli arazi yapısına sahip bir vadidir.",
         tarif: "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
         link: "https://www.google.com/maps/place/Ball%C4%B1kayalar+Tabiat+Park%C4%B1/@40.8299347,29.515808,15z/data=!4m6!3m5!1s0x14cb242bfea49fbf:0x8a949c7858da831d!8m2!3d40.8332309!4d29.5168155!16s%2Fg%2F1thm0p0_?entry=ttu&g_ep=EgoyMDI1MDMyMy4wIKXMDSoASAFQAw%3D%3D",
+        titleImage: "../assets/images/locationImages/titleImage/balliKayalarTitle.png",
         activities: [
           {
             name: "Kaya Tırmanışı",
@@ -730,11 +789,12 @@
         ]
         };
 
-        const mustafaPasaKulliyesi = {
+        var mustafaPasaKulliyesi = {
         name: "Mustafa Paşa Külliyesi",
         info: "Camii, yapılar topluluğunun merkezinde ve Gebze'ye hakim bir mevkide yer alır.",
         tarif: "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
         link: "https://www.google.com/maps/place/%C3%87oban+Mustafa+Pa%C5%9Fa+K%C3%BClliyesi/@40.799884,29.432153,15z/data=!4m5!3m4!1s0x0:0x1ab84b48f6e54236!8m2!3d40.799884!4d29.432153?shorturl=1",
+        titleImage: "../assets/images/locationImages/titleImage/mustafaPasaTitle.png",
         activities: [
           {
             name: "Tarihi Keşif",
@@ -761,11 +821,12 @@
         ]
         };
 
-     const sultanOrhanCami = {
+     var sultanOrhanCami = {
         name: "Sultan Orhan Cami",
         info: "Gebze'nin batısında yer alan cami, tahmini olarak 1323-1331 yılları arasında inşa edilmiştir. Osmanlı mimarisinin ilk örneklerinden olan camiyi, Gebze'nin kurucusu olan Sultan Orhan yaptırmıştır",
         tarif: "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
         link: "https://www.google.com/maps/place/Sultan+Orhan+Cami/@40.798079,29.4377681,714m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb208c7bb7f3d5:0x805bf82146b0c733!8m2!3d40.798079!4d29.4377681!16s%2Fg%2F1tf8j0hn?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D",
+        titleImage: "../assets/images/locationImages/titleImage/sultanOrhanTitle.png",
         activities: [
           {
             name: "Tarihi Keşif",
@@ -788,11 +849,12 @@
         ]
         };
 
-        const anibalinMezari = {
+        var anibalinMezari = {
         name: "Anibalın Mezarı",
         info: "Kartacalı ünlü komutan Anibal'ın Anıt Mezarı, Gebze'nin güneydoğusunda, çevresi daire şeklinde selvilerle çevrili sahanın ortasında yer alan 24 ton ağırlığındaki bir taş lahit ve şekillendirilen taşın üzerindeki Kartacalı Komutana ait aplike edilen bir masktan, Türkçe, İngilizce, Fransızca, Almanca ve İtalyanca yazılı birer mermer kitabeden oluşmaktadır.",
         tarif: "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
         link: "https://www.google.com/maps/place/Hannibal+an%C4%B1t%C4%B1/@40.782282,29.4417079,715m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb2042af222be3:0xd11c044aa3d2711!8m2!3d40.782282!4d29.4417079!16s%2Fg%2F11cftyh3b?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D",
+        titleImage: "../assets/images/locationImages/titleImage/anibalMezariTitle.png",
         activities: [
           {
             name: "Fotoğrafçılık",
@@ -812,79 +874,136 @@
           {imageSrc: "../assets/images/locationImages/anibal2.png"},
           {imageSrc: "../assets/images/locationImages/anibal3.png"},
           {imageSrc: "../assets/images/locationImages/anibal4.png"}
-        ],
-        
+        ]
         };
 
-        for (let i = 0; i < activitesName.length; i++) {
-          if(i===0){
-            activitiesContainer.innerHTML += `
-            <div class="d-flex justify-content-between" style="width: 200%; margin-bottom:-2%;">
-              <label for="title" class="form-label" style="margin-left:0.3%">Aktivite Başlığı</label>
-              <label for="explain" class="form-label" style="margin-right:81.7%; margin-bottom:10px">Aktivite Açıklaması</label>
-            </div>
-            `
-          }
-          activitiesContainer.innerHTML += `
-            <div class="d-flex gap-2 mt-3">
-              <input
-                type="text"
-                class="form-control"
-                name="activity"
-                value="${activitesName[i]}"
-                placeholder="Aktivite başlığını giriniz"
-                style="max-width: 20%"
-              />
-              <input
-                type="text"
-                name="expOfActivity"
-                id="exp${i}"
-                class="form-control"
-                value="${explainOfActivities[i]}"
-                style="min-width: 70%; margin-left: 5%"
-              /><label for="exp${[i]}" onclick="removeSvg(this)"
-               ><img src="../assets/images/rubbishSvg.svg" alt="remove" width="20px" height="20px" style="margin-left:10px; margin-top:10px; cursor:pointer;"
-               /></label>
-            </div>
-          `;
-        }
-      }
 
-     let sultanOrhanCami = [
-      "Gebze'nin batısında yer alan cami, tahmini olarak 1323-1331 yılları arasında inşa edilmiştir. Osmanlı mimarisinin ilk örneklerinden olan camiyi, Gebze'nin kurucusu olan Sultan Orhan yaptırmıştır",
-      "İstanbul'dan özel araçla TEM Otoyolu üzerinden yaklaşık 45 dakikalık bir yolculukla ulaşılabilir. Gebze merkeze 15 km mesafededir.",
-      "https://www.google.com/maps/place/Sultan+Orhan+Cami/@40.798079,29.4377681,714m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb208c7bb7f3d5:0x805bf82146b0c733!8m2!3d40.798079!4d29.4377681!16s%2Fg%2F1tf8j0hn?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D"
-     ]
-     
+        const LOCATIONS = [
+        balliKayalar,
+        mustafaPasaKulliyesi,
+        sultanOrhanCami,
+        anibalinMezari
+      ];
+
+
+      return LOCATIONS;
+
+      }
 
       function addActivities(){
         const activitiesContainer = document.getElementById("activities");
         activitiesContainer.innerHTML += `
-            <div class="d-flex gap-2 mt-3">
-              <input
-                type="text"
-                class="form-control"
-                name="activity"
-                value=""
-                placeholder="Aktivite başlığını giriniz"
-                style="max-width: 20%"
-              />
-              <input
-                type="text"
-                name="expOfActivity"
-                id="exp"
-                class="form-control"
-                value=""
-                placeholder="Aktivite açıklamasını giriniz"
-                style="min-width: 70%; margin-left: 5%"
-              /><label for="exp" onclick="removeSvg(this)"
-               ><img src="../assets/images/rubbishSvg.svg" alt="remove" width="20px" height="20px" style="margin-top:10px; margin-left:10px; cursor:pointer;"
-               /></label>
-            </div>
+            <div class="d-flex align-items-center gap-2 mt-3">
+      <input
+        type="text"
+        class="form-control"
+        name="activity"
+        placeholder="Aktivite başlığını giriniz"
+      />
+      <input
+        type="text"
+        name="expOfActivity"
+        class="form-control"
+        placeholder="Aktivite açıklamasını giriniz"
+      />
+      <label onclick="removeSvg(this)" style="cursor:pointer;">
+        <img src="../assets/images/rubbishSvg.svg" alt="remove" width="20" height="20"/>
+      </label>
+    </div>
           `;
 }
 
           function removeSvg(element){
             const removeAct = element.closest("div");
             removeAct.remove();
+          } 
+
+          function editTarihce(title,number){
+            let content = document.getElementById("icerikler");
+
+        content.innerHTML = `
+                  <div class="d-flex justify-content-center">
+                    <div
+                    class="card"
+                    style="
+                      box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);
+                      width: 95%;
+                    "
+                  >
+                    <div class="card-body">
+                      <form id="editNewsForm">
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Başlık</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="title"
+                            value="${title}"
+                            placeholder="Başlık giriniz"
+                            required
+                          />
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="kategori" class="form-label">Kategori</label>
+                          <select class="select" id="kategori">
+                            <option id="gebze">Tarihten Günümüze Gebze</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="situtaion" class="form-label">Durum</label>
+                          <select class="select" id="situation">
+                            <option disabled selected hidden>Durum</option>
+                            <option id="arsivle">Arşivle</option>
+                            <option id="arsivCikar">Arşivden Çıkar</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="link" class="form-label">Yazı</label>
+                          <textarea
+                            name="link"
+                            id="link"
+                            class="form-control"
+                            placeholder="Yazı"
+                            rows="5"
+                            required
+                          >yazı</textarea
+                          >
+                        </div>
+                        <div class="mb-3" id="population" style="margin-left: 23%">
+                          
+                            <label
+                              id="add"
+                              class="btn btn-primary w-10 p-1"
+                              style="float: right; margin-left: 1%"
+                              >Fotoğraf Ekle</label
+                            ><label
+                              class="btn btn-primary w-10 p-1"
+                              style="float: right; margin-left: 1%"
+                              onclick="addPopulation()";
+                              >Nüfus Bilgisi Ekle</label
+                            >
+                          </div>
+                        </div>
+
+                        <div class="container mt-4" id="images">
+                          <div class="row text-center justify-content-start" id="photos">
+                          </div>
+                        </div>
+                       <div class="d-flex gap-2 mt-3">
+                        <button class="btn btn-success ml-2 mb-2" style="width:150px" id="submit" type="button">
+                          Güncelle
+                        </button>
+                        <a href="Gebze - Tarihce.html" class="btn btn-secondary ml-1 mb-2" style="width:150px">
+                          İptal
+                        </a>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                    `;
+
+        getPhotos(number);
+
           }
