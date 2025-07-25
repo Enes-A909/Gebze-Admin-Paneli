@@ -2,13 +2,72 @@
 <html lang="tr">
   <head>
     <style>
+      #ekleBtn:focus {
+        outline: none;
+      }
+      #silBtn:focus {
+        outline: none;
+      }
+      #silBtn {
+        display: none;
+      }
+      #submit,
+      .btn-secondary {
+        min-width: 90px;
+        max-width: 120px;
+      }
+
+      .dropdown-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+
       .müdürlükButton {
-        width: 1px !important;
         border: none;
-        background-color: goldenrod !important;
+        background: transparent;
+        cursor: pointer;
+        padding: 5px;
+      }
+
+      .müdürlük-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%; /* ikondan hemen sonra */
+        right: 0;
+        background-color: white;
+        border: 1px solid #ccc;
+        z-index: 999;
+        min-width: 100px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      .müdürlük-dropdown button {
+        display: block;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 8px 10px;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .müdürlük-dropdown button:hover {
+        background-color: #f1f1f1;
+      }
+      .müdürlükButton:focus {
+        outline: none;
+      }
+      .müdürlükButton {
+        width: 50px !important;
+        height: 35px;
+        border: none;
+        background-color: #35619c64 !important;
         border-radius: 50px !important;
         font-size: 1px;
         cursor: pointer;
+        margin-left: 10px;
 
         transition: background-color 0.3s ease;
       }
@@ -232,7 +291,7 @@
         list-style: none;
         padding: 0;
         margin-top: 20px;
-        max-height: 500px; /* opsiyonel */
+        max-height: 500px;
       }
 
       #mudurlukListe li {
@@ -240,7 +299,7 @@
         margin-bottom: 10px;
         padding: 10px;
         border: 1px solid #ccc;
-        break-inside: avoid; /* li parçalanmasın diye */
+        break-inside: avoid;
       }
 
       .remove {
@@ -830,29 +889,29 @@
 
             // Örnek fonksiyonlar
           </script>
-          <script>
-            function toggleDropdown(btn) {
-              const menu = btn.nextElementSibling;
 
-              // Diğer tüm açık menüleri kapat el=> burada imleçin menü üzerine gelindiğinde el işareti çıktığı için sınıf ismi el verildi
-              document.querySelectorAll(".dropdown-menu").forEach((el) => {
-                if (el !== menu) el.style.display = "none";
+          <script>
+            window.addEventListener("DOMContentLoaded", () => {
+              const silButonlari = document.querySelectorAll(".silButonu");
+              console.log(
+                "Sil butonları bulundu mu? Sayısı:",
+                silButonlari.length
+              );
+
+              silButonlari.forEach((btn, i) => {
+                console.log(
+                  `Buton ${i + 1} display stili:`,
+                  window.getComputedStyle(btn).display
+                );
               });
 
-              // Tıklanan menüyü aç/kapat
-              menu.style.display =
-                menu.style.display === "block" ? "none" : "block";
-            }
-
-            // Sayfa dışında bir yere tıklanınca menü kapanır
-            document.addEventListener("click", function (e) {
-              if (!e.target.closest(".dropdown-container")) {
-                document
-                  .querySelectorAll(".dropdown-menu")
-                  .forEach((el) => (el.style.display = "none"));
-              }
+              // Görünür yapmayı dene
+              silButonlari.forEach((btn) => {
+                btn.style.setProperty("display", "inline-block", "important");
+              });
             });
           </script>
+
           <!-- DÜZENLE-->
           <script>
             var oldContent = "";
@@ -871,7 +930,6 @@
               sessionStorage.setItem("rowIndex", rowIndex);
               let content = document.getElementById("icerikler");
               oldContent = content.innerHTML;
-
               // Müdürlük dizisini seç
               let mudurlukler = [];
               if (belId === "gebzeBelBaskanligi")
@@ -885,9 +943,9 @@
 
               mudurlukler.forEach((m, i) => {
                 mudurlukInputs += `
-              <div class="col-md-4   mb-3 w-50">
+              <div class="col-md-4 mb-3">
               <label class="form-label"></label>
-              <input type="text" class="form-control" value="${m}" />
+              <input type="text" class="form-control" value="${m}" required/>
               </div>
  
             `;
@@ -985,31 +1043,41 @@
             
                   
                   <div class="mb-3 d-flex align-items-center">
-          <h5 class="mb-0 me-3">Bağlı Müdürlükler</h5>
-          <button
-          colspan="6"
-            class="btn müdürlükButton"
-            type="button"
-          >
-            <img src="../assets/images/window.png" alt="Ekle" style="width: 20px; height: 20px" />
+                  <h5 class="mb-0 me-3">Bağlı Müdürlükler</h5>
+                            
+                  <div class="dropdown-wrapper">
+                  <button type="button" class="müdürlükButton" onclick="toggleDropdown()">
+                    <img src="../assets/images/window.png" alt="Ekle" style="height: 20px;" />
                   </button>
+
+                  <div id="mudurlukDropdown" class="müdürlük-dropdown">
+                  <button type="button" onclick="ekle()" id="ekleBtn">Ekle</button>
+                  <button id="silBtn" type="button" onclick="sil()" >Sil</button>
+                 </div>
+                 </div>
+                 
+               </div>
                   </div>
-                  <div class="müdürlükText">
+                  <div class="müdürlükText" id="mudurlukContainer">
                     ${mudurlukInputs}
                    </div>
                 
-                  <button class="btn btn-success" id="submit" type="button">
-                    Güncelle
-                  </button>
-                  <a href="adresDuzenle.html" class="btn btn-secondary"
-                    >İptal</a
-                  >
-                </form>
+             <div class="d-flex justify-content-start gap-2 mt-2" style="padding-left: 8px; margin-bottom: 20px;">
+  <button class="btn btn-success" id="submit" type="button" style="padding: 8px 20px; font-size: 15px;">
+    Güncelle
+  </button>
+  <a href="adresDuzenle.html" class="btn btn-secondary" role="button" style="padding: 8px 20px; font-size: 15px; margin-left:2px">
+    İptal
+  </a>
+</div>
+      
+
+            </form>
               </div>
             </div>
           </div>
           `;
-
+              yetkiKontrolEt();
               // Güncelle butonu işlevi
               document
                 .getElementById("submit")
@@ -1063,6 +1131,115 @@
               "Sosyal Destek Hizmetleri Müdürlüğü",
               "Yazı İşleri Müdürlüğü",
             ];
+          </script>
+          <script>
+            function toggleDropdown() {
+              const menu = document.getElementById("mudurlukDropdown");
+              menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+            }
+
+            // Dışarı tıklanınca kapansın:
+            document.addEventListener("click", function (event) {
+              const dropdown = document.getElementById("mudurlukDropdown");
+              const button = document.querySelector(".müdürlükButton");
+              if (
+                !button.contains(event.target) &&
+                !dropdown.contains(event.target)
+              ) {
+                dropdown.style.display = "none";
+              }
+            });
+          </script>
+          <script>
+            function yetkiKontrolEt() {
+              const kullaniciAdi = prompt("Kullanıcı adınızı girin:");
+              if (!kullaniciAdi) {
+                alert("Kullanıcı adı girilmedi, sayfa yenileniyor.");
+                location.reload();
+                return;
+              }
+              const silButonunuGorebilirler = ["admin"];
+              const silButon = document.getElementById("silBtn");
+              if (!silButon) {
+                console.error("Sil butonu bulunamadı!");
+                return;
+              }
+              if (
+                silButonunuGorebilirler.includes(kullaniciAdi.toLowerCase())
+              ) {
+                silButon.style.display = "inline-block";
+              } else {
+                silButon.style.display = "none";
+              }
+            }
+          </script>
+
+          <script>
+            function ekle() {
+              const container = document.getElementById("mudurlukContainer");
+
+              const inputDiv = document.createElement("div");
+              inputDiv.className = "mb-2";
+
+              const input = document.createElement("input");
+              input.type = "text";
+              input.placeholder = "Yeni müdürlük adı";
+              input.className = "form-control";
+              input.style.maxWidth = "400px";
+
+              inputDiv.appendChild(input);
+              container.appendChild(inputDiv);
+            }
+          </script>
+          <script>
+            function ekle() {
+              const yeniMudurlukAdi = "Yeni Müdürlük";
+              const container = document.querySelector(
+                "#mudurlukContainer .row"
+              );
+              const inputlar = container.querySelectorAll(".form-control");
+
+              // Boş input var mı kontrol et
+              for (let input of inputlar) {
+                if (!input.value.trim()) {
+                  input.value = yeniMudurlukAdi;
+                  return;
+                }
+              }
+
+              // Boş input yoksa yeni input oluştur
+              const yeniDiv = document.createElement("div");
+              yeniDiv.className = "col-md-4 mb-3 w-50";
+              yeniDiv.innerHTML = `
+      <label class="form-label"></label>
+      <input type="text" class="form-control" placeholder="${yeniMudurlukAdi}" />
+    `;
+              container.appendChild(yeniDiv);
+            }
+          </script>
+          <script>
+            function sil() {
+              const container = document.getElementById("mudurlukContainer");
+              const inputs = container.querySelectorAll("input");
+
+              inputs.forEach((input) => {
+                if (input.value.trim() === "") {
+                  input.parentElement.remove(); // input'u saran div'i DOM'dan kaldır
+                }
+              });
+            }
+            // En sona ekle
+            window.sil = function () {
+              const container = document.getElementById("mudurlukContainer");
+              const inputs = container.querySelectorAll("input");
+
+              inputs.forEach((input) => {
+                if (input.value.trim() === "") {
+                  input.parentElement.remove();
+                }
+              });
+            };
           </script>
         </div>
       </div>
