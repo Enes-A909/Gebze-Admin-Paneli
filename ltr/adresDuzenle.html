@@ -2,6 +2,9 @@
 <html lang="tr">
   <head>
     <style>
+      .müdürlükText {
+        padding: 40px;
+      }
       #ekleBtn:focus {
         outline: none;
       }
@@ -1225,7 +1228,7 @@
 
               inputs.forEach((input) => {
                 if (input.value.trim() === "") {
-                  input.parentElement.remove(); // input'u saran div'i DOM'dan kaldır
+                  input.parentElement.remove();
                 }
               });
             }
