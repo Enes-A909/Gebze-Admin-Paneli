@@ -1,178 +1,645 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Başkan Danışmanları</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-    }
+  <head>
+    <style>
+      .logo-img {
+        height: 200px !important;
+        /* Boyutu küçültür */
+        object-fit: contain;
+        display: block;
+      }
 
-    .container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+      .index-img {
+        height: 70px !important;
+        /* Boyutu küçültür */
+        object-fit: contain;
+        display: block;
+        margin-right: 100px;
+      }
 
-    .card {
-      background:  rgb(236, 236, 236);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 360px;
-      text-align: center;
-    }
+      .container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
 
-    .card h2 {
-      font-size: 20px;
-      color: #243b52;
-      margin-bottom: 15px;
-    }
+      .card {
+        display: flex; /* Yatay hizalama */
+        align-items: center; /* Dikey ortalama */
+        gap: 20px; /* Fotoğraf ile yazılar arası boşluk */
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        max-width: 500px; /* Kart genişliği */
+      }
 
-    .card img {
-      width: 180px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid #ccc;
-      margin-bottom: 10px;
-    }
+      .card img {
+        width: 140px;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 2px solid #ccc;
+        margin-bottom: 10px;
+      }
 
-    .card input {
-      width: 90%;
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
+      .card input {
+        width: 90%;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
 
-   .degistir-btn {
-    background-color: #7180e1; 
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.3s;
-}
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+      }
 
-.degistir-btn:hover {
-  background-color: #5a4bcc; /* Hover rengi */
-} 
+      .degistir-btn {
+        background-color: #7180e1;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.3s;
+      }
 
-    .button-group {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
+      .degistir-btn:hover {
+        background-color: #5a4bcc; /* Hover rengi */
+      }
 
-    .button-group button {
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      padding: 8px 15px;
-      font-size: 14px;
-    }
+      .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
 
-    .photo-btn {
-      background-color: #16a085;
-      color: white;
-    }
+      .button-group button {
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        padding: 8px 15px;
+        font-size: 14px;
+      }
 
-    .kaydet {
-      background-color: #8e44ad;
-      color: white;
-    }
+      .photo-btn {
+        background-color: #16a085;
+        color: white;
+      }
 
-    .iptal {
-      background-color: #2980b9;
-      color: white;
-    }
-  </style>
-</head>
-<body>
-  <h1 style="text-align:center; color:#243b52;">Başkan Danışmanları Düzenle</h1>
+      .kaydet {
+        background-color: #8e44ad;
+        color: white;
+      }
 
-  <div class="container">
-    <!-- 1. Danışman -->
-       <div class="card">
-      <img id="danisman1Image" src="../assets/images/kurumsal gebze/Yusuf-BURKUT.jpg" alt="Fotoğraf">
-      
-      <h3 contenteditable="true" id="danisman1Isim">Yusuf BURKUT</h3>
-      <input type="text" id="danisman1Email" placeholder="E-posta girin" value="yusuf.burkut@gebze.bel.tr">
-      <input type="text" id="danisman1Telefon" placeholder="Telefon girin" value="0 262 642 04 30">
-      <input type="file" id="danisman1Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'danisman1')">
-      <button class="degistir-btn" onclick="document.getElementById('danisman1Upload').click()"> Fotoğraf Değiştir</button>
+      .iptal {
+        background-color: #2980b9;
+        color: white;
+      }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="endless admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities."
+    />
+    <meta
+      name="keywords"
+      content="admin template, endless admin template, dashboard template, flat admin template, responsive admin template, web app"
+    />
+    <meta name="author" content="pixelstrap" />
+    <link
+      rel="icon"
+      href="../assets/images/gebze-belediyesi.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="../assets/images//gebze-belediyesi.ico"
+      type="image/x-icon"
+    />
+    <title>Danışman Düzenleme Ekranı</title>
+    <!-- Google font-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/fontawesome.css"
+    />
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/icofont.css" />
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/themify.css" />
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/flag-icon.css" />
+    <!-- Feather icon-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/feather-icon.css"
+    />
+    <!-- Plugins css start-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/chartist.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/prism.css" />
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+    <link
+      id="color"
+      rel="stylesheet"
+      href="../assets/css/light-1.css"
+      media="screen"
+    />
+    <!-- Responsive css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/css/responsive.css"
+    />
+  </head>
 
-      <div class="button-group">
-        <button class="kaydet" onclick="saveData('danisman1')">Kaydet</button>
-        <button class="iptal" onclick="cancelData('danisman1')">İptal</button>
+  <body>
+    <!-- Loader starts-->
+    <div class="loader-wrapper">
+      <div class="loader bg-white">
+        <div class="whirly-loader"></div>
       </div>
     </div>
+    <!-- Loader ends-->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper">
+      <!-- Page Header Start-->
+      <div class="page-main-header">
+        <div
+          class="main-header-right row"
+          style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
+        >
+          <div class="main-header-left d-lg-none">
+            <div class="logo-wrapper">
+              <a href="index.html"
+                ><img
+                  src="../assets/images/GEBZElogo-5.png"
+                  alt=""
+                  class="index-img"
+              /></a>
+            </div>
+          </div>
+          <div class="mobile-sidebar d-block">
+            <div class="media-body text-right switch-sm">
+              <label class="switch"
+                ><a href="#"
+                  ><i id="sidebar-toggle" data-feather="align-left"></i></a
+              ></label>
+            </div>
+          </div>
+          <div class="nav-right col p-0">
+            <ul class="nav-menus">
+              <li>
+                <form class="form-inline search-form" action="#" method="get">
+                  <div class="form-group">
+                    <div class="Typeahead Typeahead--twitterUsers">
+                      <div class="u-posRelative">
+                        <input
+                          class="Typeahead-input form-control-plaintext"
+                          id="demo-input"
+                          type="text"
+                          name="q"
+                          placeholder="Arama yap..."
+                        />
+                        <div
+                          class="spinner-border Typeahead-spinner"
+                          role="status"
+                        >
+                          <span class="sr-only">Yükleniyor...</span>
+                        </div>
+                        <span class="d-sm-none mobile-search"
+                          ><i data-feather="search"></i
+                        ></span>
+                      </div>
+                      <div class="Typeahead-menu"></div>
+                    </div>
+                  </div>
+                </form>
+              </li>
 
-    <!-- 2. Danışman -->
-        <div class="card">
-      <img id="danisman2Image" src="../assets/images/kurumsal gebze/Remzi-SEKER.jpg" 
-      alt="Fotoğraf">
+              <li class="onhover-dropdown">
+                <div class="media align-items-center">
+                  <img
+                    class="align-self-center pull-right img-50 rounded-circle"
+                    src="../assets/images/dashboard/user.png"
+                    alt="header-user"
+                  />
+                </div>
+                <ul class="profile-dropdown onhover-show-div p-20">
+                  <li>
+                    <a href="Profil.html"
+                      ><i data-feather="user"></i> Profili Düzenle</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"><i data-feather="settings"></i> Ayarlar</a>
+                  </li>
+                  <li>
+                    <a href="#"><i data-feather="log-out"></i> Çıkış Yap</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div class="d-lg-none mobile-toggle pull-right">
+              <i data-feather="more-horizontal"></i>
+            </div>
+          </div>
+          <script id="result-template" type="text/x-handlebars-template">
+            <div class="ProfileCard u-cf">
+              <div class="ProfileCard-avatar"><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-airplay m-0"
+                ><path
+                    d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"
+                  ></path><polygon
+                    points="12 15 17 21 7 21 12 15"
+                  ></polygon></svg></div>
+              <div class="ProfileCard-details">
+                <div class="ProfileCard-realName">{{name}}</div>
+              </div>
+            </div>
+          </script>
+          <script id="empty-template" type="text/x-handlebars-template">
+            <div class="EmptyMessage">Aradığınız sonuç bulunamadı. Büyük
+              ihtimalle sistem şu an kapalı, üzücü ama kısa sürede çözeceğiz!</div>
+          </script>
+        </div>
+      </div>
+      <!-- Page Header Ends -->
+      <!-- Page Body Start-->
+      <div class="page-body-wrapper">
+        <!-- Page Sidebar Start-->
+        <div class="page-sidebar bg-light">
+          <div
+            class="main-header-left d-none d-lg-block"
+            style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
+          >
+            <div class="logo-wrapper">
+              <a href="index.html"
+                ><img
+                  class="logo-img"
+                  src="../assets/images/GEBZElogo-5.png"
+                  alt=""
+              /></a>
+            </div>
+          </div>
 
-      <h3 contenteditable="true" id="danisman2Isim">Remzi ŞEKER</h3>
-      <input type="text" id="danisman2Email" placeholder="E-posta girin" value="remzi.seker@gebze.bel.tr">
-      <input type="text" id="danisman2Telefon" placeholder="Telefon girin" value=" 0 262 642 04 30">
-      <input type="file" id="danisman2Upload" accept="image/*" style="display:none;" onchange="previewImage(event, 'danisman2')">
-      <button class="degistir-btn" onclick="document.getElementById('danisman2Upload').click()"> Fotoğraf Değiştir</button>
+          <!-- Buradan itibaren logo hariç tüm yan menü var. -->
+          <div
+            class="sidebar custom-scrollbar bg-light"
+            style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
+          >
+            <!-- Bu div kullanıcı bilgilerini içeriyor -->
+            <div
+              class="sidebar-user text-center"
+              style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
+            >
+              <div>
+                <img
+                  class="img-60 rounded-circle"
+                  src="../assets/images/user/1.jpg"
+                  alt="#"
+                />
+                <div class="profile-edit">
+                  <a href="Profil.html" target="_blank"
+                    ><i data-feather="edit"></i
+                  ></a>
+                </div>
+              </div>
+              <h6 class="mt-3 f-14 text-dark">İsim Soyisim</h6>
+              <p class="text-dark">Kademe</p>
+            </div>
+            <!-- Buradan itibaren yan menü başlıkları ve menüler var. -->
+            <ul class="sidebar-menu bg-light">
+              <li>
+                <a class="sidebar-header text-dark" href="index.html"
+                  ><i data-feather="home"></i><span>Anasayfa</span
+                  ><span class="badge badge-pill badge-primary"></span
+                ></a>
+              </li>
+              <li>
+                <a class="sidebar-header text-dark" href="#"
+                  ><i data-feather="briefcase"></i>
+                  <span>Kurumsal</span>
+                  <i class="fa fa-angle-right pull-right"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                  <li>
+                    <a href="Kurumsal - Yönetim.html" class="text-dark"
+                      ><i class="fa fa-circle text-dark"></i>Yönetim</a
+                    >
+                  </li>
+                  <li>
+                    <a href="Kurumsal - Vizyon Misyon.html" class="text-dark"
+                      ><i class="fa fa-circle text-dark"></i
+                      >Vizyon-Misyon-İlke</a
+                    >
+                  </li>
+                  <li>
+                    <a href="Kurumsal - Raporlar.html" class="text-dark"
+                      ><i class="fa fa-circle text-dark"></i>Raporlar</a
+                    >
+                  </li>
+                  <li>
+                    <a href="Kurumsal - Komisyonlar.html" class="text-dark"
+                      ><i class="fa fa-circle text-dark"></i>Komisyonlar</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a class="sidebar-header text-dark" href="Haberler.html"
+                  ><i data-feather="file-text"></i><span>Haberler</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-header text-dark" href="#"
+                  ><i data-feather="map-pin"></i><span>Gebze</span
+                  ><i class="fa fa-angle-right pull-right"></i
+                ></a>
+                <ul class="sidebar-submenu">
+                  <li>
+                    <a href="Gebze - Tarihce.html" class="text-dark"
+                      ><i class="fa fa-circle text-dark"></i>Tarihten Günümüze
+                      Gebze</a
+                    >
+                  </li>
+                  <li>
+                    <a href="Gebze - Gebze Yonetim.html" class="text-dark"
+                      ><i class="fa fa-circle text-dark"></i>Gebze Yönetim</a
+                    >
+                  </li>
+                  <li>
+                    <a href="Gebze - Sanal Tur.html" class="text-dark"
+                      ><i class="fa fa-circle text-dark"></i>360 Sanal Tur</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a class="sidebar-header text-dark" href="Hizmetler.html"
+                  ><i data-feather="layers"></i><span>Hizmetler</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-header text-dark" href="Etkinlikler.html"
+                  ><i data-feather="slack"></i><span>Etkinlikler</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-header text-dark" href="Yayınlarımız.html"
+                  ><i data-feather="book"></i><span>Yayınlarımız</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-header text-dark" href="İletisim.html"
+                  ><i data-feather="mail"></i><span>İletişim</span></a
+                >
+              </li>
+              <li>
+                <a class="sidebar-header text-dark" href="kullanicilar.html"
+                  ><i data-feather="users"></i><span>Kullanıcılar</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Page Sidebar Ends-->
 
-      <div class="button-group">
-        <button class="kaydet" onclick="saveData('danisman2')">Kaydet</button>
-        <button class="iptal" onclick="cancelData('danisman2')">İptal</button>
+        <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col">
+                  <div class="page-header-left">
+                    <h3>Danışmanlar</h3>
+                    <ol
+                      class="breadcrumb"
+                      style="margin-top: 85px; margin-left: -130px"
+                    >
+                      <li class="breadcrumb-item">
+                        <a href="index.html"><i data-feather="home"></i></a>
+                      </li>
+                      <li class="breadcrumb-item active">Anasayfa</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br /><br />
+
+          <!-- İçeriklerin Yükleneceği Alan -->
+          <div id="icerikler">
+            <div class="container">
+              <!-- 1. Danışman -->
+              <div class="card">
+                <img
+                  id="danisman1Image"
+                  src="../assets/images/kurumsal gebze/Yusuf-BURKUT.jpg"
+                  alt="Fotoğraf"
+                  style="display: block; margin: 0 auto; width: 200px"
+                />
+
+                <h3 contenteditable="true" id="danisman1Isim">Yusuf BURKUT</h3>
+                <input
+                  type="text"
+                  id="danisman1Email"
+                  placeholder="E-posta girin"
+                  value="yusuf.burkut@gebze.bel.tr"
+                />
+                <input
+                  type="text"
+                  id="danisman1Telefon"
+                  placeholder="Telefon girin"
+                  value="0 262 642 04 30"
+                />
+                <input
+                  type="file"
+                  id="danisman1Upload"
+                  accept="image/*"
+                  style="display: none"
+                  onchange="previewImage(event, 'danisman1')"
+                />
+                <button
+                  class="degistir-btn"
+                  onclick="document.getElementById('danisman1Upload').click()"
+                >
+                  Fotoğraf Değiştir
+                </button>
+
+                <div class="button-group">
+                  <button class="kaydet" onclick="saveData('danisman1')">
+                    Kaydet
+                  </button>
+                  <button class="iptal" onclick="cancelData('danisman1')">
+                    İptal
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. Danışman -->
+              <div class="card">
+                <img
+                  id="danisman2Image"
+                  src="../assets/images/kurumsal gebze/Remzi-SEKER.jpg"
+                  alt="Fotoğraf"
+                  style="display: block; margin: 0 auto; width: 200px"
+                />
+
+                <h3 contenteditable="true" id="danisman2Isim">Remzi ŞEKER</h3>
+                <input
+                  type="text"
+                  id="danisman2Email"
+                  placeholder="E-posta girin"
+                  value="remzi.seker@gebze.bel.tr"
+                />
+                <input
+                  type="text"
+                  id="danisman2Telefon"
+                  placeholder="Telefon girin"
+                  value=" 0 262 642 04 30"
+                />
+                <input
+                  type="file"
+                  id="danisman2Upload"
+                  accept="image/*"
+                  style="display: none"
+                  onchange="previewImage(event, 'danisman2')"
+                />
+                <button
+                  class="degistir-btn"
+                  onclick="document.getElementById('danisman2Upload').click()"
+                >
+                  Fotoğraf Değiştir
+                </button>
+
+                <div class="button-group">
+                  <button class="kaydet" onclick="saveData('danisman2')">
+                    Kaydet
+                  </button>
+                  <button class="iptal" onclick="cancelData('danisman2')">
+                    İptal
+                  </button>
+                </div>
+              </div>
+              <footer style="height: 200px; opacity: 0"></footer>
+
+              <!-- latest jquery-->
+              <script src="../assets/js/jquery-3.2.1.min.js"></script>
+              <!-- Bootstrap js-->
+              <script src="../assets/js/bootstrap/popper.min.js"></script>
+              <script src="../assets/js/bootstrap/bootstrap.js"></script>
+              <!-- feather icon js-->
+              <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+              <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+              <!-- Sidebar jquery-->
+              <script src="../assets/js/sidebar-menu.js"></script>
+              <script src="../assets/js/config.js"></script>
+              <!-- Plugins JS start-->
+
+              <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
+              <script src="../assets/js/typeahead/typeahead.custom.js"></script>
+              <script src="../assets/js/typeahead-search/handlebars.js"></script>
+              <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
+              <!-- Plugins JS Ends-->
+              <!-- Theme js-->
+              <script src="../assets/js/script.js"></script>
+              <!-- Bootstrap JS + Popper -->
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+              <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
+              <!-- Plugin used-->
+              <script>
+                function saveData(id) {
+                  const email = document.getElementById(id + "Email");
+                  const tel = document.getElementById(id + "Telefon");
+                  const isim = document.getElementById(id + "Isim");
+                  const img = document.getElementById(id + "Image");
+                  if (!email.value.trim()) {
+                    alert("E-posta alanı boş bırakılamaz!");
+                    email.focus();
+                    return;
+                  }
+                  if (!tel.value.trim()) {
+                    alert("Telefon alanı boş bırakılamaz!");
+                    tel.focus();
+                    return;
+                  }
+                  // localStorage'a kaydet
+                  const data = {
+                    isim: isim.innerText,
+                    email: email.value,
+                    tel: tel.value,
+                    img: img.src,
+                  };
+                  localStorage.setItem(id + "_data", JSON.stringify(data));
+                  alert("Bilgiler kaydedildi!");
+                }
+
+                // Sayfa açıldığında localStorage'dan yükle
+                function loadData(id) {
+                  const dataStr = localStorage.getItem(id + "_data");
+                  if (dataStr) {
+                    const data = JSON.parse(dataStr);
+                    document.getElementById(id + "Isim").innerText =
+                      data.isim || "";
+                    document.getElementById(id + "Email").value =
+                      data.email || "";
+                    document.getElementById(id + "Telefon").value =
+                      data.tel || "";
+                    if (data.img)
+                      document.getElementById(id + "Image").src = data.img;
+                  }
+                }
+                // Tüm danışmanlar için yükle
+                window.addEventListener("DOMContentLoaded", function () {
+                  loadData("danisman1");
+                  loadData("danisman2");
+                });
+              </script>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-  <script>
-    function previewImage(event, id) {
-      const reader = new FileReader();
-      reader.onload = function () {
-        document.getElementById(id + 'Image').src = reader.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-    function saveData(id) {
-      const isim = document.getElementById(id + 'Isim').value;
-      const email = document.getElementById(id + 'Email').value;
-      const tel = document.getElementById(id + 'Telefon').value;
-      const img = document.getElementById(id + 'Image').src;
-      localStorage.setItem(id + '_isim', isim);
-      localStorage.setItem(id + '_email', email);
-      localStorage.setItem(id + '_tel', tel);
-      localStorage.setItem(id + '_img', img);
-      alert('Bilgiler kaydedildi: ' + isim);
-    }
-
-    function cancelData(id) {
-      document.getElementById(id + 'Isim').value = localStorage.getItem(id + '_isim') || '';
-      document.getElementById(id + 'Email').value = localStorage.getItem(id + '_email') || '';
-      document.getElementById(id + 'Telefon').value = localStorage.getItem(id + '_tel') || '';
-      document.getElementById(id + 'Image').src = localStorage.getItem(id + '_img') || './' + id + '.jpg';
-      alert('Değişiklikler geri alındı');
-    }
-
-    window.onload = function () {
-      for (let i = 1; i <= 2; i++) {
-        const id = 'danisman' + i;
-        if (localStorage.getItem(id + '_isim')) document.getElementById(id + 'Isim').value = localStorage.getItem(id + '_isim');
-        if (localStorage.getItem(id + '_email')) document.getElementById(id + 'Email').value = localStorage.getItem(id + '_email');
-        if (localStorage.getItem(id + '_tel')) document.getElementById(id + 'Telefon').value = localStorage.getItem(id + '_tel');
-        if (localStorage.getItem(id + '_img')) document.getElementById(id + 'Image').src = localStorage.getItem(id + '_img');
-      }
-    }
-  </script>
-</body>
+  </body>
 </html>
