@@ -2,6 +2,145 @@
 <html lang="tr">
   <head>
     <style>
+      #ekleBtn:focus {
+        outline: none;
+      }
+      #silBtn:focus {
+        outline: none;
+      }
+      #silBtn {
+        display: none;
+      }
+      #submit,
+      .btn-secondary {
+        min-width: 90px;
+        max-width: 120px;
+      }
+
+      .dropdown-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+
+      .müdürlükButton {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 5px;
+      }
+
+      .müdürlük-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%; /* ikondan hemen sonra */
+        right: 0;
+        background-color: white;
+        border: 1px solid #ccc;
+        z-index: 999;
+        min-width: 100px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      .müdürlük-dropdown button {
+        display: block;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 8px 10px;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .müdürlük-dropdown button:hover {
+        background-color: #f1f1f1;
+      }
+      .müdürlükButton:focus {
+        outline: none;
+      }
+      .müdürlükButton {
+        width: 50px !important;
+        height: 35px;
+        border: none;
+        background-color: #35619c64 !important;
+        border-radius: 50px !important;
+        font-size: 1px;
+        cursor: pointer;
+        margin-left: 10px;
+
+        transition: background-color 0.3s ease;
+      }
+      .adresTablosu {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        table-layout: fixed;
+      }
+
+      .adresTablosu th {
+        text-align: left;
+        padding: 12px 10px;
+        font-weight: bold;
+        background-color: #57565636;
+      }
+
+      .adresTablosu td {
+        padding: 14px 10px;
+        vertical-align: middle;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .adresTablosu td.konum {
+        text-align: center;
+        width: 50px;
+      }
+
+      .adresTablosu img {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+      }
+
+      .adresTablosu svg {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .editButton {
+        padding: 6px 12px;
+        background: #35619c64;
+        border: none;
+        cursor: pointer;
+        float: right;
+        border-radius: 7px;
+      }
+      .editButton:hover {
+        background: #35619c9c;
+        color: white;
+        transition: background-color 0.3s ease;
+      }
+      .editButton:focus {
+        outline: none;
+        border: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+
+      .adresTablosu tr:last-child td {
+        border-bottom: none;
+      }
+
+      .DHNDüzenle {
+        margin-left: 10px;
+        margin-right: 200px;
+        margin-top: 15px;
+        width: 97.5%;
+      }
+
       .adresButton {
         width: 40px;
         height: 40px;
@@ -152,7 +291,7 @@
         list-style: none;
         padding: 0;
         margin-top: 20px;
-        max-height: 500px; /* opsiyonel */
+        max-height: 500px;
       }
 
       #mudurlukListe li {
@@ -160,7 +299,7 @@
         margin-bottom: 10px;
         padding: 10px;
         border: 1px solid #ccc;
-        break-inside: avoid; /* li parçalanmasın diye */
+        break-inside: avoid;
       }
 
       .remove {
@@ -520,9 +659,7 @@
                         <a href="index.html"><i data-feather="home"></i></a>
                       </li>
                       <li class="breadcrumb-item active">
-                        <a href="Hizmetler - Halka Acik Alanlar.html"
-                          >İletişim</a
-                        >
+                        <a href="İletisim.html">İletişim</a>
                       </li>
                     </ol>
                   </div>
@@ -533,601 +670,577 @@
 
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler" style="margin-top: 80px">
-            <div class="container-sm" style="margin: auto">
-              <!-- Kart Başlangıcı -->
-              <div
-                class="d-flex align-items-start gap-4 mb-4 crd"
-                style="
-                  background: #fff;
-                  padding: 20px;
-                  border-radius: 10px;
-                  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-                "
-              >
-                <!-- Sol: Resim -->
-                <div style="flex: 0 0 300px">
-                  <img
-                    src="../assets/images/contact-img/gebzeBelediyeBaskanligi.jpeg"
-                    class="img-fluid rounded"
-                    alt="gebzeBelediyeBaskanligi"
-                    style="width: 100%; height: auto"
-                  />
-                </div>
+            <table
+              class="adresTablosu"
+              cellpadding="0"
+              cellspacing="0"
+              style="
+                width: 100%;
+                border-collapse: collapse;
+                background-color: #d8d8d841;
+                border-radius: 10px;
+                overflow: hidden;
+                font-family: Arial, sans-serif;
+              "
+            >
+              <thead>
+                <tr>
+                  <th scope="col" colspan="1">Bina Resmi</th>
+                  <th scope="col" colspan="1" style="margin-left: 10px">
+                    Konum
+                  </th>
+                  <th scope="col" colspan="5">Bina İsmi</th>
+                  <th scope="col" colspan="5"></th>
+                </tr>
+              </thead>
 
-                <div
-                  style="
-                    flex: 1;
-                    padding-left: 20px;
-                    position: relative;
-                    min-height: 40px;
-                  "
-                >
-                  <div style="position: absolute; top: -10px; right: -10px">
-                    <button class="adresButton">
-                      <img
-                        src="../assets/images/window.png"
-                        alt="ikon"
-                        style="width: 24px; height: 24px"
-                      />
-                    </button>
-                  </div>
-                  <h4 style="margin-bottom: 16px">Gebze Belediye Başkanlığı</h4>
-
-                  <p style="margin-bottom: 12px; font-size: 16px">
-                    <strong>Adres:</strong>
-                    <a
-                      href="https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.8057953,29.4359547,1453m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
-                      target="_blank"
-                      style="text-decoration: none; color: #246bfd"
-                      >Güzeller Mah. Belediye Cad. No:1, 41400 Gebze /
-                      Kocaeli</a
-                    >
-                  </p>
-                  <p style="margin-bottom: 12px; font-size: 14px">
-                    <strong>Telefon Numarası:</strong>
-
-                    0 262 642 04 30
-                  </p>
-
-                  <!-- Müdürlükler -->
-                  <p style="margin-bottom: 8px">
-                    <strong>Binada Bulunan Müdürlükler:</strong>
-                  </p>
-
-                  <div
-                    style="
-                      display: grid;
-                      grid-template-columns: repeat(3, 1fr);
-                      gap: 16px;
-                    "
+              <tbody>
+                <tr class="Belediyeler">
+                  <td scope="col" colspan="1">
+                    <img
+                      src="../assets/images/contact-img/gebzeBelediyeBaskanligi.jpeg"
+                      alt="Gebze Belediyesi"
+                      style="width: 40px; height: 40px; margin-left: 10px"
+                    />
+                  </td>
+                  <td
+                    style="margin-left: 1px; width: 40px"
+                    colspan="1"
+                    id="locLink"
                   >
-                    <!-- 1. Kolon -->
-                    <ul
-                      style="padding-left: 20px; list-style-type: disc"
-                      class="ulMudurBaskanlik"
+                    <a
+                      href="https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.8059682,29.4382733,514m/data=!3m1!1e3!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
                     >
-                      <li>Ruhsat ve Denetim Müdürlüğü</li>
-                      <li>İmar ve Şehircilik Müdürlüğü</li>
-                      <li>Plan ve Proje Müdürlüğü</li>
-                      <li>İnsan kaynakları ve Eğitim Müdürlüğü</li>
-                      <li>Numarataj Şefliği</li>
-                    </ul>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="black"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5
+      c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+                        />
+                      </svg>
+                    </a>
+                  </td>
+                  <td colspan="5">Gebze Belediye Başkanlığı</td>
 
-                    <!-- 2. Kolon -->
-                    <ul
-                      style="padding-left: 20px; list-style-type: disc"
-                      class="ulMudurBaskanlik"
+                  <td style="text-align: right" colspan="5">
+                    <button
+                      id="gebzeBelBaskanligi"
+                      class="editButton"
+                      onclick="gebzeBelediyeleri('../assets/images/contact-img/gebzeBelediyeBaskanligi.jpeg', 'https://www.google.com/maps/place/Gebze+Belediye+Ba%C5%9Fkanl%C4%B1%C4%9F%C4%B1/@40.805905,29.4376201,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D', 'Gebze Belediye Başkanlığı','Güzeller Mahallesi, Belediye Caddesi, No:1 41400 Gebze/Kocaeli', '0 262 642 04 30 ','gebze@gebze.bel.tr','gebzeBelBaskanligi' , this)"
                     >
-                      <li>Hukuk İşleri Müdürlüğü</li>
-                      <li>Özel Kalem Müdürlüğü</li>
-                      <li>Destek Hizmet Müdürlüğü</li>
-                      <li>Mali Hizmetler Müdürlüğü</li>
-                      <li>İstihdam Ofisi</li>
-                    </ul>
+                      Düzenle
+                    </button>
+                  </td>
+                </tr>
 
-                    <!-- 3. Kolon -->
-                    <ul
-                      style="padding-left: 20px; list-style-type: disc"
-                      class="ulMudurBaskanlik"
-                    >
-                      <li>Basın Yayın ve Halkla İlişkiler Müdürlüğü</li>
-                      <li>Emlak ve İstimlak Müdürlüğü</li>
-                      <li>Evrak Kayıt Servisi</li>
-                      <li>Bilgi İşlem Müdürlüğü</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="container-sm" style="margin: auto">
-                <!-- Kart Başlangıcı -->
-                <div
-                  class="d-flex align-items-start gap-4 mb-4 crd"
-                  style="
-                    background: #fff;
-                    padding: 20px;
-                    border-radius: 10px;
-                    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-                  "
-                >
-                  <img src="" alt="" />
-                  <!-- Sol: Resim -->
-                  <div style="flex: 0 0 300px">
+                <tr class="Belediyeler">
+                  <td scope="col" colspan="1">
                     <img
                       src="../assets/images/mevlanaEkHizmet.jpeg"
-                      class="img-fluid rounded"
-                      alt="gebzeBelediyeBaskanligi"
-                      style="width: 100%; height: auto"
+                      alt="Mevlana Ek Hizmet Binası"
+                      style="width: 40px; height: 40px; margin-left: 10px"
                     />
-                  </div>
-
-                  <div
-                    style="
-                      flex: 1;
-                      padding-left: 20px;
-                      position: relative;
-                      min-height: 40px;
-                    "
+                  </td>
+                  <td
+                    style="margin-right: 3px; width: 40px"
+                    colspan="1"
+                    id="locLink"
                   >
-                    <div style="position: absolute; top: -10px; right: -10px">
-                      <button class="adresButton">
-                        <img
-                          src="../assets/images/window.png"
-                          alt="ikon"
-                          style="width: 24px; height: 24px"
+                    <a
+                      href="https://www.google.com/maps/place/T.C.+GEBZE+BELED%C4%B0YES%C4%B0+EK+H%C4%B0ZMET+B%C4%B0NASI/@40.8104203,29.4228192,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb219420d2a451:0x1ffbb472e940fc95!8m2!3d40.8104203!4d29.4253941!16s%2Fg%2F11r3nb7p3x?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="black"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5
+      c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
                         />
-                      </button>
-                    </div>
+                      </svg>
+                    </a>
+                  </td>
+                  <td colspan="5" style="margin-left: 10px">
+                    Mevlana Ek Hizmet Binası
+                  </td>
 
-                    <h4 style="margin-bottom: 12px">
-                      T.C. GEBZE BELEDİYESİ MEVLANA EK HİZMET BİNASI
-                    </h4>
-
-                    <p style="margin-bottom: 12px; font-size: 16px">
-                      <strong>Adres:</strong>
-                      <a
-                        href="https://www.google.com/maps/place/T.C.+GEBZE+BELED%C4%B0YES%C4%B0+EK+H%C4%B0ZMET+B%C4%B0NASI/@40.8104203,29.4228192,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb219420d2a451:0x1ffbb472e940fc95!8m2!3d40.8104203!4d29.4253941!16s%2Fg%2F11r3nb7p3x?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
-                        target="_blank"
-                        style="text-decoration: none; color: #246bfd"
-                        >Mevlana, Issıkgöl Cd. No:111, 41400 Gebze/Kocaeli</a
-                      >
-                    </p>
-                    <p style="margin-bottom: 12px; font-size: 14px">
-                      <strong>Telefon Numarası:</strong>
-
-                      0 262 642 04 30
-                    </p>
-
-                    <!-- Müdürlükler -->
-                    <p style="margin-bottom: 8px">
-                      <strong>Binada Bulunan Müdürlükler:</strong>
-                    </p>
-
-                    <div
-                      style="
-                        display: grid;
-                        grid-template-columns: repeat(3, 1fr);
-                        gap: 16px;
-                      "
+                  <td style="text-align: right" colspan="5">
+                    <button
+                      id="gebzeBelMevlana"
+                      class="editButton"
+                      onclick="gebzeBelediyeleri('../assets/images/mevlanaEkHizmet.jpeg', 'https://www.google.com/maps/place/T.C.+GEBZE+BELED%C4%B0YES%C4%B0+EK+H%C4%B0ZMET+B%C4%B0NASI/@40.8104202,29.4205232,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb219420d2a451:0x1ffbb472e940fc95!8m2!3d40.8104203!4d29.4253941!16s%2Fg%2F11r3nb7p3x?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D', 'Mevlana Ek Hizmet Binası','Mevlana, Issıkgöl Cd. No:111, 41400 Gebze/Kocaeli','0 262 642 04 30 ','gebze@gebze.bel.tr' ,'gebzeBelMevlana',this)"
                     >
-                      <!-- 1. Kolon -->
-                      <ul
-                        style="padding-left: 20px; list-style-type: disc"
-                        class="ulMudurMevlana"
-                      >
-                        <li>Makina İkmal Bakım Onarım Servisi</li>
-                        <li>Otobüs İşleri Servisi</li>
-                        <li>Temizlik İşleri Müdürlüğü</li>
-                        <li>Teftiş Kurulu Müdürlüğü</li>
-                        <li>Park ve Bahçeler Müdürlüğü</li>
-                      </ul>
-
-                      <!-- 2. Kolon -->
-                      <ul
-                        style="padding-left: 20px; list-style-type: disc"
-                        class="ulMudurMevlana"
-                      >
-                        <li>İşletme ve İştirakler Müdürlüğü</li>
-                        <li>Zabıta Müdürlüğü</li>
-                        <li>Mezarlıklar Müdürlüğü</li>
-                        <li>Trafik ve Eğitim Okulu Zabıta Amirliği</li>
-                        <li>Veteriner İşleri Müdürlüğü</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="container-sm" style="margin: auto">
-                  <!-- Kart Başlangıcı -->
-                  <div
-                    class="d-flex align-items-start gap-4 mb-4 crd"
-                    style="
-                      background: #fff;
-                      padding: 20px;
-                      border-radius: 10px;
-                      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-                    "
+                      Düzenle
+                    </button>
+                  </td>
+                </tr>
+                <tr class="Belediyeler">
+                  <td scope="col" colspan="1">
+                    <img
+                      src="../assets/images/KentMeydanı.jpeg"
+                      alt="Gebze Belediye Başkanlığı"
+                      style="width: 40px; height: 40px; margin-left: 10px"
+                    />
+                  </td>
+                  <td
+                    style="padding-right: 10px; width: 40px"
+                    colspan="1"
+                    id="locLink"
                   >
-                    <!-- Sol: Resim -->
-                    <div style="flex: 0 0 300px">
-                      <img
-                        src="../assets/images/KentMeydanı.jpeg"
-                        class="img-fluid rounded"
-                        alt="gebzeBelediyeBaskanligi"
-                        style="width: 100%; height: auto"
-                      />
-                      <img src="" alt="" />
-                    </div>
-
-                    <div
-                      style="
-                        flex: 1;
-                        padding-left: 20px;
-                        position: relative;
-                        min-height: 40px;
-                      "
+                    <a
+                      href="https://www.google.com/maps/place/Hac%C4%B1halil,+Gebze+Belediyesi,+41400+Gebze%2FKocaeli/@40.7962465,29.4290811,2907m/data=!3m1!1e3!4m14!1m7!3m6!1s0x14cb2088efaa11d3:0x575a512b11a2fd35!2zR2ViemUgQmVsZWRpeWUgQmHFn2thbmzEscSfxLE!8m2!3d40.805905!4d29.440195!16s%2Fg%2F1tk69xgw!3m5!1s0x14cb2088efaa11cd:0x30c0f205996fbb24!8m2!3d40.7979269!4d29.4316652!16s%2Fg%2F11bymvkx0g?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3Ds"
+                      target="_blank"
                     >
-                      <div style="position: absolute; top: -10px; right: -10px">
-                        <button class="adresButton">
-                          <img
-                            src="../assets/images/window.png"
-                            alt="ikon"
-                            style="width: 24px; height: 24px"
-                          />
-                        </button>
-                      </div>
-
-                      <h4 style="margin-bottom: 16px">Gebze Belediyesi</h4>
-
-                      <p style="margin-bottom: 12px; font-size: 16px">
-                        <strong>Adres:</strong>
-                        <a
-                          href="https://www.google.com/maps/place/Gebze+Kent+Meydan%C4%B1/@40.798966,29.4281553,666m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14cb2166b4804e33:0x7e61a156df7f1291!8m2!3d40.798966!4d29.4307302!16s%2Fg%2F11q9hw3d5z?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
-                          target="_blank"
-                          style="text-decoration: none; color: #246bfd"
-                          >Hacıhalil, 1222/2. Sk. No:4, 41400 Gebze/Kocaeli</a
-                        >
-                      </p>
-                      <p style="margin-bottom: 12px; font-size: 14px">
-                        <strong>Telefon Numarası:</strong>
-
-                        0 262 642 04 30
-                      </p>
-
-                      <!-- Müdürlükler -->
-                      <p style="margin-bottom: 8px">
-                        <strong>Binada Bulunan Müdürlükler:</strong>
-                      </p>
-
-                      <div
-                        style="
-                          display: grid;
-                          grid-template-columns: repeat(3, 1fr);
-                          gap: 16px;
-                        "
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="black"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <!-- 1. Kolon -->
-                        <ul
-                          style="padding-left: 20px; list-style-type: disc"
-                          class="ulMudurBelediye"
-                        >
-                          <li>Kültür İşleri Müdürlüğü</li>
-                          <li>Evlendirme Memurluğu</li>
-                          <li>Sosyal Destek Hizmetleri Müdürlüğü</li>
-                          <li>Yazı İşleri Müdürlüğü</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                        <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5
+      c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+                        />
+                      </svg>
+                    </a>
+                  </td>
 
-                <footer style="height: 200px; opacity: 0"></footer>
+                  <td colspan="5" class="">Gebze Belediyesi</td>
 
-                <!-- latest jquery-->
-                <script src="../assets/js/jquery-3.2.1.min.js"></script>
-                <!-- Bootstrap js-->
-                <script src="../assets/js/bootstrap/popper.min.js"></script>
-                <script src="../assets/js/bootstrap/bootstrap.js"></script>
-                <!-- feather icon js-->
-                <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-                <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-                <!-- Sidebar jquery-->
-                <script src="../assets/js/sidebar-menu.js"></script>
-                <script src="../assets/js/config.js"></script>
-                <!-- Plugins JS start-->
-                <script src="../assets/js/chart/chartist/chartist.js"></script>
-                <script src="../assets/js/chart/knob/knob.min.js"></script>
-                <script src="../assets/js/chart/knob/knob-chart.js"></script>
-                <script src="../assets/js/prism/prism.min.js"></script>
-                <script src="../assets/js/clipboard/clipboard.min.js"></script>
-                <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
-                <script src="../assets/js/counter/jquery.counterup.min.js"></script>
-                <script src="../assets/js/counter/counter-custom.js"></script>
-                <script src="../assets/js/custom-card/custom-card.js"></script>
-                <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
-                <script src="../assets/js/dashboard/default.js"></script>
-                <script src="../assets/js/notify/index.js"></script>
-                <script src="../assets/js/typeahead/handlebars.js"></script>
-                <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
-                <script src="../assets/js/typeahead/typeahead.custom.js"></script>
-                <script src="../assets/js/chat-menu.js"></script>
-                <script src="../assets/js/height-equal.js"></script>
-                <script src="../assets/js/tooltip-init.js"></script>
-                <script src="../assets/js/typeahead-search/handlebars.js"></script>
-                <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
-                <!-- Plugins JS Ends-->
-                <!-- Theme js-->
-                <script src="../assets/js/script.js"></script>
-                <!-- Bootstrap JS + Popper -->
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                  <td style="text-align: right" colspan="5">
+                    <button
+                      id="gebzeBelMeydan"
+                      class="editButton"
+                      onclick="gebzeBelediyeleri('../assets/images/KentMeydanı.jpeg', 'https://www.google.com/maps/place/Hac%C4%B1halil,+Gebze+Belediyesi,+41400+Gebze%2FKocaeli/@40.7976694,29.4321076,15.25z/data=!4m15!1m8!3m7!1s0x14cb219420d2a451:0x1ffbb472e940fc95!2zVC5DLiBHRUJaRSBCRUxFRMSwWUVTxLAgRUsgSMSwWk1FVCBCxLBOQVNJ!8m2!3d40.8104203!4d29.4253941!10e5!16s%2Fg%2F11r3nb7p3x!3m5!1s0x14cb2088efaa11cd:0x30c0f205996fbb24!8m2!3d40.7979269!4d29.4316652!16s%2Fg%2F11bymvkx0g?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D', 'Gebze Belediyesi ','Hacıhalil, 1222/2. Sk. No:4, 41400 Gebze/Kocaeli', '0 262 642 04 30', 'gebze@gebze.bel.tr','gebzeBelMeydan', this)"
+                    >
+                      Düzenle
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-                <!-- Plugin used-->
-                <script>
-                  function toggleMenu(button) {
-                    const menu = button.nextElementSibling;
-                    const allMenus = document.querySelectorAll(".islem-menu");
+          <footer style="height: 200px; opacity: 0"></footer>
 
-                    allMenus.forEach((m) => {
-                      if (m !== menu) m.style.display = "none";
-                    });
+          <!-- latest jquery-->
+          <script src="../assets/js/jquery-3.2.1.min.js"></script>
+          <!-- Bootstrap js-->
+          <script src="../assets/js/bootstrap/popper.min.js"></script>
+          <script src="../assets/js/bootstrap/bootstrap.js"></script>
+          <!-- feather icon js-->
+          <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+          <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+          <!-- Sidebar jquery-->
+          <script src="../assets/js/sidebar-menu.js"></script>
+          <script src="../assets/js/config.js"></script>
+          <!-- Plugins JS start-->
+          <script src="../assets/js/chart/chartist/chartist.js"></script>
+          <script src="../assets/js/chart/knob/knob.min.js"></script>
+          <script src="../assets/js/chart/knob/knob-chart.js"></script>
+          <script src="../assets/js/prism/prism.min.js"></script>
+          <script src="../assets/js/clipboard/clipboard.min.js"></script>
+          <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
+          <script src="../assets/js/counter/jquery.counterup.min.js"></script>
+          <script src="../assets/js/counter/counter-custom.js"></script>
+          <script src="../assets/js/custom-card/custom-card.js"></script>
+          <script src="../assets/js/notify/bootstrap-notify.min.js"></script>
+          <script src="../assets/js/dashboard/default.js"></script>
+          <script src="../assets/js/notify/index.js"></script>
+          <script src="../assets/js/typeahead/handlebars.js"></script>
+          <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
+          <script src="../assets/js/typeahead/typeahead.custom.js"></script>
+          <script src="../assets/js/chat-menu.js"></script>
+          <script src="../assets/js/height-equal.js"></script>
+          <script src="../assets/js/tooltip-init.js"></script>
+          <script src="../assets/js/typeahead-search/handlebars.js"></script>
+          <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
+          <!-- Plugins JS Ends-->
+          <!-- Theme js-->
+          <script src="../assets/js/script.js"></script>
+          <!-- Bootstrap JS + Popper -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-                    menu.style.display =
-                      menu.style.display === "block" ? "none" : "block";
-                  }
+          <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
+          <!-- Plugin used-->
+          <script>
+            function toggleMenu(button) {
+              const menu = button.nextElementSibling;
+              const allMenus = document.querySelectorAll(".islem-menu");
 
-                  // Örnek fonksiyonlar
-                </script>
-                <script>
-                  function toggleDropdown(btn) {
-                    const menu = btn.nextElementSibling;
+              allMenus.forEach((m) => {
+                if (m !== menu) m.style.display = "none";
+              });
 
-                    // Diğer tüm açık menüleri kapat
-                    document
-                      .querySelectorAll(".dropdown-menu")
-                      .forEach((el) => {
-                        if (el !== menu) el.style.display = "none";
-                      });
+              menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+            }
 
-                    // Tıklanan menüyü aç/kapat
-                    menu.style.display =
-                      menu.style.display === "block" ? "none" : "block";
-                  }
+            // Örnek fonksiyonlar
+          </script>
 
-                  // Sayfa dışında bir yere tıklanınca menü kapanır
-                  document.addEventListener("click", function (e) {
-                    if (!e.target.closest(".dropdown-container")) {
-                      document
-                        .querySelectorAll(".dropdown-menu")
-                        .forEach((el) => (el.style.display = "none"));
-                    }
-                  });
-                </script>
-                <script>
-                  function addEdit(
-                    img,
-                    title,
-                    addressLink,
-                    addressTitle,
-                    phone,
-                    photoId,
-                    listMudurluk
-                  ) {
-                    console.log(
-                      "crd length:",
-                      document.getElementsByClassName("crd").length
-                    );
+          <script>
+            window.addEventListener("DOMContentLoaded", () => {
+              const silButonlari = document.querySelectorAll(".silButonu");
+              console.log(
+                "Sil butonları bulundu mu? Sayısı:",
+                silButonlari.length
+              );
 
-                    const crd = document.getElementsByClassName("crd")[photoId];
-                    const mudurlukList =
-                      document.getElementsByClassName(listMudurluk);
+              silButonlari.forEach((btn, i) => {
+                console.log(
+                  `Buton ${i + 1} display stili:`,
+                  window.getComputedStyle(btn).display
+                );
+              });
 
-                    let mudurluk = [];
+              // Görünür yapmayı dene
+              silButonlari.forEach((btn) => {
+                btn.style.setProperty("display", "inline-block", "important");
+              });
+            });
+          </script>
 
-                    for (let i = 0; i < mudurlukList.length; i++) {
-                      const liElements =
-                        mudurlukList[i].getElementsByTagName("li");
+          <!-- DÜZENLE-->
+          <script>
+            var oldContent = "";
 
-                      for (let j = 0; j < liElements.length; j++) {
-                        mudurluk.push(liElements[j].textContent.trim());
-                      }
-                    }
+            function gebzeBelediyeleri(
+              imgSRC,
+              locLink,
+              binaİsmi,
+              adres,
+              telefon,
+              email,
+              belId,
+              element
+            ) {
+              const rowIndex = element.closest("tr").rowIndex;
+              sessionStorage.setItem("rowIndex", rowIndex);
+              let content = document.getElementById("icerikler");
+              oldContent = content.innerHTML;
+              // Müdürlük dizisini seç
+              let mudurlukler = [];
+              if (belId === "gebzeBelBaskanligi")
+                mudurlukler = gebzeBelediyesiBaşkanlığı;
+              else if (belId === "gebzeBelMevlana")
+                mudurlukler = mevlanaEkHizmet;
+              else mudurlukler = gebzeBelediyesi;
 
-                    crd.innerHTML = `
-                    <div style="flex: 0 0 300px">
+              // Müdürlük inputlarını oluştur
+              let mudurlukInputs = '<div class="row">';
+
+              mudurlukler.forEach((m, i) => {
+                mudurlukInputs += `
+              <div class="col-md-4 mb-3">
+              <label class="form-label"></label>
+              <input type="text" class="form-control" value="${m}" required/>
+              </div>
+ 
+            `;
+              });
+              mudurlukInputs += "</div>";
+              content.innerHTML = `
+              <div class="d-flex justify-content-center">
+            <div
+              class="card"
+              style="
+                box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);
+                width: 95%;
+              "
+            >
+              <div class="card-body">
+                <form id="editBelForm">
+                  <div class="d-flex">
+                    <div>
                       <img
-                        src="${img}"
+                        id="image"
+                        src="${imgSRC}"
                         class="img-fluid rounded preview-img"
-                        alt="${title}"
-                        style="width: 100%; height: 230px"
+                        alt="Fotoğraf Önizleme"
+                        style="width: 70%; height: 270px"
                       />
                       <label
-                        for="resim-${photoId}"
+                        for="resim"
                         class="btn btn-outline-primary mt-2"
-                        style="width: 100%"
+                        style="width: 70%"
+                        >Fotoğraf Seç</label
                       >
-                        Fotoğraf Seç
-                      </label>
                       <input
+                        id="resim"
                         type="file"
                         name="resim"
-                        id="resim-${photoId}"
                         style="display: none"
                         accept="image/*"
-                        class="resim-input"
+                        class="resim-girdi"
                       />
                     </div>
-                    <div style="flex: 1; padding-left: 20px">
-                      <h4 style="margin-bottom: 16px">
+                    <div style="margin-left: -100px; flex: 1">
+                      <div class="mb-3">
+                        <label class="form-label">Bina İsmi</label>
                         <input
                           type="text"
-                          name="title"
-                          id="title"
-                          value="${title}"
-                          class="input"
-                          style="width:600px"
+                          class="form-control"
+                          id="binaİsmi"
+                          value="${binaİsmi}"
+                          placeholder="Yeni Bina İsmi Giriniz"
+                          required
                         />
-                      </h4>
-
-                      <p style="margin-bottom: 12px; font-size: 16px">
-                        <strong>Adres:</strong>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Bina Adresi</label>
                         <input
                           type="text"
-                          name="addressLink"
-                          id="addressLink-${photoId}"
-                          style="width: 58%"
-                          placeholder="Adres Linki"
-                          class="input"
-                          value="${addressLink}"
-                        /><img
-                          src="../assets/images/rubbishSvg.svg"
-                          style="margin-left: 4px"
-                          width="18px"
-                          height="18px"
-                          alt="remove"
-                          class="remove"
-                          onclick="document.getElementById('addressLink-${photoId}').value=''"
-                        /><br />
-
-                        <input
-                          type="text"
-                          placeholder="Adres Başlığı"
-                          value="${addressTitle}"
-                          id="addressTitle-${photoId}"
-                          style="
-                            margin-top: 5px !important;
-                            margin-left: 60px !important;
-                            width: 58% !important;
-                          "
-                          class="input"
-                        /><img
-                          src="../assets/images/rubbishSvg.svg"
-                          style="margin-left: 4px;"
-                          width="18px"
-                          height="18px"
-                          alt="remove"
-                          class="remove"
-                          onclick="document.getElementById('addressTitle-${photoId}').value=''"
+                          class="form-control"
+                          id="adres"
+                          value="${adres}"
+                          placeholder="Yeni Bina Adresi Giriniz"
+                          required
                         />
-                      </p>
-                      <p style="margin-bottom: 12px; font-size: 14px">
-                        <strong>Telefon Numarası:</strong>
-
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Telefon Numarası</label>
                         <input
                           type="text"
-                          name="phone"
-                          id="phone"
-                          placeholder="Telefon Numarası"
-                          value="${phone}"
-                          style="width: 125px !important"
-                          class="input"
+                          class="form-control"
+                          id="telefon"
+                          value="${telefon}"
+                          placeholder="Yeni Telefon Numarası Giriniz"
+                          required
                         />
-                      </p>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">eMail</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="email"
+                          value="${email}"
+                          placeholder="Yeni eMail Giriniz"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Konum Linki</label>
+                    <textarea class="form-control" id="loc" rows="3" required>${locLink}</textarea
+                    >
+                  </div>
 
-                      <!-- Müdürlükler -->
-                      <p style="margin-bottom: 8px">
-                        <strong>Binada Bulunan Müdürlükler:</strong>
-                        <button
-                          type="button"
-                          class="btn btn-primary add"
-                          style="width: 40px; padding: 3px; "
-                        >
-                          Ekle
-                        </button>
-                      </p>
+                  <hr />
+            
+                  
+                  <div class="mb-3 d-flex align-items-center">
+                  <h5 class="mb-0 me-3">Bağlı Müdürlükler</h5>
+                            
+                  <div class="dropdown-wrapper">
+                  <button type="button" class="müdürlükButton" onclick="toggleDropdown()">
+                    <img src="../assets/images/window.png" alt="Ekle" style="height: 20px;" />
+                  </button>
 
-                        <div
-                          style="
-                            display: grid;
-                            grid-template-columns: repeat(3, 1fr);
-                            gap: 16px;
-                            list-style-type:none;
-                          "
-                          class="mudurlukUl"
-                        >
-                        </div>
-                        `;
+                  <div id="mudurlukDropdown" class="müdürlük-dropdown">
+                  <button type="button" onclick="ekle()" id="ekleBtn">Ekle</button>
+                  <button id="silBtn" type="button" onclick="sil()" >Sil</button>
+                 </div>
+                 </div>
+                 
+               </div>
+                  </div>
+                  <div class="müdürlükText" id="mudurlukContainer">
+                    ${mudurlukInputs}
+                   </div>
+                
+             <div class="d-flex justify-content-start gap-2 mt-2" style="padding-left: 8px; margin-bottom: 20px;">
+  <button class="btn btn-success" id="submit" type="button" style="padding: 8px 20px; font-size: 15px;">
+    Güncelle
+  </button>
+  <a href="adresDuzenle.html" class="btn btn-secondary" role="button" style="padding: 8px 20px; font-size: 15px; margin-left:2px">
+    İptal
+  </a>
+</div>
+      
 
-                    const mudUl = crd.querySelector(".mudurlukUl");
-                    for (let i = 0; i < mudurluk.length; i++) {
-                      mudUl.innerHTML += `<li style="display: flex; align-items: center; gap: 6px;">
-                      <input
-                      type="text"
-                      name="list"
-                      id="list"
-                      class="input"
-                      value="${mudurluk[i]}"
-                      placeholder="Müdürlük"
-                      style="width: 150px !important"
-                      /><img
-                      src="../assets/images/rubbishSvg.svg"
-                      style="margin-left: 2px"
-                      alt="sil"
-                      width="15px"
-                      height="15px"
-                      class="remove"
-                                />
-                    </li>`;
-                    }
-
-                    document.querySelectorAll(".remove").forEach((btn) => {
-                      btn.addEventListener("click", function () {
-                        const li = this.closest("li");
-                        if (li) {
-                          li.remove();
-                        }
-                      });
-                    });
-
-                    const input = crd.querySelector(".resim-input");
-                    const imgSrc = crd.querySelector(".preview-img");
-
-                    input.addEventListener("change", function () {
-                      const dosya = this.files[0];
-
-                      if (dosya) {
-                        const okuyucu = new FileReader();
-
-                        okuyucu.onload = function (e) {
-                          imgSrc.src = e.target.result;
-                          imgSrc.style.display = "block";
-                        };
-
-                        okuyucu.readAsDataURL(dosya);
-                      }
-                    });
-
-                    const liste = crd.querySelector(".mudurlukUl");
-                    const ekleBtn = crd.querySelector(".add");
-
-                    ekleBtn.addEventListener("click", function () {
-                      const yeniLi = document.createElement("li");
-                      yeniLi.innerHTML = `<input
-                                  type="text"
-                                  name="list"
-                                  id="list"
-                                  class="input"
-                                  placeholder="Müdürlük"
-                                  style="width: 150px !important; list-style-type:none;"
-                                /><img
-                                  src="../assets/images/rubbishSvg.svg"
-                                  style="margin-left: 2px"
-                                  alt="sil"
-                                  width="15px"
-                                  height="15px"
-                                  class="remove"
-                                />`;
-
-                      liste.appendChild(yeniLi);
-
-                      const silBtn = yeniLi.querySelector(".remove");
-                      silBtn.addEventListener("click", function () {
-                        yeniLi.remove();
-                      });
-                    });
-                  }
-                </script>
+            </form>
               </div>
             </div>
           </div>
+          `;
+              yetkiKontrolEt();
+              // Güncelle butonu işlevi
+              document
+                .getElementById("submit")
+                .addEventListener("click", function () {
+                  let title = document.querySelector("#binaİsmi").value;
+                  let kategori = document.querySelector("#adres").value;
+                  let tarih = document.querySelector("#telefon").value;
+                  let icerik = document.querySelector("#email").value;
+                  let link = document.querySelector("#loc").value;
+
+                  document.getElementById("icerikler").innerHTML = oldContent;
+
+                  sessionStorage.removeItem("rowIndex");
+                });
+            }
+
+            // Müdürlük listeleri
+            var gebzeBelediyesiBaşkanlığı = [
+              "Ruhsat ve Denetim Müdürlüğü",
+              "İmar ve Şehircilik Müdürlüğü",
+              "Plan ve Proje Müdürlüğü",
+              "İnsan Kaynakları ve Eğitim Müdürlüğü",
+              "Numarataj Şefliği",
+              "Hukuk İşleri Müdürlüğü",
+              "Özel Kalem Müdürlüğü",
+              "Destek Hizmet Müdürlüğü",
+              "Mali Hizmetler Müdürlüğü",
+              "İstihdam Ofisi",
+              "Basın Yayın ve Halkla İlişkiler Müdürlüğü",
+              "Bilgi İşlem Müdürlüğü",
+              "Emlak ve İstimlak Müdürlüğü",
+              "Evrak Kayıt servisi",
+            ];
+
+            var mevlanaEkHizmet = [
+              "Makina İkmal Bakım Onarım Müdürlüğü",
+              "Otobüs İşleri Servisi",
+              "Park ve Bahçeler Müdürlüğü",
+              "Temizlik İşleri Müdürlüğü",
+              "Teftiş Kurulu Müdürlüğü",
+              "İşletme ve İştirakler Müdürlüğü",
+              "Zabıta Müdürlüğü",
+              "Mezarlık Müdürlüğü",
+              "Trafik Eğitim Okulu Zabıta Amirliği",
+              "Veteriner İşleri Müdürlüğü",
+            ];
+
+            var gebzeBelediyesi = [
+              "Kültür İşleri Müdürlüğü",
+              "Evlendirme Memurluğu",
+              "Sosyal Destek Hizmetleri Müdürlüğü",
+              "Yazı İşleri Müdürlüğü",
+            ];
+          </script>
+          <script>
+            function toggleDropdown() {
+              const menu = document.getElementById("mudurlukDropdown");
+              menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+            }
+
+            // Dışarı tıklanınca kapansın:
+            document.addEventListener("click", function (event) {
+              const dropdown = document.getElementById("mudurlukDropdown");
+              const button = document.querySelector(".müdürlükButton");
+              if (
+                !button.contains(event.target) &&
+                !dropdown.contains(event.target)
+              ) {
+                dropdown.style.display = "none";
+              }
+            });
+          </script>
+          <script>
+            function yetkiKontrolEt() {
+              const kullaniciAdi = prompt("Kullanıcı adınızı girin:");
+              if (!kullaniciAdi) {
+                alert("Kullanıcı adı girilmedi, sayfa yenileniyor.");
+                location.reload();
+                return;
+              }
+              const silButonunuGorebilirler = ["admin"];
+              const silButon = document.getElementById("silBtn");
+              if (!silButon) {
+                console.error("Sil butonu bulunamadı!");
+                return;
+              }
+              if (
+                silButonunuGorebilirler.includes(kullaniciAdi.toLowerCase())
+              ) {
+                silButon.style.display = "inline-block";
+              } else {
+                silButon.style.display = "none";
+              }
+            }
+          </script>
+
+          <script>
+            function ekle() {
+              const container = document.getElementById("mudurlukContainer");
+
+              const inputDiv = document.createElement("div");
+              inputDiv.className = "mb-2";
+
+              const input = document.createElement("input");
+              input.type = "text";
+              input.placeholder = "Yeni müdürlük adı";
+              input.className = "form-control";
+              input.style.maxWidth = "400px";
+
+              inputDiv.appendChild(input);
+              container.appendChild(inputDiv);
+            }
+          </script>
+          <script>
+            function ekle() {
+              const yeniMudurlukAdi = "Yeni Müdürlük";
+              const container = document.querySelector(
+                "#mudurlukContainer .row"
+              );
+              const inputlar = container.querySelectorAll(".form-control");
+
+              // Boş input var mı kontrol et
+              for (let input of inputlar) {
+                if (!input.value.trim()) {
+                  input.value = yeniMudurlukAdi;
+                  return;
+                }
+              }
+
+              // Boş input yoksa yeni input oluştur
+              const yeniDiv = document.createElement("div");
+              yeniDiv.className = "col-md-4 mb-3 w-50";
+              yeniDiv.innerHTML = `
+      <label class="form-label"></label>
+      <input type="text" class="form-control" placeholder="${yeniMudurlukAdi}" />
+    `;
+              container.appendChild(yeniDiv);
+            }
+          </script>
+          <script>
+            function sil() {
+              const container = document.getElementById("mudurlukContainer");
+              const inputs = container.querySelectorAll("input");
+
+              inputs.forEach((input) => {
+                if (input.value.trim() === "") {
+                  input.parentElement.remove(); // input'u saran div'i DOM'dan kaldır
+                }
+              });
+            }
+            // En sona ekle
+            window.sil = function () {
+              const container = document.getElementById("mudurlukContainer");
+              const inputs = container.querySelectorAll("input");
+
+              inputs.forEach((input) => {
+                if (input.value.trim() === "") {
+                  input.parentElement.remove();
+                }
+              });
+            };
+          </script>
         </div>
       </div>
     </div>

@@ -2528,7 +2528,7 @@
               });
             }
 
-            // Uygula butonuna class ile tıklama olayını bağla
+            // Uygula butonuna tıklandığında seçili checkbox'lara göre filtreleme yapar onların içeriğini ekrana getirir
             document.querySelectorAll(".btn-uygula").forEach((btn) => {
               btn.addEventListener("click", function () {
                 const secilenler = Array.from(
@@ -2539,7 +2539,7 @@
               });
             });
 
-            // Sil butonu tüm checkbox'ları temizler
+            // Sil butonu tüm checkbox'ları temizler.
             document.querySelectorAll(".btn-sil").forEach((btn) => {
               btn.addEventListener("click", function () {
                 document.querySelectorAll(".checkbox-item").forEach((cb) => {

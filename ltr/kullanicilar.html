@@ -1,401 +1,628 @@
 <!DOCTYPE html>
 <html lang="tr">
-  <head>
-    <style>
-      html {
-        overflow-y: scroll;
+
+<head>
+  <style>
+    html {
+      overflow-y: scroll;
+    }
+
+    table {
+      border-radius: 10px;
+      table-layout: fixed;
+      box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+      background-color: rgba(204, 204, 204, 0.186);
+      border-radius: 10px;
+    }
+
+    table tr {
+      transition: background-color 0.3s ease;
+      border-radius: 10px;
+    }
+
+    table tr:hover {
+      background-color: #cccccc;
+      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    table tr button {
+      transition: transform 0.3s ease !important;
+      transform: translate(0%, 0%);
+    }
+
+    table tr button:hover {
+      transition: transform 0.3s ease !important;
+      transform: scale(1.2);
+    }
+
+    .logo-img {
+      height: 200px !important;
+      /* Boyutu küçültür */
+      object-fit: contain;
+      display: block;
+    }
+
+    .logo-img {
+      height: 200px !important;
+      /* Boyutu küçültür */
+      object-fit: contain;
+      display: block;
+    }
+
+    .index-img {
+      height: 70px !important;
+      /* Boyutu küçültür */
+      object-fit: contain;
+      display: block;
+      margin-right: 100px;
+    }
+
+    .dropdown-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-toggle {
+      background-color: rgba(68, 127, 245, 0.495);
+      color: rgba(43, 42, 42, 0.692);
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 110%;
+      right: 0;
+      left: auto;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      z-index: 999;
+      min-width: 10px;
+    }
+
+    .dropdown-menu button {
+      width: 100%;
+      padding: 8px 12px;
+      border: none;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .dropdown-menu button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .menu-title {
+      font-weight: bold;
+      padding: 10px 12px 5px;
+      font-size: 13px;
+      color: #444;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 5px;
+    }
+
+    .ekle-butonu,
+    .arsivle-butonu,
+    .sil-butonu {
+      outline: none !important;
+      box-shadow: none !important;
+      border-color: transparent !important;
+    }
+
+    .dropdown-toggle:focus,
+    .dropdown-toggle:focus-visible {
+      outline: none !important;
+      box-shadow: none !important;
+      border-color: transparent !important;
+    }
+
+    .dropdown-toggle:hover {
+      background-color: rgba(68, 127, 245, 0.495);
+      color: white;
+    }
+
+    .table-responsive {
+      overflow-x: hidden !important;
+    }
+
+    .buton {
+      height: 36px;
+      border-radius: 12px;
+      border: none;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0 16px;
+      width: auto;
+      /* Genişlik içeriğe göre */
+      margin-right: 8px;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      user-select: none;
+    }
+
+    .buton:hover {
+      transform: scale(1.1);
+      filter: brightness(85%);
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      position: relative;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+
+    /* EKLE (artı) */
+    .arti::before,
+    .arti::after {
+      content: "";
+      position: absolute;
+      background-color: white;
+      border-radius: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .arti::before {
+      width: 2px;
+      height: 14px;
+    }
+
+    .arti::after {
+      width: 14px;
+      height: 2px;
+    }
+
+    /* ARŞİVLE (kutu) */
+    .kutu::before,
+    .kutu::after {
+      content: "";
+      position: absolute;
+      background-color: white;
+      border-radius: 1px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .kutu::before {
+      width: 14px;
+      height: 4px;
+      top: 4px;
+    }
+
+    .kutu::after {
+      width: 14px;
+      height: 8px;
+      top: 9px;
+    }
+
+    /* SİL SVG path renk beyaz */
+    .sil-butonu svg path {
+      fill: white;
+    }
+
+    /* Renkler */
+    .ekle-butonu {
+      background-color: #4caf50;
+    }
+
+    .arsivle-butonu {
+      background-color: #2196f3;
+    }
+
+    .sil-butonu {
+      background-color: #f44336;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .profile-card {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      /* Overlay için */
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .profile-photo-section {
+      margin-bottom: 30px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-photo-wrapper {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      border: 3px solid #ddd;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      /* Tıklanabilir olduğunu belirtmek için */
+    }
+
+    .profile-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .edit-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 50%;
+      /* Overlay'ı da yuvarlak yap */
+    }
+
+    .profile-photo-wrapper:hover .edit-overlay {
+      opacity: 1;
+    }
+
+    .edit-overlay i {
+      color: #fff;
+      font-size: 36px;
+    }
+
+    .form-group-container {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .form-group-container label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 600;
+    }
+
+    .form-group-container input[type="text"],
+    .form-group-container input[type="email"],
+    .form-group-container input[type="tel"],
+    .form-group-container input[type="password"] {
+      width: calc(100% - 2px);
+      /* Padding'i hesaba kat */
+      padding: 12px 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+      /* Padding'in genişliğe dahil edilmesini sağlar */
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group-container input:focus {
+      border-color: #007bff;
+    }
+
+    .input-with-icon {
+      position: relative;
+    }
+
+    .input-with-icon input {
+      width: calc(100% - 45px);
+      /* İkon için yer bırak */
+      padding-right: 40px;
+      /* İkonun üzerine binmemesi için */
+    }
+
+    .input-with-icon i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      cursor: pointer;
+      /* İkonların tıklanabilir olduğunu belirtmek için */
+    }
+
+    .green-icon {
+      color: #28a745;
+      /* Yeşil tik */
+    }
+
+    .red-icon {
+      color: #dc3545;
+      /* Kırmızı çarpı */
+    }
+
+    .password-toggle-icon {
+      color: #6c757d;
+      /* Göz ikonunun rengi */
+    }
+
+    .link-group {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .link-group a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .link-group a:hover {
+      color: #0056b3;
+    }
+
+    .no-underline {
+      text-decoration: none;
+    }
+
+    .buttons {
+      text-align: left;
+    }
+
+    .save-button {
+      background-color: rgb(50, 196, 50);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 30px;
+      width: 20%;
+      margin-right: 25px;
+    }
+
+    .save-button:hover {
+      background-color: rgb(48, 148, 48);
+    }
+
+    .back-button {
+      background-color: #3f92ec;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 30px;
+      width: 20%;
+    }
+
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Duyarlı Tasarım */
+    @media (max-width: 600px) {
+      .profile-card {
+        padding: 25px;
+        margin: 15px;
       }
 
-      table {
-        border-radius: 10px;
-        table-layout: fixed;
-        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
-        background-color: rgba(204, 204, 204, 0.186);
-        border-radius: 10px;
+      h2 {
+        font-size: 20px;
       }
 
-      table tr {
-        transition: background-color 0.3s ease;
-        border-radius: 10px;
-      }
-
-      table tr:hover {
-        background-color: #cccccc;
-        transition: background-color 0.3s ease;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border-radius: 10px;
-      }
-
-      table tr button {
-        transition: transform 0.3s ease !important;
-        transform: translate(0%, 0%);
-      }
-
-      table tr button:hover {
-        transition: transform 0.3s ease !important;
-        transform: scale(1.2);
-      }
-
-      .logo-img {
-        height: 200px !important;
-        /* Boyutu küçültür */
-        object-fit: contain;
-        display: block;
-      }
-
-      .logo-img {
-        height: 200px !important;
-        /* Boyutu küçültür */
-        object-fit: contain;
-        display: block;
-      }
-
-      .index-img {
-        height: 70px !important;
-        /* Boyutu küçültür */
-        object-fit: contain;
-        display: block;
-        margin-right: 100px;
-      }
-
-      .dropdown-container {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdown-toggle {
-        background-color: rgba(68, 127, 245, 0.495);
-        color: rgba(43, 42, 42, 0.692);
-        border: none;
-        padding: 6px 10px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 110%;
-        right: 0;
-        left: auto;
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        z-index: 999;
-        min-width: 10px;
-      }
-
-      .dropdown-menu button {
-        width: 100%;
-        padding: 8px 12px;
-        border: none;
-        background: none;
-        text-align: left;
-        cursor: pointer;
+      .form-group input {
         font-size: 14px;
       }
 
-      .dropdown-menu button:hover {
-        background-color: #f0f0f0;
+      .save-button {
+        font-size: 16px;
+        padding: 10px 20px;
       }
+    }
 
-      .menu-title {
-        font-weight: bold;
-        padding: 10px 12px 5px;
-        font-size: 13px;
-        color: #444;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 5px;
-      }
+    .popup {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 95%;
+      transform: translateX(-50%);
+      width: 200px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      z-index: 10;
+      transition: opacity 1s ease;
+    }
 
-      .ekle-butonu,
-      .arsivle-butonu,
-      .sil-butonu {
-        outline: none !important;
-        box-shadow: none !important;
-        border-color: transparent !important;
-      }
+    .popup-header {
+      background-color: red;
+      padding: 5px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
 
-      .dropdown-toggle:focus,
-      .dropdown-toggle:focus-visible {
-        outline: none !important;
-        box-shadow: none !important;
-        border-color: transparent !important;
-      }
+    .popup-body {
+      background-color: white;
+      padding: 10px;
+      text-align: center;
+    }
 
-      .dropdown-toggle:hover {
-        background-color: rgba(68, 127, 245, 0.495);
-        color: white;
-      }
+    .popup-body button {
+      background-color: white;
+      border: none;
+      color: rgb(50, 196, 50);
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-      .table-responsive {
-        overflow-x: hidden !important;
-      }
+    .icon-container {
+      /* position: relative; */
+      display: inline-block;
+      cursor: pointer;
+    }
 
-      .buton {
-        height: 36px;
-        border-radius: 12px;
-        border: none;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        padding: 0 16px;
-        width: auto;
-        /* Genişlik içeriğe göre */
-        margin-right: 8px;
-        color: white;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        user-select: none;
-      }
+    .icon-container:hover .popup {
+      display: inline-block;
 
-      .buton:hover {
-        transform: scale(1.1);
-        filter: brightness(85%);
-      }
+    }
 
-      .icon {
-        width: 16px;
-        height: 16px;
-        position: relative;
-        flex-shrink: 0;
-        margin-right: 8px;
-      }
+    .popup-header-onaylandi {
+      background-color: rgb(13, 216, 13);
+      padding: 5px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="endless admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities." />
+  <meta name="keywords"
+    content="admin template, endless admin template, dashboard template, flat admin template, responsive admin template, web app" />
+  <meta name="author" content="pixelstrap" />
+  <link rel="icon" href="../assets/images/gebze-belediyesi.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="../assets/images//gebze-belediyesi.ico" type="image/x-icon" />
+  <title>Kullanıcılar</title>
+  <!-- Google font-->
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <!-- Font Awesome-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome.css" />
+  <!-- ico-font-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/icofont.css" />
+  <!-- Themify icon-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/themify.css" />
+  <!-- Flag icon-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/flag-icon.css" />
+  <!-- Feather icon-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/feather-icon.css" />
+  <!-- Plugins css start-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/chartist.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/prism.css" />
+  <!-- Plugins css Ends-->
+  <!-- Bootstrap css-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+  <!-- App css-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+  <link id="color" rel="stylesheet" href="../assets/css/light-1.css" media="screen" />
+  <!-- Responsive css-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css" />
 
-      /* EKLE (artı) */
-      .arti::before,
-      .arti::after {
-        content: "";
-        position: absolute;
-        background-color: white;
-        border-radius: 1px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
 
-      .arti::before {
-        width: 2px;
-        height: 14px;
-      }
+</head>
 
-      .arti::after {
-        width: 14px;
-        height: 2px;
-      }
-
-      /* ARŞİVLE (kutu) */
-      .kutu::before,
-      .kutu::after {
-        content: "";
-        position: absolute;
-        background-color: white;
-        border-radius: 1px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .kutu::before {
-        width: 14px;
-        height: 4px;
-        top: 4px;
-      }
-
-      .kutu::after {
-        width: 14px;
-        height: 8px;
-        top: 9px;
-      }
-
-      /* SİL SVG path renk beyaz */
-      .sil-butonu svg path {
-        fill: white;
-      }
-
-      /* Renkler */
-      .ekle-butonu {
-        background-color: #4caf50;
-      }
-
-      .arsivle-butonu {
-        background-color: #2196f3;
-      }
-
-      .sil-butonu {
-        background-color: #f44336;
-      }
-    </style>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="endless admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities."
-    />
-    <meta
-      name="keywords"
-      content="admin template, endless admin template, dashboard template, flat admin template, responsive admin template, web app"
-    />
-    <meta name="author" content="pixelstrap" />
-    <link
-      rel="icon"
-      href="../assets/images/gebze-belediyesi.ico"
-      type="image/x-icon"
-    />
-    <link
-      rel="shortcut icon"
-      href="../assets/images//gebze-belediyesi.ico"
-      type="image/x-icon"
-    />
-    <title>Kullanıcılar</title>
-    <!-- Google font-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../assets/css/fontawesome.css"
-    />
-    <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/icofont.css" />
-    <!-- Themify icon-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/themify.css" />
-    <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/flag-icon.css" />
-    <!-- Feather icon-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../assets/css/feather-icon.css"
-    />
-    <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/chartist.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/prism.css" />
-    <!-- Plugins css Ends-->
-    <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
-    <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-    <link
-      id="color"
-      rel="stylesheet"
-      href="../assets/css/light-1.css"
-      media="screen"
-    />
-    <!-- Responsive css-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../assets/css/responsive.css"
-    />
-  </head>
-
-  <body>
-    <!-- Loader starts-->
-    <div class="loader-wrapper">
-      <div class="loader bg-white">
-        <div class="whirly-loader"></div>
-      </div>
+<body>
+  <!-- Loader starts-->
+  <div class="loader-wrapper">
+    <div class="loader bg-white">
+      <div class="whirly-loader"></div>
     </div>
-    <!-- Loader ends-->
-    <!-- page-wrapper Start-->
-    <div class="page-wrapper">
-      <!-- Page Header Start-->
-      <div class="page-main-header">
-        <div
-          class="main-header-right row"
-          style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
-        >
-          <div class="main-header-left d-lg-none">
-            <div class="logo-wrapper">
-              <a href="index.html"
-                ><img
-                  src="../assets/images/GEBZElogo-5.png"
-                  class="index-img"
-                  alt=""
-              /></a>
-            </div>
+  </div>
+  <!-- Loader ends-->
+  <!-- page-wrapper Start-->
+  <div class="page-wrapper">
+    <!-- Page Header Start-->
+    <div class="page-main-header">
+      <div class="main-header-right row" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
+        <div class="main-header-left d-lg-none">
+          <div class="logo-wrapper">
+            <a href="index.html"><img src="../assets/images/GEBZElogo-5.png" class="index-img" alt="" /></a>
           </div>
-          <div class="mobile-sidebar d-block">
-            <div class="media-body text-right switch-sm">
-              <label class="switch"
-                ><a href="#"
-                  ><i id="sidebar-toggle" data-feather="align-left"></i></a
-              ></label>
-            </div>
+        </div>
+        <div class="mobile-sidebar d-block">
+          <div class="media-body text-right switch-sm">
+            <label class="switch"><a href="#"><i id="sidebar-toggle" data-feather="align-left"></i></a></label>
           </div>
-          <div class="nav-right col p-0">
-            <ul class="nav-menus">
-              <li>
-                <form class="form-inline search-form" action="#" method="get">
-                  <div class="form-group">
-                    <div class="Typeahead Typeahead--twitterUsers">
-                      <div class="u-posRelative">
-                        <input
-                          class="Typeahead-input form-control-plaintext"
-                          id="demo-input"
-                          type="text"
-                          name="q"
-                          placeholder="Arama yap..."
-                        />
-                        <div
-                          class="spinner-border Typeahead-spinner"
-                          role="status"
-                        >
-                          <span class="sr-only">Yükleniyor...</span>
-                        </div>
-                        <span class="d-sm-none mobile-search"
-                          ><i data-feather="search"></i
-                        ></span>
+        </div>
+        <div class="nav-right col p-0">
+          <ul class="nav-menus">
+            <li>
+              <form class="form-inline search-form" action="#" method="get">
+                <div class="form-group">
+                  <div class="Typeahead Typeahead--twitterUsers">
+                    <div class="u-posRelative">
+                      <input class="Typeahead-input form-control-plaintext" id="demo-input" type="text" name="q"
+                        placeholder="Arama yap..." />
+                      <div class="spinner-border Typeahead-spinner" role="status">
+                        <span class="sr-only">Yükleniyor...</span>
                       </div>
-                      <div class="Typeahead-menu"></div>
+                      <span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
                     </div>
+                    <div class="Typeahead-menu"></div>
                   </div>
-                </form>
-              </li>
-
-              <li class="onhover-dropdown">
-                <div class="media align-items-center">
-                  <img
-                    class="align-self-center pull-right img-50 rounded-circle"
-                    src="../assets/images/dashboard/user.png"
-                    alt="header-user"
-                  />
                 </div>
-                <ul class="profile-dropdown onhover-show-div p-20">
-                  <li>
-                    <a href="Profil.html"
-                      ><i data-feather="user"></i> Profili Düzenle</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#"><i data-feather="settings"></i> Ayarlar</a>
-                  </li>
-                  <li>
-                    <a href="#"><i data-feather="log-out"></i> Çıkış Yap</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <div class="d-lg-none mobile-toggle pull-right">
-              <i data-feather="more-horizontal"></i>
-            </div>
+              </form>
+            </li>
+
+            <li class="onhover-dropdown">
+              <div class="media align-items-center">
+                <img class="align-self-center pull-right img-50 rounded-circle"
+                  src="../assets/images/dashboard/user.png" alt="header-user" />
+              </div>
+              <ul class="profile-dropdown onhover-show-div p-20">
+                <li>
+                  <a href="Profil.html"><i data-feather="user"></i> Profili Düzenle</a>
+                </li>
+                <li>
+                  <a href="#"><i data-feather="settings"></i> Ayarlar</a>
+                </li>
+                <li>
+                  <a href="#"><i data-feather="log-out"></i> Çıkış Yap</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-lg-none mobile-toggle pull-right">
+            <i data-feather="more-horizontal"></i>
           </div>
-          <script id="result-template" type="text/x-handlebars-template">
+        </div>
+        <script id="result-template" type="text/x-handlebars-template">
             <div class="ProfileCard u-cf">
               <div class="ProfileCard-avatar"><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -418,511 +645,752 @@
               </div>
             </div>
           </script>
-          <script id="empty-template" type="text/x-handlebars-template">
+        <script id="empty-template" type="text/x-handlebars-template">
             <div class="EmptyMessage">Aradığınız sonuç bulunamadı. Büyük
               ihtimalle sistem şu an kapalı, üzücü ama kısa sürede çözeceğiz!</div>
           </script>
+      </div>
+    </div>
+    <!-- Page Header Ends -->
+    <!-- Page Body Start-->
+    <div class="page-body-wrapper">
+      <!-- Page Sidebar Start-->
+      <div class="page-sidebar bg-light">
+        <div class="main-header-left d-none d-lg-block" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
+          <div class="logo-wrapper">
+            <a href="index.html"><img src="../assets/images/GEBZElogo-5.png" class="logo-img" alt="" /></a>
+          </div>
+        </div>
+
+        <!-- Buradan itibaren logo hariç tüm yan menü var. -->
+        <div class="sidebar custom-scrollbar bg-light" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
+          <!-- Bu div kullanıcı bilgilerini içeriyor -->
+          <div class="sidebar-user text-center" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
+            <div>
+              <img class="img-60 rounded-circle" src="../assets/images/user/1.jpg" alt="#" />
+              <div class="profile-edit">
+                <a href="Profil.html" target="_blank"><i data-feather="edit"></i></a>
+              </div>
+            </div>
+            <h6 class="mt-3 f-14 text-dark">İsim Soyisim</h6>
+            <p class="text-dark">Kademe</p>
+          </div>
+          <!-- Buradan itibaren yan menü başlıkları ve menüler var. -->
+          <ul class="sidebar-menu bg-light">
+            <li>
+              <a class="sidebar-header text-dark" href="index.html"><i
+                  data-feather="home"></i><span>Anasayfa</span><span class="badge badge-pill badge-primary"></span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="#"><i data-feather="briefcase"></i>
+                <span>Kurumsal</span>
+                <i class="fa fa-angle-right pull-right"></i>
+              </a>
+              <ul class="sidebar-submenu">
+                <li>
+                  <a href="Kurumsal - Yönetim.html" class="text-dark"><i class="fa fa-circle text-dark"></i>Yönetim</a>
+                </li>
+                <li>
+                  <a href="Kurumsal - Vizyon Misyon.html" class="text-dark"><i
+                      class="fa fa-circle text-dark"></i>Vizyon-Misyon-İlke</a>
+                </li>
+                <li>
+                  <a href="Kurumsal - Raporlar.html" class="text-dark"><i
+                      class="fa fa-circle text-dark"></i>Raporlar</a>
+                </li>
+                <li>
+                  <a href="Kurumsal - Komisyonlar.html" class="text-dark"><i
+                      class="fa fa-circle text-dark"></i>Komisyonlar</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="Haberler.html"><i
+                  data-feather="file-text"></i><span>Haberler</span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="#"><i data-feather="map-pin"></i><span>Gebze</span><i
+                  class="fa fa-angle-right pull-right"></i></a>
+              <ul class="sidebar-submenu">
+                <li>
+                  <a href="Gebze - Tarihce.html" class="text-dark"><i class="fa fa-circle text-dark"></i>Tarihten
+                    Günümüze
+                    Gebze</a>
+                </li>
+                <li>
+                  <a href="Gebze - Gebze Yonetim.html" class="text-dark"><i class="fa fa-circle text-dark"></i>Gebze
+                    Yönetim</a>
+                </li>
+                <li>
+                  <a href="Gebze - Sanal Tur.html" class="text-dark"><i class="fa fa-circle text-dark"></i>360 Sanal
+                    Tur</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="Hizmetler.html"><i
+                  data-feather="layers"></i><span>Hizmetler</span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="Etkinlikler.html"><i
+                  data-feather="slack"></i><span>Etkinlikler</span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="Yayınlarımız.html"><i
+                  data-feather="book"></i><span>Yayınlarımız</span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="İletisim.html"><i
+                  data-feather="mail"></i><span>İletişim</span></a>
+            </li>
+            <li>
+              <a class="sidebar-header text-dark" href="kullanicilar.html"><i
+                  data-feather="users"></i><span>Kullanıcılar</span></a>
+            </li>
+          </ul>
         </div>
       </div>
-      <!-- Page Header Ends -->
-      <!-- Page Body Start-->
-      <div class="page-body-wrapper">
-        <!-- Page Sidebar Start-->
-        <div class="page-sidebar bg-light">
-          <div
-            class="main-header-left d-none d-lg-block"
-            style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
-          >
-            <div class="logo-wrapper">
-              <a href="index.html"
-                ><img
-                  src="../assets/images/GEBZElogo-5.png"
-                  class="logo-img"
-                  alt=""
-              /></a>
-            </div>
-          </div>
-
-          <!-- Buradan itibaren logo hariç tüm yan menü var. -->
-          <div
-            class="sidebar custom-scrollbar bg-light"
-            style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
-          >
-            <!-- Bu div kullanıcı bilgilerini içeriyor -->
-            <div
-              class="sidebar-user text-center"
-              style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)"
-            >
-              <div>
-                <img
-                  class="img-60 rounded-circle"
-                  src="../assets/images/user/1.jpg"
-                  alt="#"
-                />
-                <div class="profile-edit">
-                  <a href="edit-profile.html" target="_blank"
-                    ><i data-feather="edit"></i
-                  ></a>
+      <!-- Page Sidebar Ends-->
+      <div class="page-body mt-5">
+        <div class="container-fluid">
+          <div class="page-header">
+            <div class="row">
+              <div class="col">
+                <div class="page-header-left">
+                  <h3>Kullanıcılar</h3>
+                  <ol class="breadcrumb" style="margin-top: 65px; margin-left: -180px">
+                    <li class="breadcrumb-item">
+                      <a href="index.html"><i data-feather="home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                      <a href="kullanicilar.html">Kullanıcılar</a>
+                    </li>
+                  </ol>
                 </div>
               </div>
-              <h6 class="mt-3 f-14 text-dark">İsim Soyisim</h6>
-              <p class="text-dark">Kademe</p>
             </div>
-            <!-- Buradan itibaren yan menü başlıkları ve menüler var. -->
-            <ul class="sidebar-menu bg-light">
-              <li>
-                <a class="sidebar-header text-dark" href="index.html"
-                  ><i data-feather="home"></i><span>Anasayfa</span
-                  ><span class="badge badge-pill badge-primary"></span
-                ></a>
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="#"
-                  ><i data-feather="briefcase"></i>
-                  <span>Kurumsal</span>
-                  <i class="fa fa-angle-right pull-right"></i>
-                </a>
-                <ul class="sidebar-submenu">
-                  <li>
-                    <a href="Kurumsal - Yönetim.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Yönetim</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Kurumsal - Vizyon Misyon.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i
-                      >Vizyon-Misyon-İlke</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Kurumsal - Raporlar.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Raporlar</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Kurumsal - Komisyonlar.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Komisyonlar</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="Haberler.html"
-                  ><i data-feather="file-text"></i><span>Haberler</span></a
-                >
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="#"
-                  ><i data-feather="map-pin"></i><span>Gebze</span
-                  ><i class="fa fa-angle-right pull-right"></i
-                ></a>
-                <ul class="sidebar-submenu">
-                  <li>
-                    <a href="Gebze - Tarihce.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Tarihten Günümüze
-                      Gebze</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Gebze - Gebze Yonetim.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>Gebze Yönetim</a
-                    >
-                  </li>
-                  <li>
-                    <a href="Gebze - Sanal Tur.html" class="text-dark"
-                      ><i class="fa fa-circle text-dark"></i>360 Sanal Tur</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="Hizmetler.html"
-                  ><i data-feather="layers"></i><span>Hizmetler</span></a
-                >
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="Etkinlikler.html"
-                  ><i data-feather="slack"></i><span>Etkinlikler</span></a
-                >
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="Yayınlarımız.html"
-                  ><i data-feather="book"></i><span>Yayınlarımız</span></a
-                >
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="İletisim.html"
-                  ><i data-feather="mail"></i><span>İletişim</span></a
-                >
-              </li>
-              <li>
-                <a class="sidebar-header text-dark" href="kullanicilar.html"
-                  ><i data-feather="users"></i><span>Kullanıcılar</span></a
-                >
-              </li>
-            </ul>
           </div>
         </div>
-        <!-- Page Sidebar Ends-->
-        <div class="page-body mt-5">
-          <div class="container-fluid">
-            <div class="page-header">
-              <div class="row">
-                <div class="col">
-                  <div class="page-header-left">
-                    <h3>Kullanıcılar</h3>
-                    <ol
-                      class="breadcrumb"
-                      style="margin-top: 65px; margin-left: -180px"
-                    >
-                      <li class="breadcrumb-item">
-                        <a href="index.html"><i data-feather="home"></i></a>
-                      </li>
-                      <li class="breadcrumb-item active">
-                        <a href="kullanicilar.html">Kullanıcılar</a>
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+        <!-- Benim yaptığım navbar kısmı -->
+        <nav class="navbar navbar-expand-lg navbar-light" style="margin-top: -30px">
+          <div id="nav" class="container-fluid d-flex justify-content-end">
+            <!-- EKLE -->
+            <button class="buton ekle-butonu">
+              <div class="icon arti"></div>
+              <span>Ekle</span>
+            </button>
+
+            <!-- ARŞİVLE -->
+            <button class="buton arsivle-butonu">
+              <div class="icon kutu"></div>
+              <span>Arşivle</span>
+            </button>
+
+            <!-- SİL -->
+            <button class="buton sil-butonu">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                aria-hidden="true" focusable="false">
+                <path
+                  d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z" />
+              </svg>
+              <span>Sil</span>
+            </button>
           </div>
+        </nav>
 
-          <!-- Benim yaptığım navbar kısmı -->
-          <nav
-            class="navbar navbar-expand-lg navbar-light"
-            style="margin-top: -30px"
-          >
-            <div class="container-fluid d-flex justify-content-end">
-              <!-- EKLE -->
-              <button class="buton ekle-butonu">
-                <div class="icon arti"></div>
-                <span>Ekle</span>
-              </button>
+        <br /><br />
 
-              <!-- ARŞİVLE -->
-              <button class="buton arsivle-butonu">
-                <div class="icon kutu"></div>
-                <span>Arşivle</span>
-              </button>
-
-              <!-- SİL -->
-              <button class="buton sil-butonu">
-                <svg
-                  class="icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z"
-                  />
-                </svg>
-                <span>Sil</span>
-              </button>
-            </div>
-          </nav>
-
-          <br /><br />
-
-          <!-- İçeriklerin Yükleneceği Alan -->
-          <div id="icerikler">
-            <div class="table">
-              <table
-                class="table table-hover align-middle"
-                style="
+        <!-- İçeriklerin Yükleneceği Alan -->
+        <div id="icerikler">
+          <div class="table">
+            <table class="table table-hover align-middle" style="
                   background-color: rgba(204, 204, 204, 0.186);
                   border-radius: 10px;
                   margin-top: -20px;
-                "
-              >
-                <thead
-                  class="tablo-baslik"
-                  style="background-color: rgba(204, 204, 204, 0.186)"
-                >
-                  <tr>
-                    <th scope="col">Profil Fotoğrafı</th>
-                    <th scope="col">İsim Soyisim</th>
-                    <th scope="col">E-posta</th>
-                    <th scope="col">Telefon</th>
-                    <th scope="col">Kayıt Tarihi</th>
-                    <th scope="col">Son Giriş</th>
-                    <th scope="col">İşlemler</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <img
-                        src="../assets/images/user/1.jpg"
-                        alt="Ayşe Demir"
-                        class="rounded-circle"
-                        width="40"
-                        height="40"
-                      />
-                    </td>
-                    <td>Ayşe Demir</td>
-                    <td>ayse@example.com</td>
-                    <td>+90 532 111 11 11</td>
-                    <td>2023-02-01</td>
-                    <td>2025-07-09 11:25</td>
-                    <td>
-                      <div class="dropdown-container">
-                        <button
-                          class="dropdown-toggle"
-                          onclick="toggleDropdown(this)"
-                        >
-                          İşlemler
+                ">
+              <thead class="tablo-baslik" style="background-color: rgba(204, 204, 204, 0.186)">
+
+                <tr>
+                  <th scope="col" style="width: 3%; ">
+                    <input type="checkbox" id="ana-checkbox" style="margin-top: 10px;" />
+                  </th>
+                  <th scope="col">Profil Fotoğrafı</th>
+                  <th scope="col">İsim Soyisim</th>
+                  <th scope="col">E-posta</th>
+                  <th scope="col">Telefon</th>
+                  <th scope="col">Kayıt Tarihi</th>
+                  <th scope="col">Son Giriş</th>
+                  <th scope="col">İşlemler</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <input type="checkbox" class="checkbox-item" style="margin-top: 10px;" />
+                  </th>
+                  <td>
+                    <img src="../assets/images/user/1.jpg" alt="Ayşe Demir" class="rounded-circle" width="40"
+                      height="40" />
+                  </td>
+                  <td>Ayşe Demir</td>
+                  <td>ayse@example.com</td>
+                  <td>+90 532 111 11 11</td>
+                  <td>2023-02-01</td>
+                  <td>2025-07-09 11:25</td>
+                  <td>
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle(this)">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                          Düzenle
                         </button>
-                        <div class="dropdown-menu">
-                          <button onclick="duzenle()">
-                            <img
-                              src="../assets/images/dropdown_svg/edit.svg"
-                              alt="edit"
-                              width="10%"
-                              height="10%"
-                            />
-                            Düzenle
-                          </button>
-                          <button onclick="sil()">
-                            <img
-                              src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                              alt="remove"
-                              width="10%"
-                              height="10%"
-                            />
-                            Sil
-                          </button>
-                          <button onclick="icerik()">
-                            <img
-                              src="../assets/images/dropdown_svg/copy-writing.svg"
-                              alt="content"
-                              width="10%"
-                              height="10%"
-                            />
-                            İçerik
-                          </button>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        src="../assets/images/user/1.jpg"
-                        alt="Mehmet Yılmaz"
-                        class="rounded-circle"
-                        width="40"
-                        height="40"
-                      />
-                    </td>
-                    <td>Mehmet Yılmaz</td>
-                    <td>mehmet@example.com</td>
-                    <td>+90 545 222 22 22</td>
-                    <td>2022-12-12</td>
-                    <td>2025-07-08 14:42</td>
-                    <td>
-                      <div class="dropdown-container">
-                        <button
-                          class="dropdown-toggle"
-                          onclick="toggleDropdown(this)"
-                        >
-                          İşlemler
+                        <button onclick="sil()">
+                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                            height="10%" />
+                          Sil
                         </button>
-                        <div class="dropdown-menu">
-                          <button onclick="duzenle()">
-                            <img
-                              src="../assets/images/dropdown_svg/edit.svg"
-                              alt="edit"
-                              width="10%"
-                              height="10%"
-                            />
-                            Düzenle
-                          </button>
-                          <button onclick="sil()">
-                            <img
-                              src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                              alt="remove"
-                              width="10%"
-                              height="10%"
-                            />
-                            Sil
-                          </button>
-                          <button onclick="icerik()">
-                            <img
-                              src="../assets/images/dropdown_svg/copy-writing.svg"
-                              alt="content"
-                              width="10%"
-                              height="10%"
-                            />
-                            İçerik
-                          </button>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        src="../assets/images/user/3.jpg"
-                        alt="Zeynep Karaca"
-                        class="rounded-circle"
-                        width="40"
-                        height="40"
-                      />
-                    </td>
-                    <td>Zeynep Karaca</td>
-                    <td>zeynep@example.com</td>
-                    <td>+90 531 333 33 33</td>
-                    <td>2024-03-18</td>
-                    <td>2025-07-10 09:00</td>
-                    <td>
-                      <div class="dropdown-container">
-                        <button
-                          class="dropdown-toggle"
-                          onclick="toggleDropdown(this)"
-                        >
-                          İşlemler
+                        <button onclick="icerik()">
+                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                            height="10%" />
+                          İçerik
                         </button>
-                        <div class="dropdown-menu">
-                          <button onclick="duzenle()">
-                            <img
-                              src="../assets/images/dropdown_svg/edit.svg"
-                              alt="edit"
-                              width="10%"
-                              height="10%"
-                            />
-                            Düzenle
-                          </button>
-                          <button onclick="sil()">
-                            <img
-                              src="../assets/images/dropdown_svg/rubbish-bin.svg"
-                              alt="remove"
-                              width="10%"
-                              height="10%"
-                            />
-                            Sil
-                          </button>
-                          <button onclick="icerik()">
-                            <img
-                              src="../assets/images/dropdown_svg/copy-writing.svg"
-                              alt="content"
-                              width="10%"
-                              height="10%"
-                            />
-                            İçerik
-                          </button>
-                        </div>
                       </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <input type="checkbox" class="checkbox-item" style="margin-top: 10px;" />
+                  </th>
+                  <td>
+                    <img src="../assets/images/user/1.jpg" alt="Mehmet Yılmaz" class="rounded-circle" width="40"
+                      height="40" />
+                  </td>
+                  <td>Mehmet Yılmaz</td>
+                  <td>mehmet@example.com</td>
+                  <td>+90 545 222 22 22</td>
+                  <td>2022-12-12</td>
+                  <td>2025-07-08 14:42</td>
+                  <td>
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle(this)">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                            height="10%" />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                            height="10%" />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <input type="checkbox" class="checkbox-item" style="margin-top: 10px;" />
+                  </th>
+                  <td>
+                    <img src="../assets/images/user/3.jpg" alt="Zeynep Karaca" class="rounded-circle" width="40"
+                      height="40" />
+                  </td>
+                  <td>Zeynep Karaca</td>
+                  <td>zeynep@example.com</td>
+                  <td>+90 531 333 33 33</td>
+                  <td>2024-03-18</td>
+                  <td>2025-07-10 09:00</td>
+                  <td>
+                    <div class="dropdown-container">
+                      <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        İşlemler
+                      </button>
+                      <div class="dropdown-menu">
+                        <button onclick="duzenle(this)">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                          Düzenle
+                        </button>
+                        <button onclick="sil()">
+                          <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                            height="10%" />
+                          Sil
+                        </button>
+                        <button onclick="icerik()">
+                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                            height="10%" />
+                          İçerik
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- latest jquery-->
+        <script src="../assets/js/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap js-->
+        <script src="../assets/js/bootstrap/popper.min.js"></script>
+        <script src="../assets/js/bootstrap/bootstrap.js"></script>
+        <!-- feather icon js-->
+        <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+        <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+        <!-- Sidebar jquery-->
+        <script src="../assets/js/sidebar-menu.js"></script>
+        <script src="../assets/js/config.js"></script>
+        <!-- Plugins JS start-->
+
+        <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
+        <script src="../assets/js/typeahead/typeahead.custom.js"></script>
+        <script src="../assets/js/typeahead-search/handlebars.js"></script>
+        <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
+        <!-- Plugins JS Ends-->
+        <!-- Theme js-->
+        <script src="../assets/js/script.js"></script>
+        <!-- Bootstrap JS + Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
+        <!-- Plugin used-->
+        <script>
+          feather.replace();
+        </script>
+        <script>
+          function toggleMenu(button) {
+            const menu = button.nextElementSibling;
+            const allMenus = document.querySelectorAll(".islem-menu");
+
+            allMenus.forEach((m) => {
+              if (m !== menu) m.style.display = "none";
+            });
+
+            menu.style.display =
+              menu.style.display === "block" ? "none" : "block";
+          }
+
+          // Örnek fonksiyonlar
+
+        </script>
+        <script>
+          function toggleDropdown(btn) {
+            const menu = btn.nextElementSibling;
+
+            // Diğer tüm açık menüleri kapat
+            document.querySelectorAll(".dropdown-menu").forEach((el) => {
+              if (el !== menu) el.style.display = "none";
+            });
+
+            // Tıklanan menüyü aç/kapat
+            menu.style.display =
+              menu.style.display === "block" ? "none" : "block";
+          }
+
+          function ekle() {
+            alert("Ekle tıklandı");
+          }
+
+          function geriDon() {
+            window.loacation.href = "kullanicilar.html";
+          }
+
+          function duzenle(buttonElement) {
+            const row = buttonElement.closest("tr"); // En yakın tr'yi bul
+            const tds = row.getElementsByTagName("td"); // tr içindeki td'leri al
+
+            const imageSrc = tds[0].querySelector("img")?.getAttribute("src") || "../assets/images/user/default.jpg"; // Resim src
+            const fullName = tds[1]?.textContent.trim(); // Ad Soyad (2. td, index 1)
+            const email = tds[2]?.textContent.trim();    // E-Posta
+            const phone = tds[3]?.textContent.trim();    // Telefon
+
+            const sayfa = document.getElementById("icerikler");
+            sayfa.innerHTML = `
+      <div class="card-container">
+        <div class="profile-card">
+
+          <div class="profile-photo-section">
+            <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
+            <div class="profile-photo-wrapper" id="profilePhotoWrapper">
+              <img src="${imageSrc}" alt="" id="profilePhoto">
+              <div class="edit-overlay" id="editOverlay">
+                <i class="fas fa-camera"></i>
+              </div>
             </div>
           </div>
 
-          <!-- latest jquery-->
-          <script src="../assets/js/jquery-3.2.1.min.js"></script>
-          <!-- Bootstrap js-->
-          <script src="../assets/js/bootstrap/popper.min.js"></script>
-          <script src="../assets/js/bootstrap/bootstrap.js"></script>
-          <!-- feather icon js-->
-          <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-          <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-          <!-- Sidebar jquery-->
-          <script src="../assets/js/sidebar-menu.js"></script>
-          <script src="../assets/js/config.js"></script>
-          <!-- Plugins JS start-->
+          <div class="form-group-container">
+            <label for="fullName">Ad - Soyad</label>
+            <input type="text" id="fullName" value="${fullName}">
+          </div>
 
-          <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
-          <script src="../assets/js/typeahead/typeahead.custom.js"></script>
-          <script src="../assets/js/typeahead-search/handlebars.js"></script>
-          <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
-          <!-- Plugins JS Ends-->
-          <!-- Theme js-->
-          <script src="../assets/js/script.js"></script>
-          <!-- Bootstrap JS + Popper -->
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+          <div class="form-group-container">
+            <label for="email">E-Posta</label>
+            <div class="input-with-icon">
+              <input type="email" id="email" value="${email}">
+              <div class="icon-container">
+                <i class="fas fa-check-circle verified-icon green-icon" style="margin-top: -10px;"></i>
+                <div class="popup">
+                  <div class="popup-header-onaylandi">Onaylandı!</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-          <!-- Plugin used-->
-          <script>
-            feather.replace();
-          </script>
-          <script>
-            function toggleMenu(button) {
-              const menu = button.nextElementSibling;
-              const allMenus = document.querySelectorAll(".islem-menu");
+          <div class="form-group-container">
+            <label for="phone">Telefon Numarası</label>
+            <div class="input-with-icon">
+              <input type="tel" id="phone" value="${phone}">
+              <div class="icon-container">
+                <i class="fas fa-times-circle unverified-icon red-icon" style="margin-top: -10px;"></i>
+                <div class="popup">
+                  <div class="popup-header">Onaylanmadı!</div>
+                  <div class="popup-body">
+                    <button onclick="onayKod()">Onay Kodu Gönder</button>
+                  </div>
+                </div>
+                <small id="phone-error" style="color: #dc3545; display: none;"></small>
+              </div>
+            </div>
+          </div>
 
-              allMenus.forEach((m) => {
-                if (m !== menu) m.style.display = "none";
-              });
+          <div class="form-group-container">
+            <label for="newPassword">Yeni Şifre</label>
+            <div class="input-with-icon">
+              <input type="password" id="newPassword" placeholder="Yeni şifrenizi girin">
+              <i class="fas fa-eye-slash password-toggle-icon" id="toggleNewPassword"></i>
+            </div>
+          </div>
 
-              menu.style.display =
-                menu.style.display === "block" ? "none" : "block";
-            }
+          <div class="form-group-container">
+            <label for="confirmNewPassword">Yeni Şifre Tekrar</label>
+            <div class="input-with-icon">
+              <input type="password" id="confirmNewPassword" placeholder="Yeni şifrenizi tekrar girin">
+              <i class="fas fa-eye-slash password-toggle-icon" id="toggleConfirmNewPassword"></i>
+            </div>
+          </div>
 
-            // Örnek fonksiyonlar
-            function ekle() {
-              alert("Ekleme sayfasına yönlendiriliyor...");
-            }
-
-            function duzenle() {
-              alert("Düzenleme sayfasına yönlendiriliyor...");
-            }
-
-            function sil() {
-              alert("Silme işlemi yapılıyor...");
-            }
-
-            function icerik() {
-              alert("İçerik detayına yönlendiriliyor...");
-            }
-          </script>
-          <script>
-            function toggleDropdown(btn) {
-              const menu = btn.nextElementSibling;
-
-              // Diğer tüm açık menüleri kapat
-              document.querySelectorAll(".dropdown-menu").forEach((el) => {
-                if (el !== menu) el.style.display = "none";
-              });
-
-              // Tıklanan menüyü aç/kapat
-              menu.style.display =
-                menu.style.display === "block" ? "none" : "block";
-            }
-
-            function ekle() {
-              alert("Ekle tıklandı");
-            }
-
-            function duzenle() {
-              alert("Düzenle tıklandı");
-            }
-
-            function sil() {
-              alert("Sil tıklandı");
-            }
-
-            function icerik() {
-              alert("İçerik tıklandı");
-            }
-
-            // Sayfa dışında bir yere tıklanınca menü kapanır
-            document.addEventListener("click", function (e) {
-              if (!e.target.closest(".dropdown-container")) {
-                document
-                  .querySelectorAll(".dropdown-menu")
-                  .forEach((el) => (el.style.display = "none"));
-              }
-            });
-          </script>
+            <div class="buttons">
+              <button class="back-button" onclick="geriDon()">Geri Dön</button>
+              <button class="save-button" onclick="validatePasswords()">Kaydet</button>
+            </div>
         </div>
       </div>
+    `;
+          }
+
+
+
+
+          function remove() {
+
+          }
+
+
+          function icerik() {
+            alert("İçerik tıklandı");
+          }
+
+          // Sayfa dışında bir yere tıklanınca menü kapanır
+          document.addEventListener("click", function (e) {
+            if (!e.target.closest(".dropdown-container")) {
+              document
+                .querySelectorAll(".dropdown-menu")
+                .forEach((el) => (el.style.display = "none"));
+            }
+          });
+        </script>
+        <script>
+          const checkboxes = document.querySelectorAll(".checkbox-item");
+
+          // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+          const anaCheckbox = document.getElementById("ana-checkbox");
+          anaCheckbox.addEventListener("change", () => {
+            checkboxes.forEach((checkbox) => {
+              checkbox.checked = anaCheckbox.checked;
+              checkbox.dispatchEvent(new Event("change"));
+            });
+          });
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            // Profil Fotoğrafı Yükleme İşlevi
+            const profilePhotoWrapper = document.getElementById('profilePhotoWrapper');
+            const profilePhotoInput = document.getElementById('profilePhotoInput');
+            const profilePhoto = document.getElementById('profilePhoto');
+
+            profilePhotoWrapper.addEventListener('click', () => {
+              profilePhotoInput.click(); // Gizli dosya input'unu tetikle
+            });
+
+            profilePhotoInput.addEventListener('change', (event) => {
+              const file = event.target.files[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                  profilePhoto.src = e.target.result; // Seçilen resmi önizleme olarak göster
+                };
+                reader.readAsDataURL(file);
+              }
+            });
+
+            // Şifre Göster/Gizle İşlevi
+            const togglePassword = (inputId, toggleIconId) => {
+              const passwordInput = document.getElementById(inputId);
+              const toggleIcon = document.getElementById(toggleIconId);
+
+              toggleIcon.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                  passwordInput.type = 'text';
+                  toggleIcon.classList.remove('fa-eye-slash');
+                  toggleIcon.classList.add('fa-eye'); // Normal göz
+                } else {
+                  passwordInput.type = 'password';
+                  toggleIcon.classList.remove('fa-eye');
+                  toggleIcon.classList.add('fa-eye-slash'); // Üstü çizili göz
+                }
+              });
+            };
+
+            togglePassword('newPassword', 'toggleNewPassword');
+            togglePassword('confirmNewPassword', 'toggleConfirmNewPassword');
+
+
+
+
+
+            const phoneInput = document.getElementById('phone');
+            const phoneError = document.getElementById('phone-error');
+
+            phoneInput.addEventListener('input', (e) => {
+              let value = e.target.value.replace(/\D/g, ''); // Sadece rakamlar
+              let formattedValue = '';
+
+              // Maskeleme işlemi
+              if (value.length > 0) {
+                formattedValue += '(' + value.substring(0, 3);
+              }
+              if (value.length > 3) {
+                formattedValue += ') ' + value.substring(3, 6);
+              }
+              if (value.length > 6) {
+                formattedValue += ' ' + value.substring(6, 8);
+              }
+              if (value.length > 8) {
+                formattedValue += ' ' + value.substring(8, 10);
+              }
+              e.target.value = formattedValue;
+
+              // Hata kontrolü
+              if (value.length > 0 && value[0] !== '5') {
+                phoneInput.style.borderColor = '#dc3545'; // kırmızı kenarlık
+                phoneError.textContent = 'Telefon numarası 5 ile başlamalıdır.';
+                phoneError.style.display = 'block';
+              } else {
+                phoneInput.style.borderColor = ''; // kenarlığı sıfırla
+                phoneError.textContent = '';
+                phoneError.style.display = 'none';
+              }
+            });
+
+
+
+            // Kaydet Butonu İşlevi (örnek)
+            const saveButton = document.querySelector('.save-button');
+            saveButton.addEventListener('click', () => {
+              const fullName = document.getElementById('fullName').value;
+              const email = document.getElementById('email').value;
+              const phone = document.getElementById('phone').value;
+              const newPassword = document.getElementById('newPassword').value;
+              const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+              // Basit validasyon örnekleri
+              if (!fullName || !email || !phone) {
+                Swal.fire({
+                  toast: true,
+                  position: 'top-end',
+                  icon: 'error',
+                  title: 'Tüm alanları doldurun!',
+                  showConfirmButton: false,
+                  timer: 3000,
+                  timerProgressBar: true,
+                  background: '#f8d7da',
+                  color: '#721c24',
+                });
+                return;
+              }
+
+              if (newPassword !== confirmNewPassword) {
+                Swal.fire({
+                  toast: true,
+                  position: 'top-end',
+                  icon: 'error',
+                  title: 'Yeni şifreler uyuşmuyor!',
+                  showConfirmButton: false,
+                  timer: 3000,
+                  timerProgressBar: true,
+                  background: '#f8d7da',
+                  color: '#721c24',
+                });
+                return;
+              }
+
+
+              if (newPassword && !confirmNewPassword) {
+
+              }
+
+              // Burada gerçek bir sunucuya veri gönderme veya bilgileri kaydetme işlemleri yapılır.
+              console.log('Profil Bilgileri:', { fullName, email, phone, newPassword });
+              alert('Profil bilgileriniz başarıyla güncellendi!');
+            });
+          });
+
+
+          function onayKod() {
+            // Telefon veya e-posta bilgisini al
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            let hedef = '';
+            let tip = '';
+
+            if (phone && phone.length > 0) {
+              hedef = phone;
+              tip = 'Telefon';
+            } else if (email && email.length > 0) {
+              hedef = email;
+              tip = 'E-posta';
+            } else {
+              Swal.fire({
+                icon: 'warning',
+                title: 'Eksik Bilgi',
+                text: 'Lütfen telefon numarası veya e-posta giriniz.',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                  popup: 'rounded-3',
+                  confirmButton: 'btn btn-warning'
+                }
+              });
+              return;
+            }
+
+
+            // 6 haneli rastgele kod üret
+            const kod = Math.floor(100000 + Math.random() * 900000);
+
+            // Kullanıcıya göster
+            alert(`${tip} adresinize gönderilecek onay kodu: ${kod}`);
+
+            // Arka planı karartan ve kod giriş popup'ını gösteren HTML ekle
+            if (!document.getElementById('verify-overlay')) {
+              const overlay = document.createElement('div');
+              overlay.id = 'verify-overlay';
+              overlay.style.position = 'fixed';
+              overlay.style.top = '0';
+              overlay.style.left = '0';
+              overlay.style.width = '100vw';
+              overlay.style.height = '100vh';
+              overlay.style.background = 'rgba(0,0,0,0.4)';
+              overlay.style.display = 'flex';
+              overlay.style.justifyContent = 'center';
+              overlay.style.alignItems = 'center';
+              overlay.style.zIndex = '900';
+
+              overlay.innerHTML = `
+                                <div style="background:#fff; border-radius:10px; box-shadow:0 2px 16px rgba(0,0,0,0.2); padding:32px 24px; min-width:320px; text-align:center; position:relative;">
+                                    <h4 style="margin-bottom:18px;">Onay Kodu Girin</h4>
+                                    <input id="verify-code-input" type="text" maxlength="6" style="font-size:20px; letter-spacing:8px; text-align:center; padding:8px 0; width:140px; border:1px solid #ccc; border-radius:5px;" placeholder="------" autocomplete="one-time-code">
+                                    <div style="margin-top:20px;">
+                                        <button id="verify-code-btn" style="background:#3f92ec; color:#fff; border:none; border-radius:5px; padding:8px 24px; font-size:16px; margin-right:10px; cursor:pointer;">Onayla</button>
+                                        <button id="verify-cancel-btn" style="background:#eee; color:#333; border:none; border-radius:5px; padding:8px 18px; font-size:16px; cursor:pointer;">İptal</button>
+                                    </div>
+                                </div>
+                            `;
+              document.body.appendChild(overlay);
+
+              // Onayla butonuna tıklanınca kodu kontrol et
+              document.getElementById('verify-code-btn').onclick = function () {
+                const userCode = document.getElementById('verify-code-input').value.trim();
+                if (userCode === kod.toString()) {
+                  overlay.remove();
+
+                  // Onaylandı ikonunu yeşile çevir
+                  const icon = document.querySelector('.fa-times-circle.unverified-icon');
+                  if (icon) {
+                    icon.classList.remove('fa-times-circle', 'red-icon', 'unverified-icon');
+                    icon.classList.add('fa-check-circle', 'green-icon', 'verified-icon');
+
+                    // Popup başlığını değiştir
+                    const popup = icon.closest('.icon-container').querySelector('.popup');
+                    if (popup) {
+                      popup.querySelector('.popup-header').className = 'popup-header-onaylandi';
+                      popup.querySelector('.popup-header-onaylandi').textContent = 'Onaylandı!';
+                      if (popup.querySelector('.popup-body')) popup.querySelector('.popup-body').remove();
+                    }
+                  }
+                } else {
+                  // Kod yanlışsa SweetAlert2 uyarısı göster
+                  Swal.fire({
+                    title: 'Kod Hatalı!',
+                    text: 'Girdiğiniz doğrulama kodu yanlış. Lütfen tekrar deneyin.',
+                    icon: 'error',
+                    confirmButtonText: 'Tekrar Dene',
+
+                  });
+                }
+              };
+
+              // İptal butonu popup'ı kapatır
+              document.getElementById('verify-cancel-btn').onclick = function () {
+                overlay.remove();
+              };
+            }
+          }
+
+          document.getElementById('newPassword').addEventListener('input', validatePasswords);
+          document.getElementById('confirmNewPassword').addEventListener('input', validatePasswords);
+
+          function validatePasswords() {
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+            // Şifre uzunluğu kontrolü
+            if (newPassword && newPassword.length < 8) {
+              document.getElementById('newPassword').style.borderColor = '#dc3545';
+            } else {
+              document.getElementById('newPassword').style.borderColor = '';
+            }
+
+            // Şifreler aynı mı kontrolü
+            if (newPassword && confirmNewPassword) {
+              if (newPassword !== confirmNewPassword) {
+                document.getElementById('confirmNewPassword').style.borderColor = '#dc3545';
+              } else {
+                document.getElementById('confirmNewPassword').style.borderColor = '#28a745';
+              }
+            } else {
+              document.getElementById('confirmNewPassword').style.borderColor = '';
+            }
+          }
+
+
+        </script>
+      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

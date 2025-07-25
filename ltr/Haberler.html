@@ -1086,7 +1086,7 @@
                       />
                     </div>
 
-                    <button type="submit" class="btn btn-success" onclick="ekleButonu(event)">
+                    <button type="submit" class="btn btn-success" onclick="ekleButonu(this)">
                       Ekle
                     </button>
                     <a href="Haberler.html" class="btn btn-secondary">İptal</a>
@@ -1126,7 +1126,17 @@
               : "../assets/images/gebze-belediyesi.ico";
 
             if (!title || !date || !description) {
-              alert("Lütfen tüm alanları doldurun.");
+              Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'error',
+                title: 'Tüm alanları doldurun!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                background: '#f8d7da',
+                color: '#721c24',
+              });
               return;
             }
 
@@ -1485,7 +1495,16 @@
               }
             });
             if (!seciliVar) {
-              alert("Lütfen silmek için en az bir içerik seçin.");
+              Swal.fire({
+                icon: 'info',
+                title: 'Hiç Seçim Yok',
+                text: 'Lütfen silmek için en az bir içerik seçin.',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                  popup: 'rounded-3',
+                  confirmButton: 'btn btn-primary'
+                }
+              });
             }
           }
 
@@ -1561,7 +1580,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="editNews()">
                         <img
                           src="../assets/images/dropdown_svg/edit.svg"
                           alt="edit"
@@ -1570,7 +1589,7 @@
                         />
                         Düzenle
                       </button>
-                      <button onclick="sil()">
+                      <button onclick="remove()">
                         <img
                           src="../assets/images/dropdown_svg/rubbish-bin.svg"
                           alt="remove"
@@ -1600,6 +1619,40 @@
                 </tr>`;
             }
 
+            const checkboxes = document.querySelectorAll(".checkbox-item");
+
+            // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+            const anaCheckbox = document.getElementById("ana-checkbox");
+            anaCheckbox.addEventListener("change", () => {
+              checkboxes.forEach((checkbox) => {
+                checkbox.checked = anaCheckbox.checked;
+                checkbox.dispatchEvent(new Event("change"));
+              });
+            });
+
+            // Arama sonrası editNews ve remove fonksiyonlarını yeniden bağla
+            setTimeout(() => {
+              document.querySelectorAll(".dropdown-menu button").forEach(btn => {
+                if (btn.textContent.includes("Düzenle")) {
+                  btn.onclick = function () {
+                    // Parametreleri ilgili satırdan al
+                    const tr = btn.closest("tr");
+                    const imgSrc = tr.querySelector("img").src;
+                    const title = tr.querySelector(".news").textContent;
+                    const category = tr.querySelector(".management").textContent;
+                    const date = tr.querySelector(".date").textContent;
+                    const exp = tr.querySelector(".exp").textContent;
+                    editNews(imgSrc, title, category, date, exp, btn);
+                  };
+                }
+                if (btn.textContent.includes("Sil")) {
+                  btn.onclick = function () {
+                    const tr = btn.closest("tr");
+                    if (tr) tr.remove();
+                  };
+                }
+              });
+            }, 0);
           }
         </script>
 
@@ -1622,6 +1675,8 @@
             });
           });
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
       </div>
     </div>
   </div>
