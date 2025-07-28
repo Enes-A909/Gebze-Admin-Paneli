@@ -58,7 +58,7 @@
         margin-top: 5px;
       }
       .Kültürel2 {
-        background-color: rgba(165, 42, 42, 0.514);
+        background-color: rgba(160, 40, 0, 0.584);
         color: white;
         padding: 4px 6px;
         border-radius: 12px;
@@ -68,7 +68,7 @@
         margin-top: 5px;
       }
       .sosyal2 {
-        background-color: rgba(165, 42, 42, 0.514);
+        background-color: rgba(160, 40, 0, 0.584);
         color: white;
         padding: 4px 6px;
         border-radius: 12px;
@@ -78,7 +78,7 @@
         margin-top: 5px;
       }
       .diger2 {
-        background-color: brown;
+        background-color: rgba(160, 40, 0, 0.584);
         color: white;
         padding: 4px 6px;
         border-radius: 12px;
@@ -909,9 +909,10 @@
                         width: 80px;
                         height: 40px;
                         background-color: rgba(1, 213, 251, 0.54);
-                        color: rgba(52, 181, 251, 0.9);
+                        color: rgb(49, 132, 177);
                         font-weight: bold;
                         border-radius: 5px;
+                        padding-left: 16px;
                       "
                     >
                       Uygula
@@ -2368,23 +2369,6 @@
               menu.style.display =
                 menu.style.display === "block" ? "none" : "block";
             }
-
-            // Örnek fonksiyonlar
-            function ekle() {
-              alert("Ekleme sayfasına yönlendiriliyor...");
-            }
-
-            function duzenle() {
-              alert("Düzenleme sayfasına yönlendiriliyor...");
-            }
-
-            function sil() {
-              alert("Silme işlemi yapılıyor...");
-            }
-
-            function icerik() {
-              alert("İçerik detayına yönlendiriliyor...");
-            }
           </script>
           <script>
             function toggleDropdown(btn) {
@@ -2398,22 +2382,6 @@
               // Tıklanan menüyü aç/kapat
               menu.style.display =
                 menu.style.display === "block" ? "none" : "block";
-            }
-
-            function ekle() {
-              alert("Ekle tıklandı");
-            }
-
-            function duzenle() {
-              alert("Düzenle tıklandı");
-            }
-
-            function sil() {
-              alert("Sil tıklandı");
-            }
-
-            function icerik() {
-              alert("İçerik tıklandı");
             }
 
             // Sayfa dışında bir yere tıklanınca menü kapanır
@@ -2611,7 +2579,7 @@
                     </div>
                   
 
-                    <button type="submit" class="btn btn-success">
+                    <button type="button" class="btn btn-success" id="guncelleBtn">
                       Güncelle
                     </button>
                     <a href="digerHizmetNoktalari.html" class="btn btn-secondary">İptal</a>

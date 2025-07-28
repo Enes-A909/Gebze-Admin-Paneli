@@ -2,6 +2,13 @@
 <html lang="tr">
   <head>
     <style>
+      table tr:hover {
+        background-color: #cccccc;
+        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 10px;
+      }
       .müdürlükText {
         padding-left: 40px;
         padding-right: 40px;
@@ -81,12 +88,12 @@
         font-family: Arial, sans-serif;
         table-layout: fixed;
       }
-
       .adresTablosu th {
         text-align: left;
         padding: 12px 10px;
         font-weight: bold;
-        background-color: #57565636;
+        background-color: #f5f1f167;
+        border-bottom: 1px solid #ccc;
       }
 
       .adresTablosu td {
@@ -1079,38 +1086,38 @@
             </div>
           </div>
           `;
-              // document.getElementById("").innerHTML = ``;
+              document.getElementById("").innerHTML = ``;
 
-              // if (category === "Yönetim") {
-              //   document.getElementById("yonetim").selected = true;
-              // }
-              // if (category === "Başkanlık") {
-              //   document.getElementById("baskanlik").selected = true;
-              // }
-              // if (category === "Halk") {
-              //   document.getElementById("halk").selected = true;
-              // }
-              // if (category === "Genel") {
-              //   document.getElementById("genel").selected = true;
-              // }
+              if (category === "Binaİsmi") {
+                document.getElementById("Binaİsmi").selected = true;
+              }
+              if (category === "adres") {
+                document.getElementById("adres").selected = true;
+              }
+              if (category === "telefon") {
+                document.getElementById("telefon").selected = true;
+              }
+              if (category === "email") {
+                document.getElementById("email").selected = true;
+              }
 
-              // const input = document.querySelector(".resim-input");
-              // const imgPrev = document.querySelector(".preview-img");
+              const input = document.querySelector(".resim-girdi");
+              const imgPrev = document.querySelector(".preview-img");
 
-              // input.addEventListener("change", function () {
-              //   const dosya = this.files[0];
+              input.addEventListener("change", function () {
+                const dosya = this.files[0];
 
-              //   if (dosya) {
-              //     const okuyucu = new FileReader();
+                if (dosya) {
+                  const okuyucu = new FileReader();
 
-              //     okuyucu.onload = function (e) {
-              //       imgPrev.src = e.target.result;
-              //       imgPrev.style.display = "block";
-              //     };
+                  okuyucu.onload = function (e) {
+                    imgPrev.src = e.target.result;
+                    imgPrev.style.display = "block";
+                  };
 
-              //     okuyucu.readAsDataURL(dosya);
-              //   }
-              // });
+                  okuyucu.readAsDataURL(dosya);
+                }
+              });
 
               // Güncelle butonu işlevi
               document
