@@ -128,7 +128,7 @@
       display: inline-block;
     }
 
-    .arşiv {
+    .durum {
       background-color: #7d373769;
       color: white;
       padding: 4px 8px;
@@ -339,8 +339,8 @@
 
             <li class="onhover-dropdown">
               <div class="media align-items-center">
-                <img class="align-self-center pull-right img-50 rounded-circle"
-                  src="../assets/images/dashboard/user.png" alt="header-user" />
+                <img class="align-self-center pull-right img-50 rounded-circle" src="../assets/images/user/user.png"
+                  alt="header-user" />
               </div>
               <ul class="profile-dropdown onhover-show-div p-20">
                 <li>
@@ -405,7 +405,7 @@
           <!-- Bu div kullanıcı bilgilerini içeriyor -->
           <div class="sidebar-user text-center" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
             <div>
-              <img class="img-60 rounded-circle" src="../assets/images/user/1.jpg" alt="#" />
+              <img class="img-60 rounded-circle" src="../assets/images/user/user.png" alt="#" />
               <div class="profile-edit">
                 <a href="Profil.html" target="_blank"><i data-feather="edit"></i></a>
               </div>
@@ -565,12 +565,12 @@
                 <th scope="row">
                   <input type="checkbox" class="checkbox-item" />
                 </th>
-                <td scope=" row">Söz Verdiğimiz Gibi</td>
+                <td class="baslik" scope=" row">Söz Verdiğimiz Gibi</td>
                 <td scope="row">
                   <span class="badge" style="margin-top: 7px">Yayınlarımız</span>
                 </td>
                 <td scope="row">
-                  <span class="arşiv" style="margin-top: 7px">
+                  <span class="durum" style="margin-top: 7px">
                     Arşivlendi
                   </span>
                 </td>
@@ -581,7 +581,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="duzenle(this)">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
@@ -682,8 +682,8 @@
             }, 0);
           }
 
+          // Tekli Silme Butonu
           function remove(btn) {
-            // Eğer parametre gelirse, sadece o satırı sil
             if (btn) {
               const row = btn.closest("tr");
               row.parentNode.removeChild(row);
@@ -691,261 +691,68 @@
 
           }
 
+
+          // Ekle kısmındaki kaydet butonu
           function kaydet() {
             const baslik = document.getElementById("baslik").value;
             const pdfDosya = document.getElementById("pdfDosya").files[0];
 
-            // Başlık ve PDF dosyasının dolu olduğunu kontrol et
             if (!baslik || !pdfDosya) {
               Swal.fire({
-                icon: 'warning',
-                title: 'Eksik Bilgi',
-                text: 'Lütfen başlık ve PDF dosyasını doldurun.',
-                confirmButtonText: 'Tamam',
-                customClass: {
-                  popup: 'rounded-3',
-                  confirmButton: 'btn btn-primary'
-                }
+                icon: "error",
+                title: "Eksik Bilgi",
+                text: "Başlık ve PDF dosyası zorunludur!",
               });
               return;
             }
 
-            // Tabloya yeni satır ekle
-            const tableBody = document.querySelector("#table-body");
-            if (tableBody) {
-              const newRow = document.createElement("tr");
-              newRow.innerHTML = `
-                <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
-                <td scope="row">${baslik}</td>
-                <td scope="row"><span class="badge" style="margin-top: 7px">Yayınlarımız</span></td>
-                <td scope="row"><span class="arşiv" style="margin-top: 7px">Aktif</span></td>
-                <td scope="row">${new Date().toLocaleDateString("tr-TR")}</td>
-                <td scope="row" style="text-align: right">
-                  <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
-                    <div class="dropdown-menu">
-                      <button onclick="duzenle()">
-                        <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" /> Düzenle
-                      </button>
-                      <button onclick="remove(this)">
-                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" /> Sil
-                      </button>
-                      <button onclick="archive()">
-                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%" height="10%" /> İçerik
-                      </button>
-                    </div>
-                  </div>
-                </td>
-              `;
-              tableBody.appendChild(newRow);
+            // PDF dosyasının sadece adını alıyoruz
+            const dosyaAdi = pdfDosya.name;
 
-              // Checkbox olay dinleyicilerini yeniden bağla
-              const checkboxes = document.querySelectorAll(".checkbox-item");
-              const anaCheckbox = document.getElementById("ana-checkbox");
-              anaCheckbox.addEventListener("change", () => {
-                checkboxes.forEach((checkbox) => {
-                  checkbox.checked = anaCheckbox.checked;
-                  checkbox.dispatchEvent(new Event("change"));
-                });
-              });
-
-              // Navbarı geri yükle
-              document.getElementById("nav").innerHTML = `
-                <button class="buton ekle-butonu" onclick="ekle()">
-                  <div class="icon arti"></div>
-                  <span>Ekle</span>
-                </button>
-                <button class="buton arsivle-butonu" onclick="arsivle()">
-                  <div class="icon kutu"></div>
-                  <span>Arşivle</span>
-                </button>
-                <button class="buton sil-butonu" onclick="sil()">
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                  aria-hidden="true" focusable="false">
-                  <path
-                    d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z" />
-                  </svg>
-                  <span>Sil</span>
-                </button>
-              `;
-
-              // İçerik alanını tabloya geri döndür
-              document.getElementById("icerikler").innerHTML = document.getElementById("icerikler").innerHTML;
-            } else {
-              // Eğer tablo yoksa, tabloyu baştan oluştur
-              const navbarDiv = document.getElementById("nav");
-              navbarDiv.innerHTML = `
-                <button class="buton ekle-butonu" onclick="ekle()">
-                  <div class="icon arti"></div>
-                  <span>Ekle</span>
-                </button>
-                <button class="buton arsivle-butonu" onclick="arsivle()">
-                  <div class="icon kutu"></div>
-                  <span>Arşivle</span>
-                </button>
-                <button class="buton sil-butonu" onclick="sil()">
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                  aria-hidden="true" focusable="false">
-                  <path
-                    d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z" />
-                  </svg>
-                  <span>Sil</span>
-                </button>
-              `;
-              document.getElementById("icerikler").innerHTML = `
-                <table class="table" style="background-color: rgba(204, 204, 204, 0.186); border-radius: 10px;">
-                  <thead>
-                    <tr>
-                      <th scope="col"><input type="checkbox" id="ana-checkbox" /></th>
-                      <th scope="col">Sayfa Başlığı</th>
-                      <th scope="col">Kategori</th>
-                      <th scope="col">Durumu</th>
-                      <th scope="col">Son Güncelleme</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody id="table-body">
-                    <tr>
-                      <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
-                      <td scope="row">${baslik}</td>
-                      <td scope="row"><span class="badge" style="margin-top: 7px">Yayınlarımız</span></td>
-                      <td scope="row"><span class="arşiv" style="margin-top: 7px">Aktif</span></td>
-                      <td scope="row">${new Date().toLocaleDateString("tr-TR")}</td>
-                      <td scope="row" style="text-align: right">
-                        <div class="dropdown-container">
-                          <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
-                          <div class="dropdown-menu">
-                            <button onclick="duzenle()">
-                              <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" /> Düzenle
-                            </button>
-                            <button onclick="remove(this)">
-                              <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" /> Sil
-                            </button>
-                            <button onclick="archive()">
-                              <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%" height="10%" /> İçerik
-                            </button>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              `;
-
-              // Checkbox olay dinleyicilerini yeniden bağla
-              const checkboxes = document.querySelectorAll(".checkbox-item");
-              const anaCheckbox = document.getElementById("ana-checkbox");
-              anaCheckbox.addEventListener("change", () => {
-                checkboxes.forEach((checkbox) => {
-                  checkbox.checked = anaCheckbox.checked;
-                  checkbox.dispatchEvent(new Event("change"));
-                });
-              });
-            }
-          }
-
-
-          // Yayını güncelleme buton kodu
-          function kaydetDuzenle() {
-            const baslik = document.getElementById("baslik").value;
-            const pdfDosya = document.getElementById("pdfDosya").files[0];
-
-            // Başlık ve PDF dosyasının dolu olduğunu kontrol et
-            if (!baslik || !pdfDosya) {
-              Swal.fire({
-                icon: 'warning',
-                title: 'Eksik Bilgi',
-                text: 'Lütfen başlık ve PDF dosyasını doldurun.',
-                confirmButtonText: 'Tamam',
-                customClass: {
-                  popup: 'rounded-3',
-                  confirmButton: 'btn btn-primary'
-                }
-              });
-              return;
-            }
-
-            // Tabloyu geri yükle
-            const navbarDiv = document.getElementById("nav");
-            navbarDiv.innerHTML = `
-            <button class="buton ekle-butonu" onclick="ekle()">
-              <div class="icon arti"></div>
-              <span>Ekle</span>
-            </button>
-            <button class="buton arsivle-butonu" onclick="arsivle()">
-              <div class="icon kutu"></div>
-              <span>Arşivle</span>
-            </button>
-            <button class="buton sil-butonu" onclick="sil()">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-              aria-hidden="true" focusable="false">
-              <path
-                d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z" />
-              </svg>
-              <span>Sil</span>
-            </button>`;
-
-            // Tabloyu geri yükle
-            const icerikDiv = document.getElementById("icerikler");
-            icerikDiv.innerHTML = `
-        <table class="table" style="background-color: rgba(204, 204, 204, 0.186); border-radius: 10px;">
-          <thead>
-          <tr>
-            <th scope="col"><input type="checkbox" id="ana-checkbox" /></th>
-            <th scope="col">Sayfa Başlığı</th>
-            <th scope="col">Kategori</th>
-            <th scope="col">Durumu</th>
-            <th scope="col">Son Güncelleme</th>
-            <th scope="col"></th>
-          </tr>
-          </thead>
-          <tbody id="table-body">
-          <tr>
-            <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
-            <td scope="row">${baslik}</td>
-            <td scope="row"><span class="badge" style="margin-top: 7px">Yayınlarımız</span></td>
-            <td scope="row"><span class="arşiv" style="margin-top: 7px">Aktif</span></td>
-            <td scope="row">${new Date().toLocaleDateString("tr-TR")}</td>
-            <td scope="row" style="text-align: right">
-             <div class="dropdown-container">
-          <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
-          <div class="dropdown-menu">
-            <button onclick="duzenle()">
-            <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" /> Düzenle
-            </button>
-            <button onclick="remove(this)">
-            <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" /> Sil
-            </button>
-            <button onclick="archive()">
-            <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%" height="10%" /> İçerik
-            </button>
-          </div>
-          </div>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        `;
-
-            // Checkbox olay dinleyicilerini yeniden bağla
-            const checkboxes = document.querySelectorAll(".checkbox-item");
-            const anaCheckbox = document.getElementById("ana-checkbox");
-            anaCheckbox.addEventListener("change", () => {
-              checkboxes.forEach((checkbox) => {
-                checkbox.checked = anaCheckbox.checked;
-                checkbox.dispatchEvent(new Event("change"));
-              });
+            // Şu anki zamanı al
+            const tarihSaat = new Date();
+            const formattedTarih = tarihSaat.toLocaleDateString("tr-TR");
+            const formattedSaat = tarihSaat.toLocaleTimeString("tr-TR", {
+              hour: "2-digit",
+              minute: "2-digit",
             });
+
+            const yeniYayin = {
+              baslik,
+              kategori: "Yayınlarımız",
+              durum: "Aktif",
+              guncelleme: `${formattedTarih} [${formattedSaat}]`,
+              dosya: dosyaAdi,
+            };
+
+            localStorage.setItem("yeniYayin", JSON.stringify(yeniYayin));
+
+            // Sayfayı yenile (veya geri dön)
+            window.location.reload();
           }
 
-          // Mevcut yayını düzenleme
-          function duzenle() {
+
+
+
+          // Düzenle Butonu
+          function duzenle(button) {
+            const row = button.closest("tr");
+            const baslik = row.querySelector(".baslik")?.innerText.trim() || "Başlık";
+
+            // Mevcut satırın INDEX'ini kaydet
+            const tbody = row.parentNode;
+            window.duzenlenenSatirIndex = [...tbody.children].indexOf(row);
+
+            // Orijinal tabloyu yedekle (geriDon için)
+            window.orijinalIcerik = document.getElementById("icerikler").innerHTML;
+
+            // İçerikleri düzenleme arayüzüne çevir
             const icerikDiv = document.getElementById("icerikler");
             icerikDiv.innerHTML = `
     <div style="background-color: #f9f9f9; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1)">
       <h4>PDF Düzenle</h4><br>
       <h5>Başlık</h5>
-      <input type="text" id="baslik" placeholder="Yayın başlığını girin" style="width: 100%; padding: 8px;" value="Söz Verdiğimiz Gibi"/> <br><br>
+      <input type="text" id="baslik" placeholder="Yayın başlığını girin" style="width: 100%; padding: 8px;" value="${baslik}"/> <br><br>
       <input type="file" id="pdfDosya" accept="application/pdf" style="margin-bottom: 20px" /> <br><br>
       <div id="pdfOnizleme" style="margin-top: 20px;"></div>
       <button onclick="geriDon()" style="margin-top: 20px; padding: 10px 15px; background-color: #2196F3; color: white; border: none; border-radius: 5px;">Geri Dön</button>
@@ -953,8 +760,6 @@
     </div>
   `;
 
-            document.getElementById("nav").innerHTML = ``;
-            // PDF önizlemesini yönet
             setTimeout(() => {
               const input = document.getElementById("pdfDosya");
               const preview = document.getElementById("pdfOnizleme");
@@ -973,7 +778,56 @@
             }, 0);
           }
 
-          // Yayını silme
+
+
+          // Düzenle kısmındaki kaydet butonu
+          function kaydetDuzenle() {
+            const yeniBaslik = document.getElementById("baslik").value.trim() || "Başlık";
+
+            const icerikDiv = document.getElementById("icerikler");
+
+            // Yeni satır HTML
+            const yeniSatir = `
+    <tr>
+      <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
+      <td class="baslik">${yeniBaslik}</td>
+      <td><span class="badge" style="margin-top: 7px">Yayınlarımız</span></td>
+      <td><span class="durum" style="margin-top: 7px">Arşivlendi</span></td>
+      <td>Şimdi</td>
+      <td style="text-align: right">
+        <div class="dropdown-container">
+          <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
+          <div class="dropdown-menu">
+            <button onclick="duzenle(this)">
+              <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+              Düzenle
+            </button>
+            <button onclick="remove(this)">
+              <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" />
+              Sil
+            </button>
+            <button onclick="archive()">
+              <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%" height="10%" />
+              Arşivle
+            </button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  `;
+
+            // Sayfayı eski haline getir
+            icerikDiv.innerHTML = window.orijinalIcerik;
+
+            // Satırı güncelle
+            const tbody = document.querySelector("#icerikler table tbody");
+            const index = window.duzenlenenSatirIndex;
+            if (tbody && typeof index === "number") {
+              tbody.children[index].outerHTML = yeniSatir;
+            }
+          }
+
+          // Çoklu Silme Butonu
           function sil() {
             const checkboxes = document.querySelectorAll(".checkbox-item");
             let seciliVar = false;
@@ -1008,6 +862,8 @@
             }
           });
 
+
+          // Çoklu Arşivleme Butonu
           function arsivle() {
             const checkboxes = document.querySelectorAll(".checkbox-item");
             let herhangiBiriSecili = false;
@@ -1056,6 +912,49 @@
             });
           });
         </script>
+        <script>
+          window.addEventListener("load", function () {
+            const veri = localStorage.getItem("yeniYayin");
+            if (veri) {
+              const yayin = JSON.parse(veri);
+              const tbody = document.querySelector("#icerikler table tbody");
+
+              const tr = document.createElement("tr");
+              tr.innerHTML = `
+      <th scope="row">
+        <input type="checkbox" class="checkbox-item" />
+      </th>
+      <td>${yayin.baslik}</td>
+      <td><span class="badge" style="margin-top: 7px">${yayin.kategori}</span></td>
+      <td><span class="durum" style="margin-top: 7px">${yayin.durum}</span></td>
+      <td>${yayin.guncelleme}</td>
+      <td style="text-align: right">
+        <div class="dropdown-container">
+          <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
+          <div class="dropdown-menu">
+            <button onclick="duzenle(this)">
+              <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+              Düzenle
+            </button>
+            <button onclick="remove(this)">
+              <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" />
+              Sil
+            </button>
+            <button onclick="archive()">
+              <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%" height="10%" />
+              Arşivle
+            </button>
+          </div>
+        </div>
+      </td>
+    `;
+
+              tbody.appendChild(tr);
+              localStorage.removeItem("yeniYayin");
+            }
+          });
+        </script>
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
       </div>
