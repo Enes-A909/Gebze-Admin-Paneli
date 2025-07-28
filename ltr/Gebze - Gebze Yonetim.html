@@ -11,14 +11,26 @@
       border-color: transparent !important;
     }
 
+    html {
+      overflow-y: scroll;
+    }
+
     table {
-      border: 1px solid black;
+      border-radius: 10px;
+      table-layout: fixed;
+    }
+
+    table tr {
+      transition: background-color 0.3s ease;
+      border-radius: 10px;
     }
 
     table tr:hover {
       background-color: #cccccc;
-      cursor: pointer;
       transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border-radius: 10px;
     }
 
     table tr button {
@@ -28,7 +40,13 @@
 
     table tr button:hover {
       transition: transform 0.3s ease !important;
-      transform: translate(-5%, 0%);
+      transform: scale(1.2);
+    }
+
+    .dot{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .logo-img {
@@ -222,6 +240,20 @@
     .sil-butonu {
       background-color: #F44336;
     }
+
+    .edit {
+      background-color: rgba(68, 127, 245, 0.347) !important;
+      transition: all 0.3s ease !important;
+      width: 90px !important;
+    }
+
+    .edit:hover {
+      background-color: rgba(68, 127, 245, 0.705);
+      transition: all 0.3s ease;
+      transform: scale(1.1);
+      color: white;
+    }
+
   </style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -460,13 +492,12 @@
         </div>
       </div>
       <!-- Page Sidebar Ends-->
-
-      <div class="page-body">
+        <div class="page-body">
         <div class="container-fluid">
           <div class="page-header">
             <div class="row">
               <div class="col">
-                <div class="page-header-left" style="margin-top: -30px; float: left">
+                <div class="page-header-left" style="margin-top: -40px">
                   <h3>Gebze Yönetim</h3>
                   <ol class="breadcrumb" style="margin-top: 65px; margin-left: -200px">
                     <li class="breadcrumb-item">
@@ -474,7 +505,7 @@
                     </li>
                     <li class="breadcrumb-item">Gebze</li>
                     <li class="breadcrumb-item active">
-                      <a href="Kurumsal - Raporlar.html">Gebze Yönetim</a>
+                      <a href="Gebze - Gebze Yonetim.html">Gebze-Yönetim</a>
                     </li>
                   </ol>
                 </div>
@@ -483,37 +514,7 @@
           </div>
         </div>
 
-        <!-- Benim yaptığım navbar kısmı -->
-        <nav class="navbar navbar-expand-lg navbar-light" style="margin: -20px;">
-          <div class="container-fluid d-flex justify-content-end">
-
-            <!-- EKLE -->
-            <button class="buton ekle-butonu" onclick="ekle()">
-              <div class="icon arti"></div>
-              <span>Ekle</span>
-            </button>
-
-            <!-- ARŞİVLE -->
-            <button class="buton arsivle-butonu" onclick="arsivle()">
-              <div class="icon kutu"></div>
-              <span>Arşivle</span>
-            </button>
-
-            <!-- SİL -->
-            <button class="buton sil-butonu" onclick="sil()">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                aria-hidden="true" focusable="false">
-                <path
-                  d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z" />
-              </svg>
-              <span>Sil</span>
-            </button>
-
-          </div>
-        </nav>
-
-
-        <br /><br />
+      <br><br><br>
 
         <!-- İçeriklerin Yükleneceği Alan -->
         <div id="icerikler">
@@ -521,19 +522,19 @@
             margin-top: -20px;">
             <thead>
               <tr>
-                <th scope="col">
-                  <input type="checkbox" class="checkbox-item" id="ana-checkbox" />
+                <th scope="col" style="width: 1%;">
+                  
                 </th>
-                <th scope="col">Sayfa Başlığı</th>
-                <th scope="col">Kategori</th>
-                <th scope="col">Durumu</th>
-                <th scope="col">Son Güncelleme</th>
+                <th scope="col" style="width: 20%;">Sayfa Başlığı</th>
+                <th scope="col" style="width: 20%;">Kategori</th>
+                <th scope="col" style="width: 20%;">Durumu</th>
+                <th scope="col" style="width: 20%;">Son Güncelleme</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
+                <th scope="row"></th>
                 <td scope=" row">Mahalle Muhtarları</td>
                 <td scope="row">
                   <span class="kategori" style="margin-top: 7px">Gebze Yönetim</span>
@@ -550,14 +551,9 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <div class="menu-title">İçerikler</div>
-                      <button onclick="duzenle()">
+                      <button onclick="muhtarEdit()">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle</button>
-                      <button onclick="sil()">
-                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                          height="10%" />
-                        Sil</button>
                       <button onclick="archive()">
                         <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
                           height="10%" />
@@ -569,7 +565,7 @@
                 </td>
               </tr>
               <tr>
-                <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
+                <th scope="row"></th>
                 <td>Kardeş Şehirler</td>
                 <td>
                   <span class="kategori" style="margin-top: 7px">Gebze Yönetim</span>
@@ -586,14 +582,9 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <div class="menu-title">İçerikler</div>
                       <button onclick="duzenle()">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle</button>
-                      <button onclick="sil()">
-                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                          height="10%" />
-                        Sil</button>
                       <button onclick="archive()">
                         <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
                           height="10%" />
@@ -605,7 +596,7 @@
                 </td>
               </tr>
               <tr>
-                <th scope="row"><input type="checkbox" class="checkbox-item" /></th>
+                <th scope="row"></th>
                 <td>Üye Olduğumuz birlikler</td>
                 <td>
                   <span class="kategori" style="margin-top: 7px">Gebze Yönetim</span>
@@ -622,14 +613,9 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <div class="menu-title">İçerikler</div>
                       <button onclick="duzenle()">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle</button>
-                      <button onclick="sil()">
-                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                          height="10%" />
-                        Sil</button>
                       <button onclick="archive()">
                         <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
                           height="10%" />
@@ -644,6 +630,8 @@
       </div>
       <footer style="height: 200px; opacity: 0"></footer>
 
+      <!-- !!!!!!       JAVASCRIPT KODLARI BURADA     !!!!!      -------------->
+      <script src="../assets/js/ltr_js/gebze_yonetim.js"></script>
       <script>
         // Burada herhangi bir checkbox seçildiğinde Arşivle ve Sil butonlarının display özelliğini none olmaktan çıkaracağız.
         const checkboxes = document.querySelectorAll('.checkbox-item');
