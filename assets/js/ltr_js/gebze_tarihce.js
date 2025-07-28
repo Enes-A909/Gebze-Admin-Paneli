@@ -45,16 +45,16 @@
           row.insertAdjacentHTML(
             "beforeend",
             `
-            <div class="col-6 col-md-2 mb-3">
+            <div class="col-6 col-md-2 mb-3" style="border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc; ">
               <img
-                src="../assets/images/gebze-belediyesi.ico"
+                src=""
                 class="img-fluid rounded mb-2 preview-img"
                 style="min-height:150px;min-width:150px"
                 alt="resim${count}"
               />
               <div class="d-flex gap-2">
-                <label for="resim${count}" class="btn btn-outline-primary w-50 p-1">Değiştir</label>
-                <label for="resimSil${count}" class="btn btn-outline-danger w-50 p-0 pt-1 remove">Sil</label>
+                <label for="resim${count}" class="btn btn-outline-primary w-50 p-1"><b>Değiştir</b></label>
+                <label for="resimSil${count}" class="btn btn-outline-danger w-50 p-0 pt-1 remove"><b>Sil</b></label>
                 <input type="file" id="resim${count}" class="resim-input" style="display: none" />
               </div>
             </div>
@@ -88,7 +88,7 @@
       function addEventLoc(){
         const add = document.getElementById("add")
         add.addEventListener("click", function () {
-          const row = document.querySelector("#photos");
+          const row = document.querySelector("#tableContent");
           if (!row) return;
 
           const count = row.children.length + 1;
@@ -96,21 +96,18 @@
           row.insertAdjacentHTML(
             "beforeend",
             `
-            <div class="col-6 col-md-2 mb-3">
-              <img
-                src="../assets/images/gebze-belediyesi.ico"
-                class="img-fluid rounded mb-2 preview-img"
-                style="height:150px;width:150px"
-                alt="resim${count}"
-              />
-              <label for="resim${count}" class="w-100 p-1"></label>
-              <div class="d-flex gap-2">
-                <label for="resim${count}" class="btn btn-outline-primary w-100 p-1">Düzenle</label>
-              </div>
-            </div>
+            <td>
+          <img src="" alt="Lokasyon resmi" width="50" height="30" />
+        </td>
+        <td class="location dot" title="Başlık">Lokasyon Başlığı</td>
+        <td class="dot" title="">Lokasyon Genel Bilgi</td>
+        <td class="location dot" title="">Lokasyon Konum Bilgisi</td>
+        <td style="text-align:right;">
+          <button class="btn w-10 p-1 edit" id="">Düzenle</button>
+        </td>
             `
           );
-
+      tableContent.appendChild(row);
           remove();
         });
 
@@ -135,7 +132,7 @@
           });
       }
 
-      window.addEventListener("DOMContentLoaded", addEvent);
+      window.addEventListener("DOMContentLoaded", addEvent());
 
     // DÜZENLE
 
@@ -378,16 +375,16 @@
       function getPhotos(num) {
         for (let i = 0; i < num; i++) {
           document.getElementById("photos").innerHTML += `
-          <div class="col-6 col-md-2 mb-3" style="border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;">
+          <div class="col-6 col-md-2 mb-3" style="border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;" margin-left:5px;>
         <img
-        src="../assets/images/gebze-belediyesi.ico"
+        src=""
         class="img-fluid rounded mb-2 preview-img"
         style="min-height:150px;min-width:150px"
         alt="resim${i}"
         />
       <div class="d-flex gap-2"   >
-        <label for="resim${i}" class="btn btn-primary w-50 p-1" >Değiştir</label>
-        <label for="resimSil${i}" class="btn btn-danger w-50 p-1 pt-1 remove ml-1" >Sil</label>
+        <label for="resim${i}" class="btn btn-outline-primary w-50 p-1" ><b>Değiştir</b></label>
+        <label for="resimSil${i}" class="btn btn-outline-danger w-50 p-1 pt-1 remove ml-1"><b>Sil</b></label>
         <input type="file" id="resim${i}" class="resim-input" style="display: none" />
       </div>
     </div>`;
@@ -440,50 +437,57 @@
       }
 
       function getLocPhotos(num) {
-      
-      const photosContainer = document.getElementById("photos");
-      photosContainer.innerHTML = ""; 
+const photosContainer = document.getElementById("photos");
+  photosContainer.innerHTML = ""; 
+  
+  const table = document.createElement("table");
+  table.className = "table mt-0";
+  table.id = "table";
+  table.style.width = "100%";
 
-      for (let i = 0; i < num; i++) {
-        locations.forEach((loc, index) => {
-          
-          const imageId = `resim${i}_${index}`;   // benzersiz id oluşturmak için yapıldı
-          const buttonId = `editBtn${i}_${index}`;
-          
-          const div = document.createElement("div"); 
-          div.className = "col-6 col-md-2 mb-3";
-          div.innerHTML = `
-            <img
-              src="${loc.titleImage}"
-              class="img-fluid rounded mb-2 preview-img"
-              style="width:150px;height:150px;"
-              alt="${imageId}"
-            />
-            <label
-              for="${imageId}"
-              class="w-100 p-1"
-            >${loc.name}</label>
-            <div class="d-flex gap-2">
-              <button
-                class="btn btn-outline-primary w-100 p-1"
-                id="${buttonId}"
-                data-index="${i}${index}"
-              >Düzenle</button>
-            </div>
-          `;
+  table.innerHTML = `
+    <thead style="border-top: none">
+      <tr>
+        <th style="width: 15%; padding-left: 10px;">Resim</th>
+        <th style="width: 20%">Başlık</th>
+        <th style="width: 25%; max-width: 25%;">Tarihçe ve Genel Bilgi</th>
+        <th style="width: 25%; max-width: 25%;">Konum Bilgi</th>
+        <th style="width: 15%">İşlem</th>
+      </tr>
+    </thead>
+    <tbody id="tableContent"></tbody>
+  `;
 
-          photosContainer.appendChild(div); // yukarıda oluşturulan div ana dive eklendi
-          
-          const editButton = document.getElementById(buttonId);
-            editButton.addEventListener("click", function () {
-              const idx = this.dataset.index;
-              console.log(idx)
-              editLocation(loc);
-            });
-          
-        });
-      }
-    }
+  const tableContent = table.querySelector("#tableContent");
+
+  for (let i = 0; i < num; i++) {
+    locations.forEach((loc, index) => {
+      const tr = document.createElement("tr");
+      const buttonId = `editBtn_${i}_${index}`;
+
+      tr.innerHTML = `
+        <td>
+          <img src="${loc.titleImage}" alt="${loc.name}" width="80" height="50" /> <!-- Resim boyutunu artır -->
+        </td>
+        <td class="news dot" title="${loc.name}">${loc.name}</td>
+        <td class="dot" title="${loc.info}">${loc.info}</td>
+        <td class="location dot" title="${loc.tarif}">${loc.tarif}</td>
+        <td style="text-align:right;">
+          <button class="btn w-10 p-1 edit" id="${buttonId}">Düzenle</button>
+        </td>
+      `;
+      tableContent.appendChild(tr);
+
+      tr.querySelector(`#${buttonId}`).addEventListener("click", () => {
+        console.log(`${i}_${index} tıklandı`);
+        editLocation(loc);
+      });
+    });
+  }
+
+  photosContainer.appendChild(table);
+}
+
       
       function editTarihiYerler(photoNum){
         let content = document.getElementById("icerikler");
@@ -523,7 +527,7 @@
                         </div>
 
                         <div class="container mt-4" id="images">
-                          <div class="row text-center justify-content-start" id="photos">
+                          <div id="photos">
                           </div>
                         </div>
                        <div class="d-flex gap-2 mt-3">
