@@ -452,8 +452,9 @@
       }
 
       .save-button {
-        font-size: 16px;
-        padding: 10px 20px;
+        font-size: 12px;
+        padding: 15px 20px;
+        height: 20px;
       }
     }
 
@@ -512,6 +513,12 @@
       font-weight: bold;
       text-align: center;
     }
+
+    .dot {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   </style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -553,6 +560,12 @@
   <link id="color" rel="stylesheet" href="../assets/css/light-1.css" media="screen" />
   <!-- Responsive css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css" />
+
+  <!-- Font Awesome (CDN ile) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </head>
@@ -602,8 +615,8 @@
 
             <li class="onhover-dropdown">
               <div class="media align-items-center">
-                <img class="align-self-center pull-right img-50 rounded-circle"
-                  src="../assets/images/dashboard/user.png" alt="header-user" />
+                <img class="align-self-center pull-right img-50 rounded-circle" src="../assets/images/user/user.png"
+                  alt="header-user" />
               </div>
               <ul class="profile-dropdown onhover-show-div p-20">
                 <li>
@@ -667,7 +680,7 @@
           <!-- Bu div kullanıcı bilgilerini içeriyor -->
           <div class="sidebar-user text-center" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
             <div>
-              <img class="img-60 rounded-circle" src="../assets/images/user/1.jpg" alt="#" />
+              <img class="img-60 rounded-circle" src="../assets/images/user/user.png" alt="#" />
               <div class="profile-edit">
                 <a href="Profil.html" target="_blank"><i data-feather="edit"></i></a>
               </div>
@@ -776,19 +789,13 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="margin-top: -30px">
           <div id="nav" class="container-fluid d-flex justify-content-end">
             <!-- EKLE -->
-            <button class="buton ekle-butonu">
+            <button class="buton ekle-butonu" onclick="ekle()">
               <div class="icon arti"></div>
               <span>Ekle</span>
             </button>
 
-            <!-- ARŞİVLE -->
-            <button class="buton arsivle-butonu">
-              <div class="icon kutu"></div>
-              <span>Arşivle</span>
-            </button>
-
             <!-- SİL -->
-            <button class="buton sil-butonu">
+            <button class="buton sil-butonu" onclick="sil()">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                 aria-hidden="true" focusable="false">
                 <path
@@ -830,34 +837,30 @@
                     <input type="checkbox" class="checkbox-item" style="margin-top: 10px;" />
                   </th>
                   <td>
-                    <img src="../assets/images/user/1.jpg" alt="Ayşe Demir" class="rounded-circle" width="40"
+                    <img src="../assets/images/user/user.png" alt="Ayşe Demir" class="rounded-circle" width="40"
                       height="40" />
                   </td>
                   <td>Ayşe Demir</td>
-                  <td>ayse@example.com</td>
+                  <td style="width: 1%" class="exp dot" title="aysedemir@gmail.com">aysedemir@gmail.com</td>
                   <td>+90 532 111 11 11</td>
-                  <td>2023-02-01</td>
-                  <td>2025-07-09 11:25</td>
+                  <td>01.02.2023</td>
+                  <td>09.07.2025 [11:25]</td>
                   <td>
                     <div class="dropdown-container">
                       <button class="dropdown-toggle" onclick="toggleDropdown(this)">
                         İşlemler
                       </button>
                       <div class="dropdown-menu">
-                        <button onclick="duzenle(this)">
+                        <button onclick="yetkilendir()">
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                          Düzenle
+                          Yetkilendir
                         </button>
-                        <button onclick="sil()">
+                        <button onclick="remove(this)">
                           <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                             height="10%" />
                           Sil
                         </button>
-                        <button onclick="icerik()">
-                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                            height="10%" />
-                          İçerik
-                        </button>
+
                       </div>
                     </div>
                   </td>
@@ -867,33 +870,28 @@
                     <input type="checkbox" class="checkbox-item" style="margin-top: 10px;" />
                   </th>
                   <td>
-                    <img src="../assets/images/user/1.jpg" alt="Mehmet Yılmaz" class="rounded-circle" width="40"
+                    <img src="../assets/images/user/user.png" alt="Mehmet Yılmaz" class="rounded-circle" width="40"
                       height="40" />
                   </td>
                   <td>Mehmet Yılmaz</td>
-                  <td>mehmet@example.com</td>
+                  <td style="width: 1%" class="exp dot" title="mehmet_yilmaz@gmail.com">mehmet_yilmaz@gmail.com</td>
                   <td>+90 545 222 22 22</td>
-                  <td>2022-12-12</td>
-                  <td>2025-07-08 14:42</td>
+                  <td>12.12.2022</td>
+                  <td>08.07.2025 [14:42]</td>
                   <td>
                     <div class="dropdown-container">
                       <button class="dropdown-toggle" onclick="toggleDropdown(this)">
                         İşlemler
                       </button>
                       <div class="dropdown-menu">
-                        <button onclick="duzenle(this)">
+                        <button onclick="yetkilendir()">
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                          Düzenle
+                          Yetkilendir
                         </button>
-                        <button onclick="sil()">
+                        <button onclick="remove(this)">
                           <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                             height="10%" />
                           Sil
-                        </button>
-                        <button onclick="icerik()">
-                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                            height="10%" />
-                          İçerik
                         </button>
                       </div>
                     </div>
@@ -904,33 +902,28 @@
                     <input type="checkbox" class="checkbox-item" style="margin-top: 10px;" />
                   </th>
                   <td>
-                    <img src="../assets/images/user/3.jpg" alt="Zeynep Karaca" class="rounded-circle" width="40"
+                    <img src="../assets/images/user/user.png" alt="Zeynep Karaca" class="rounded-circle" width="40"
                       height="40" />
                   </td>
                   <td>Zeynep Karaca</td>
-                  <td>zeynep@example.com</td>
+                  <td style="width: 1%" class="exp dot" title="zeynep.karaca@gmail.com">zeynep.karaca@gmail.com</td>
                   <td>+90 531 333 33 33</td>
-                  <td>2024-03-18</td>
-                  <td>2025-07-10 09:00</td>
+                  <td>18.03.2024</td>
+                  <td>10.07.2025 [09:00]</td>
                   <td>
                     <div class="dropdown-container">
                       <button class="dropdown-toggle" onclick="toggleDropdown(this)">
                         İşlemler
                       </button>
                       <div class="dropdown-menu">
-                        <button onclick="duzenle(this)">
+                        <button onclick="yetkilendir()">
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                          Düzenle
+                          Yetkilendir
                         </button>
-                        <button onclick="sil()">
+                        <button onclick="remove(this)">
                           <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                             height="10%" />
                           Sil
-                        </button>
-                        <button onclick="icerik()">
-                          <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                            height="10%" />
-                          İçerik
                         </button>
                       </div>
                     </div>
@@ -953,169 +946,80 @@
         <script src="../assets/js/sidebar-menu.js"></script>
         <script src="../assets/js/config.js"></script>
         <!-- Plugins JS start-->
-
         <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
         <script src="../assets/js/typeahead/typeahead.custom.js"></script>
         <script src="../assets/js/typeahead-search/handlebars.js"></script>
         <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
-        <!-- Plugins JS Ends-->
         <!-- Theme js-->
         <script src="../assets/js/script.js"></script>
         <!-- Bootstrap JS + Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-        <!-- Plugin used-->
         <script>
-          feather.replace();
-        </script>
-        <script>
-          function toggleMenu(button) {
-            const menu = button.nextElementSibling;
-            const allMenus = document.querySelectorAll(".islem-menu");
 
-            allMenus.forEach((m) => {
-              if (m !== menu) m.style.display = "none";
-            });
+          // Buton Fonksiyonları
 
-            menu.style.display =
-              menu.style.display === "block" ? "none" : "block";
-          }
-
-          // Örnek fonksiyonlar
-
-        </script>
-        <script>
           function toggleDropdown(btn) {
             const menu = btn.nextElementSibling;
-
-            // Diğer tüm açık menüleri kapat
             document.querySelectorAll(".dropdown-menu").forEach((el) => {
               if (el !== menu) el.style.display = "none";
             });
-
-            // Tıklanan menüyü aç/kapat
-            menu.style.display =
-              menu.style.display === "block" ? "none" : "block";
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
           }
 
-          function ekle() {
-            alert("Ekle tıklandı");
-          }
-
-          function geriDon() {
-            window.loacation.href = "kullanicilar.html";
-          }
-
-          function duzenle(buttonElement) {
-            const row = buttonElement.closest("tr"); // En yakın tr'yi bul
-            const tds = row.getElementsByTagName("td"); // tr içindeki td'leri al
-
-            const imageSrc = tds[0].querySelector("img")?.getAttribute("src") || "../assets/images/user/default.jpg"; // Resim src
-            const fullName = tds[1]?.textContent.trim(); // Ad Soyad (2. td, index 1)
-            const email = tds[2]?.textContent.trim();    // E-Posta
-            const phone = tds[3]?.textContent.trim();    // Telefon
-
-            const sayfa = document.getElementById("icerikler");
-            sayfa.innerHTML = `
-      <div class="card-container">
-        <div class="profile-card">
-
-          <div class="profile-photo-section">
-            <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
-            <div class="profile-photo-wrapper" id="profilePhotoWrapper">
-              <img src="${imageSrc}" alt="" id="profilePhoto">
-              <div class="edit-overlay" id="editOverlay">
-                <i class="fas fa-camera"></i>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group-container">
-            <label for="fullName">Ad - Soyad</label>
-            <input type="text" id="fullName" value="${fullName}">
-          </div>
-
-          <div class="form-group-container">
-            <label for="email">E-Posta</label>
-            <div class="input-with-icon">
-              <input type="email" id="email" value="${email}">
-              <div class="icon-container">
-                <i class="fas fa-check-circle verified-icon green-icon" style="margin-top: -10px;"></i>
-                <div class="popup">
-                  <div class="popup-header-onaylandi">Onaylandı!</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group-container">
-            <label for="phone">Telefon Numarası</label>
-            <div class="input-with-icon">
-              <input type="tel" id="phone" value="${phone}">
-              <div class="icon-container">
-                <i class="fas fa-times-circle unverified-icon red-icon" style="margin-top: -10px;"></i>
-                <div class="popup">
-                  <div class="popup-header">Onaylanmadı!</div>
-                  <div class="popup-body">
-                    <button onclick="onayKod()">Onay Kodu Gönder</button>
-                  </div>
-                </div>
-                <small id="phone-error" style="color: #dc3545; display: none;"></small>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group-container">
-            <label for="newPassword">Yeni Şifre</label>
-            <div class="input-with-icon">
-              <input type="password" id="newPassword" placeholder="Yeni şifrenizi girin">
-              <i class="fas fa-eye-slash password-toggle-icon" id="toggleNewPassword"></i>
-            </div>
-          </div>
-
-          <div class="form-group-container">
-            <label for="confirmNewPassword">Yeni Şifre Tekrar</label>
-            <div class="input-with-icon">
-              <input type="password" id="confirmNewPassword" placeholder="Yeni şifrenizi tekrar girin">
-              <i class="fas fa-eye-slash password-toggle-icon" id="toggleConfirmNewPassword"></i>
-            </div>
-          </div>
-
-            <div class="buttons">
-              <button class="back-button" onclick="geriDon()">Geri Dön</button>
-              <button class="save-button" onclick="validatePasswords()">Kaydet</button>
-            </div>
-        </div>
-      </div>
-    `;
-          }
-
-
-
-
-          function remove() {
-
-          }
-
-
-          function icerik() {
-            alert("İçerik tıklandı");
-          }
-
-          // Sayfa dışında bir yere tıklanınca menü kapanır
+          // Sayfa dışında bir yere tıklanınca açılır menüyü kapatma
           document.addEventListener("click", function (e) {
             if (!e.target.closest(".dropdown-container")) {
-              document
-                .querySelectorAll(".dropdown-menu")
-                .forEach((el) => (el.style.display = "none"));
+              document.querySelectorAll(".dropdown-menu").forEach((el) => {
+                el.style.display = "none";
+              });
             }
           });
-        </script>
-        <script>
-          const checkboxes = document.querySelectorAll(".checkbox-item");
 
-          // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+          function ekle() {
+            window.location.href = "kullaniciEkle.html";
+          }
+
+          function sil() {
+            const checkboxes = document.querySelectorAll(".checkbox-item");
+            let seciliVar = false;
+            checkboxes.forEach((checkbox) => {
+              if (checkbox.checked) {
+                seciliVar = true;
+                const row = checkbox.closest("tr");
+                row.parentNode.removeChild(row);
+              }
+            });
+            if (!seciliVar) {
+              Swal.fire({
+                icon: 'info',
+                title: 'Hiç Seçim Yok',
+                text: 'Lütfen silmek için en az bir içerik seçin.',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                  popup: 'rounded-3',
+                  confirmButton: 'btn btn-primary'
+                }
+              });
+            }
+
+          }
+
+          function yetkilendir() {
+            alert("Yetkilendirme tıklandı");
+          }
+
+          function remove(btn) {
+            // Eğer parametre gelirse, sadece o satırı sil
+            if (btn) {
+              const row = btn.closest("tr");
+              row.parentNode.removeChild(row);
+            }
+          }
+
+          // Checkbox Olayları (Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme)
+
+          const checkboxes = document.querySelectorAll(".checkbox-item");
           const anaCheckbox = document.getElementById("ana-checkbox");
           anaCheckbox.addEventListener("change", () => {
             checkboxes.forEach((checkbox) => {
@@ -1126,267 +1030,46 @@
         </script>
 
         <script>
-          document.addEventListener('DOMContentLoaded', () => {
-            // Profil Fotoğrafı Yükleme İşlevi
-            const profilePhotoWrapper = document.getElementById('profilePhotoWrapper');
-            const profilePhotoInput = document.getElementById('profilePhotoInput');
-            const profilePhoto = document.getElementById('profilePhoto');
+          window.onload = function () {
+            const veri = localStorage.getItem("yeniKullanici");
+            if (veri) {
+              const kullanici = JSON.parse(veri);
+              const tbody = document.querySelector("#icerikler table tbody");
 
-            profilePhotoWrapper.addEventListener('click', () => {
-              profilePhotoInput.click(); // Gizli dosya input'unu tetikle
-            });
+              const satir = document.createElement("tr");
+              satir.innerHTML = `
+            <th scope="row">
+                <input type="checkbox" class="checkbox-item" style="margin-top: 10px;" />
+            </th>
+            <td>
+                <img src="${kullanici.profilePhoto}" alt="${kullanici.fullName}" class="rounded-circle" width="40" height="40" />
+            </td>
+            <td>${kullanici.fullName}</td>
+            <td class="exp dot" title="${kullanici.email}">${kullanici.email}</td>
+            <td>${kullanici.phone}</td>
+            <td>${kullanici.tarih}</td>
+            <td>${new Date().toLocaleDateString("tr-TR")} [${kullanici.saat}]</td>
+            <td>
+                <div class="dropdown-container">
+                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
+                    <div class="dropdown-menu">
+                        <button onclick="yetkilendir()">
+                            <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                            Yetkilendir
+                        </button>
+                        <button onclick="remove(this)">
+                            <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" />
+                            Sil
+                        </button>
+                    </div>
+                </div>
+            </td>
+        `;
 
-            profilePhotoInput.addEventListener('change', (event) => {
-              const file = event.target.files[0];
-              if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                  profilePhoto.src = e.target.result; // Seçilen resmi önizleme olarak göster
-                };
-                reader.readAsDataURL(file);
-              }
-            });
-
-            // Şifre Göster/Gizle İşlevi
-            const togglePassword = (inputId, toggleIconId) => {
-              const passwordInput = document.getElementById(inputId);
-              const toggleIcon = document.getElementById(toggleIconId);
-
-              toggleIcon.addEventListener('click', () => {
-                if (passwordInput.type === 'password') {
-                  passwordInput.type = 'text';
-                  toggleIcon.classList.remove('fa-eye-slash');
-                  toggleIcon.classList.add('fa-eye'); // Normal göz
-                } else {
-                  passwordInput.type = 'password';
-                  toggleIcon.classList.remove('fa-eye');
-                  toggleIcon.classList.add('fa-eye-slash'); // Üstü çizili göz
-                }
-              });
-            };
-
-            togglePassword('newPassword', 'toggleNewPassword');
-            togglePassword('confirmNewPassword', 'toggleConfirmNewPassword');
-
-
-
-
-
-            const phoneInput = document.getElementById('phone');
-            const phoneError = document.getElementById('phone-error');
-
-            phoneInput.addEventListener('input', (e) => {
-              let value = e.target.value.replace(/\D/g, ''); // Sadece rakamlar
-              let formattedValue = '';
-
-              // Maskeleme işlemi
-              if (value.length > 0) {
-                formattedValue += '(' + value.substring(0, 3);
-              }
-              if (value.length > 3) {
-                formattedValue += ') ' + value.substring(3, 6);
-              }
-              if (value.length > 6) {
-                formattedValue += ' ' + value.substring(6, 8);
-              }
-              if (value.length > 8) {
-                formattedValue += ' ' + value.substring(8, 10);
-              }
-              e.target.value = formattedValue;
-
-              // Hata kontrolü
-              if (value.length > 0 && value[0] !== '5') {
-                phoneInput.style.borderColor = '#dc3545'; // kırmızı kenarlık
-                phoneError.textContent = 'Telefon numarası 5 ile başlamalıdır.';
-                phoneError.style.display = 'block';
-              } else {
-                phoneInput.style.borderColor = ''; // kenarlığı sıfırla
-                phoneError.textContent = '';
-                phoneError.style.display = 'none';
-              }
-            });
-
-
-
-            // Kaydet Butonu İşlevi (örnek)
-            const saveButton = document.querySelector('.save-button');
-            saveButton.addEventListener('click', () => {
-              const fullName = document.getElementById('fullName').value;
-              const email = document.getElementById('email').value;
-              const phone = document.getElementById('phone').value;
-              const newPassword = document.getElementById('newPassword').value;
-              const confirmNewPassword = document.getElementById('confirmNewPassword').value;
-
-              // Basit validasyon örnekleri
-              if (!fullName || !email || !phone) {
-                Swal.fire({
-                  toast: true,
-                  position: 'top-end',
-                  icon: 'error',
-                  title: 'Tüm alanları doldurun!',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  background: '#f8d7da',
-                  color: '#721c24',
-                });
-                return;
-              }
-
-              if (newPassword !== confirmNewPassword) {
-                Swal.fire({
-                  toast: true,
-                  position: 'top-end',
-                  icon: 'error',
-                  title: 'Yeni şifreler uyuşmuyor!',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  background: '#f8d7da',
-                  color: '#721c24',
-                });
-                return;
-              }
-
-
-              if (newPassword && !confirmNewPassword) {
-
-              }
-
-              // Burada gerçek bir sunucuya veri gönderme veya bilgileri kaydetme işlemleri yapılır.
-              console.log('Profil Bilgileri:', { fullName, email, phone, newPassword });
-              alert('Profil bilgileriniz başarıyla güncellendi!');
-            });
-          });
-
-
-          function onayKod() {
-            // Telefon veya e-posta bilgisini al
-            const phone = document.getElementById('phone').value.trim();
-            const email = document.getElementById('email').value.trim();
-            let hedef = '';
-            let tip = '';
-
-            if (phone && phone.length > 0) {
-              hedef = phone;
-              tip = 'Telefon';
-            } else if (email && email.length > 0) {
-              hedef = email;
-              tip = 'E-posta';
-            } else {
-              Swal.fire({
-                icon: 'warning',
-                title: 'Eksik Bilgi',
-                text: 'Lütfen telefon numarası veya e-posta giriniz.',
-                confirmButtonText: 'Tamam',
-                customClass: {
-                  popup: 'rounded-3',
-                  confirmButton: 'btn btn-warning'
-                }
-              });
-              return;
+              tbody.appendChild(satir);
+              localStorage.removeItem("yeniKullanici");
             }
-
-
-            // 6 haneli rastgele kod üret
-            const kod = Math.floor(100000 + Math.random() * 900000);
-
-            // Kullanıcıya göster
-            alert(`${tip} adresinize gönderilecek onay kodu: ${kod}`);
-
-            // Arka planı karartan ve kod giriş popup'ını gösteren HTML ekle
-            if (!document.getElementById('verify-overlay')) {
-              const overlay = document.createElement('div');
-              overlay.id = 'verify-overlay';
-              overlay.style.position = 'fixed';
-              overlay.style.top = '0';
-              overlay.style.left = '0';
-              overlay.style.width = '100vw';
-              overlay.style.height = '100vh';
-              overlay.style.background = 'rgba(0,0,0,0.4)';
-              overlay.style.display = 'flex';
-              overlay.style.justifyContent = 'center';
-              overlay.style.alignItems = 'center';
-              overlay.style.zIndex = '900';
-
-              overlay.innerHTML = `
-                                <div style="background:#fff; border-radius:10px; box-shadow:0 2px 16px rgba(0,0,0,0.2); padding:32px 24px; min-width:320px; text-align:center; position:relative;">
-                                    <h4 style="margin-bottom:18px;">Onay Kodu Girin</h4>
-                                    <input id="verify-code-input" type="text" maxlength="6" style="font-size:20px; letter-spacing:8px; text-align:center; padding:8px 0; width:140px; border:1px solid #ccc; border-radius:5px;" placeholder="------" autocomplete="one-time-code">
-                                    <div style="margin-top:20px;">
-                                        <button id="verify-code-btn" style="background:#3f92ec; color:#fff; border:none; border-radius:5px; padding:8px 24px; font-size:16px; margin-right:10px; cursor:pointer;">Onayla</button>
-                                        <button id="verify-cancel-btn" style="background:#eee; color:#333; border:none; border-radius:5px; padding:8px 18px; font-size:16px; cursor:pointer;">İptal</button>
-                                    </div>
-                                </div>
-                            `;
-              document.body.appendChild(overlay);
-
-              // Onayla butonuna tıklanınca kodu kontrol et
-              document.getElementById('verify-code-btn').onclick = function () {
-                const userCode = document.getElementById('verify-code-input').value.trim();
-                if (userCode === kod.toString()) {
-                  overlay.remove();
-
-                  // Onaylandı ikonunu yeşile çevir
-                  const icon = document.querySelector('.fa-times-circle.unverified-icon');
-                  if (icon) {
-                    icon.classList.remove('fa-times-circle', 'red-icon', 'unverified-icon');
-                    icon.classList.add('fa-check-circle', 'green-icon', 'verified-icon');
-
-                    // Popup başlığını değiştir
-                    const popup = icon.closest('.icon-container').querySelector('.popup');
-                    if (popup) {
-                      popup.querySelector('.popup-header').className = 'popup-header-onaylandi';
-                      popup.querySelector('.popup-header-onaylandi').textContent = 'Onaylandı!';
-                      if (popup.querySelector('.popup-body')) popup.querySelector('.popup-body').remove();
-                    }
-                  }
-                } else {
-                  // Kod yanlışsa SweetAlert2 uyarısı göster
-                  Swal.fire({
-                    title: 'Kod Hatalı!',
-                    text: 'Girdiğiniz doğrulama kodu yanlış. Lütfen tekrar deneyin.',
-                    icon: 'error',
-                    confirmButtonText: 'Tekrar Dene',
-
-                  });
-                }
-              };
-
-              // İptal butonu popup'ı kapatır
-              document.getElementById('verify-cancel-btn').onclick = function () {
-                overlay.remove();
-              };
-            }
-          }
-
-          document.getElementById('newPassword').addEventListener('input', validatePasswords);
-          document.getElementById('confirmNewPassword').addEventListener('input', validatePasswords);
-
-          function validatePasswords() {
-            const newPassword = document.getElementById('newPassword').value;
-            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
-
-            // Şifre uzunluğu kontrolü
-            if (newPassword && newPassword.length < 8) {
-              document.getElementById('newPassword').style.borderColor = '#dc3545';
-            } else {
-              document.getElementById('newPassword').style.borderColor = '';
-            }
-
-            // Şifreler aynı mı kontrolü
-            if (newPassword && confirmNewPassword) {
-              if (newPassword !== confirmNewPassword) {
-                document.getElementById('confirmNewPassword').style.borderColor = '#dc3545';
-              } else {
-                document.getElementById('confirmNewPassword').style.borderColor = '#28a745';
-              }
-            } else {
-              document.getElementById('confirmNewPassword').style.borderColor = '';
-            }
-          }
-
-
+          };
         </script>
       </div>
     </div>

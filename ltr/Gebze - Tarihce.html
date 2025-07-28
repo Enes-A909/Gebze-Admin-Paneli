@@ -15,6 +15,7 @@
         border-collapse: separate;
         background-color: white;
         box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+        width: 100%;
       }
 
       thead,
@@ -42,6 +43,38 @@
       table tr button:hover {
         transition: transform 0.3s ease !important;
         transform: scale(1.2);
+      }
+
+      #table {
+        box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
+        background-color: rgba(204, 204, 204, 0.186);
+        border-radius: 10px;
+        width: 100%;
+        table-layout: fixed;
+      }
+      #table th,
+      #table td {
+        padding: 8px;
+        text-align: left;
+        vertical-align: middle;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      #table th {
+        border-top: none;
+      }
+      #table td img {
+        margin-left: 0;
+        vertical-align: middle;
+      }
+      .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+      .card {
+        box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);
+        width: 95%;
       }
 
       .logo-img {
@@ -98,6 +131,12 @@
 
       .dropdown-menu button:hover {
         background-color: #f0f0f0;
+      }
+
+      .dot {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .menu-title {
@@ -250,6 +289,25 @@
         border: 1px solid #ccc;
         background-color: #f0f0f0;
         font-size: 16px;
+      }
+
+      .edit {
+        background-color: rgba(68, 127, 245, 0.347) !important;
+        transition: all 0.3s ease !important;
+        width: 90px !important;
+      }
+      .edit:hover {
+        background-color: rgba(68, 127, 245, 0.705);
+        transition: all 0.3s ease;
+        transform: scale(1.1);
+        color: white;
+      }
+
+      #photos {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+        margin: 0;
       }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -937,6 +995,7 @@
       </form>
     </div>
 
+    <!-- !!!!!!!   SCRİPT KODLARI AŞAĞIDAKİ SAYFADA   !!!!!!!!!!! --------------------------------->
     <script src="../assets/js/ltr_js/gebze_tarihce.js"></script>
     <!-- latest jquery-->
     <script src="../assets/js/jquery-3.2.1.min.js"></script>

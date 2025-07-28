@@ -170,12 +170,12 @@
     }
 
     .select {
-      margin-left: 10px;
       padding: 5px;
       border-radius: 10px;
-      border: 1px solid #ccc;
-      background-color: #f0f0f0;
+      border: 1px solid #ccc !important;
+      background-color: #f0f0f0 !important;
       font-size: 16px;
+      cursor: pointer;
     }
 
     .buton {
@@ -248,6 +248,8 @@
     .sil-butonu {
       background-color: #f44336;
     }
+
+    
   </style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -547,7 +549,6 @@
 
                   <th scope="col" style="text-align: right">
                     <input type="text" name="search" id="search" placeholder="Ara" />
-                    <button id="searchBtn" onclick="search()">ARA</button>
                   </th>
                 </tr>
               </thead>
@@ -855,7 +856,7 @@
                         <label for="kategori" class="form-label"
                         >Kategori</label
                         >
-                        <select class="select" id="kategori">
+                        <select class="select form-control" id="kategori">
                           <option id="yonetim">Yönetim</option>
                           <option id="baskanlik">Başkanlık</option>
                           <option id="halk">Halk</option>
@@ -888,9 +889,9 @@
                       <div class="mb-3">
                         <img
                           id="image"
-                          src="${imgSrc}"
+                          src=""
                           class="img-fluid rounded preview-img d-flex justify-content-center"
-                          alt="${title}"
+                          alt="${title} haber başlığının resmi"
                           style="width: 30%; height: auto; margin-left:35%; max-height:300px"
                         />
                         <label
@@ -910,7 +911,7 @@
                         />
                       </div>
 
-                      <button class="btn btn-success" id="submit" type="button">
+                      <button class="btn btn-success" id="submit" type="submit">
                         Güncelle
                       </button>
                       <a href="Haberler.html" class="btn btn-secondary">İptal</a>
@@ -951,55 +952,6 @@
                 okuyucu.readAsDataURL(dosya);
               }
             });
-
-            document
-              .getElementById("submit")
-              .addEventListener("click", function () {
-                let title = document.querySelector("#title").value;
-                let kategori = document.querySelector("#kategori").value;
-                let tarih = document.querySelector("#haberTarih").value;
-                let icerik = document.querySelector("#haberIcerik").value;
-
-                tarih = tarih.split("-").reverse().join(".");
-
-                document.getElementById("icerikler").innerHTML = oldContent;
-
-                const rowIndex = sessionStorage.getItem("rowIndex");
-                const table = document.querySelector("table");
-                const row = table.rows[rowIndex];
-                const newTd = row.querySelectorAll("td");
-
-                newTd[2].textContent = title;
-                newTd[3].textContent = kategori;
-                newTd[4].textContent = tarih;
-                newTd[5].textContent = icerik;
-
-                document.getElementById("nav").innerHTML = `
-              <button class="buton ekle-butonu">
-                <div class="icon arti"></div>
-                <span>Ekle</span>
-              </button>
-
-              <!-- SİL -->
-              <button class="buton sil-butonu" onclick="sil()">
-                <svg
-                  class="icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    d="M3 6h18v2H3V6zm2 3h14l-1.5 12.5a1 1 0 01-1 .5H8a1 1 0 01-1-.5L5 9zm4 2v7h2v-7H9zm4 0v7h2v-7h-2z"
-                  />
-                </svg>
-                <span>Sil</span>
-              </button>`;
-
-                sessionStorage.removeItem("rowIndex");
-              });
           }
         </script>
 
@@ -1064,7 +1016,7 @@
 
                     <div class="mb-3">
                       <img
-                        src="../assets/images/gebze-belediyesi.ico"
+                        src=""
                         class="img-fluid rounded preview-img d-flex justify-content-center"
                         alt=""
                         style="width: 30%; height: auto; margin-left:35%; max-height:300px"
@@ -1519,6 +1471,10 @@
         </script>
         <!-- SEARCH KISMI -->
         <script>
+          //V ara butonuna gerek kalmadan doğrudan inputa yazılanı alır ve tabloya yansıtır
+          document.addEventListener("DOMContentLoaded", () => {
+          document.getElementById("search").addEventListener("input", search);
+          });
           let originalContent = ``;
           function search() {
             document
@@ -1567,10 +1523,10 @@
                 <td style="width: 12%">
                   ${td[1].innerHTML}
                 </td>
-                <td style="width: 14%" class="news">${td[2].textContent}</td>
-                <td style="width: 14%" class="management">${td[3].textContent}</td>
-                <td style="width: 10%" class="date">${td[4].textContent}</td>
-                <td style="width: 30%" class="exp">${td[5].textContent}</td>
+                <td style="width: 14%" class="news dot">${td[2].textContent}</td>
+                <td style="width: 14%" class="management dot">${td[3].textContent}</td>
+                <td style="width: 10%" class="date dot">${td[4].textContent}</td>
+                <td style="width: 30%" class="exp dot">${td[5].textContent}</td>
                 <td style="text-align: right">
                   <div class="dropdown-container">
                     <button
