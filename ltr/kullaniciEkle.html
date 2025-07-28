@@ -50,7 +50,21 @@
     <!-- Head veya body sonuna -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <style>
+        .buton {
+            text-align: left;
+        }
 
+        #save-button {
+            /* background-color: royalblue; */
+            background-color: royalblue;
+            color: white;
+        }
+
+        #save-button:hover {
+            background-color: rgb(41, 77, 186);
+        }
+    </style>
 
 </head>
 
@@ -231,7 +245,7 @@
                         <div class="profile-photo-section">
                             <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
                             <div class="profile-photo-wrapper" id="profilePhotoWrapper">
-                                <img src="../assets/images/user/1.jpg" alt="" id="profilePhoto">
+                                <img src="../assets/images/user/user.png" alt="" id="profilePhoto">
                                 <div class="edit-overlay" id="editOverlay">
                                     <i class="fas fa-camera"></i>
                                 </div>
@@ -268,8 +282,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        <button class="save-button" onclick="">Kaydet</button>
+                        <div class="buton">
+                            <button id="save-button" class="btn">Kaydet</button>
+                            <button id="cancel-button" class="btn btn-success">Geri Dön</button>
+                        </div>
                     </div>
                 </div>
 
@@ -297,7 +313,6 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
                 <!-- Proje Kodları -->
-
                 <script>
                     document.addEventListener('DOMContentLoaded', () => {
                         // Profil Fotoğrafı Yükleme İşlevi
@@ -356,15 +371,15 @@
 
 
 
-                        // Kaydet Butonu İşlevi (örnek)
-                        const saveButton = document.querySelector('.save-button');
-                        saveButton.addEventListener('click', () => {
+                        document.getElementById('save-button').addEventListener('click', kaydet);
+
+                        function kaydet() {
                             const fullName = document.getElementById('fullName').value;
                             const email = document.getElementById('email').value;
                             const phone = document.getElementById('phone').value;
+                            const photoInput = document.getElementById('profilePhotoInput');
 
-                            // Basit validasyon örnekleri
-                            if (!fullName || !email || !phone) {
+                            if (!fullName || !email || !phone || !photoInput.files[0]) {
                                 Swal.fire({
                                     toast: true,
                                     position: 'top-end',
@@ -379,10 +394,33 @@
                                 return;
                             }
 
-                            // Burada gerçek bir sunucuya veri gönderme veya bilgileri kaydetme işlemleri yapılır.
-                            console.log('Profil Bilgileri:', { fullName, email, phone });
-                            alert('Yeni kullanıcı eklendi.');
-                        });
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                const profilePhoto = e.target.result; // base64 data url
+
+                                const yeniKullanici = {
+                                    profilePhoto,
+                                    fullName,
+                                    email,
+                                    phone,
+                                    tarih: new Date().toLocaleDateString("tr-TR"),
+                                    saat: new Date().toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit' }),
+                                };
+
+                                localStorage.setItem("yeniKullanici", JSON.stringify(yeniKullanici));
+                                window.location.href = "kullanicilar.html";
+                            };
+
+                            reader.readAsDataURL(photoInput.files[0]);
+                        }
+
+
+                        document.getElementById('cancel-button').addEventListener('click', geriDon);
+                        function geriDon() {
+                            window.location.href = "kullanicilar.html";
+                        }
+
+
                     });
 
                 </script>
