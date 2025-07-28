@@ -163,19 +163,31 @@
                         </div>
 
                         <div class="mb-3">
-                          <label for="kategori" class="form-label">Kategori</label>
-                          <select class="select" id="kategori">
-                            <option id="gebze">Tarihten Günümüze Gebze</option>
-                          </select>
-                        </div>
+  <label for="kategori" class="form-label">Kategori</label>
+  <select
+    name="kategori"
+    id="kategori"
+    class="form-control"
+    required
+  >
+    <option value="gebze">Tarihten Günümüze Gebze</option>
+    <!-- İstersen buraya başka seçenekler de ekleyebilirsin -->
+  </select>
+</div>
                         <div class="mb-3">
-                          <label for="situtaion" class="form-label">Durum</label>
-                          <select class="select" id="situation">
-                            <option disabled selected hidden>Durum</option>
-                            <option id="arsivle">Arşivle</option>
-                            <option id="arsivCikar">Arşivden Çıkar</option>
-                          </select>
-                        </div>
+  <label for="situation" class="form-label">Durum</label>
+  <select
+    name="situation"
+    id="situation"
+    class="form-control"
+    required
+  >
+    <option disabled selected hidden>Durum</option>
+    <option value="arsivle">Arşivle</option>
+    <option value="arsivCikar">Arşivden Çıkar</option>
+  </select>
+</div>
+
                         <div class="mb-3">
                           <label for="link" class="form-label">Yazı</label>
                           <textarea
