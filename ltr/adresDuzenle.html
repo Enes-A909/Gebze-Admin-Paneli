@@ -2,12 +2,93 @@
 <html lang="tr">
   <head>
     <style>
-      table tr:hover {
-        background-color: #cccccc;
-        transition: background-color 0.3s ease;
-        transition: all 0.3s ease;
+      .dropdown-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+
+      .müdürlük-dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background-color: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 8px;
+        border-radius: 8px;
+      }
+
+      .customCheckbox {
+        position: relative;
+        padding-left: 30px;
         cursor: pointer;
-        border-radius: 10px;
+        display: inline-block;
+        user-select: none;
+        position: absolute;
+        top: 50%;
+        right: -4px;
+        transform: translateY(-50%);
+        z-index: 2;
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        accent-color: #007bff;
+        border-radius: 5px;
+      }
+
+      .customCheckbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: #eee;
+        border-radius: 15px;
+      }
+
+      .customCheckbox:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+
+      .customCheckbox input:checked ~ .checkmark {
+        background-color: #007bff;
+      }
+
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      .customCheckbox input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      .customCheckbox .checkmark:after {
+        left: 7px;
+        top: 3px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+
+      table tr:hover {
+        background-color: #cccccc !important;
+        transition: background-color 0.3s ease !important;
+        transition: all 0.3s ease !important;
+        cursor: pointer !important;
+        border-radius: 10px !important;
       }
       .müdürlükText {
         padding-left: 40px;
@@ -71,7 +152,7 @@
         width: 50px !important;
         height: 35px;
         border: none;
-        background-color: #35619c64 !important;
+        background-color: #35619c64;
         border-radius: 50px !important;
         font-size: 1px;
         cursor: pointer;
@@ -951,12 +1032,17 @@
 
               mudurlukler.forEach((m, i) => {
                 mudurlukInputs += `
-              <div class="col-md-4 mb-3">
-              <label class="form-label"></label>
-              <input type="text" class="form-control" value="${m}" required/>
-              </div>
- 
-            `;
+  <div class="col-md-4 mb-3">
+    <div class="position-relative">
+      <input type="text" class="form-control pe-5" value="${m}" required />
+      <label class="customCheckbox">
+  <input type="checkbox" class="silCheckbox" />
+  <span class="checkmark"></span>
+</label>
+
+    </div>
+  </div>
+`;
               });
               mudurlukInputs += "</div>";
               content.innerHTML = `
@@ -1174,6 +1260,21 @@
             ];
           </script>
           <script>
+            function sil() {
+              const container = document.getElementById("mudurlukContainer");
+              const checkboxes = container.querySelectorAll(
+                ".customCheckbox input"
+              );
+
+              checkboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                  checkbox.closest(".col-md-4").remove();
+                }
+              });
+            }
+          </script>
+
+          <script>
             function toggleDropdown() {
               const menu = document.getElementById("mudurlukDropdown");
               menu.style.display =
@@ -1195,23 +1296,6 @@
 
           <script>
             function ekle() {
-              const container = document.getElementById("mudurlukContainer");
-
-              const inputDiv = document.createElement("div");
-              inputDiv.className = "mb-2";
-
-              const input = document.createElement("input");
-              input.type = "text";
-              input.placeholder = "Yeni müdürlük adı";
-              input.className = "form-control";
-              input.style.maxWidth = "400px";
-
-              inputDiv.appendChild(input);
-              container.appendChild(inputDiv);
-            }
-          </script>
-          <script>
-            function ekle() {
               const yeniMudurlukAdi = "Yeni Müdürlük";
               const container = document.querySelector(
                 "#mudurlukContainer .row"
@@ -1226,38 +1310,20 @@
                 }
               }
 
-              // Boş input yoksa yeni input oluştur
+              // Yeni müdürlük kutusu (tam yapı)
               const yeniDiv = document.createElement("div");
-              yeniDiv.className = "col-md-4 mb-3 w-50";
+              yeniDiv.className = "col-md-4 mb-3";
               yeniDiv.innerHTML = `
-      <label class="form-label"></label>
-      <input type="text" class="form-control" placeholder="${yeniMudurlukAdi}" />
-    `;
+    <div class="position-relative">
+      <input type="text" class="form-control pe-5" value="${yeniMudurlukAdi}" required />
+      <label class="customCheckbox">
+        <input type="checkbox" class="silCheckbox" />
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  `;
               container.appendChild(yeniDiv);
             }
-          </script>
-          <script>
-            function sil() {
-              const container = document.getElementById("mudurlukContainer");
-              const inputs = container.querySelectorAll("input");
-
-              inputs.forEach((input) => {
-                if (input.value.trim() === "") {
-                  input.parentElement.remove();
-                }
-              });
-            }
-            // En sona ekle
-            window.sil = function () {
-              const container = document.getElementById("mudurlukContainer");
-              const inputs = container.querySelectorAll("input");
-
-              inputs.forEach((input) => {
-                if (input.value.trim() === "") {
-                  input.parentElement.remove();
-                }
-              });
-            };
           </script>
         </div>
       </div>
