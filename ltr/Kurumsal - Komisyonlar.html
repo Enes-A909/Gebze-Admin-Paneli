@@ -5,7 +5,6 @@
       table {
         border-radius: 10px;
         border-collapse: separate;
-        overflow: hidden;
         background-color: white;
         box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
       }
@@ -36,6 +35,21 @@
         transform: scale(1.2);
       }
 
+      .table-button {
+        background-color: rgba(0, 81, 255, 0.738);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        transition: transform 0.3s ease !important;
+      }
+
+      .table-button:hover {
+        background-color: rgba(0, 0, 0, 0.948);
+      }
+
       .logo-img {
         height: 200px !important;
         /* Boyutu küçültür */
@@ -57,12 +71,13 @@
       }
 
       .dropdown-toggle {
-        background-color: rgba(68, 127, 245, 0.359);
-        color: black;
+        background-color: rgba(74, 130, 243, 0.344);
+        color: rgba(43, 42, 42, 0.692);
         border: none;
         padding: 6px 10px;
         border-radius: 5px;
         cursor: pointer;
+        transition: transform 0.36s ease !important;
       }
 
       .dropdown-menu {
@@ -71,9 +86,9 @@
         top: 110%;
         left: 0;
         background-color: white;
-        border: 1px solid #ddd;
+        border: 1px solid #2d2525;
         border-radius: 5px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 2px 6px rgba(236, 225, 225, 0.15);
         z-index: 999;
         min-width: 140px;
       }
@@ -96,7 +111,7 @@
         font-weight: bold;
         padding: 10px 12px 5px;
         font-size: 13px;
-        color: #f24040;
+        color: #444;
         border-bottom: 1px solid #eee;
         margin-bottom: 5px;
       }
@@ -112,7 +127,7 @@
       }
 
       .arşiv {
-        background-color: #ab707069;
+        background-color: #7d373769;
         color: white;
         padding: 4px 8px;
         border-radius: 15px;
@@ -120,16 +135,15 @@
         font-weight: 500;
         display: inline-block;
       }
-
-      .dropdown-toggle:focus,
-      .dropdown-toggle:focus-visible {
+      .ekle-butonu,
+      .arsivle-butonu,
+      .sil-butonu {
         outline: none !important;
         box-shadow: none !important;
         border-color: transparent !important;
       }
-      .ekle-butonu,
-      .arsivle-butonu,
-      .sil-butonu {
+      .dropdown-toggle:focus,
+      .dropdown-toggle:focus-visible {
         outline: none !important;
         box-shadow: none !important;
         border-color: transparent !important;
@@ -139,7 +153,6 @@
         background-color: rgba(68, 127, 245, 0.495);
         color: white;
       }
-
       .buton {
         height: 36px;
         border-radius: 12px;
@@ -575,29 +588,28 @@
           <div class="container-fluid">
             <div class="page-header">
               <div class="row">
-                <div class="col">
-                  <div
-                    class="page-header-left"
-                    style="margin-top: -30px; float: left"
-                  >
-                    <h3>Komisyonlar</h3>
+                <div class="col" style="height: 50px">
+                  <div class="page-header-left">
+                    <h3 style="margin-bottom: 150px">Komisyonlar</h3>
+
                     <ol
                       class="breadcrumb"
-                      style="margin-top: 65px; margin-left: -165px"
+                      style="margin-left: -179px; margin-bottom: 70px"
                     >
                       <li class="breadcrumb-item">
                         <a href="index.html"><i data-feather="home"></i></a>
                       </li>
-                      <li class="breadcrumb-item">Kurumsal</li>
-                      <li class="breadcrumb-item active">
-                        <a href="Kurumsal - Raporlar.html">Komisyonlar</a>
+                      <li class="breadcrumb-item">
+                        <a>Kurumsal</a>
                       </li>
+                      <li class="breadcrumb-item active">Komisyonlar</li>
                     </ol>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <br /><br />
 
           <!-- Benim yaptığım navbar kısmı -->
           <nav
@@ -918,6 +930,69 @@
           checkbox.checked = anaCheckbox.checked;
           checkbox.dispatchEvent(new Event("change"));
         });
+      });
+    </script>
+    <script>
+      function toggleMenu(button) {
+        const menu = button.nextElementSibling;
+        const allMenus = document.querySelectorAll(".islem-menu");
+
+        allMenus.forEach((m) => {
+          if (m !== menu) m.style.display = "none";
+        });
+
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      }
+
+      // Örnek fonksiyonlar
+      function ekle() {
+        alert("Ekleme sayfasına yönlendiriliyor...");
+      }
+
+      function duzenle() {
+        alert("Düzenleme sayfasına yönlendiriliyor...");
+      }
+
+      function sil() {
+        alert("Silme işlemi yapılıyor...");
+      }
+
+      function icerik() {
+        alert("İçerik detayına yönlendiriliyor...");
+      }
+    </script>
+    <script>
+      function toggleDropdown(btn) {
+        const menu = btn.nextElementSibling;
+
+        // Diğer tüm açık menüleri kapat
+        document.querySelectorAll(".dropdown-menu").forEach((el) => {
+          if (el !== menu) el.style.display = "none";
+        });
+
+        // Tıklanan menüyü aç/kapat
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      }
+
+      function ekle() {
+        alert("Ekle tıklandı");
+      }
+
+      function sil() {
+        alert("Sil tıklandı");
+      }
+
+      function icerik() {
+        alert("İçerik tıklandı");
+      }
+
+      // Sayfa dışında bir yere tıklanınca menü kapanır
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".dropdown-container")) {
+          document
+            .querySelectorAll(".dropdown-menu")
+            .forEach((el) => (el.style.display = "none"));
+        }
       });
     </script>
   </body>
