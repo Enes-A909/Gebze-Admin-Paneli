@@ -131,14 +131,10 @@
             }
           });
       }
-
-      window.addEventListener("DOMContentLoaded", addEvent);
-
-      window.addEventListener("DOMContentLoaded", function () {
       remove();
       addEventLoc();
       getLocPhotos(photoNum);
-});
+      window.addEventListener("DOMContentLoaded", addEvent);
 
     // DÜZENLE
 
@@ -155,7 +151,7 @@
                     "
                   >
                     <div class="card-body">
-                      <form id="editNewsForm">
+                      <form id="editForm">
                         <div class="mb-3">
                           <label for="title" class="form-label">Başlık</label>
                           <input
@@ -230,10 +226,10 @@
                     </div>
                   </div>
                 </div>
-                    `;
+                   `;
         addEvent();
-        remove();
         getPhotos(photoNum);
+        remove();
 
         document.getElementById("nav").innerHTML = ``;
 
@@ -261,7 +257,6 @@
           });
         });
 
-
         let today = new Date();
 
         const minute = today.getMinutes();
@@ -271,7 +266,7 @@
         const month = today.getMonth();
         const year = today.getFullYear();
         let formattedDate = `${hours}:${minute}:${ms}s - ${day}.${month}.${year}`;
-        
+        remove();
       }
     
       function editPhoto(title, date, photoNum, element) {
@@ -399,6 +394,7 @@
       </div>
     </div>`;
         }
+        remove();
       }
 
       function getLocPhotos(num) {
