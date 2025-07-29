@@ -398,7 +398,7 @@
       }
 
       function getLocPhotos(num) {
-const photosContainer = document.getElementById("photos");
+  const photosContainer = document.getElementById("photos");
   photosContainer.innerHTML = ""; 
   
   const table = document.createElement("table");
@@ -448,10 +448,6 @@ const photosContainer = document.getElementById("photos");
 
   photosContainer.appendChild(table);
 }
-
-document.getElementById("editTarihiYerler").addEventListener("click",function(){
-          editTarihiYerler(6)
-        })
 
       function editTarihiYerler(photoNum){
         
