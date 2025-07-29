@@ -493,6 +493,529 @@
                 />
               </div>
 
+              <div
+                class="dropdowns-bottom"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  gap: 24px;
+                  margin-top: 18px;
+                "
+              >
+                <!-- Dropdown 1: Fotoğraf/Kaydet/İptal -->
+                <div class="dropdown mudur-dropdown">
+                  <button
+                    type="button"
+                    class="dropdownBtn"
+                    style="
+                      padding: 6px;
+                      background: #ececec;
+                      color: #ea5b23;
+                      border: 1px solid #d0d0d0;
+                      border-radius: 50%;
+                      width: 36px;
+                      height: 36px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <img
+                      src="../assets/images/menu-burger.png"
+                      alt="Burger"
+                      style="
+                        width: 20px;
+                        height: 20px;
+                        border: none;
+                        margin-top: 10px;
+                      "
+                    />
+                  </button>
+                  <div
+                    class="dropdown-content"
+                    style="
+                      display: none;
+                      position: absolute;
+                      left: 0;
+                      bottom: 110%;
+                      background: #fff;
+                      border: 1px solid #ddd;
+                      border-radius: 6px;
+                      min-width: 180px;
+                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                      z-index: 10;
+                      text-align: left;
+                    "
+                  >
+                    <a
+                      href="#"
+                      class="dropdownPhotoChange"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          x="3"
+                          y="7"
+                          width="18"
+                          height="13"
+                          rx="2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="13.5"
+                          r="3.5"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Fotoğrafı Değiştir
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownSaveChanges"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="17 21 17 13 7 13 7 21"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="7 3 7 8 15 8"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Kaydet
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownCancel"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <line
+                          x1="15"
+                          y1="9"
+                          x2="9"
+                          y2="15"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <line
+                          x1="9"
+                          y1="9"
+                          x2="15"
+                          y2="15"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      İptal
+                    </a>
+                  </div>
+                </div>
+                <!-- Dropdown 2: Biyografi -->
+                <div class="dropdown mudur-dropdown">
+                  <button
+                    type="button"
+                    class="dropdownBtnBio"
+                    style="
+                      padding: 6px;
+                      background: #ececec;
+                      color: #ea5b23;
+                      border: 1px solid #d0d0d0;
+                      border-radius: 50%;
+                      width: 36px;
+                      height: 36px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="#2041c7"
+                        stroke-width="2"
+                      />
+                      <path
+                        d="M8 12h8M12 8v8"
+                        stroke="#2041c7"
+                        stroke-width="2"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    class="dropdown-content-bio"
+                    style="
+                      display: none;
+                      position: absolute;
+                      left: 0;
+                      bottom: 110%;
+                      background: #fff;
+                      border: 1px solid #ddd;
+                      border-radius: 6px;
+                      min-width: 120px;
+                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                      z-index: 10;
+                      text-align: left;
+                    "
+                  >
+                    <a
+                      href="#"
+                      class="dropdownBioBtn"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          x="4"
+                          y="4"
+                          width="16"
+                          height="16"
+                          rx="2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M8 12h8M12 8v8"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Biyografi
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownYonetmelikBtn"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          x="3"
+                          y="3"
+                          width="18"
+                          height="18"
+                          rx="3"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M7 7h10M7 12h10M7 17h6"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Yönetmelik
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal Biyografi Textbox (gizli) -->
+              <div
+                class="bio-modal"
+                style="
+                  display: none;
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100vw;
+                  height: 100vh;
+                  background: rgba(0, 0, 0, 0.35);
+                  z-index: 9999;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div
+                  style="
+                    background: #fff;
+                    border-radius: 14px;
+                    padding: 48px 36px 36px 36px;
+                    min-width: 520px;
+                    max-width: 98vw;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                  "
+                >
+                  <button
+                    class="bio-modal-close"
+                    style="
+                      position: absolute;
+                      top: 14px;
+                      right: 14px;
+                      background: none;
+                      border: none;
+                      font-size: 28px;
+                      color: #888;
+                      cursor: pointer;
+                    "
+                  >
+                    &times;
+                  </button>
+                  <h4
+                    style="
+                      margin-bottom: 18px;
+                      color: #2041c7;
+                      font-size: 1.3em;
+                    "
+                  >
+                    Biyografi
+                  </h4>
+                  <textarea
+                    class="bio-textarea"
+                    placeholder="Biyografi giriniz..."
+                    style="
+                      width: 100%;
+                      min-width: 400px;
+                      min-height: 260px;
+                      border-radius: 8px;
+                      border: 1px solid #ccc;
+                      padding: 12px;
+                      font-size: 17px;
+                    "
+                    disabled
+                  ></textarea>
+                  <div
+                    style="
+                      display: flex;
+                      gap: 18px;
+                      justify-content: center;
+                      margin-top: 18px;
+                    "
+                  >
+                    <button
+                      class="bio-edit-btn"
+                      style="
+                        background: #ececec;
+                        color: #2041c7;
+                        border: 1px solid #d0d0d0;
+                        border-radius: 6px;
+                        padding: 8px 22px;
+                        font-size: 16px;
+                        cursor: pointer;
+                      "
+                    >
+                      Düzenle
+                    </button>
+                    <button
+                      class="bio-save-btn"
+                      style="
+                        background: #2041c7;
+                        color: #fff;
+                        border: none;
+                        border-radius: 6px;
+                        padding: 8px 22px;
+                        font-size: 16px;
+                        cursor: pointer;
+                      "
+                      disabled
+                    >
+                      Kaydet
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal Yönetmelik (gizli) -->
+              <div
+                class="yonetmelik-modal"
+                style="
+                  display: none;
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100vw;
+                  height: 100vh;
+                  background: rgba(0, 0, 0, 0.35);
+                  z-index: 9999;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div
+                  style="
+                    background: #fff;
+                    border-radius: 14px;
+                    padding: 48px 36px 36px 36px;
+                    min-width: 520px;
+                    max-width: 98vw;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                  "
+                >
+                  <button
+                    class="yonetmelik-modal-close"
+                    style="
+                      position: absolute;
+                      top: 14px;
+                      right: 14px;
+                      background: none;
+                      border: none;
+                      font-size: 28px;
+                      color: #888;
+                      cursor: pointer;
+                    "
+                  >
+                    &times;
+                  </button>
+                  <h4
+                    style="
+                      margin-bottom: 18px;
+                      color: #2041c7;
+                      font-size: 1.3em;
+                    "
+                  >
+                    Yönetmelik
+                  </h4>
+                  <textarea
+                    class="yonetmelik-textarea"
+                    placeholder="Yönetmelik giriniz..."
+                    style="
+                      width: 100%;
+                      min-width: 400px;
+                      min-height: 260px;
+                      border-radius: 8px;
+                      border: 1px solid #ccc;
+                      padding: 12px;
+                      font-size: 17px;
+                    "
+                    disabled
+                  ></textarea>
+                  <div
+                    style="
+                      display: flex;
+                      gap: 18px;
+                      justify-content: center;
+                      margin-top: 18px;
+                    "
+                  >
+                    <button
+                      class="yonetmelik-edit-btn"
+                      style="
+                        background: #ececec;
+                        color: #2041c7;
+                        border: 1px solid #d0d0d0;
+                        border-radius: 6px;
+                        padding: 8px 22px;
+                        font-size: 16px;
+                        cursor: pointer;
+                      "
+                    >
+                      Düzenle
+                    </button>
+                    <button
+                      class="yonetmelik-save-btn"
+                      style="
+                        background: #2041c7;
+                        color: #fff;
+                        border: none;
+                        border-radius: 6px;
+                        padding: 8px 22px;
+                        font-size: 16px;
+                        cursor: pointer;
+                      "
+                      disabled
+                    >
+                      Kaydet
+                    </button>
+                  </div>
+                </div>
+              </div>
+
               <!-- 2. Kart -->
               <div class="card">
                 <img
