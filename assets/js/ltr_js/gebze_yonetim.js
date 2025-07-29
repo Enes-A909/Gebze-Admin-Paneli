@@ -547,7 +547,7 @@ function editUyelikler(element){
                     <div class="card-body">
                       <form id="editForm">
                         <div class="mb-3">
-                          <label for="title" class="form-label">Belediye İsmi</label>
+                          <label for="title" class="form-label">Birlik İsmi</label>
                           <input
                             type="text"
                             class="form-control"
@@ -558,7 +558,7 @@ function editUyelikler(element){
                           />
                         </div>
                         <div class="mb-3">
-                          <label for="title" class="form-label">Şehir</label>
+                          <label for="title" class="form-label">Link</label>
                           <textarea
                             type="text"
                             class="form-control"
@@ -603,7 +603,7 @@ function editUyelikler(element){
                   </div>
                     `;
 
-                    const input = document.querySelector(".resim-input");
+            const input = document.querySelector(".resim-input");
             const imgPrev = document.querySelector(".preview-img");
 
             input.addEventListener("change", function () {
