@@ -2,6 +2,64 @@
 <html lang="tr">
   <head>
     <style>
+      .filter:focus {
+        border: none;
+        outline: none;
+      }
+      .filter {
+        width: 45px;
+        height: 50px;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        margin-right: -10px;
+      }
+      .filter:hover {
+        transform: scale(1);
+      }
+      #search {
+        background-color: rgba(204, 204, 204, 0.186);
+        border-radius: 5px;
+        border: 2px solid #699aba;
+        width: 80%;
+        height: 30px;
+        padding: 10px;
+      }
+
+      #search:focus {
+        background-color: rgba(204, 204, 204, 0.186);
+      }
+
+      #search:hover {
+        background-color: rgba(204, 204, 204, 0.186);
+        border-radius: 5px;
+        border: 2px solid #508eb7;
+      }
+
+      #search:focus,
+      #search:focus-visible {
+        outline: none !important;
+      }
+
+      #searchBtn {
+        height: 30px;
+        margin-bottom: 1px;
+        text-align: center;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        cursor: pointer;
+      }
+
+      #searchBtn:focus,
+      #searchBtn:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+
+      #searchBtn:hover {
+        transform: scale(1) !important;
+      }
+
       .ekle-butonu,
       .arsivle-butonu,
       .sil-butonu {
@@ -652,15 +710,51 @@
               "
             >
               <thead>
-                <tr>
-                  <th scope="col" style="width: 3%">
+                <tr style="height: 60px">
+                  <th scope="col" style="width: 3%; vertical-align: middle">
                     <input type="checkbox" id="ana-checkbox" />
                   </th>
-                  <th scope="col">Sayfa Başlığı</th>
-                  <th scope="col">Kategori</th>
-                  <th scope="col">Durumu</th>
-                  <th scope="col">Son Güncelleme</th>
-                  <th scope="col"></th>
+                  <th scope="col" style="width: 15%; vertical-align: middle">
+                    Sayfa Başlığı
+                  </th>
+                  <th scope="col" style="width: 15%; vertical-align: middle">
+                    Kategori
+                  </th>
+                  <th scope="col" style="width: 15%; vertical-align: middle">
+                    Durumu
+                  </th>
+                  <th scope="col" style="width: 15%; vertical-align: middle">
+                    Son Güncelleme
+                  </th>
+                  <th scope="col" style="width: 37%; vertical-align: middle">
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        gap: 5px;
+                      "
+                    >
+                      <input
+                        type="text"
+                        name="search"
+                        id="search"
+                        placeholder="Ara"
+                        style="padding: 4px 8px; height: 28px; font-size: 14px"
+                      />
+                      <button
+                        class="filter"
+                        onclick="toggleDropdown(this)"
+                        style="border: none; background: none; padding: 0"
+                      >
+                        <img
+                          src="../assets/images/filtrele.svg"
+                          alt="search"
+                          style="width: 20px; height: 20px"
+                        />
+                      </button>
+                    </div>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -1276,6 +1370,153 @@
                   .forEach((el) => (el.style.display = "none"));
               }
             });
+          </script>
+          <!-- SEARCH KISMI -->
+          <script>
+            //V ara butonuna gerek kalmadan doğrudan inputa yazılanı alır ve tabloya yansıtır
+            document.addEventListener("DOMContentLoaded", () => {
+              document
+                .getElementById("search")
+                .addEventListener("input", search);
+            });
+            let originalContent = ``;
+            function search() {
+              document
+                .getElementById("search")
+                .addEventListener("input", search);
+              const searchText = document.getElementById("search");
+              const news = document.getElementsByClassName("news");
+              const content = document.getElementById("tableContent");
+
+              if (originalContent === "") {
+                originalContent = content.innerHTML;
+              }
+
+              if (searchText.value.trim() === "") {
+                content.innerHTML = originalContent;
+                return;
+              }
+
+              const newsTitle = [];
+
+              for (let i = 0; i < news.length; i++) {
+                newsTitle.push(news[i]);
+              }
+
+              content.innerHTML = ``;
+              var count = 0;
+              newsTitle.forEach((title) => {
+                if (
+                  title.textContent
+                    .trim()
+                    .toLowerCase()
+                    .includes(searchText.value.trim().toLowerCase())
+                ) {
+                  const tr = title.closest("tr");
+                  const td = tr.querySelectorAll("td");
+                  content.innerHTML += `
+              <tr>
+                <td style="width: 3%">
+                  <input
+                    type="checkbox"
+                    name="allCheck"
+                    style="width: 10px"
+                    class="checkbox-item"
+                  />
+                </td>
+                <td style="width: 12%">
+                  ${td[1].innerHTML}
+                </td>
+                <td style="width: 14%" class="news dot">${td[2].textContent}</td>
+                <td style="width: 14%" class="management dot">${td[3].textContent}</td>
+                <td style="width: 10%" class="date dot">${td[4].textContent}</td>
+                <td style="width: 30%" class="exp dot">${td[5].textContent}</td>
+                <td style="text-align: right">
+                  <div class="dropdown-container">
+                    <button
+                      class="dropdown-toggle"
+                      onclick="toggleDropdown(this)"
+                    >
+                      İşlemler
+                    </button>
+                    <div class="dropdown-menu">
+                      <button onclick="editNews()">
+                        <img
+                          src="../assets/images/dropdown_svg/edit.svg"
+                          alt="edit"
+                          width="10%"
+                          height="10%"
+                        />
+                        Düzenle
+                      </button>
+                      <button onclick="remove()">
+                        <img
+                          src="../assets/images/dropdown_svg/rubbish-bin.svg"
+                          alt="remove"
+                          width="10%"
+                          height="10%"
+                        />
+                        Sil
+                      </button>
+
+                    </div>
+                  </div>
+                </td>
+              </tr>`;
+                } else {
+                  count++;
+                }
+              });
+
+              if (count == newsTitle.length) {
+                document.getElementById("tableContent").innerHTML = `
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 20px;">
+                    <span style="color: #2196f3; font-weight: bold;">
+                      ARAMANIZLA İLGİLİ BİR SONUÇ BULUNAMADI!
+                    </span>
+                  </td>
+                </tr>`;
+              }
+
+              const checkboxes = document.querySelectorAll(".checkbox-item");
+
+              // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+              const anaCheckbox = document.getElementById("ana-checkbox");
+              anaCheckbox.addEventListener("change", () => {
+                checkboxes.forEach((checkbox) => {
+                  checkbox.checked = anaCheckbox.checked;
+                  checkbox.dispatchEvent(new Event("change"));
+                });
+              });
+
+              // Arama sonrası editNews ve remove fonksiyonlarını yeniden bağla
+              setTimeout(() => {
+                document
+                  .querySelectorAll(".dropdown-menu button")
+                  .forEach((btn) => {
+                    if (btn.textContent.includes("Düzenle")) {
+                      btn.onclick = function () {
+                        // Parametreleri ilgili satırdan al
+                        const tr = btn.closest("tr");
+                        const imgSrc = tr.querySelector("").src;
+                        const title = tr.querySelector(".news").textContent;
+                        const category =
+                          tr.querySelector(".management").textContent;
+                        const date = tr.querySelector(".date").textContent;
+                        const exp = tr.querySelector(".exp").textContent;
+                        editNews(imgSrc, title, category, date, exp, btn);
+                      };
+                    }
+                    if (btn.textContent.includes("Sil")) {
+                      btn.onclick = function () {
+                        const tr = btn.closest("tr");
+                        if (tr) tr.remove();
+                      };
+                    }
+                  });
+              }, 0);
+            }
           </script>
         </div>
       </div>

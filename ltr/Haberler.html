@@ -3,6 +3,20 @@
 
 <head>
   <style>
+    .filter:focus {
+        border: none;
+        outline: none;
+      }
+      .filter {
+       text-align: center;
+       
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        margin-right: -10px;
+      }
+      .filter:hover {
+        transform: scale(1);
+      }
     .ekle-butonu,
     .sil-butonu {
       outline: none !important;
@@ -546,8 +560,34 @@
                   <th scope="col" style="width: 14%">Kategori</th>
                   <th scope="col" style="width: 10%">Tarih</th>
                   <th scope="col" style="width: 18%">Açıklama</th>
-                  <th scope="col" style="text-align: right">
-                    <input type="text" name="search" id="search" placeholder="Ara" />
+                  <th scope="col" style="vertical-align: middle">
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        gap: 5px;
+                      "
+                    >
+                      <input
+                        type="text"
+                        name="search"
+                        id="search"
+                        placeholder="Ara"
+                        style="padding: 4px 8px; height: 28px; font-size: 14px"
+                      />
+                      <button
+                        class="filter"
+                        onclick="toggleDropdown(this)"
+                        style="border: none; background: none; padding: 0"
+                      >
+                        <img
+                          src="../assets/images/filtrele.svg"
+                          alt="search"
+                          style="width: 20px; height: 20px"
+                        />
+                      </button>
+                    </div>
                   </th>
                 </tr>
               </thead>
