@@ -49,7 +49,7 @@
       }
 
       .card input {
-        width: 96%;
+        width: 90%;
         padding: 8px;
         margin: 5px 0;
         border-radius: 6px;
@@ -68,7 +68,9 @@
         transition: 0.3s;
       }
 
-
+      .degistir-btn:hover {
+        background-color: #5a4bcc; /* Hover rengi */
+      }
 
       .button-group {
         display: flex;
@@ -292,8 +294,8 @@
       </div>
       <!-- Page Header Ends -->
       <!-- Page Body Start-->
-    
-                       <div class="page-body-wrapper">
+
+      <div class="page-body-wrapper" style="margin-top: -50px">
         <!-- Page Sidebar Start-->
         <div class="page-sidebar bg-light">
           <div
@@ -436,44 +438,41 @@
           <div class="container-fluid">
             <div class="page-header">
               <div class="row">
-                <div class="col">
-                  <div
-                    class="page-header-left"
-                    style="margin-top: -30px; float: left"
-                  >
-                    <h3>Yardımcılar Düzenleme Ekranı</h3>
+                <div class="col" style="height: 50px">
+                  <div class="page-header-left">
+                    <h3 style="margin-bottom: 150px">
+                      Yardımcı Düzenleme Ekranı
+                    </h3>
+
                     <ol
                       class="breadcrumb"
-                      style="margin-top: 65px; margin-left: -340px"
+                      style="margin-left: -365px; margin-bottom: 70px"
                     >
                       <li class="breadcrumb-item">
                         <a href="index.html"><i data-feather="home"></i></a>
                       </li>
-                      <li class="breadcrumb-item">Kurumsal</li>
-                      <li class="breadcrumb-item active">
-                        <a href="Kurumsal - Raporlar.html"
-                          >Yardımcılar Düzenleme Ekranı</a
-                        >
+                      <li class="breadcrumb-item">
+                        <a href="Kurumsal - Yönetim.html"> Yönetim</a>
                       </li>
+                      <li class="breadcrumb-item active">Yardımcı Düzenle</li>
                     </ol>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
+          <br /><br />
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler">
             <div class="container">
               <!-- Yardımcılar (1-6) -->
               <div class="card">
-        <img
-          id="yardimci1Image"
-          src="../assets/images/kurumsal gebze/dursunali.jpg"
-          alt="Fotoğraf"
-          style="display: block; margin: 0 auto; width: 200px; border:none"
-        />
-        <input type="file" accept="image/*" style="display:none" id="yardimci1FileInput" />
+                <img
+                  id="yardimci1Image"
+                  src="../assets/images/kurumsal gebze/dursunali.jpg"
+                  alt="Fotoğraf"
+                  style="display: block; margin: 0 auto; width: 200px"
+                />
 
                 <h3 contenteditable="true" id="yardimci1Isim">
                   Dursun Ali Arslan
@@ -494,12 +493,11 @@
                   type="text"
                   id="yardimci1Biyografi"
                   placeholder="Biyografi girin"
-                
                 />
-                
+
                 <div
                   class="dropdown"
-                  style="position: absolute; top: 12px; right: 45px; z-index: 2"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
                   <button
                     type="button"
@@ -517,7 +515,16 @@
                       justify-content: center;
                     "
                   >
-                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 20px; border: none !important; margin-top: 10px;">
+                    <img
+                      src="../assets/images/menu-burger.png"
+                      alt="Burger"
+                      style="
+                        width: 20px;
+                        height: 20px;
+                        border: none !important;
+                        margin-top: 10px;
+                      "
+                    />
                   </button>
                   <div
                     class="dropdown-content"
@@ -620,17 +627,16 @@
                 </div>
               </div>
 
-    <!-- Yardımcı 3 -->
-                  <div class="card">
-        <img
-          id="yardimci2Image"
-          src="../assets/images/kurumsal gebze/meclis/ahmetcelebi.jpg"
-          alt="Fotoğraf"
-          style="display: block; margin: 0 auto; width: 200px; border:none"
-        />
-        <input type="file" accept="image/*" style="display:none" id="yardimci2FileInput" />
+              <!-- Yardımcı 3 -->
+              <div class="card">
+                <img
+                  id="yardimci2Image"
+                  src="../assets/images/kurumsal gebze/meclis/ahmetcelebi.jpg"
+                  alt="Fotoğraf"
+                  style="display: block; margin: 0 auto; width: 200px"
+                />
 
-                <h3 contenteditable="true" id="yardimci2Isim">
+                <h3 contenteditable="true" id="yardimci1Isim">
                   Ahmet HÜSEYİNÇELEBİ
                 </h3>
                 <input
@@ -645,16 +651,15 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                                <input
+                <input
                   type="text"
                   id="yardimci2Biyografi"
                   placeholder="Biyografi girin"
-            
                 />
-                
+
                 <div
                   class="dropdown"
-                  style="position: absolute; top: 12px; right: 45px; z-index: 2"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
                   <button
                     type="button"
@@ -672,7 +677,16 @@
                       justify-content: center;
                     "
                   >
-                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 20px; border: none !important; margin-top: 10px;">
+                    <img
+                      src="../assets/images/menu-burger.png"
+                      alt="Burger"
+                      style="
+                        width: 20px;
+                        height: 20px;
+                        border: none !important;
+                        margin-top: 10px;
+                      "
+                    />
                   </button>
                   <div
                     class="dropdown-content"
@@ -703,7 +717,7 @@
                         font-size: 15px;
                       "
                     >
-                       <svg
+                      <svg
                         width="18"
                         height="18"
                         viewBox="0 0 24 24"
@@ -777,16 +791,15 @@
               </div>
 
               <!-- Yardımcı 2 -->
-                  <div class="card">
-        <img
-          id="yardimci3Image"
-          src="../assets/images/kurumsal gebze/serifcanpolat.jpg"
-          alt="Fotoğraf"
-          style="display: block; margin: 0 auto; width: 200px; border:none"
-        />
-        <input type="file" accept="image/*" style="display:none" id="yardimci3FileInput" />
+              <div class="card">
+                <img
+                  id="yardimci1Image"
+                  src="../assets/images/kurumsal gebze/serifcanpolat.jpg"
+                  alt="Fotoğraf"
+                  style="display: block; margin: 0 auto; width: 200px"
+                />
 
-                <h3 contenteditable="true" id="yardimci3Isim">
+                <h3 contenteditable="true" id="yardimci1Isim">
                   Şerif CANPOLAT
                 </h3>
                 <input
@@ -801,16 +814,15 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                                <input
+                <input
                   type="text"
                   id="yardimci3Biyografi"
                   placeholder="Biyografi girin"
-               
                 />
-                
+
                 <div
                   class="dropdown"
-                  style="position: absolute; top: 12px; right: 45px; z-index: 2"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
                   <button
                     type="button"
@@ -828,7 +840,16 @@
                       justify-content: center;
                     "
                   >
-                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 20px; border: none !important; margin-top: 10px;">
+                    <img
+                      src="../assets/images/menu-burger.png"
+                      alt="Burger"
+                      style="
+                        width: 20px;
+                        height: 0px;
+                        border: none !important;
+                        margin-top: 10px;
+                      "
+                    />
                   </button>
                   <div
                     class="dropdown-content"
@@ -931,17 +952,14 @@
                 </div>
               </div>
 
-          
-
               <!-- Yardımcı 4 -->
-                  <div class="card">
-        <img
-          id="yardimci4Image"
-          src="../assets/images/kurumsal gebze/muharrembaltaci.jpg"
-          alt="Fotoğraf"
-          style="display: block; margin: 0 auto; width: 200px ;border:none"
-        />
-        <input type="file" accept="image/*" style="display:none" id="yardimci4FileInput" />
+              <div class="card">
+                <img
+                  id="yardimci1Image"
+                  src="../assets/images/kurumsal gebze/muharrembaltaci.jpg"
+                  alt="Fotoğraf"
+                  style="display: block; margin: 0 auto; width: 200px"
+                />
 
                 <h3 contenteditable="true" id="yardimci4Isim">
                   Muharrem BALTACIOĞLU
@@ -958,16 +976,15 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                                <input
+                <input
                   type="text"
                   id="yardimci4Biyografi"
                   placeholder="Biyografi girin"
-                 
                 />
-                
+
                 <div
                   class="dropdown"
-                  style="position: absolute; top: 12px; right:45px; z-index: 2"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
                   <button
                     type="button"
@@ -985,7 +1002,16 @@
                       justify-content: center;
                     "
                   >
-                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 20px; border: none !important; margin-top: 10px;">
+                    <img
+                      src="../assets/images/menu-burger.png"
+                      alt="Burger"
+                      style="
+                        width: 20px;
+                        height: 0px;
+                        border: none !important;
+                        margin-top: 10px;
+                      "
+                    />
                   </button>
                   <div
                     class="dropdown-content"
@@ -1046,7 +1072,7 @@
                       </svg>
                       Fotoğrafı Değiştir
                     </a>
- 
+
                     <a
                       href="#"
                       class="dropdownSaveChanges"
@@ -1089,18 +1115,15 @@
               </div>
 
               <!-- Yardımcı 5 -->
-                  <div class="card">
-        <img
-          id="yardimci5Image"
-          src="../assets/images/kurumsal gebze/meclis/yandikmahmut.jpg"
-          alt="Fotoğraf"
-          style="display: block; margin: 0 auto; width: 200px ;border:none"
-        />
-        <input type="file" accept="image/*" style="display:none" id="yardimci5FileInput" />
+              <div class="card">
+                <img
+                  id="yardimci1Image"
+                  src="../assets/images/kurumsal gebze/meclis/yandikmahmut.jpg"
+                  alt="Fotoğraf"
+                  style="display: block; margin: 0 auto; width: 200px"
+                />
 
-                <h3 contenteditable="true" id="yardimci5Isim">
-                  Mahmut YANDIK
-                </h3>
+                <h3 contenteditable="true" id="yardimci1Isim">Mahmut YANDIK</h3>
                 <input
                   type="text"
                   id="yardimci5Email"
@@ -1113,16 +1136,15 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                                <input
+                <input
                   type="text"
                   id="yardimci5Biyografi"
                   placeholder="Biyografi girin"
-                 
                 />
-                
+
                 <div
                   class="dropdown"
-                  style="position: absolute; top: 12px; right: 45px; z-index: 2"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
                   <button
                     type="button"
@@ -1140,7 +1162,16 @@
                       justify-content: center;
                     "
                   >
-                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 20px; border: none !important; margin-top: 10px;">
+                    <img
+                      src="../assets/images/menu-burger.png"
+                      alt="Burger"
+                      style="
+                        width: 20px;
+                        height: 0px;
+                        border: none !important;
+                        margin-top: 10px;
+                      "
+                    />
                   </button>
                   <div
                     class="dropdown-content"
@@ -1242,20 +1273,17 @@
                   </div>
                 </div>
               </div>
-  
-              <!--Yardımcı 6 -->
-                 <div class="card">
-        <img
-          id="yardimci6Image"
-          src="../assets/images/kurumsal gebze/meclis/senerakin.jpg"
-          alt="Fotoğraf"
-          style="display: block; margin: 0 auto; width: 200px ;border:none"
-        />
-        <input type="file" accept="image/*" style="display:none" id="yardimci6FileInput" />
 
-                <h3 contenteditable="true" id="yardimci6Isim">
-                  Şener AKIN
-                </h3>
+              <!--Yardımcı 6 -->
+              <div class="card">
+                <img
+                  id="yardimci1Image"
+                  src="../assets/images/kurumsal gebze/meclis/senerakin.jpg"
+                  alt="Fotoğraf"
+                  style="display: block; margin: 0 auto; width: 200px"
+                />
+
+                <h3 contenteditable="true" id="yardimci1Isim">Şener AKIN</h3>
                 <input
                   type="text"
                   id="yardimci6Email"
@@ -1268,16 +1296,15 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                                <input
+                <input
                   type="text"
                   id="yardimci6Biyografi"
                   placeholder="Biyografi girin"
-                
                 />
-                
+
                 <div
                   class="dropdown"
-                  style="position: absolute; top: 12px; right: 45px; z-index: 2"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
                   <button
                     type="button"
@@ -1295,7 +1322,16 @@
                       justify-content: center;
                     "
                   >
-                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 20px; border: none !important; margin-top: 10px;">
+                    <img
+                      src="../assets/images/menu-burger.png"
+                      alt="Burger"
+                      style="
+                        width: 20px;
+                        height: 0px;
+                        border: none !important;
+                        margin-top: 10px;
+                      "
+                    />
                   </button>
                   <div
                     class="dropdown-content"
@@ -1400,17 +1436,16 @@
 
               <!-- Yardımcı 7 -->
 
-                 <div class="card">
-        <img
-          id="yardimci7Image"
-          src="../assets/images/kurumsal gebze/mucahitbirben.jpg"
-          alt="Fotoğraf"
-          style="display: block; margin: 0 auto; width: 200px ;border:none"
-        />
-        <input type="file" accept="image/*" style="display:none" id="yardimci7FileInput" />
+              <div class="card">
+                <img
+                  id="yardimci7Image"
+                  src="../assets/images/kurumsal gebze/mucahitbirben.jpg"
+                  alt="Fotoğraf"
+                  style="display: block; margin: 0 auto; width: 200px"
+                />
 
                 <h3 contenteditable="true" id="yardimci7Isim">
-                 Mücahit BİRBEN
+                  Mücahit BİRBEN
                 </h3>
                 <input
                   type="text"
@@ -1424,16 +1459,15 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                 <input
+                <input
                   type="text"
                   id="yardimci7Biyografi"
                   placeholder="Biyografi girin"
-                 
                 />
-                
+
                 <div
                   class="dropdown"
-                  style="position: absolute; top: 12px; right: 45px; z-index: 2"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
                   <button
                     type="button"
@@ -1451,7 +1485,16 @@
                       justify-content: center;
                     "
                   >
-                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 20px; border: none !important; margin-top: 10px;">
+                    <img
+                      src="../assets/images/menu-burger.png"
+                      alt="Burger"
+                      style="
+                        width: 20px;
+                        height: 0px;
+                        border: none !important;
+                        margin-top: 10px;
+                      "
+                    />
                   </button>
                   <div
                     class="dropdown-content"
@@ -1468,8 +1511,6 @@
                       z-index: 10;
                       text-align: left;
                     "
-            
-
                   >
                     <a
                       href="#"
@@ -1514,7 +1555,7 @@
                       </svg>
                       Fotoğrafı Değiştir
                     </a>
-      
+
                     <a
                       href="#"
                       class="dropdownSaveChanges"
@@ -1555,96 +1596,125 @@
                   </div>
                 </div>
               </div>
-
-              <div class="dropdown-content" style="display: none;">
-                <a href="#" class="dropdownPhotoChange">Fotoğrafı Değiştir</a>
-                <a href="#" class="dropdownSaveChanges">Değişiklikleri Kaydet</a>
-              </div>
             </div>
           </div>
 
-            <script>
-              // Dropdown logic entegre yonetimSemasiDuzenle.html'den
-              // Her kart için doğru img ve file input'u bulacak şekilde güncellendi
-              document.querySelectorAll('.container > .card').forEach(function(card, idx) {
-                var i = idx + 1;
-                var dropdownBtn = card.querySelector('.dropdownBtn');
-                var dropdownContent = card.querySelector('.dropdown-content');
-                var photoChange = card.querySelector('.dropdownPhotoChange');
-                var saveLink = card.querySelector('.dropdownSaveChanges');
-                var fileInput = card.querySelector('#yardimci'+i+'FileInput');
-                var img = card.querySelector('#yardimci'+i+'Image');
+          <script>
+            // Dropdown logic entegre yonetimSemasiDuzenle.html'den
+            document
+              .querySelectorAll(".container")
+              .forEach(function (container, idx) {
+                var dropdownBtn = container.querySelector(".dropdownBtn");
+                var dropdownContent =
+                  container.querySelector(".dropdown-content");
+                var photoChange = container.querySelector(
+                  ".dropdownPhotoChange"
+                );
+                var editLink = container.querySelector(".dropdownEdit");
+                var saveLink = container.querySelector(".dropdownSaveChanges");
+                var fileInput = container.querySelector('input[type="file"]');
+                var img = container.querySelector("img");
+                var kaydetBtn = container.querySelector(".kaydet");
+                var inputEls = container.querySelectorAll('input[type="text"]');
 
                 // Dropdown aç/kapat
                 if (dropdownBtn && dropdownContent) {
-                  dropdownBtn.addEventListener('click', function(e) {
+                  dropdownBtn.addEventListener("click", function (e) {
                     e.stopPropagation();
                     dropdownContent.style.display =
-                      dropdownContent.style.display === 'block' ? 'none' : 'block';
+                      dropdownContent.style.display === "block"
+                        ? "none"
+                        : "block";
                   });
-                  document.addEventListener('click', function(e) {
-                    if (dropdownContent.style.display === 'block') {
-                      dropdownContent.style.display = 'none';
+                  document.addEventListener("click", function (e) {
+                    if (dropdownContent.style.display === "block") {
+                      dropdownContent.style.display = "none";
                     }
                   });
                 }
 
                 // Fotoğrafı Değiştir
-                if (photoChange && fileInput && img) {
-                  photoChange.addEventListener('click', function(e) {
+                if (photoChange && fileInput) {
+                  photoChange.addEventListener("click", function (e) {
                     e.preventDefault();
                     fileInput.click();
-                    if (dropdownContent) dropdownContent.style.display = 'none';
+                    if (dropdownContent) dropdownContent.style.display = "none";
                   });
-                  fileInput.addEventListener('change', function(event) {
+                  fileInput.addEventListener("change", function (event) {
                     var file = event.target.files[0];
                     if (file) {
                       var reader = new FileReader();
-                      reader.onload = function(e) {
+                      reader.onload = function (e) {
                         img.src = e.target.result;
                       };
                       reader.readAsDataURL(file);
                     }
                   });
                 }
+
+                // Kaydet
+                if (saveLink && kaydetBtn) {
+                  saveLink.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    kaydetBtn.click();
+                    if (dropdownContent) dropdownContent.style.display = "none";
+                  });
+                }
               });
-              function previewImage(event, id) {
-                const reader = new FileReader();
-                reader.onload = function () {
-                  document.getElementById(id + "Image").src = reader.result;
-                };
-                reader.readAsDataURL(event.target.files[0]);
-              }
+            function previewImage(event, id) {
+              const reader = new FileReader();
+              reader.onload = function () {
+                document.getElementById(id + "Image").src = reader.result;
+              };
+              reader.readAsDataURL(event.target.files[0]);
+            }
 
-              function saveData(id) {
-                const isimEl = document.getElementById(id + "Isim");
-                const emailEl = document.getElementById(id + "Email");
-                const telEl = document.getElementById(id + "Telefon");
-                const img = document.getElementById(id + "Image").src;
-                const isim = isimEl.innerText;
-                const email = emailEl.value;
-                const tel = telEl.value;
-                if (!isim.trim()) {
-                  alert("İsim alanı boş bırakılamaz!");
-                  isimEl.focus();
-                  return;
-                }
-                if (!email.trim()) {
-                  alert("E-posta alanı boş bırakılamaz!");
-                  emailEl.focus();
-                  return;
-                }
-                if (!tel.trim()) {
-                  alert("Telefon alanı boş bırakılamaz!");
-                  telEl.focus();
-                  return;
-                }
-                const data = { isim, email, tel, img };
-                localStorage.setItem(id + "_data", JSON.stringify(data));
-                alert("Bilgiler kaydedildi: " + isim);
+            function saveData(id) {
+              const isimEl = document.getElementById(id + "Isim");
+              const emailEl = document.getElementById(id + "Email");
+              const telEl = document.getElementById(id + "Telefon");
+              const img = document.getElementById(id + "Image").src;
+              const isim = isimEl.innerText;
+              const email = emailEl.value;
+              const tel = telEl.value;
+              if (!isim.trim()) {
+                alert("İsim alanı boş bırakılamaz!");
+                isimEl.focus();
+                return;
               }
+              if (!email.trim()) {
+                alert("E-posta alanı boş bırakılamaz!");
+                emailEl.focus();
+                return;
+              }
+              if (!tel.trim()) {
+                alert("Telefon alanı boş bırakılamaz!");
+                telEl.focus();
+                return;
+              }
+              const data = { isim, email, tel, img };
+              localStorage.setItem(id + "_data", JSON.stringify(data));
+              alert("Bilgiler kaydedildi: " + isim);
+            }
 
-              function cancelData(id) {
+            function cancelData(id) {
+              const dataStr = localStorage.getItem(id + "_data");
+              if (dataStr) {
+                const data = JSON.parse(dataStr);
+                document.getElementById(id + "Isim").innerText =
+                  data.isim || "";
+                document.getElementById(id + "Email").value = data.email || "";
+                document.getElementById(id + "Telefon").value = data.tel || "";
+                document.getElementById(id + "Image").src = data.img || "";
+                alert("Değişiklikler geri alındı");
+              } else {
+                window.location.reload();
+              }
+            }
+
+            window.addEventListener("DOMContentLoaded", function () {
+              for (let i = 1; i <= 7; i++) {
+                const id = "yardimci" + i;
                 const dataStr = localStorage.getItem(id + "_data");
                 if (dataStr) {
                   const data = JSON.parse(dataStr);
@@ -1655,59 +1725,39 @@
                   document.getElementById(id + "Telefon").value =
                     data.tel || "";
                   document.getElementById(id + "Image").src = data.img || "";
-                  alert("Değişiklikler geri alındı");
-                } else {
-                  window.location.reload();
                 }
               }
-
-              window.addEventListener("DOMContentLoaded", function () {
-                for (let i = 1; i <= 7; i++) {
-                  const id = "yardimci" + i;
-                  const dataStr = localStorage.getItem(id + "_data");
-                  if (dataStr) {
-                    const data = JSON.parse(dataStr);
-                    document.getElementById(id + "Isim").innerText =
-                      data.isim || "";
-                    document.getElementById(id + "Email").value =
-                      data.email || "";
-                    document.getElementById(id + "Telefon").value =
-                      data.tel || "";
-                    document.getElementById(id + "Image").src = data.img || "";
-                  }
-                }
-              });
-            </script>
-          </div>
-          <footer style="height: 200px; opacity: 0"></footer>
-
-          <!-- latest jquery-->
-          <script src="../assets/js/jquery-3.2.1.min.js"></script>
-          <!-- Bootstrap js-->
-          <script src="../assets/js/bootstrap/popper.min.js"></script>
-          <script src="../assets/js/bootstrap/bootstrap.js"></script>
-          <!-- feather icon js-->
-          <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-          <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-          <!-- Sidebar jquery-->
-          <script src="../assets/js/sidebar-menu.js"></script>
-          <script src="../assets/js/config.js"></script>
-          <!-- Plugins JS start-->
-
-          <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
-          <script src="../assets/js/typeahead/typeahead.custom.js"></script>
-          <script src="../assets/js/typeahead-search/handlebars.js"></script>
-          <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
-          <!-- Plugins JS Ends-->
-          <!-- Theme js-->
-          <script src="../assets/js/script.js"></script>
-          <!-- Bootstrap JS + Popper -->
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-          <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-          <!-- Plugin used-->
+            });
+          </script>
         </div>
       </div>
+      <footer style="height: 200px; opacity: 0"></footer>
+
+      <!-- latest jquery-->
+      <script src="../assets/js/jquery-3.2.1.min.js"></script>
+      <!-- Bootstrap js-->
+      <script src="../assets/js/bootstrap/popper.min.js"></script>
+      <script src="../assets/js/bootstrap/bootstrap.js"></script>
+      <!-- feather icon js-->
+      <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+      <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+      <!-- Sidebar jquery-->
+      <script src="../assets/js/sidebar-menu.js"></script>
+      <script src="../assets/js/config.js"></script>
+      <!-- Plugins JS start-->
+
+      <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
+      <script src="../assets/js/typeahead/typeahead.custom.js"></script>
+      <script src="../assets/js/typeahead-search/handlebars.js"></script>
+      <script src="../assets/js/typeahead-search/typeahead-custom.js"></script>
+      <!-- Plugins JS Ends-->
+      <!-- Theme js-->
+      <script src="../assets/js/script.js"></script>
+      <!-- Bootstrap JS + Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+      <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
+      <!-- Plugin used-->
     </div>
   </body>
 </html>

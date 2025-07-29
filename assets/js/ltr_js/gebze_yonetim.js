@@ -172,11 +172,11 @@ function editMuhtar(element){
                           />
                         </div>
                          <div class="mb-3">
-                          <label for="title" class="form-label">Adres Giriniz</label>
+                          <label for="title" class="form-label">Adres</label>
                           <textarea
                             class="form-control"
                             id="locInput"
-                            placeholder="Telefon giriniz"
+                            placeholder="Adres giriniz"
                             rows="3"
                             required
                           >${loc}</textarea>
@@ -244,12 +244,55 @@ function editMuhtar(element){
         });
 }  // Muhtarlar bu kadar
 
-function editKardesSehirler(){
-  const muhtar = jsonMuhtar();    
+function kardesSehirlerJson(){ // kardeş şehirler json dosyası
+  var acigolBel = {
+        name: "Acıgöl Belediyesi",
+        city: "Nevşehir",
+        country: "Türkiye",
+        imgSrc: "https://flagcdn.com/w320/tr.png",
+        };
+  var silvanBel = {
+        name: "Silvan Belediyesi",
+        city: "Diyarbakır",
+        country: "Türkiye",
+        imgSrc: "https://flagcdn.com/w320/tr.png",
+        };
+  var pileaBel = {
+        name: "Pilea Belediyesi",
+        city: "Selanik",
+        country: "Yunanistan",
+        imgSrc: "https://flagcdn.com/w320/gr.png",
+        };
+  var malazgirtBel = {
+        name: "Malazgirt Belediyesi",
+        city: "Muş",
+        country: "Türkiye",
+        imgSrc: "https://flagcdn.com/w320/tr.png",
+        };
+  var kakanjBel = {
+        name: "Kakanj Belediyesi",
+        city: "Kakanj",
+        country: "Bosna Hersek",
+        imgSrc: "https://flagcdn.com/w320/ba.png",
+        };
+
+    const city = [
+        acigolBel,
+        silvanBel,
+        pileaBel,
+        malazgirtBel,
+        kakanjBel
+      ];
+
+    return city;
+}
+
+function kardesSehirler(){
+  const cities = kardesSehirlerJson();    
     const content = document.getElementById("icerikler");
   content.innerHTML = ""; 
   
-  const table = document.createElement("table");
+  const table = document.createElement("table");  // tabloya stil veriyoruz
   table.className = "table mt-0";
   table.id = "table";
   table.style.width = "100%";
@@ -259,45 +302,137 @@ function editKardesSehirler(){
   table.style.border="none"
   table.style.marginTop="-30px"
 
+ // tablo başlıklarını yazdırıyoruz
   table.innerHTML = `
     <thead style="border-top: none">
       <tr>
-        <th style="width: 15%; padding-left: 10px;">Resim</th>
-        <th style="width: 20%">İsim</th>
-        <th style="width: 15%; max-width: 15%;">Unvan</th>
-        <th style="width: 15%; max-width: 15%;">Mail</th>
-        <th style="width: 15%; max-width: 15%;">Telefon</th>
-        <th style="width: 15%; max-width: 15%;">Adres</th>
-        <th style="width: 15%; max-width: 15%;"></th>
+        <th style="width: 8%; padding-left: 10px;">Resim</th>
+        <th style="width: 20%">Belediye İsmi</th>
+        <th style="width: 15%; max-width: 15%;">Şehir</th>
+        <th style="width: 15%; max-width: 15%;">Ülke</th>
+        <th></th>
       </tr>
     </thead>
     <tbody id="tableContent"></tbody>
   `;
 
   const tableContent = table.querySelector("#tableContent");
-        count++;
-      const tr = document.createElement("tr");
-      
-      tr.innerHTML = `
-        <td>
-          <img class="imgSrc" src="" alt="" width="80" height="50" /> 
-        </td>
-        <td class="name dot" title=""></td>
-        <td class="title dot" title=""></td>
-        <td class="mail dot" title=""></td>
-        <td class="phone dot" title=""></td>
-        <td class="loc dot" title=""></td>
-        <td style="text-align:right;">
-          <button class="btn w-10 p-1 edit" onclick="editMuhtar(this)">Düzenle</button>
-        </td>
-      `;
-      tableContent.appendChild(tr);
-
-      tr.querySelector(`#count${count}`).addEventListener("click", () => {
+      // jsondan çekilen verilerle birlikte içeriği yazdırıyoruz
+      cities.forEach(city => {
+        const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="dot"><img alt="${city.name}" class="w-6 h-4 rounded-sm inline-block align-middle mr-2 img" style="width:40px; height:25px;" src="${city.imgSrc}"></img></td>
+      <td class="name dot" title="${city.name}">${city.name}</td>
+      <td class="city dot" title="${city.city}">${city.city}</td>
+      <td class="country dot" title="${city.country}">${city.country}</td>
+      <td style="text-align:right;">
+        <button class="btn w-10 p-1 edit" onclick="editKardesSehirler(this)">Düzenle</button>
+      </td>
+    `;
+    tableContent.appendChild(tr);
       });
-    
-  }
 
-  content.appendChild(table);
+      content.appendChild(table);
+  } // kardeş şehirler .
+
+  function editKardesSehirler(element){
+      const tr = element.closest("tr");
+      const name = tr.querySelector(".name").innerHTML
+      const city = tr.querySelector(".city").innerHTML
+      const country = tr.querySelector(".country").innerHTML
+      const img = tr.querySelector(".img").src
+
+      const content = document.getElementById("icerikler");
+      
+      content.innerHTML = `
+                  <div class="d-flex justify-content-center">
+                    <div
+                    class="card"
+                    style="
+                      box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);
+                      width: 95%;
+                    "
+                  >
+                    <div class="card-body">
+                      <form id="editForm">
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Belediye İsmi</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="nameInput"
+                            value="${name}"
+                            placeholder="Belediye ismi giriniz"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Şehir</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="titleInput"
+                            value="${city}"
+                            placeholder="Şehir giriniz"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="title" class="form-label" >Ülke</label>
+                          <select class="form-control select" id="select">
+                          <option>Türkiye</option>
+                          <option>Portekiz</option>
+                          <option>Bosna Hersek</option>
+                          <option>Yunanistan</option>
+                          <option>Kırgızistan</option>
+                          <option>Bulgaristan</option>
+                          </select>
+                        </div>
+                            <div class="col-12 mb-3">
+                        <img
+                          id="imgSrcInput"
+                          src="${img}"
+                          class="img-fluid rounded preview-img d-flex justify-content-center"
+                          alt="${name}"
+                          style="width: 30%; height: auto; margin-left:35%; max-height:300px; border:3px solid rgba(0, 0, 0, 0.65);"
+                        />
+                        </div>
+                        <div class="d-flex gap-2 mt-3">
+                        <button class="btn btn-success ml-2 mb-2" style="width:150px" type="submit">
+                          Güncelle
+                        </button>
+                        <a href="Gebze - Gebze Yonetim.html" class="btn btn-secondary ml-1 mb-2" style="width:150px">
+                          İptal
+                        </a>
+                      </div>
+                      </form>
+                  </div>
+                    `;
+  const flagMap = {
+  "Türkiye": "https://flagcdn.com/w320/tr.png",
+  "Portekiz": "https://flagcdn.com/w320/pt.png",
+  "Bosna Hersek": "https://flagcdn.com/w320/ba.png",
+  "Yunanistan": "https://flagcdn.com/w320/gr.png",
+  "Kırgızistan": "https://flagcdn.com/w320/kg.png",
+  "Bulgaristan": "https://flagcdn.com/w320/bg.png"
+};
+
+const select = document.getElementById("select");
+const imgSrc = document.getElementById("imgSrcInput");
+
+for (let i = 0; i < select.options.length; i++) {
+  if (select.options[i].text === country) {
+    select.selectedIndex = i;
+    imgSrc.src = flagMap[country] || "https://via.placeholder.com/300x200?text=Yok";
+    break;
+  }
+}
+
+select.addEventListener("change", () => {
+  const selectedCountry = select.value;
+  imgSrc.src = flagMap[selectedCountry] || "https://via.placeholder.com/300x200?text=Yok";
+});
+}
+  
 
 
