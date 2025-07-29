@@ -1670,6 +1670,51 @@
             });
           });
         </script>
+         <script>
+            // Kategori filtreleme fonksiyonu
+            function filtreleKategoriler(secilenKategoriler) {
+              const satirlar = document.querySelectorAll(
+                "#icerikTablosu tbody tr"
+              );
+
+              satirlar.forEach((satir) => {
+                const kategori =
+                  satir.getAttribute("data-kategori") || satir.className;
+
+                if (
+                  secilenKategoriler.length === 0 ||
+                  secilenKategoriler.includes(kategori)
+                ) {
+                  satir.style.display = "table-row";
+                } else {
+                  satir.style.display = "none";
+                }
+              });
+            }
+
+            // Uygula butonuna tıklandığında seçili checkbox'lara göre filtreleme yapar onların içeriğini ekrana getirir
+            document.querySelectorAll(".btn-uygula").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                const secilenler = Array.from(
+                  document.querySelectorAll(".checkbox-item:checked")
+                ).map((cb) => cb.getAttribute("data-kategori"));
+
+                filtreleKategoriler(secilenler);
+              });
+            });
+
+            // Sil butonu tüm checkbox'ları temizler.
+            document.querySelectorAll(".btn-sil").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                document.querySelectorAll(".checkbox-item").forEach((cb) => {
+                  cb.checked = false;
+                });
+
+                // Tüm satırları geri göster
+                filtreleKategoriler([]);
+              });
+            });
+            </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
       </div>
