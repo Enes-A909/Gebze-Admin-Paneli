@@ -691,16 +691,6 @@
 
         <script>
 
-          // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
-          const anaCheckbox = document.getElementById("ana-checkbox");
-          anaCheckbox.addEventListener("change", () => {
-            checkboxes.forEach((checkbox) => {
-              checkbox.checked = anaCheckbox.checked;
-              checkbox.dispatchEvent(new Event("change"));
-            });
-          });
-
-
           // Buton Fonksiyonları
           function ekle() {
             alert("Ekleme sayfasına yönlendiriliyor...");

@@ -252,11 +252,13 @@
                             <div class="input-with-icon">
                                 <input type="email" id="email" placeholder="ornek@mail.com">
                                 <div class="icon-container">
-                                    <i class="fas fa-check-circle verified-icon green-icon"
+                                    <i class="fas fa-times-circle unverified-icon red-icon"
                                         style="margin-top: -10px;"></i>
                                     <div class="popup">
-                                        <div class="popup-header-onaylandi">Onaylandı!</div>
-
+                                        <div class="popup-header">Onaylanmadı!</div>
+                                        <div class="popup-body">
+                                            <button onclick="onayKodPosta()">Onay Kodu Gönder</button>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -273,7 +275,7 @@
                                     <div class="popup">
                                         <div class="popup-header">Onaylanmadı!</div>
                                         <div class="popup-body">
-                                            <button onclick="onayKod()">Onay Kodu Gönder</button>
+                                            <button onclick="onayKodTel()">Onay Kodu Gönder</button>
                                         </div>
                                     </div>
                                     <small id="phone-error" style="color: #dc3545; display: none;"></small>

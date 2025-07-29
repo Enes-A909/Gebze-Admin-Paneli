@@ -852,19 +852,6 @@
 
     // Burada herhangi bir checkbox seçildiğinde Arşivle ve Sil butonlarının display özelliğini none olmaktan çıkaracağız.
     const checkboxes = document.querySelectorAll(".checkbox-item");
-    const archiveButton = document.getElementById("archive-button");
-    const deleteButton = document.getElementById("delete-button");
-
-    checkboxes.forEach((checkbox) => {
-      checkbox.addEventListener("change", () => {
-        const isChecked = Array.from(checkboxes).some(
-          (checkbox) => checkbox.checked
-        );
-        archiveButton.style.display = isChecked ? "block" : "none";
-        deleteButton.style.display = isChecked ? "block" : "none";
-      });
-    });
-
     // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
     const anaCheckbox = document.getElementById("ana-checkbox");
     anaCheckbox.addEventListener("change", () => {
