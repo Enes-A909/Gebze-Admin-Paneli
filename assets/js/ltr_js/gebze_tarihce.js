@@ -85,7 +85,7 @@
           });
       }
 
-      function addEventLoc(){
+      function addEventLoc(loc){
         const add = document.getElementById("add")
         add.addEventListener("click", function () {
           const row = document.querySelector("#tableContent");
@@ -96,19 +96,19 @@
           row.insertAdjacentHTML(
             "beforeend",
             `
-            <td>
-          <img src="" alt="Lokasyon resmi" width="50" height="30" />
-        </td>
-        <td class="location dot" title="Başlık">Lokasyon Başlığı</td>
-        <td class="dot" title="">Lokasyon Genel Bilgi</td>
-        <td class="location dot" title="">Lokasyon Konum Bilgisi</td>
-        <td style="text-align:right;">
-          <button class="btn w-10 p-1 edit" id="">Düzenle</button>
-        </td>
+             <tr>
+    <td><img src="" alt="Lokasyon resmi" width="50" height="30" /></td>
+    <td class="location dot" title="Başlık">Lokasyon Başlığı</td>
+    <td class="dot" title="">Lokasyon Genel Bilgi</td>
+    <td class="location dot" title="">Lokasyon Konum Bilgisi</td>
+    <td style="text-align:right;">
+      <button class="btn w-10 p-1 edit">Düzenle</button>
+    </td>
+  </tr>
             `
           );
-      tableContent.appendChild(row);
           remove();
+          setupEditButtons()
         });
 
         document
@@ -132,7 +132,13 @@
           });
       }
 
-      window.addEventListener("DOMContentLoaded", addEvent());
+      window.addEventListener("DOMContentLoaded", addEvent);
+
+      window.addEventListener("DOMContentLoaded", function () {
+      remove();
+      addEventLoc();
+      getLocPhotos(photoNum);
+});
 
     // DÜZENLE
 
@@ -207,15 +213,8 @@
                               class="btn btn-primary w-10 p-1"
                               style="float: right; margin-left: 1%"
                               >Fotoğraf Ekle</label
-                            ><label
-                              class="btn btn-primary w-10 p-1"
-                              style="float: right; margin-left: 1%"
-                              onclick="addPopulation()";
-                              >Nüfus Bilgisi Ekle</label
                             >
                           </div>
-                        </div>
-
                         <div class="container mt-4" id="images">
                           <div class="row text-center justify-content-start" id="photos">
                           </div>
@@ -233,7 +232,8 @@
                   </div>
                 </div>
                     `;
-
+        addEvent();
+        remove();
         getPhotos(photoNum);
 
         document.getElementById("nav").innerHTML = ``;
@@ -262,7 +262,6 @@
           });
         });
 
-        remove();
 
         let today = new Date();
 
@@ -273,7 +272,7 @@
         const month = today.getMonth();
         const year = today.getFullYear();
         let formattedDate = `${hours}:${minute}:${ms}s - ${day}.${month}.${year}`;
-        addEvent();
+        
       }
     
       function editPhoto(title, date, photoNum, element) {
@@ -330,6 +329,8 @@
                   </div>
                 </div>
                     `;
+                  addEvent();
+                  remove();
 
         getPhotos(photoNum);
 
@@ -359,8 +360,6 @@
           });
         });
 
-        remove();
-
         let today = new Date();
 
         const minute = today.getMinutes();
@@ -370,7 +369,7 @@
         const month = today.getMonth();
         const year = today.getFullYear();
         let formattedDate = `${hours}:${minute}:${ms}s - ${day}.${month}.${year}`;
-        addEvent();
+        
       }
     
       function remove() {
@@ -401,51 +400,6 @@
       </div>
     </div>`;
         }
-      }
-
-      var popCount = 0;
-
-      function addPopulation() {
-        const popDiv = document.getElementById("population");
-
-        if (popCount === 0) {
-          popDiv.innerHTML += `
-            <div class="d-flex justify-content-between" style="width: 200%; margin-bottom:-2%;">
-              <label for="nüfus" class="form-label">Nüfus</label>
-              <label for="year" class="form-label" style="margin-right:76.7%;">Yıl</label>
-            </div>
-          `;
-        }
-
-        popCount++;
-
-        popDiv.innerHTML += `
-          <div class="d-flex gap-2 mt-3">
-            <input
-              type="number"
-              class="form-control"
-              name="nüfus"
-              value="10000"
-              placeholder="Nüfus giriniz"
-              style="width: 40%"
-            />
-            <select
-              name="year"
-              id="year${popCount}"
-              style="width: 20%; margin-left: 5%"
-            ></select>
-          </div>
-        `;
-
-        let select = document.getElementById(`year${popCount}`);
-
-        for (let i = 2025; i > 2008; i--) {
-          let option = document.createElement("option");
-          option.value = i;
-          option.textContent = i;
-          select.appendChild(option);
-        }
-        addEvent();
       }
 
       function getLocPhotos(num) {
@@ -500,8 +454,12 @@ const photosContainer = document.getElementById("photos");
   photosContainer.appendChild(table);
 }
 
-      
+document.getElementById("editTarihiYerler").addEventListener("click",function(){
+          editTarihiYerler(6)
+        })
+
       function editTarihiYerler(photoNum){
+        
         let content = document.getElementById("icerikler");
         
         content.innerHTML = `
@@ -555,8 +513,9 @@ const photosContainer = document.getElementById("photos");
                   </div>
                 </div>
                     `;
-
-        getLocPhotos(photoNum);
+                    remove();
+                    addEventLoc();
+                    getLocPhotos(photoNum);
 
         document.getElementById("nav").innerHTML = ``;
 
@@ -584,8 +543,7 @@ const photosContainer = document.getElementById("photos");
           });
         });
 
-        remove();
-        addEventLoc();
+        
       }
 
       function editLocation(loc){
@@ -628,12 +586,12 @@ const photosContainer = document.getElementById("photos");
                         </div>
 
                         <div class="mb-3">
-                          <label for="tarif" class="form-label">Tarihçe ve Genel Bilgi</label>
+                          <label for="tarif" class="form-label">Konum Tarifi</label>
                           <textarea
                             name="tarif"
                             id="tarif"
                             class="form-control"
-                            placeholder="Nasıl Gidilir"
+                            placeholder="Konum Tarifi"
                             rows="2"
                             required
                           >${tarif}.</textarea
@@ -687,6 +645,9 @@ const photosContainer = document.getElementById("photos");
                     `;
 
         getPhotos(6);
+        remove();
+        addEvent();
+        renderActivities();
 
         document.getElementById("nav").innerHTML = ``;
 
@@ -713,11 +674,29 @@ const photosContainer = document.getElementById("photos");
             }
           });
         });
-
-        remove();
-        addEvent();
-        renderActivities();
       }
+
+      function setupEditButtons() { 
+  const table = document.getElementById("tableContent");
+
+  table.addEventListener("click", function (e) {
+    if (e.target && e.target.classList.contains("edit")) {
+      const tr = e.target.closest("tr");
+
+      const loc = {
+        name: tr.querySelector("td:nth-child(2)").textContent.trim(),
+        info: tr.querySelector("td:nth-child(3)").textContent.trim(),
+        tarif: tr.querySelector("td:nth-child(4)").textContent.trim(),
+        link: "https://lokasyon.com", 
+        images: [],
+        activities: [],
+      };
+
+      editLocation(loc);
+    }
+  });
+}
+
 
       function renderActivities(element) {        
         const activitiesContainer = document.getElementById("activities");
@@ -978,7 +957,7 @@ const photosContainer = document.getElementById("photos");
                             placeholder="Yazı"
                             rows="15"
                             required
-                          >Gebze'nin de içinde bulunduğu, eski Yunanlılar'ın ve Romalılar'ın Bitinya (Bithynie) dedikleri coğrafi bölgenin bilinen en eski tarihi, M.Ö. XII yüzyıla kadar dayanır. Bölge, özellikle Kocaeli Yarımadası, coğrafi konumunun öneminden dolayı, tarihin hemen hemen bütün dönemlerinde, birçok ulusa yurt olmuştur. Asya ile Avrupa kıtaları arasındaki en önemli geçit yeri olan Kocaeli Yarımadası ya bir çok ulusun yurdu, ya da gelip geçtikleri, medeniyetlerinden izler bıraktığı bir yer olmuştur. Bilinen ilk ulus göçü de M.Ö. XII. yüzyılın başlarındadır. Bu ulus Yunan kökenli Frikler'dir. Boğaz (Bosforos) yoluyla Anadolu'ya inmişlerdir. XII yüzyıla kadar Trakya'dan İzmit dolaylarına göçler devam etmiştir. Fakat bu dönemde eski Gebze'nin yerine dair hiçbir bilgi edinilememiştir. Kısaca antik çağ Gebze'sinin yeri kesinlikle bilinememektedir. Bugün Gebze'nin olduğu yerde, M.Ö. 281-246 yıllarında Kral 1. Nicomede'nin egemenliğindeki Bitinya Krallığı döneminde Dakibyza ve Libyssa adında yerleşmeler vardır. Eski Gebze'nin yerine dair söylenenler, işte bu tarihlere aittir. Daha eski tarihlere ait bilgiler ise çelişkilidir. Bu yerleşim alanlarının araştırmalara konu olmasının en önemli nedeni ise, ünlü Kartacalı komutan Hannibal'ın krallık döneminde burada yerleşmiş olmasıdır. Hannibal Zama harbindeki yenilgisinden sonra ülkesinde itibar görmemiş ve Bitinya Krallığı'na iltica etmek zorunda kalmıştır. Bitinya Kralları I. ve II. Prusias'ın savaş danışmanlıklarını yapmıştır. II. Prusias'ın ihaneti sonucu düşmanın eline düşmemek için intihar etmiş ve Lybissa'ya gömülmüştür. İşte birçok tarihçinin ve araştırmacının eski Gebze olduğu iddia edilen bu yeri araştırmasının en büyük nedeni budur. Hannibal'ın burayı seçmesinin birçok nedeni vardır. Devamlı izlenme kuşkusu, Nicomedia başkent olduğu için gelenin gidenin çok olması ve tanınma ihtimalinin fazla olması, yönetime güvenmemesi bu nedenlerin başlıcalarıdır. Roma kuvvetlerinden gizlenen Hannibal, korunaklı, kaçışı kolay ve denizle ilişkili bir yer aramıştır. Sonunda bu özelliklere sahip Libyssa'yı seçmiştir. O dönemde Libyssa'nın kurulduğu yer, hem denize hem de karaya hakim bir tepe üzerindedir. Tepe, körfezin en dar yeridir. 1330 yılında Osmanlılarla Bizans arasında yapılan savaştan sonra Gebze'nin de içinde bulunduğu bölge, Osmanlı idaresine dahil edilmiştir. Bugünkü Gebze'nin kurucusu Orhan Gazi'dir. Gebze'de kendi adına cami de yaptıran Orhan Gazi, bölgede izler bırakan ilk Türk büyüğüdür. Orhan Gazi, bölgenin imarı ve yaşaması için büyük çabalar göstermiştir. Bu amaçla işletmeler kurmuş, vakıfları desteklemiştir Osmanlıların devlet olma çabaları sırasında, Gebze yine ordugah yerleşimi olarak kullanılmıştır. Osmanlı Beyliğinin kurulmasında büyük emekleri geçen Akçakoca Bey'in oğlu olan İlyas Çelebi de hem Gebze'nin fethinde hem de kuruluşunda büyük rol oynamıştır. Gebze Osmanlı İmparatorluğunun son yıllarına kadar kimi zaman İstanbul'a, daha çok da Kocaeli'ye bağlı bir kaza olarak, önemli bir yer niteliğini uzun yıllar korumuştur. 1. Dünya Savaşı'nda Osmanlı İmparatorluğunun yenik düşmesi üzerine Anadolu ve Trakya'nın birçok yöresi gibi Gebze'de düşman kuvvetleri tarafından işgal edilmiştir. 1920 yılznda İngilizler'in bölgeyi işgaline, 1921 yılının başlarında Yunanlılar da katılmıştır. Daha sonra Anadolu içerisinde yenilgiye uğrayan Yunan kuvvetleri, amaçlarına ulaşamamanın üzüntüsüyle geldikleri yoldan geriye kaçmışlardır. Bu yıllarda Gebze, Anadolu'nun en dikkate değer yerlerinden biridir. Türk kuvvetlerinin biraz ilerisinde İngiliz askerleri bulunmaktaydı. 18-19 Ocak 1923 tarihli Hakimiyet-i Milliye-Ankara Gazetesi'nde Atatürk'ün bölgeyi ve Gebze'yi ziyaret ettiğinden bahsedilir. Atatürk Gebze'deki askeri birliklerin durumundan memnun kalarak geri dönmüştür. İstanbul'un terk edilmesinden sonra Gebze ve Çevresi tamamen emniyet altına alınmıştır. Cumhuriyet'in ilanına kadar kimi zaman İstanbul, kimi zaman da Kocaeli'ye bağlı bir kaza olan Gebze, Cumhuriyet'in ilanından sonra yeni iller kanununa göre il olan İzmit'e bağlanmıştır. Libyssa'dan Gebze'ye Gebze adı köken olarak, diğer eski yerleşmelerin ismine bağlanmaktadır. Araştırmacıların bir çoğu bu görüştedir.</textarea
+                          >Gebze'nin de içinde bulunduğu, eski Yunanlılar'ın ve Romalılar'ın Bitinya (Bithynie) dedikleri coğrafi bölgenin bilinen en eski tarihi, M.Ö. XII yüzyıla kadar dayanır. Bölge, özellikle Kocaeli Yarımadası, coğrafi konumunun öneminden dolayı, tarihin hemen hemen bütün dönemlerinde, birçok ulusa yurt olmuştur. Asya ile Avrupa kıtaları arasındaki en önemli geçit yeri olan Kocaeli Yarımadası ya bir çok ulusun yurdu, ya da gelip geçtikleri, medeniyetlerinden izler bıraktığı bir yer olmuştur. Bilinen ilk ulus göçü de M.Ö. XII. yüzyılın başlarındadır. Bu ulus Yunan kökenli Frikler'dir. Boğaz (Bosforos) yoluyla Anadolu'ya inmişlerdir. XII yüzyıla kadar Trakya'dan İzmit dolaylarına göçler devam etmiştir. Fakat bu dönemde eski Gebze'nin yerine dair hiçbir bilgi edinilememiştir. Kısaca antik çağ Gebze'sinin yeri kesinlikle bilinememektedir. Bugün Gebze'nin olduğu yerde, M.Ö. 281-246 yıllarında Kral 1. Nicomede'nin egemenliğindeki Bitinya Krallığı döneminde Dakibyza ve Libyssa adında yerleşmeler vardır. Eski Gebze'nin yerine dair söylenenler, işte bu tarihlere aittir. Daha eski tarihlere ait bilgiler ise çelişkilidir. Bu yerleşim alanlarının araştırmalara konu olmasının en önemli nedeni ise, ünlü Kartacalı komutan Hannibal'ın krallık döneminde burada yerleşmiş olmasıdır. Hannibal Zama harbindeki yenilgisinden sonra ülkesinde itibar görmemiş ve Bitinya Krallığı'na iltica etmek zorunda kalmıştır. Bitinya Kralları I. ve II. Prusias'ın savaş danışmanlıklarını yapmıştır. II. Prusias'ın ihaneti sonucu düşmanın eline düşmemek için intihar etmiş ve Lybissa'ya gömülmüştür. İşte birçok tarihçinin ve araştırmacının eski Gebze olduğu iddia edilen bu yeri araştırmasının en büyük nedeni budur. Hannibal'ın burayı seçmesinin birçok nedeni vardır. Devamlı izlenme kuşkusu, Nicomedia başkent olduğu için gelenin gidenin çok olması ve tanınma ihtimalinin fazla olması, yönetime güvenmemesi bu nedenlerin başlıcalarıdır. Roma kuvvetlerinden gizlenen Hannibal, korunaklı, kaçışı kolay ve denizle ilişkili bir yer aramıştır. Sonunda bu özelliklere sahip Libyssa'yı seçmiştir. O dönemde Libyssa'nın kurulduğu yer, hem denize hem de karaya hakim bir tepe üzerindedir. Tepe, körfezin en dar yeridir. 1330 yılında Osmanlılarla Bizans arasında yapılan savaştan sonra Gebze'nin de içinde bulunduğu bölge, Osmanlı idaresine dahil edilmiştir. Bugünkü Gebze'nin kurucusu Orhan Gazi'dir. Gebze'de kendi adına cami de yaptıran Orhan Gazi, bölgede izler bırakan ilk Türk büyüğüdür. Orhan Gazi, bölgenin imarı ve yaşaması için büyük çabalar göstermiştir. Bu amaçla işletmeler kurmuş, vakıfları desteklemiştir Osmanlıların devlet olma çabaları sırasında, Gebze yine ordugah yerleşimi olarak kullanılmıştır. Osmanlı Beyliğinin kurulmasında büyük emekleri geçen Akçakoca Bey'in oğlu olan İlyas Çelebi de hem Gebze'nin fethinde hem de kuruluşunda büyük rol oynamıştır. Gebze Osmanlı İmparatorluğunun son yıllarına kadar kimi zaman İstanbul'a, daha çok da Kocaeli'ye bağlı bir kaza olarak, önemli bir yer niteliğini uzun yıllar korumuştur. 1. Dünya Savaşı'nda Osmanlı İmparatorluğunun yenik düşmesi üzerine Anadolu ve Trakya'nın birçok yöresi gibi Gebze'de düşman kuvvetleri tarafından işgal edilmiştir. 1920 yılznda İngilizler'in bölgeyi işgaline, 1921 yılının başlarında Yunanlılar da katılmıştır. Daha sonra Anadolu içerisinde yenilgiye uğrayan Yunan kuvvetleri, amaçlarına ulaşamamanın üzüntüsüyle geldikleri yoldan geriye kaçmışlardır. Bu yıllarda Gebze, Anadolu'nun en dikkate değer yerlerinden biridir. Türk kuvvetlerinin biraz ilerisinde İngiliz askerleri bulunmaktaydı. 18-19 Ocak 1923 tarihli Hakimiyet-i Milliye-Ankara Gazetesi'nde Atatürk'ün bölgeyi ve Gebze'yi ziyaret ettiğinden bahsedilir. Atatürk Gebze'deki askeri birliklerin durumundan memnun kalarak geri dönmüştür. İstanbul'un terk edilmesinden sonra Gebze ve Çevresi tamamen emniyet altına alınmıştır. Cumhuriyet'in ilanına kadar kimi zaman İstanbul, kimi zaman da Kocaeli'ye bağlı bir kaza olan Gebze, Cumhuriyet'in ilanından sonra yeni iller kanununa göre il olan İzmit'e bağlanmıştır. Libyssa'dan Gebze'ye Gebze adı köken olarak, diğer eski yerleşmelerin ismine bağlanmaktadır. Araştırmacıların bir çoğu bu görüştedir</textarea
                           >
                         </div>
                         <div class="mb-3" id="population" style="margin-left: 23%">
