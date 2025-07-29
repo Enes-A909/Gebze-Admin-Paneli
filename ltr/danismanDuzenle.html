@@ -33,7 +33,7 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 20px;
         width: 100%;
-        max-width: 500px; /* Kart genişliği */
+        max-width: 450px; /* Kart genişliği */
       }
 
       .card img {
@@ -99,12 +99,12 @@
       .kaydet {
         background-color: #8e44ad;
         color: white;
+        border-radius: 6px;
+        border-color: #8e44ad;
+       
       }
 
-      .iptal {
-        background-color: #2980b9;
-        color: white;
-      }
+
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -469,9 +469,9 @@
 
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler">
-            <div class="container">
+              <div class="container">
               <!-- 1. Danışman -->
-              <div class="card">
+              <div class="card" >
                 <img
                   id="danisman1Image"
                   src="../assets/images/kurumsal gebze/Yusuf-BURKUT.jpg"
@@ -499,25 +499,26 @@
                   style="display: none"
                   onchange="previewImage(event, 'danisman1')"
                 />
-                <button
-                  class="degistir-btn"
-                  onclick="document.getElementById('danisman1Upload').click()"
-                >
-                  Fotoğraf Değiştir
+                
+                <div style="display: flex; gap: 10px;">
+                  <button
+                    class="degistir-btn"
+                    onclick="document.getElementById('danisman2Upload').click()"
+                  >
+                    Fotoğraf Seç
                 </button>
 
-                <div class="button-group">
-                  <button class="kaydet" onclick="saveData('danisman1')">
+               
+                  <button class="kaydet" onclick="saveData('danisman2')">
                     Kaydet
                   </button>
-                  <button class="iptal" onclick="cancelData('danisman1')">
-                    İptal
-                  </button>
+                  </div>
                 </div>
-              </div>
+                
+              
 
               <!-- 2. Danışman -->
-              <div class="card">
+              <div class="card" >
                 <img
                   id="danisman2Image"
                   src="../assets/images/kurumsal gebze/Remzi-SEKER.jpg"
@@ -545,22 +546,25 @@
                   style="display: none"
                   onchange="previewImage(event, 'danisman2')"
                 />
-                <button
-                  class="degistir-btn"
-                  onclick="document.getElementById('danisman2Upload').click()"
-                >
-                  Fotoğraf Değiştir
+                 <div style="display: flex; gap: 10px;">
+                  <button
+                    class="degistir-btn"
+                    onclick="document.getElementById('danisman2Upload').click()"
+                  >
+                    Fotoğraf Seç
                 </button>
 
-                <div class="button-group">
+               
                   <button class="kaydet" onclick="saveData('danisman2')">
                     Kaydet
                   </button>
-                  <button class="iptal" onclick="cancelData('danisman2')">
-                    İptal
-                  </button>
-                </div>
+                  </div>
               </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
               <footer style="height: 200px; opacity: 0"></footer>
 
               <!-- latest jquery-->
@@ -636,10 +640,8 @@
                   loadData("danisman2");
                 });
               </script>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+
+            </body>
+            </html>

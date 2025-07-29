@@ -16,6 +16,84 @@
         display: block;
         margin-right: 100px;
       }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: rgb(236, 236, 236);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .card img {
+        width: 200px;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 2px solid #000000;
+        margin-bottom: 10px;
+      }
+
+      .card h3 {
+        font-size: 22px;
+        margin: 10px 0;
+        color: #000000;
+      }
+
+      .card input {
+        width: 90%;
+        padding: 8px;
+        margin: 5px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+
+      .degistir-btn {
+        background-color: #7180e1;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      .degistir-btn:hover {
+        background-color: #5a4bcc; /* Hover rengi */
+      }
+
+      .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      button.kaydet {
+        background-color: #825aa7;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* 7. Kart ortalanmış */
+      .full-width {
+        grid-column: span 2;
+        justify-self: center;
+        width: 50%;
+      }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -216,7 +294,8 @@
       </div>
       <!-- Page Header Ends -->
       <!-- Page Body Start-->
-      <div class="page-body-wrapper">
+    
+                       <div class="page-body-wrapper">
         <!-- Page Sidebar Start-->
         <div class="page-sidebar bg-light">
           <div
@@ -387,94 +466,6 @@
 
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler">
-            <style>
-              .container {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-                max-width: 1100px;
-                margin: 0 auto;
-              }
-
-              .card {
-                background: rgb(236, 236, 236);
-                padding: 20px;
-                border-radius: 12px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                text-align: center;
-              }
-
-              .card img {
-                width: 200px;
-                height: 230px;
-                object-fit: cover;
-                border-radius: 8px;
-                border: 2px solid #000000;
-                margin-bottom: 10px;
-              }
-
-              .card h3 {
-                font-size: 22px;
-                margin: 10px 0;
-                color: #000000;
-              }
-
-              .card input {
-                width: 90%;
-                padding: 8px;
-                margin: 5px 0;
-                border-radius: 6px;
-                border: 1px solid #ccc;
-                font-size: 14px;
-              }
-
-              .degistir-btn {
-                background-color: #7180e1;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 14px;
-                transition: 0.3s;
-              }
-
-              .degistir-btn:hover {
-                background-color: #5a4bcc; /* Hover rengi */
-              }
-
-              .button-group {
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-                margin-top: 10px;
-              }
-
-              button.kaydet {
-                background-color: #825aa7;
-                color: white;
-                border: none;
-                padding: 8px 14px;
-                border-radius: 5px;
-                cursor: pointer;
-              }
-
-              button.iptal {
-                background-color: #5961d3;
-                color: white;
-                border: none;
-                padding: 8px 14px;
-                border-radius: 5px;
-                cursor: pointer;
-              }
-
-              /* 7. Kart ortalanmış */
-              .full-width {
-                grid-column: span 2;
-                justify-self: center;
-                width: 50%;
-              }
-            </style>
             <div class="container">
               <!-- Yardımcılar (1-6) -->
               <div class="card">
@@ -500,38 +491,173 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                <input
-                  type="file"
-                  id="yardimci1Upload"
-                  accept="image/*"
-                  style="display: none"
-                  onchange="previewImage(event, 'yardimci1')"
+                                <input
+                  type="text"
+                  id="yardimci1Biyografi"
+                  placeholder="Biyografi girin"
+                
                 />
-                <button
-                  class="degistir-btn"
-                  onclick="document.getElementById('yardimci1Upload').click()"
+                
+                <div
+                  class="dropdown"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
-                  Fotoğraf Değiştir
-                </button>
-
-                <div class="button-group">
-                  <button class="kaydet" onclick="saveData('yardimci1')">
-                    Kaydet
+                  <button
+                    type="button"
+                    class="photo-btn dropdownBtn"
+                    style="
+                      padding: 6px;
+                      background: #ececec;
+                      color: #ea5b23;
+                      border: 1px solid #d0d0d0;
+                      border-radius: 50%;
+                      width: 36px;
+                      height: 36px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 20px; border: none !important; margin-top: 10px;">
                   </button>
-                  <button class="iptal" onclick="cancelData('yardimci1')">
-                    İptal
-                  </button>
+                  <div
+                    class="dropdown-content"
+                    style="
+                      display: none;
+                      position: absolute;
+                      right: 0;
+                      top: 110%;
+                      background: #fff;
+                      border: 1px solid #ddd;
+                      border-radius: 6px;
+                      min-width: 180px;
+                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                      z-index: 10;
+                      text-align: left;
+                    "
+                  >
+                    <a
+                      href="#"
+                      class="dropdownPhotoChange"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          x="3"
+                          y="7"
+                          width="18"
+                          height="13"
+                          rx="2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="13.5"
+                          r="3.5"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Fotoğrafı Değiştir
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownEdit"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path d="M12 20h9" stroke="#2041c7" stroke-width="2" />
+                        <path
+                          d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19.5 3 21l1.5-4L16.5 3.5z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Düzenle
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownSaveChanges"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="17 21 17 13 7 13 7 21"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="7 3 7 8 15 8"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Değişiklikleri Kaydet
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <div class="card">
+    <!-- Yardımcı 3 -->
+                  <div class="card">
                 <img
-                  id="yardimci2Image"
+                  id="yardimci1Image"
                   src="../assets/images/kurumsal gebze/meclis/ahmetcelebi.jpg"
                   alt="Fotoğraf"
                   style="display: block; margin: 0 auto; width: 200px"
                 />
-                <h3 contenteditable="true" id="yardimci2Isim">
+
+                <h3 contenteditable="true" id="yardimci1Isim">
                   Ahmet HÜSEYİNÇELEBİ
                 </h3>
                 <input
@@ -546,40 +672,147 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                <input
-                  type="file"
-                  id="yardimci2Upload"
-                  accept="image/*"
-                  style="display: none"
-                  onchange="previewImage(event, 'yardimci2')"
+                                <input
+                  type="text"
+                  id="yardimci2Biyografi"
+                  placeholder="Biyografi girin"
+            
                 />
-                <button
-                  class="degistir-btn"
-                  onclick="document.getElementById('yardimci1Upload').click()"
+                
+                <div
+                  class="dropdown"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
-                  Fotoğraf Değiştir
-                </button>
-
-                <div class="button-group">
-                  <button class="kaydet" onclick="saveData('yardimci2')">
-                    Kaydet
+                  <button
+                    type="button"
+                    class="photo-btn dropdownBtn"
+                    style="
+                      padding: 6px;
+                      background: #ececec;
+                      color: #ea5b23;
+                      border: 1px solid #d0d0d0;
+                      border-radius: 50%;
+                      width: 36px;
+                      height: 36px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 20px; border: none !important; margin-top: 10px;">
                   </button>
-                  <button class="iptal" onclick="cancelData('yardimci2')">
-                    İptal
-                  </button>
+                  <div
+                    class="dropdown-content"
+                    style="
+                      display: none;
+                      position: absolute;
+                      right: 0;
+                      top: 110%;
+                      background: #fff;
+                      border: 1px solid #ddd;
+                      border-radius: 6px;
+                      min-width: 180px;
+                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                      z-index: 10;
+                      text-align: left;
+                    "
+                  >
+                    <a
+                      href="#"
+                      class="dropdownPhotoChange"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                     
+                      Fotoğrafı Değiştir
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownEdit"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path d="M12 20h9" stroke="#2041c7" stroke-width="2" />
+                        <path
+                          d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19.5 3 21l1.5-4L16.5 3.5z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Düzenle
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownSaveChanges"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="17 21 17 13 7 13 7 21"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="7 3 7 8 15 8"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Değişiklikleri Kaydet
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <!-- 3-4 -->
-              <div class="card">
+              <!-- Yardımcı 2 -->
+                  <div class="card">
                 <img
-                  id="yardimci3Image"
+                  id="yardimci1Image"
                   src="../assets/images/kurumsal gebze/serifcanpolat.jpg"
                   alt="Fotoğraf"
                   style="display: block; margin: 0 auto; width: 200px"
                 />
-                <h3 contenteditable="true" id="yardimci3Isim">
-                  Şerif Canpolat
+
+                <h3 contenteditable="true" id="yardimci1Isim">
+                  Şerif CANPOLAT
                 </h3>
                 <input
                   type="text"
@@ -593,39 +826,176 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                <input
-                  type="file"
-                  id="yardimci3Upload"
-                  accept="image/*"
-                  style="display: none"
-                  onchange="previewImage(event, 'yardimci3')"
+                                <input
+                  type="text"
+                  id="yardimci3Biyografi"
+                  placeholder="Biyografi girin"
+               
                 />
-                <button
-                  class="degistir-btn"
-                  onclick="document.getElementById('yardimci1Upload').click()"
+                
+                <div
+                  class="dropdown"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
-                  Fotoğraf Değiştir
-                </button>
-
-                <div class="button-group">
-                  <button class="kaydet" onclick="saveData('yardimci3')">
-                    Kaydet
+                  <button
+                    type="button"
+                    class="photo-btn dropdownBtn"
+                    style="
+                      padding: 6px;
+                      background: #ececec;
+                      color: #ea5b23;
+                      border: 1px solid #d0d0d0;
+                      border-radius: 50%;
+                      width: 36px;
+                      height: 36px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 0px; border: none !important; margin-top: 10px;">
                   </button>
-                  <button class="iptal" onclick="cancelData('yardimci3')">
-                    İptal
-                  </button>
+                  <div
+                    class="dropdown-content"
+                    style="
+                      display: none;
+                      position: absolute;
+                      right: 0;
+                      top: 110%;
+                      background: #fff;
+                      border: 1px solid #ddd;
+                      border-radius: 6px;
+                      min-width: 180px;
+                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                      z-index: 10;
+                      text-align: left;
+                    "
+                  >
+                    <a
+                      href="#"
+                      class="dropdownPhotoChange"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          x="3"
+                          y="7"
+                          width="18"
+                          height="13"
+                          rx="2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="13.5"
+                          r="3.5"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Fotoğrafı Değiştir
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownEdit"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path d="M12 20h9" stroke="#2041c7" stroke-width="2" />
+                        <path
+                          d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19.5 3 21l1.5-4L16.5 3.5z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Düzenle
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownSaveChanges"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="17 21 17 13 7 13 7 21"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="7 3 7 8 15 8"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Değişiklikleri Kaydet
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <div class="card">
+          
+
+              <!-- Yardımcı 4 -->
+                  <div class="card">
                 <img
-                  id="yardimci4Image"
+                  id="yardimci1Image"
                   src="../assets/images/kurumsal gebze/muharrembaltaci.jpg"
                   alt="Fotoğraf"
                   style="display: block; margin: 0 auto; width: 200px"
                 />
+
                 <h3 contenteditable="true" id="yardimci4Isim">
-                  Muharrem Baltacıoğlu
+                  Muharrem BALTACIOĞLU
                 </h3>
                 <input
                   type="text"
@@ -639,39 +1009,175 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                <input
-                  type="file"
-                  id="yardimci4Upload"
-                  accept="image/*"
-                  style="display: none"
-                  onchange="previewImage(event, 'yardimci4')"
+                                <input
+                  type="text"
+                  id="yardimci4Biyografi"
+                  placeholder="Biyografi girin"
+                 
                 />
-                <button
-                  class="degistir-btn"
-                  onclick="document.getElementById('yardimci1Upload').click()"
+                
+                <div
+                  class="dropdown"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
-                  Fotoğraf Değiştir
-                </button>
-
-                <div class="button-group">
-                  <button class="kaydet" onclick="saveData('yardimci4')">
-                    Kaydet
+                  <button
+                    type="button"
+                    class="photo-btn dropdownBtn"
+                    style="
+                      padding: 6px;
+                      background: #ececec;
+                      color: #ea5b23;
+                      border: 1px solid #d0d0d0;
+                      border-radius: 50%;
+                      width: 36px;
+                      height: 36px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 0px; border: none !important; margin-top: 10px;">
                   </button>
-                  <button class="iptal" onclick="cancelData('yardimci4')">
-                    İptal
-                  </button>
+                  <div
+                    class="dropdown-content"
+                    style="
+                      display: none;
+                      position: absolute;
+                      right: 0;
+                      top: 110%;
+                      background: #fff;
+                      border: 1px solid #ddd;
+                      border-radius: 6px;
+                      min-width: 180px;
+                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                      z-index: 10;
+                      text-align: left;
+                    "
+                  >
+                    <a
+                      href="#"
+                      class="dropdownPhotoChange"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          x="3"
+                          y="7"
+                          width="18"
+                          height="13"
+                          rx="2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="13.5"
+                          r="3.5"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Fotoğrafı Değiştir
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownEdit"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path d="M12 20h9" stroke="#2041c7" stroke-width="2" />
+                        <path
+                          d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19.5 3 21l1.5-4L16.5 3.5z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Düzenle
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownSaveChanges"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="17 21 17 13 7 13 7 21"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="7 3 7 8 15 8"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Değişiklikleri Kaydet
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <!-- 5-6 -->
-              <div class="card">
+              <!-- Yardımcı 5 -->
+                  <div class="card">
                 <img
-                  id="yardimci5Image"
+                  id="yardimci1Image"
                   src="../assets/images/kurumsal gebze/meclis/yandikmahmut.jpg"
                   alt="Fotoğraf"
                   style="display: block; margin: 0 auto; width: 200px"
                 />
-                <h3 contenteditable="true" id="yardimci5Isim">Mahmut Yandık</h3>
+
+                <h3 contenteditable="true" id="yardimci1Isim">
+                  Mahmut YANDIK
+                </h3>
                 <input
                   type="text"
                   id="yardimci5Email"
@@ -684,38 +1190,175 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                <input
-                  type="file"
-                  id="yardimci5Upload"
-                  accept="image/*"
-                  style="display: none"
-                  onchange="previewImage(event, 'yardimci5')"
+                                <input
+                  type="text"
+                  id="yardimci5Biyografi"
+                  placeholder="Biyografi girin"
+                 
                 />
-                <button
-                  class="degistir-btn"
-                  onclick="document.getElementById('yardimci1Upload').click()"
+                
+                <div
+                  class="dropdown"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
-                  Fotoğraf Değiştir
-                </button>
-
-                <div class="button-group">
-                  <button class="kaydet" onclick="saveData('yardimci5')">
-                    Kaydet
+                  <button
+                    type="button"
+                    class="photo-btn dropdownBtn"
+                    style="
+                      padding: 6px;
+                      background: #ececec;
+                      color: #ea5b23;
+                      border: 1px solid #d0d0d0;
+                      border-radius: 50%;
+                      width: 36px;
+                      height: 36px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 0px; border: none !important; margin-top: 10px;">
                   </button>
-                  <button class="iptal" onclick="cancelData('yardimci5')">
-                    İptal
-                  </button>
+                  <div
+                    class="dropdown-content"
+                    style="
+                      display: none;
+                      position: absolute;
+                      right: 0;
+                      top: 110%;
+                      background: #fff;
+                      border: 1px solid #ddd;
+                      border-radius: 6px;
+                      min-width: 180px;
+                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                      z-index: 10;
+                      text-align: left;
+                    "
+                  >
+                    <a
+                      href="#"
+                      class="dropdownPhotoChange"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          x="3"
+                          y="7"
+                          width="18"
+                          height="13"
+                          rx="2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="13.5"
+                          r="3.5"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Fotoğrafı Değiştir
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownEdit"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path d="M12 20h9" stroke="#2041c7" stroke-width="2" />
+                        <path
+                          d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19.5 3 21l1.5-4L16.5 3.5z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Düzenle
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownSaveChanges"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="17 21 17 13 7 13 7 21"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="7 3 7 8 15 8"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Değişiklikleri Kaydet
+                    </a>
+                  </div>
                 </div>
               </div>
-
-              <div class="card">
+  
+              <!--Yardımcı 6 -->
+                 <div class="card">
                 <img
-                  id="yardimci6Image"
+                  id="yardimci1Image"
                   src="../assets/images/kurumsal gebze/meclis/senerakin.jpg"
                   alt="Fotoğraf"
                   style="display: block; margin: 0 auto; width: 200px"
                 />
-                <h3 contenteditable="true" id="yardimci6Isim">Şener Akın</h3>
+
+                <h3 contenteditable="true" id="yardimci1Isim">
+                  Şener AKIN
+                </h3>
                 <input
                   type="text"
                   id="yardimci6Email"
@@ -728,40 +1371,175 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                <input
-                  type="file"
-                  id="yardimci6Upload"
-                  accept="image/*"
-                  style="display: none"
-                  onchange="previewImage(event, 'yardimci6')"
+                                <input
+                  type="text"
+                  id="yardimci6Biyografi"
+                  placeholder="Biyografi girin"
+                
                 />
-                <button
-                  class="degistir-btn"
-                  onclick="document.getElementById('yardimci1Upload').click()"
+                
+                <div
+                  class="dropdown"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
-                  Fotoğraf Değiştir
-                </button>
-
-                <div class="button-group">
-                  <button class="kaydet" onclick="saveData('yardimci6')">
-                    Kaydet
+                  <button
+                    type="button"
+                    class="photo-btn dropdownBtn"
+                    style="
+                      padding: 6px;
+                      background: #ececec;
+                      color: #ea5b23;
+                      border: 1px solid #d0d0d0;
+                      border-radius: 50%;
+                      width: 36px;
+                      height: 36px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 0px; border: none !important; margin-top: 10px;">
                   </button>
-                  <button class="iptal" onclick="cancelData('yardimci6')">
-                    İptal
-                  </button>
+                  <div
+                    class="dropdown-content"
+                    style="
+                      display: none;
+                      position: absolute;
+                      right: 0;
+                      top: 110%;
+                      background: #fff;
+                      border: 1px solid #ddd;
+                      border-radius: 6px;
+                      min-width: 180px;
+                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                      z-index: 10;
+                      text-align: left;
+                    "
+                  >
+                    <a
+                      href="#"
+                      class="dropdownPhotoChange"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          x="3"
+                          y="7"
+                          width="18"
+                          height="13"
+                          rx="2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="13.5"
+                          r="3.5"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Fotoğrafı Değiştir
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownEdit"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path d="M12 20h9" stroke="#2041c7" stroke-width="2" />
+                        <path
+                          d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19.5 3 21l1.5-4L16.5 3.5z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Düzenle
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownSaveChanges"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="17 21 17 13 7 13 7 21"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="7 3 7 8 15 8"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Değişiklikleri Kaydet
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <!-- 7. Yardımcı -->
-              <div class="card full-width">
+              <!-- Yardımcı 7 -->
+
+                 <div class="card">
                 <img
                   id="yardimci7Image"
                   src="../assets/images/kurumsal gebze/mucahitbirben.jpg"
                   alt="Fotoğraf"
                   style="display: block; margin: 0 auto; width: 200px"
                 />
+
                 <h3 contenteditable="true" id="yardimci7Isim">
-                  Mücahit Birben
+                 Mücahit BİRBEN
                 </h3>
                 <input
                   type="text"
@@ -775,32 +1553,249 @@
                   placeholder="Telefon girin"
                   value="0 262 642 04 30"
                 />
-                <input
-                  type="file"
-                  id="yardimci7Upload"
-                  accept="image/*"
-                  style="display: none"
-                  onchange="previewImage(event, 'yardimci7')"
+                 <input
+                  type="text"
+                  id="yardimci7Biyografi"
+                  placeholder="Biyografi girin"
+                 
                 />
-                <button
-                  class="degistir-btn"
-                  onclick="document.getElementById('yardimci1Upload').click()"
+                
+                <div
+                  class="dropdown"
+                  style="position: absolute; top: 12px; right: 12px; z-index: 2"
                 >
-                  Fotoğraf Değiştir
-                </button>
-
-                <div class="button-group">
-                  <button class="kaydet" onclick="saveData('yardimci7')">
-                    Kaydet
+                  <button
+                    type="button"
+                    class="photo-btn dropdownBtn"
+                    style="
+                      padding: 6px;
+                      background: #ececec;
+                      color: #ea5b23;
+                      border: 1px solid #d0d0d0;
+                      border-radius: 50%;
+                      width: 36px;
+                      height: 36px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                  <img src="../assets/images/menu-burger.png" alt="Burger" style="width: 20px; height: 0px; border: none !important; margin-top: 10px;">
                   </button>
-                  <button class="iptal" onclick="cancelData('yardimci7')">
-                    İptal
-                  </button>
+                  <div
+                    class="dropdown-content"
+                    style="
+                      display: none;
+                      position: absolute;
+                      right: 0;
+                      top: 110%;
+                      background: #fff;
+                      border: 1px solid #ddd;
+                      border-radius: 6px;
+                      min-width: 180px;
+                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                      z-index: 10;
+                      text-align: left;
+                    "
+                  >
+                    <a
+                      href="#"
+                      class="dropdownPhotoChange"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          x="3"
+                          y="7"
+                          width="18"
+                          height="13"
+                          rx="2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="13.5"
+                          r="3.5"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Fotoğrafı Değiştir
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownEdit"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path d="M12 20h9" stroke="#2041c7" stroke-width="2" />
+                        <path
+                          d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19.5 3 21l1.5-4L16.5 3.5z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Düzenle
+                    </a>
+                    <a
+                      href="#"
+                      class="dropdownSaveChanges"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 14px;
+                        color: #333;
+                        text-decoration: none;
+                        gap: 8px;
+                        font-size: 15px;
+                      "
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="17 21 17 13 7 13 7 21"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                        <polyline
+                          points="7 3 7 8 15 8"
+                          stroke="#2041c7"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Değişiklikleri Kaydet
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+
+
+
+
+
+
 
             <script>
+              // Dropdown logic entegre yonetimSemasiDuzenle.html'den
+              document
+                .querySelectorAll(".container")
+                .forEach(function (container, idx) {
+                  var dropdownBtn = container.querySelector(".dropdownBtn");
+                  var dropdownContent =
+                    container.querySelector(".dropdown-content");
+                  var photoChange = container.querySelector(
+                    ".dropdownPhotoChange"
+                  );
+                  var editLink = container.querySelector(".dropdownEdit");
+                  var saveLink = container.querySelector(
+                    ".dropdownSaveChanges"
+                  );
+                  var fileInput = container.querySelector('input[type="file"]');
+                  var img = container.querySelector("img");
+                  var kaydetBtn = container.querySelector(".kaydet");
+                  var inputEls =
+                    container.querySelectorAll('input[type="text"]');
+
+                  // Dropdown aç/kapat
+                  if (dropdownBtn && dropdownContent) {
+                    dropdownBtn.addEventListener("click", function (e) {
+                      e.stopPropagation();
+                      dropdownContent.style.display =
+                        dropdownContent.style.display === "block"
+                          ? "none"
+                          : "block";
+                    });
+                    document.addEventListener("click", function (e) {
+                      if (dropdownContent.style.display === "block") {
+                        dropdownContent.style.display = "none";
+                      }
+                    });
+                  }
+
+                  // Fotoğrafı Değiştir
+                  if (photoChange && fileInput) {
+                    photoChange.addEventListener("click", function (e) {
+                      e.preventDefault();
+                      fileInput.click();
+                      if (dropdownContent)
+                        dropdownContent.style.display = "none";
+                    });
+                    fileInput.addEventListener("change", function (event) {
+                      var file = event.target.files[0];
+                      if (file) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                          img.src = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    });
+                  }
+
+                  // Düzenle
+                  if (editLink) {
+                    editLink.addEventListener("click", function (e) {
+                      e.preventDefault();
+                      inputEls.forEach(function (input) {
+                        input.removeAttribute("readonly");
+                      });
+                      if (kaydetBtn) kaydetBtn.style.display = "inline-block";
+                      if (dropdownContent)
+                        dropdownContent.style.display = "none";
+                    });
+                  }
+
+                  // Kaydet
+                  if (saveLink && kaydetBtn) {
+                    saveLink.addEventListener("click", function (e) {
+                      e.preventDefault();
+                      kaydetBtn.click();
+                      if (dropdownContent)
+                        dropdownContent.style.display = "none";
+                    });
+                  }
+                });
               function previewImage(event, id) {
                 const reader = new FileReader();
                 reader.onload = function () {
