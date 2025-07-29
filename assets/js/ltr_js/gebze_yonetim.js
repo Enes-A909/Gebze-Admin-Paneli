@@ -423,16 +423,170 @@ const imgSrc = document.getElementById("imgSrcInput");
 for (let i = 0; i < select.options.length; i++) {
   if (select.options[i].text === country) {
     select.selectedIndex = i;
-    imgSrc.src = flagMap[country] || "https://via.placeholder.com/300x200?text=Yok";
+    imgSrc.src = flagMap[country];  // seçili olan selectteki image mapdeki ile değiştiriliyor
     break;
   }
 }
 
-select.addEventListener("change", () => {
-  const selectedCountry = select.value;
-  imgSrc.src = flagMap[selectedCountry] || "https://via.placeholder.com/300x200?text=Yok";
+select.addEventListener("change", () => {   // select değişince imagei de değiştirir
+  const selectedCountry = select.value; //seçilen select etiketindeki değer keye atanıyor
+  imgSrc.src = flagMap[selectedCountry];  // atanan key ile mapdeki src alınıp image değişiyor
 });
 }
+
+//uye
+function uyeJson() {
+  var anadoluBelBir = {
+        name: "ANADOLU MEDENİYETLER BELEDİYELER BİRLİĞİ",
+        link: "https://www.anadolubirlik.org.tr/",
+        imgSrc: "../assets/images/belediyeBirlikleriImg/anadoluMedeniyetleriBirligi.png",
+        };
+  var birlesmisKent = {
+        name: "BİRLEŞMİŞ KENTLER VE YEREL YÖNETİMLER",
+        link: "https://uclg.org/",
+        imgSrc: "../assets/images/belediyeBirlikleriImg/BirlesmisKentlerBirligi.png",
+        };
+  var gebzeBelBir = {
+        name: "GEBZE BELEDİYELER BİRLİĞİ",
+        link: "https://www.gebzebelediyelerbirligi.org/",
+        imgSrc: "../assets/images/belediyeBirlikleriImg/gebzeBelediyelerBirligi.png",
+        };
+  var marmaraBelBir = {
+        name: "MARMARA BELEDİYELER BİRLİĞİ",
+        link: "https://www.marmara.gov.tr/",
+        imgSrc: "../assets/images/belediyeBirlikleriImg/marmaraBelediyelerBirligi.png",
+        };
+  var tarihiKentlerBir = {
+        name: "TARİHİ KENTLER BİRLİĞİ",
+        link: "https://www.tarihikentlerbirligi.org/",
+        imgSrc: "../assets/images/belediyeBirlikleriImg/tarihiKentlerBirligi.png",
+        };
+  var turkDunyasiBelBir = {
+        name: "TÜRK DÜNYASI BELEDİYELER BİRLİĞİ",
+        link: "https://www.tdbb.org.tr/?lang=tr",
+        imgSrc: "../assets/images/belediyeBirlikleriImg/turkDunyasıBelediyelerBirligi.png",
+        };
+
+        const uyeliks = [
+        anadoluBelBir,
+        birlesmisKent,
+        gebzeBelBir,
+        marmaraBelBir,
+        tarihiKentlerBir,
+        turkDunyasiBelBir
+      ];
+
+      return uyeliks;
+}
+
+function uyelikler(){
+  const uyelikler = uyeJson();
+
+  const content = document.getElementById("icerikler");
+  content.innerHTML = ""; 
   
+  const table = document.createElement("table");  // tabloya stil veriyoruz
+  table.className = "table mt-0";
+  table.id = "table";
+  table.style.width = "100%";
+  table.style.backgroundColor="rgba(204, 204, 204, 0.186)"
+  table.style.boxShadow=" 6px 6px 20px rgba(100, 100, 100, 0.738)"
+  table.style.borderRadius="10px"
+  table.style.border="none"
+  table.style.marginTop="-30px"
+
+ // tablo başlıklarını yazdırıyoruz
+  table.innerHTML = `
+    <thead style="border-top: none">
+      <tr>
+        <th style="width: 15%; padding-left: 10px;">Resim</th>
+        <th style="width: 30%">Üye Olunan Birliğin İsmi</th>
+        <th style="width: 35%; ">Link</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="tableContent"></tbody>
+  `;
+
+  const tableContent = table.querySelector("#tableContent");
+      // jsondan çekilen verilerle birlikte içeriği yazdırıyoruz
+      uyelikler.forEach(uye => {
+        const tr = document.createElement("tr");
+    tr.innerHTML = ` 
+      <td class="dot"><img alt="${uye.name}" class="w-6 h-4 rounded-sm inline-block align-middle mr-2 img" style="width:40px; height:25px;" src="${uye.imgSrc}"></img></td>
+      <td class="name dot" title="${uye.name}">${uye.name}</td>
+      <td class="city dot" title="${uye.link}">${uye.link}</td>
+      <td style="text-align:right;">
+        <button class="btn w-10 p-1 edit" onclick="editUyelikler(this)">Düzenle</button>
+      </td>
+    `;
+    tableContent.appendChild(tr);
+      });
+      content.appendChild(table);
+      editUyelikler();
+}
+
+function editUyelikler(){
+    const tr = element.closest("tr");
+      const name = tr.querySelector(".name").innerHTML
+      const link = tr.querySelector(".link").innerHTML
+      const img = tr.querySelector(".img").src
+
+      const content = document.getElementById("icerikler");
+      
+      content.innerHTML = `
+                  <div class="d-flex justify-content-center">
+                    <div
+                    class="card"
+                    style="
+                      box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.738);
+                      width: 95%;
+                    "
+                  >
+                    <div class="card-body">
+                      <form id="editForm">
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Belediye İsmi</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="nameInput"
+                            value="${name}"
+                            placeholder="Belediye ismi giriniz"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Şehir</label>
+                          <textarea
+                            type="text"
+                            class="form-control"
+                            id="linkInput"
+                            placeholder="Link giriniz"
+                            rows="3"
+                            required
+                          >${link}</textarea>
+                        </div>
+                            <div class="col-12 mb-3">
+                        <img
+                          id="imgSrcInput"
+                          src="${img}"
+                          class="img-fluid rounded preview-img d-flex justify-content-center"
+                          alt="${name}"
+                          style="width: 30%; height: auto; margin-left:35%; max-height:300px; border:3px solid rgba(0, 0, 0, 0.65);"
+                        />
+                        </div>
+                        <div class="d-flex gap-2 mt-3">
+                        <button class="btn btn-success ml-2 mb-2" style="width:150px" type="submit">
+                          Güncelle
+                        </button>
+                        <a href="Gebze - Gebze Yonetim.html" class="btn btn-secondary ml-1 mb-2" style="width:150px">
+                          İptal
+                        </a>
+                      </div>
+                      </form>
+                  </div>
+                    `;
+}
 
 
