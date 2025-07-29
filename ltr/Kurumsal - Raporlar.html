@@ -18,7 +18,6 @@
     table {
       border-radius: 10px;
       border-collapse: separate;
-      overflow: hidden;
       background-color: white;
       box-shadow: 6px 6px 20px rgba(100, 100, 100, 0.738);
     }
@@ -141,7 +140,7 @@
       display: inline-block;
     }
 
-    .arşiv {
+    .durum {
       background-color: #7d373769;
       color: white;
       padding: 4px 8px;
@@ -256,6 +255,28 @@
     .sil-butonu {
       background-color: #f44336;
     }
+
+    .goruntule-butonu {
+      background-color: rgba(74, 130, 243, 0.344);
+      color: rgba(43, 42, 42, 0.692);
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.36s ease !important;
+    }
+
+    .goruntule-butonu:focus,
+    .goruntule-butonu:focus-visible {
+      outline: none !important;
+      box-shadow: none !important;
+      border-color: transparent !important;
+    }
+
+    .goruntule-butonu:hover {
+      background-color: rgba(68, 127, 245, 0.495);
+      color: white;
+    }
   </style>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -344,8 +365,8 @@
 
             <li class="onhover-dropdown">
               <div class="media align-items-center">
-                <img class="align-self-center pull-right img-50 rounded-circle"
-                  src="../assets/images/dashboard/user.png" alt="header-user" />
+                <img class="align-self-center pull-right img-50 rounded-circle" src="../assets/images/user/user.png"
+                  alt="header-user" />
               </div>
               <ul class="profile-dropdown onhover-show-div p-20">
                 <li>
@@ -410,9 +431,9 @@
           <!-- Bu div kullanıcı bilgilerini içeriyor -->
           <div class="sidebar-user text-center" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
             <div>
-              <img class="img-60 rounded-circle" src="../assets/images/user/1.jpg" alt="#" />
+              <img class="img-60 rounded-circle" src="../assets/images/user/user.png" alt="#" />
               <div class="profile-edit">
-                <a href="edit-profile.html" target="_blank"><i data-feather="edit"></i></a>
+                <a href="Profil.html" target="_blank"><i data-feather="edit"></i></a>
               </div>
             </div>
             <h6 class="mt-3 f-14 text-dark">İsim Soyisim</h6>
@@ -444,6 +465,7 @@
                 <li>
                   <a href="Kurumsal - Komisyonlar.html" class="text-dark"><i
                       class="fa fa-circle text-dark"></i>Komisyonlar</a>
+
                 </li>
               </ul>
             </li>
@@ -520,19 +542,19 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="margin-top: -20px">
           <div class="container-fluid d-flex justify-content-end">
             <!-- EKLE -->
-            <button class="buton ekle-butonu">
+            <button class="buton ekle-butonu" onclick="ekle()">
               <div class="icon arti"></div>
               <span>Ekle</span>
             </button>
 
             <!-- ARŞİVLE -->
-            <button class="buton arsivle-butonu">
+            <button class="buton arsivle-butonu" onclick="arsivle()">
               <div class="icon kutu"></div>
               <span>Arşivle</span>
             </button>
 
             <!-- SİL -->
-            <button class="buton sil-butonu">
+            <button class="buton sil-butonu" onclick="sil()">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                 aria-hidden="true" focusable="false">
                 <path
@@ -552,7 +574,7 @@
             <thead>
               <tr>
                 <th scope="col">
-                  <input type="checkbox" id="ana-checkbox" />
+
                 </th>
                 <th scope="col">Sayfa Başlığı</th>
                 <th scope="col">Kategori</th>
@@ -564,154 +586,79 @@
             <tbody>
               <tr>
                 <th scope="row">
-                  <input type="checkbox" class="checkbox-item" />
+                  <i data-feather="file-text"></i>
                 </th>
                 <td scope=" row">Kurumsal Raporlar</td>
                 <td scope="row">
                   <span class="badge" style="margin-top: 7px">Raporlar</span>
                 </td>
                 <td scope="row">
-                  <span class="arşiv" style="margin-top: 7px">
+                  <span class="durum" style="margin-top: 7px">
                     Arşivlendi
                   </span>
                 </td>
                 <td scope="row">...</td>
                 <td scope="row" style="text-align: right">
-                  <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                      İşlemler
-                    </button>
-                    <div class="dropdown-menu">
-                      <button onclick="duzenle()">
-                        <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                        Düzenle
-                      </button>
-                      <button onclick="sil()">
-                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                          height="10%" />
-                        Sil
-                      </button>
-                      <button onclick="icerik()">
-                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                          height="10%" />
-                        İçerik
-                      </button>
-                    </div>
-                  </div>
+                  <button class="goruntule-butonu" type="button"
+                    onclick="window.location.href='Kurumsal raporlar.html'"><i class="fa fa-eye"></i> Görüntüle</button>
                 </td>
               </tr>
               <tr>
                 <th scope="row">
-                  <input type="checkbox" class="checkbox-item" />
+                  <i data-feather="file-text"></i>
                 </th>
                 <td>Kurumsal Dökümanlar</td>
                 <td>
                   <span class="badge" style="margin-top: 7px">Raporlar</span>
                 </td>
                 <td>
-                  <span class="arşiv" style="margin-top: 7px">
+                  <span class="durum" style="margin-top: 7px">
                     Arşivlendi
                   </span>
                 </td>
                 <td>...</td>
                 <td scope="row" style="text-align: right">
-                  <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                      İşlemler
-                    </button>
-                    <div class="dropdown-menu">
-                      <button onclick="duzenle()">
-                        <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                        Düzenle
-                      </button>
-                      <button onclick="sil()">
-                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                          height="10%" />
-                        Sil
-                      </button>
-                      <button onclick="icerik()">
-                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                          height="10%" />
-                        İçerik
-                      </button>
-                    </div>
-                  </div>
+                  <button class="goruntule-butonu" type="button"
+                    onclick="window.location.href='Kurumsal Dokumanlar.html'"><i class="fa fa-eye"></i>
+                    Görüntüle</button>
                 </td>
               </tr>
               <tr>
                 <th scope="row">
-                  <input type="checkbox" class="checkbox-item" />
+                  <i data-feather="file-text"></i>
                 </th>
-                <td>Meclis Karaları</td>
+                <td>Meclis Kararları</td>
                 <td>
                   <span class="badge" style="margin-top: 7px">Raporlar</span>
                 </td>
                 <td>
-                  <span class="arşiv" style="margin-top: 7px">
+                  <span class="durum" style="margin-top: 7px">
                     Arşivlendi
                   </span>
                 </td>
                 <td>...</td>
                 <td scope="row" style="text-align: right">
-                  <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                      İşlemler
-                    </button>
-                    <div class="dropdown-menu">
-                      <button onclick="duzenle()">
-                        <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                        Düzenle
-                      </button>
-                      <button onclick="sil()">
-                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                          height="10%" />
-                        Sil
-                      </button>
-                      <button onclick="icerik()">
-                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                          height="10%" />
-                        İçerik
-                      </button>
-                    </div>
-                  </div>
+                  <button class="goruntule-butonu" type="button"
+                    onclick="window.location.href='Meclis Kararlari.html'"><i class="fa fa-eye"></i> Görüntüle</button>
                 </td>
               </tr>
               <tr>
                 <th scope="row">
-                  <input type="checkbox" class="checkbox-item" />
+                  <i data-feather="file-text"></i>
                 </th>
                 <td>Kurumsal Kimlik</td>
                 <td>
                   <span class="badge" style="margin-top: 7px">Raporlar</span>
                 </td>
                 <td>
-                  <span class="arşiv" style="margin-top: 7px">
+                  <span class="durum" style="margin-top: 7px">
                     Arşivlendi
                   </span>
                 </td>
                 <td>...</td>
                 <td scope="row" style="text-align: right">
-                  <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                      İşlemler
-                    </button>
-                    <div class="dropdown-menu">
-                      <button onclick="duzenle()">
-                        <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                        Düzenle
-                      </button>
-                      <button onclick="remove()">
-                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
-                          height="10%" />
-                        Sil
-                      </button>
-                      <button onclick="archive()">
-                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
-                          height="10%" />
-                        İçerik
-                      </button>
-                    </div>
-                  </div>
+                  <button class="goruntule-butonu" type="button"
+                    onclick="window.location.href='Kurumsal Kimlik.html'"><i class="fa fa-eye"></i> Görüntüle</button>
                 </td>
               </tr>
             </tbody>
@@ -742,12 +689,19 @@
         <!-- Bootstrap JS + Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-        <!-- Plugin used-->
         <script>
 
+          // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
+          const anaCheckbox = document.getElementById("ana-checkbox");
+          anaCheckbox.addEventListener("change", () => {
+            checkboxes.forEach((checkbox) => {
+              checkbox.checked = anaCheckbox.checked;
+              checkbox.dispatchEvent(new Event("change"));
+            });
+          });
 
-          // Örnek fonksiyonlar
+
+          // Buton Fonksiyonları
           function ekle() {
             alert("Ekleme sayfasına yönlendiriliyor...");
           }
@@ -776,23 +730,87 @@
             }
           }
 
-          function archive() {
-            alert("İçerik detayına yönlendiriliyor...");
+          // Tekli Arşivleme Butonu
+          function archive(btn) {
+            if (!btn) return;
+
+            const row = btn.closest("tr");
+            const durumHucresi = row.querySelectorAll("td, th")[3];
+            const durumSpan = durumHucresi.querySelector("span");
+
+            const suankiDurum = durumSpan.textContent.trim();
+
+            if (suankiDurum === "Arşivlendi") {
+              // Arşivden çıkar
+              durumSpan.textContent = "Aktif";
+              btn.textContent = "Arşivle";
+            } else {
+              // Arşivle
+              durumSpan.textContent = "Arşivlendi";
+              btn.textContent = "Çıkar";
+            }
           }
+
 
           function duzenle() {
 
           }
 
-          function remove() {
-
+          // Tekli Silme Butonu
+          function remove(btn) {
+            if (btn) {
+              const row = btn.closest("tr");
+              row.parentNode.removeChild(row);
+            }
           }
 
+          // Çoklu Arşivleme Butonu
           function arsivle() {
+            const checkboxes = document.querySelectorAll(".checkbox-item");
+            let herhangiBiriSecili = false;
 
+            checkboxes.forEach((checkbox) => {
+              if (checkbox.checked) {
+                herhangiBiriSecili = true;
+
+                // Satırı bul
+                const row = checkbox.closest("tr");
+                // Durum hücresini bul (4. sütun yani index 3)
+                const durumHucresi = row.querySelectorAll("td, th")[3];
+                const durumSpan = durumHucresi.querySelector("span");
+
+                if (durumSpan.textContent.trim() !== "Arşivlendi") {
+                  durumSpan.textContent = "Arşivlendi";
+                }
+                else if (durumSpan.textContent.trim() === "Arşivlendi") {
+                  Swal.fire({
+                    icon: 'info',
+                    title: 'Zaten Arşivlenmiş',
+                    text: 'Seçtiğiniz liste elemanlarından bazıları veya hepsi zaten arşivlenmiş',
+                    confirmButtonText: 'Tamam',
+                    customClass: {
+                      popup: 'rounded-3',
+                      confirmButton: 'btn btn-primary'
+                    }
+                  });
+                }
+              }
+            });
+
+            if (!herhangiBiriSecili) {
+              Swal.fire({
+                icon: 'info',
+                title: 'İçerik Seçilmedi',
+                text: 'Lütfen arşivlemek için en az bir içerik seçin.',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                  popup: 'rounded-3',
+                  confirmButton: 'btn btn-primary'
+                }
+              });
+            }
           }
-        </script>
-        <script>
+
           function toggleDropdown(btn) {
             const menu = btn.nextElementSibling;
 
@@ -805,8 +823,6 @@
             menu.style.display =
               menu.style.display === "block" ? "none" : "block";
           }
-
-
 
           function toggleMenu(button) {
             const menu = button.nextElementSibling;
@@ -829,33 +845,11 @@
                 .forEach((el) => (el.style.display = "none"));
             }
           });
+
+
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <script>
-          // Burada herhangi bir checkbox seçildiğinde Arşivle ve Sil butonlarının display özelliğini none olmaktan çıkaracağız.
-          const checkboxes = document.querySelectorAll(".checkbox-item");
-          const archiveButton = document.getElementById("archive-button");
-          const deleteButton = document.getElementById("delete-button");
-
-          checkboxes.forEach((checkbox) => {
-            checkbox.addEventListener("change", () => {
-              const isChecked = Array.from(checkboxes).some(
-                (checkbox) => checkbox.checked
-              );
-              archiveButton.style.display = isChecked ? "block" : "none";
-              deleteButton.style.display = isChecked ? "block" : "none";
-            });
-          });
-
-          // Ana checkboxa tıklandığında tüm checkboxların durumunu değiştirme
-          const anaCheckbox = document.getElementById("ana-checkbox");
-          anaCheckbox.addEventListener("change", () => {
-            checkboxes.forEach((checkbox) => {
-              checkbox.checked = anaCheckbox.checked;
-              checkbox.dispatchEvent(new Event("change"));
-            });
-          });
-        </script>
       </div>
     </div>
   </div>
