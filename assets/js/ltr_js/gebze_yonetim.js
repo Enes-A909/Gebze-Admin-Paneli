@@ -515,7 +515,7 @@ function uyelikler(){
     tr.innerHTML = ` 
       <td class="dot"><img alt="${uye.name}" class="w-6 h-4 rounded-sm inline-block align-middle mr-2 img" style="width:40px; height:25px;" src="${uye.imgSrc}"></img></td>
       <td class="name dot" title="${uye.name}">${uye.name}</td>
-      <td class="city dot" title="${uye.link}">${uye.link}</td>
+      <td class="link dot" title="${uye.link}">${uye.link}</td>
       <td style="text-align:right;">
         <button class="btn w-10 p-1 edit" onclick="editUyelikler(this)">Düzenle</button>
       </td>
@@ -523,10 +523,11 @@ function uyelikler(){
     tableContent.appendChild(tr);
       });
       content.appendChild(table);
-      editUyelikler();
+      
 }
 
-function editUyelikler(){
+function editUyelikler(element){
+  console.log("saldır fenerbahçe oley")
     const tr = element.closest("tr");
       const name = tr.querySelector(".name").innerHTML
       const link = tr.querySelector(".link").innerHTML
@@ -567,15 +568,29 @@ function editUyelikler(){
                             required
                           >${link}</textarea>
                         </div>
-                            <div class="col-12 mb-3">
-                        <img
-                          id="imgSrcInput"
-                          src="${img}"
-                          class="img-fluid rounded preview-img d-flex justify-content-center"
-                          alt="${name}"
-                          style="width: 30%; height: auto; margin-left:35%; max-height:300px; border:3px solid rgba(0, 0, 0, 0.65);"
-                        />
-                        </div>
+                           <div class="mb-3">
+                      <img
+                        src="${img}"
+                        class="img-fluid rounded preview-img d-flex justify-content-center"
+                        alt="${name}"
+                        style="width: 30%; height: auto; margin-left:35%; max-height:300px"
+                      />
+                      <label
+                        for="resim"
+                        class="btn btn-outline-primary mt-2"
+                        style="width: 100%"
+                      >
+                        Fotoğraf Seç
+                      </label>
+                      <input
+                        type="file"
+                        name="resim"
+                        id="resim"
+                        style="display: none"
+                        accept="image/*"
+                        class="resim-input"
+                      />
+                    </div>
                         <div class="d-flex gap-2 mt-3">
                         <button class="btn btn-success ml-2 mb-2" style="width:150px" type="submit">
                           Güncelle
@@ -587,6 +602,24 @@ function editUyelikler(){
                       </form>
                   </div>
                     `;
+
+                    const input = document.querySelector(".resim-input");
+            const imgPrev = document.querySelector(".preview-img");
+
+            input.addEventListener("change", function () {
+              const dosya = this.files[0];
+
+              if (dosya) {
+                const okuyucu = new FileReader();
+
+                okuyucu.onload = function (e) {
+                  imgPrev.src = e.target.result;
+                  imgPrev.style.display = "block";
+                };
+
+                okuyucu.readAsDataURL(dosya);
+              }
+            });
 }
 
 
