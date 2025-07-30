@@ -7781,7 +7781,7 @@
                           "mudurlukler",
                           JSON.stringify(allData)
                         );
-                        alert(`${birimAdi} kaydedildi!`);
+
                         if (dropdownContent)
                           dropdownContent.style.display = "none";
                       });
@@ -7799,7 +7799,6 @@
                           nameInput.value = savedData[idx].isim;
                           emailInput.value = savedData[idx].email;
                           img.src = savedData[idx].photo;
-                          alert("Değişiklikler geri alındı");
                         } else {
                           window.location.reload();
                         }
