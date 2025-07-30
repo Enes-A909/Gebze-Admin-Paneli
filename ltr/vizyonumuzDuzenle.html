@@ -3,6 +3,26 @@
 
 <head>
   <style>
+    .cancelButton:focus{
+      outline: none !important;
+      border: none !important;
+    }
+    .cancelButton:hover{
+      transform: scale(1.02);
+         
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .saveButton:focus{
+      outline: none !important;
+      border: none !important;
+    }
+    .saveButton:hover{
+      transform: scale(1.02);
+         
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
     .logo-img {
       height: 200px !important;
       /* Boyutu küçültür */
@@ -206,22 +226,37 @@
       </div>
       <!-- Page Sidebar Ends-->
 
-      <div class="page-body">
-        <div class="container-fluid">
-          <div class="page-header">
-            <div class="row">
-              <div class="col">
-                <div class="page-header-left">
-                  <h3>Vizyon</h3>
-                  <ol class="breadcrumb" style="margin-top: 85px; margin-left: -130px;">
-                    <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                    <li class="breadcrumb-item active">Vizyon Düzenle</li>
-                  </ol>
+           <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col" style="height: 50px">
+                  <div class="page-header-left">
+                    <h3 style="margin-bottom: 150px">
+                      Vizyon Düzenle
+                    </h3>
+
+                    <ol
+                      class="breadcrumb"
+                      style="margin-left: -207px; margin-bottom: 70px"
+                    >
+                      <li class="breadcrumb-item">
+                        <a href="index.html"><i data-feather="home"></i></a>
+                      </li>
+                      <li class="breadcrumb-item">
+                        <a href="Kurumsal - Vizyon Misyon.html">Vizyon-Misyon-İlke</a>
+                      </li>
+                      <li class="breadcrumb-item active">
+                        Vizyon Düzenle
+
+                      </li>
+                    </ol>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+
 
         <br><br>
 
@@ -280,8 +315,8 @@
               </div>
               <!-- Butonlar -->
               <div style="text-align: center; margin-bottom: 30px;">
-                <button onclick="validateAndSaveAll()" style="background: #f7971e; color: white; border: none; padding: 10px 20px; border-radius: 4px; margin-right: 10px; cursor: pointer;">Kaydet</button>
-                <button onclick="cancelAll()" style="background: #666666; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">İptal</button>
+                <button class="saveButton" onclick="validateAndSaveAll()" style="background: #f7971e; color: white; border: none; padding: 10px 20px; border-radius: 4px; margin-right: 10px; cursor: pointer;">Kaydet</button>
+                <button class="cancelButton" onclick="cancelAll()" style="background: #666666; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">İptal</button>
                 <div id="isimUyari" style="color: #dc3545; margin-top: 10px; display: none; font-weight: bold;">İsim alanı boş bırakılamaz!</div>
               </div>
               <!-- İkon (en altta sağda) -->

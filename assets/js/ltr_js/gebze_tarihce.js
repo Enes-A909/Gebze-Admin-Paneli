@@ -52,9 +52,9 @@
                 style="min-height:150px;min-width:150px"
                 alt="resim${count}"
               />
-              <div class="d-flex gap-2">
-                <label for="resim${count}" class="btn btn-outline-primary w-50 p-1"><b>Değiştir</b></label>
-                <label for="resimSil${count}" class="btn btn-outline-danger w-50 p-0 pt-1 remove"><b>Sil</b></label>
+              <div class="d-flex gap-2"   >
+                <label for="resim${count}" class="btn btn-outline-primary w-50 p-1" ><b>Değiştir</b></label>
+                <label for="resimSil${count}" class="btn btn-outline-danger w-50 p-1 pt-1 remove ml-1"><b>Sil</b></label>
                 <input type="file" id="resim${count}" class="resim-input" style="display: none" />
               </div>
             </div>
@@ -413,7 +413,7 @@
         <th style="width: 20%">Başlık</th>
         <th style="width: 25%; max-width: 25%;">Tarihçe ve Genel Bilgi</th>
         <th style="width: 25%; max-width: 25%;">Konum Bilgi</th>
-        <th style="width: 15%">İşlem</th>
+        <th style="width: 15%"></th>
       </tr>
     </thead>
     <tbody id="tableContent"></tbody>
@@ -977,7 +977,8 @@
                     </div>
                   </div>
                 </div>
-                    `;remove();
+                    `;
+              remove();
            const photo = [
               "../assets/images/tarihce/tarihce1.png",
               "../assets/images/tarihce/tarihce2.png",
@@ -990,6 +991,7 @@
           }
 
           function addEventHistory(arr) {
+
           for (let i = 0; i < arr.length; i++) {
           document.getElementById("photos").innerHTML += `
           <div class="col-6 col-md-2 mb-3">
@@ -999,11 +1001,11 @@
           style="min-height:150px;min-width:150px"
           alt="resim${i}"
           />
-          <div class="d-flex gap-2">
-          <label for="resim${i}" class="btn btn-outline-primary w-50 p-1">Değiştir</label>
-          <label for="resimSil${i}" class="btn btn-outline-danger w-50 p-0 pt-1 remove">Sil</label>
-          <input type="file" id="resim${i}" class="resim-input" style="display: none" />
-         </div>
+          <div class="d-flex gap-2"   >
+            <label for="resim${i}" class="btn btn-outline-primary w-50 p-1" ><b>Değiştir</b></label>
+            <label for="resimSil${i}" class="btn btn-outline-danger w-50 p-1 pt-1 remove ml-1"><b>Sil</b></label>
+            <input type="file" id="resim${i}" class="resim-input" style="display: none" />
+          </div>
         </div>`;
         }
         remove();
