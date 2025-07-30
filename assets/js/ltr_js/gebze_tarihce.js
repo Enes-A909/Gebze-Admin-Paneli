@@ -413,7 +413,7 @@
         <th style="width: 20%">Başlık</th>
         <th style="width: 25%; max-width: 25%;">Tarihçe ve Genel Bilgi</th>
         <th style="width: 25%; max-width: 25%;">Konum Bilgi</th>
-        <th style="width: 15%">İşlem</th>
+        <th style="width: 15%"></th>
       </tr>
     </thead>
     <tbody id="tableContent"></tbody>
