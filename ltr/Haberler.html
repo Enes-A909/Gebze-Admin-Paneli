@@ -4,12 +4,13 @@
     <style>
       .filter-menu {
         position: absolute;
+        display: none;
         top: 100%;
         right: 0;
         background-color: #fff;
         z-index: 100;
         min-width: 220px;
-        max-width: 90vw;
+        max-width: 100px !important;
         overflow-wrap: break-word;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
@@ -730,7 +731,7 @@
                               ><input
                                 type="checkbox"
                                 class="checkbox-item"
-                                data-kategori="baskanlik"
+                                data-kategori="yonetim"
                               />
                               Yönetim</label
                             ><br />
@@ -738,7 +739,7 @@
                               ><input
                                 type="checkbox"
                                 class="checkbox-item"
-                                data-kategori="kültürel"
+                                data-kategori="baskanlik"
                               />
                               Başkanlık</label
                             ><br />
@@ -746,7 +747,7 @@
                               ><input
                                 type="checkbox"
                                 class="checkbox-item"
-                                data-kategori="kültürel"
+                                data-kategori="halk"
                               />
 
                               Halk</label
@@ -755,7 +756,7 @@
                               ><input
                                 type="checkbox"
                                 class="checkbox-item"
-                                data-kategori="kültürel"
+                                data-kategori="genel"
                               />
                               Genel</label
                             ><br />
@@ -817,7 +818,7 @@
                   </tr>
                 </thead>
                 <tbody id="tableContent">
-                  <tr data-kategori="baskanlik">
+                  <tr class="baskanlik">
                     <td style="width: 3%">
                       <input
                         class="checkbox-item"
@@ -884,7 +885,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-kategori="baskanlik">
+                  <tr class="baskanlik">
                     <td style="width: 3%">
                       <input
                         class="checkbox-item"
@@ -951,7 +952,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-kategori="yonetim">
+                  <tr class="yonetim">
                     <td style="width: 3%">
                       <input
                         class="checkbox-item"
@@ -1008,7 +1009,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-kategori="yonetim">
+                  <tr class="yonetim">
                     <td style="width: 3%">
                       <input
                         class="checkbox-item"
@@ -1065,7 +1066,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <tr class="yonetim">
                     <td style="width: 3%">
                       <input
                         class="checkbox-item"
@@ -1122,7 +1123,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-kategori="yonetim">
+                  <tr class="yonetim">
                     <td style="width: 3%">
                       <input
                         class="checkbox-item"
@@ -1179,7 +1180,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-kategori="yonetim">
+                  <tr class="yonetim">
                     <td style="width: 3%">
                       <input
                         class="checkbox-item"
@@ -2116,48 +2117,108 @@
 
           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
           <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              const checkboxes = document.querySelectorAll(".checkbox-item");
-              const btnTemizle = document.querySelector(".btn-sil");
-              const btnUygula = document.querySelector(".btn-uygula");
+            function filtreleKategoriler(secilenKategoriler) {
+              const satirlar = document.querySelectorAll("#tableContent tr");
 
-              // Tablodaki tüm satırları seç
-              const tabloSatirlari = document.querySelectorAll(
-                "#icerikler table tbody tr"
-              );
+              satirlar.forEach((satir) => {
+                const kategori = satir.classList[0]; // sadece ilk sınıf
 
-              // UYGULA: Seçilen checkboxlara göre filtrele
-              btnUygula.addEventListener("click", () => {
-                const seciliKategoriler = Array.from(checkboxes)
-                  .filter((chk) => chk.checked)
-                  .map((chk) => chk.getAttribute("data-kategori"));
-
-                if (seciliKategoriler.length === 0) {
-                  // Eğer hiçbir kategori seçilmediyse hepsini göster
-                  tabloSatirlari.forEach((tr) => {
-                    tr.style.display = "";
-                  });
+                if (
+                  secilenKategoriler.length === 0 ||
+                  secilenKategoriler.includes(kategori)
+                ) {
+                  satir.style.display = "table-row";
                 } else {
-                  // Seçili kategorilere göre filtrele
-                  tabloSatirlari.forEach((tr) => {
-                    const kategori = tr.getAttribute("data-kategori");
-                    if (seciliKategoriler.includes(kategori)) {
-                      tr.style.display = "";
-                    } else {
-                      tr.style.display = "none";
-                    }
-                  });
+                  satir.style.display = "none";
                 }
               });
+            }
 
-              // TEMİZLE: Checkboxları temizle ve tüm satırları göster
-              btnTemizle.addEventListener("click", () => {
-                checkboxes.forEach((chk) => (chk.checked = false));
-                tabloSatirlari.forEach((tr) => {
-                  tr.style.display = "";
-                });
+            document.querySelectorAll(".btn-uygula").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                const secilenler = Array.from(
+                  document.querySelectorAll(".checkbox-item:checked")
+                ).map((cb) => cb.getAttribute("data-kategori"));
+
+                filtreleKategoriler(secilenler);
               });
             });
+
+            document.querySelectorAll(".btn-sil").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                document.querySelectorAll(".checkbox-item").forEach((cb) => {
+                  cb.checked = false;
+                });
+
+                filtreleKategoriler([]); // Hepsini geri göster
+              });
+            });
+          </script>
+          <!-- yeni eklenecek haberlin seçilen kategoriye göre filtrelenmesini sağlar -->
+          <script>
+            function yeniHaberEkle(
+              kategori,
+              baslik,
+              aciklama,
+              tarih,
+              resimURL
+            ) {
+              // Tabloya yeni satır ekleme
+              const tbody = document.getElementById("tableContent");
+              const tr = document.createElement("tr");
+
+              // Kategori class yerine data-kategori kullanıyoruz
+              tr.setAttribute("data-kategori", kategori);
+
+              tr.innerHTML = `
+      <td><input class="checkbox-item" type="checkbox" /></td>
+      <td><img src="${resimURL}" width="30px" style="margin-left: 18%;" /></td>
+      <td class="news dot" title="${baslik}">${baslik}</td>
+      <td>${kategori}</td>
+      <td class="date">${tarih}</td>
+      <td class="exp dot" title="${aciklama}">${aciklama}</td>
+      <td style="text-align: right">
+        <div class="dropdown-container">
+          <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
+          <div class="dropdown-menu">
+            <button onclick="editNews('${resimURL}','${baslik}','${kategori}','${tarih}','${aciklama}',this)">
+              <img src="../assets/images/dropdown_svg/edit.svg" width="10%" height="10%" />
+              Düzenle
+            </button>
+            <button id="remove" onclick="remove()">
+              <img src="../assets/images/dropdown_svg/rubbish-bin.svg" width="10%" height="10%" />
+              Sil
+            </button>
+          </div>
+        </div>
+      </td>
+    `;
+
+              tbody.appendChild(tr);
+
+              // Eğer kategori filtre menüsünde yoksa, onu da ekle
+              kategoriFiltreyeEkle(kategori);
+            }
+
+            function kategoriFiltreyeEkle(kategori) {
+              const filtreMenu = document.querySelector(".filter-menu");
+              const mevcutCheckbox = filtreMenu.querySelector(
+                `input[data-kategori="${kategori}"]`
+              );
+
+              if (!mevcutCheckbox) {
+                const label = document.createElement("label");
+                label.innerHTML = `
+        <input type="checkbox" class="checkbox-item" data-kategori="${kategori}" />
+        ${kategori.charAt(0).toUpperCase() + kategori.slice(1)}
+      `;
+                filtreMenu.insertBefore(label, filtreMenu.querySelector("div")); // Temizle/Uygula butonlarının üstüne ekler
+                filtreMenu.insertBefore(
+                  document.createElement("br"),
+                  filtreMenu.querySelector("div")
+                );
+              }
+            }
           </script>
         </div>
       </div>
