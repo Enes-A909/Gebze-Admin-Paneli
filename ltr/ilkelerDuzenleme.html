@@ -3,6 +3,26 @@
 
 <head>
   <style>
+    .cancelButton:focus{
+      outline: none !important;
+      border: none !important;
+    }
+    .cancelButton:hover{
+      transform: scale(1.02);
+         
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .saveButton:focus{
+      outline: none !important;
+      border: none !important;
+    }
+    .saveButton:hover{
+      transform: scale(1.02);
+         
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
     .logo-img {
       height: 200px !important;
       /* Boyutu küçültür */
@@ -278,7 +298,7 @@
                 />
                 <div id="baskanButtons" style="margin-top: 10px; display: none">
                   <button onclick="savePhoto('baskan')" style="background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-right: 5px;">Kaydet</button>
-                  <button onclick="cancelChange('baskan')" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px;">İptal</button>
+                  <button class="iptalButton" onclick="cancelChange('baskan')" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px;">İptal</button>
                 
               </div>
 
@@ -305,8 +325,8 @@
               </div>
               <!-- Butonlar -->
               <div style="text-align: center; margin-bottom: 30px;">
-                <button onclick="validateAndSaveAll()" style="background: #f7971e; color: white; border: none; padding: 10px 20px; border-radius: 4px; margin-right: 10px; cursor: pointer;">Kaydet</button>
-                <button onclick="cancelAll()" style="background: #666666; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">İptal</button>
+                <button class="saveButton" onclick="validateAndSaveAll()" style="background: #f7971e; color: white; border: none; padding: 10px 20px; border-radius: 4px; margin-right: 10px; cursor: pointer;">Kaydet</button>
+                <button  class="cancelButton" onclick="cancelAll()" style="background: #666666; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">İptal</button>
                 <div id="isimUyari" style="color: #dc3545; margin-top: 10px; display: none; font-weight: bold;">İsim alanı boş bırakılamaz!</div>
               </div>
               <!-- İkon (en altta sağda) -->
