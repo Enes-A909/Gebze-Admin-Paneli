@@ -412,11 +412,8 @@
 
             <li class="onhover-dropdown">
               <div class="media align-items-center">
-                <img class="align-self-center pull-right img-50 rounded-circle"
-                  src="../assets/images/dashboard/user.png" alt="header-user" />
-                <div class="dotted-animation">
-                  <span class="animate-circle"></span><span class="main-circle"></span>
-                </div>
+                <img class="align-self-center pull-right img-50 rounded-circle" src="../assets/images/user/user.png"
+                  alt="header-user" />
               </div>
               <ul class="profile-dropdown onhover-show-div p-20">
                 <li>
@@ -480,9 +477,9 @@
           <!-- Bu div kullanıcı bilgilerini içeriyor -->
           <div class="sidebar-user text-center" style="box-shadow: 0 4px 10px rgba(56, 119, 255, 0.948)">
             <div>
-              <img class="img-60 rounded-circle" src="../assets/images/user/1.jpg" alt="#" />
+              <img class="img-60 rounded-circle" src="../assets/images/user/user.png" alt="#" />
               <div class="profile-edit">
-                <a href="edit-profile.html" target="_blank"><i data-feather="edit"></i></a>
+                <a href="Profil.html" target="_blank"><i data-feather="edit"></i></a>
               </div>
             </div>
             <h6 class="mt-3 f-14 text-dark">İsim Soyisim</h6>
@@ -741,6 +738,11 @@
                           height="10%" />
                         Sil
                       </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        <span>Arşivle</span>
+                      </button>
                     </div>
                   </div>
                 </td>
@@ -765,7 +767,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="window.location.href='icerikEkle()'">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
@@ -773,6 +775,11 @@
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
+                      </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        <span>Arşivle</span>
                       </button>
                     </div>
                   </div>
@@ -799,7 +806,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="window.location.href='icerikEkle()'">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
@@ -807,6 +814,11 @@
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
+                      </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        <span>Arşivle</span>
                       </button>
                     </div>
                   </div>
@@ -832,7 +844,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="window.location.href='icerikEkle()'">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
@@ -840,6 +852,11 @@
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
+                      </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        <span>Arşivle</span>
                       </button>
                     </div>
                   </div>
@@ -865,7 +882,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="window.location.href='icerikEkle()'">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
@@ -873,6 +890,11 @@
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
+                      </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        <span>Arşivle</span>
                       </button>
                     </div>
                   </div>
@@ -898,7 +920,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="window.location.href='icerikEkle()'">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
@@ -906,6 +928,11 @@
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
+                      </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        <span>Arşivle</span>
                       </button>
                     </div>
                   </div>
@@ -931,7 +958,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="window.location.href='icerikEkle()'">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
@@ -939,6 +966,11 @@
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
+                      </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        <span>Arşivle</span>
                       </button>
                     </div>
                   </div>
@@ -964,7 +996,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="window.location.href='icerikEkle()'">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
@@ -972,6 +1004,11 @@
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
+                      </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        <span>Arşivle</span>
                       </button>
                     </div>
                   </div>
@@ -997,7 +1034,7 @@
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="duzenle()">
+                      <button onclick="window.location.href='icerikEkle()'">
                         <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                         Düzenle
                       </button>
@@ -1005,6 +1042,11 @@
                         <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                           height="10%" />
                         Sil
+                      </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        <span>Arşivle</span>
                       </button>
                     </div>
                   </div>
@@ -1088,6 +1130,74 @@
           function duzenle() {
 
           }
+
+          function arsivle() {
+            const checkboxes = document.querySelectorAll(".checkbox-item");
+            let herhangiBiriSecili = false;
+
+            checkboxes.forEach((checkbox) => {
+              if (checkbox.checked) {
+                herhangiBiriSecili = true;
+
+                // Satırı bul
+                const row = checkbox.closest("tr");
+                // Durum hücresini bul (4. sütun yani index 3)
+                const durumHucresi = row.querySelectorAll("td, th")[3];
+                const durumSpan = durumHucresi.querySelector("span");
+
+                if (durumSpan.textContent.trim() !== "Arşivlendi") {
+                  durumSpan.textContent = "Arşivlendi";
+                }
+                else if (durumSpan.textContent.trim() === "Arşivlendi") {
+                  Swal.fire({
+                    icon: 'info',
+                    title: 'Zaten Arşivlenmiş',
+                    text: 'Seçtiğiniz liste elemanlarından bazıları veya hepsi zaten arşivlenmiş',
+                    confirmButtonText: 'Tamam',
+                    customClass: {
+                      popup: 'rounded-3',
+                      confirmButton: 'btn btn-primary'
+                    }
+                  });
+                }
+              }
+            });
+
+            if (!herhangiBiriSecili) {
+              Swal.fire({
+                icon: 'info',
+                title: 'İçerik Seçilmedi',
+                text: 'Lütfen arşivlemek için en az bir içerik seçin.',
+                confirmButtonText: 'Tamam',
+                customClass: {
+                  popup: 'rounded-3',
+                  confirmButton: 'btn btn-primary'
+                }
+              });
+            }
+          }
+
+          function archive(btn) {
+            if (!btn) return;
+
+            const row = btn.closest("tr");
+            const durumHucresi = row.querySelectorAll("td, th")[3];
+            const durumSpan = durumHucresi.querySelector("span");
+
+            const suankiDurum = durumSpan.textContent.trim();
+
+            if (suankiDurum === "Arşivlendi") {
+              // Arşivden çıkar
+              durumSpan.textContent = "Aktif";
+              btn.textContent = "Arşivle";
+            } else {
+              // Arşivle
+              durumSpan.textContent = "Arşivlendi";
+              btn.textContent = "Çıkar";
+            }
+          }
+
+
         </script>
 
         <script>
@@ -1103,9 +1213,6 @@
               menu.style.display === "block" ? "none" : "block";
           }
 
-          // Örnek fonksiyonlar
-        </script>
-        <script>
           function toggleDropdown(btn) {
             const menu = btn.nextElementSibling;
 
@@ -1229,6 +1336,9 @@
               });
           });
         </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
       </div>
     </div>
   </div>
