@@ -2,20 +2,49 @@
 <html lang="tr">
   <head>
     <style>
-      .filter:focus {
-        border: none;
+      .hizmetler-filter-menu {
+        position: absolute;
+        display: none;
+        top: 100%;
+        right: 0;
+        background-color: #fff;
+        z-index: 100;
+        min-width: 220px;
+        max-width: 100px !important;
+        overflow-wrap: break-word;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 15px;
+      }
+
+      .hizmetler-filter span:last-child {
+        font-size: 12px;
+        margin-top: 1px;
+      }
+
+      .hizmetler-filter:hover {
+        transform: scale(1.05);
+      }
+
+      .hizmetler-filter:focus {
         outline: none;
       }
-      .filter {
-        width: 45px;
-        height: 50px;
+      .hizmetler-filter {
+        margin-bottom: -10px;
+        text-align: center;
+        cursor: pointer;
         border: none;
-        background-color: rgba(0, 0, 0, 0);
-        margin-right: -10px;
+        background-color: rgba(5, 224, 60, 0.488);
+        color: rgba(9, 161, 6, 0.766);
+        padding: 6px 6px;
+        border-radius: 5px;
+        transition: transform 0.36s ease !important;
+        width: 90px;
+        height: 35px;
+        font-size: medium;
+        font-weight: bold;
       }
-      .filter:hover {
-        transform: scale(1);
-      }
+
       #search {
         background-color: rgba(204, 204, 204, 0.186);
         border-radius: 5px;
@@ -726,7 +755,7 @@
                   <th scope="col" style="width: 15%; vertical-align: middle">
                     Son Güncelleme
                   </th>
-                  <th scope="col" style="width: 37%; vertical-align: middle">
+                  <th scope="col" style="vertical-align: middle">
                     <div
                       style="
                         display: flex;
@@ -735,23 +764,103 @@
                         gap: 5px;
                       "
                     >
-                      <button
-                        class="filter"
-                        onclick="toggleDropdown(this)"
-                        style="border: none; background: none; padding: 0"
+                      <div
+                        class="hizmetler-filter-container"
+                        style="margin-bottom: 20px; position: relative"
                       >
-                        <img
-                          src="../assets/images/filtrele.svg"
-                          alt="search"
-                          style="width: 20px; height: 20px"
-                        />
-                      </button>
+                        <button
+                          class="hizmetler-filter"
+                          onclick="toggleDropdown(this)"
+                        >
+                          Filtrele
+                        </button>
+                        <div class="hizmetler-filter-menu">
+                          <label
+                            ><input
+                              type="checkbox"
+                              class="checkbox-item"
+                              data-kategori-hizmetler="etkinlikAlanlari"
+                            />
+                            Etkinlik Alanları</label
+                          ><br />
+                          <label
+                            ><input
+                              type="checkbox"
+                              class="checkbox-item"
+                              data-kategori-hizmetler="halkaAçikAlanlar"
+                            />
+                            Halka Açık Alanlar</label
+                          ><br />
+                          <label
+                            ><input
+                              type="checkbox"
+                              class="checkbox-item"
+                              data-kategori-hizmetler="halkYararinaOlanlar"
+                            />
+
+                            Halk Yararına Olanlar</label
+                          ><br />
+
+                          <br />
+
+                          <div
+                            style="
+                              display: flex;
+                              justify-content: center;
+                              gap: 10px;
+                              margin-top: 10px;
+                            "
+                          >
+                            <div
+                              style="
+                                display: flex;
+                                justify-content: center;
+                                gap: 16px;
+                                margin-top: 10px;
+                                padding: 0 10px;
+                              "
+                            >
+                              <button
+                                class="btn-sil"
+                                style="
+                                  border: none;
+                                  width: 80px;
+                                  height: 40px;
+                                  background-color: rgba(251, 47, 1, 0.684);
+                                  color: rgba(205, 5, 5, 0.9);
+                                  font-weight: bold;
+                                  border-radius: 5px;
+                                "
+                              >
+                                Temizle
+                              </button>
+                              <button
+                                class="btn-uygula"
+                                style="
+                                  border: none;
+                                  width: 80px;
+                                  height: 40px;
+                                  background-color: rgba(1, 213, 251, 0.54);
+                                  color: rgb(49, 132, 177);
+                                  font-weight: bold;
+                                  border-radius: 5px;
+                                  padding-left: 16px;
+                                "
+                              >
+                                Uygula
+                              </button>
+                            </div>
+                            <!--stylenin divi -->
+                          </div>
+                          <!--stylenin divi -->
+                        </div>
+                      </div>
                     </div>
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
+              <tbody id="tableContect">
+                <tr class="etkinlikAlanlari">
                   <th scope="row">
                     <input type="checkbox" class="checkbox-item" />
                   </th>
@@ -794,20 +903,11 @@
                           />
                           Sil
                         </button>
-                        <button onclick="icerik()">
-                          <img
-                            src="../assets/images/dropdown_svg/copy-writing.svg"
-                            alt="content"
-                            width="10%"
-                            height="10%"
-                          />
-                          İçerik
-                        </button>
                       </div>
                     </div>
                   </td>
                 </tr>
-                <tr>
+                <tr class="etkinlikAlanlari">
                   <th scope="row">
                     <input type="checkbox" class="checkbox-item" />
                   </th>
@@ -850,21 +950,12 @@
                           />
                           Sil
                         </button>
-                        <button onclick="icerik()">
-                          <img
-                            src="../assets/images/dropdown_svg/copy-writing.svg"
-                            alt="content"
-                            width="10%"
-                            height="10%"
-                          />
-                          İçerik
-                        </button>
                       </div>
                     </div>
                   </td>
                 </tr>
 
-                <tr>
+                <tr class="halkaAçikAlanlar">
                   <th scope="row">
                     <input type="checkbox" class="checkbox-item" />
                   </th>
@@ -907,20 +998,11 @@
                           />
                           Sil
                         </button>
-                        <button onclick="icerik()">
-                          <img
-                            src="../assets/images/dropdown_svg/copy-writing.svg"
-                            alt="content"
-                            width="10%"
-                            height="10%"
-                          />
-                          İçerik
-                        </button>
                       </div>
                     </div>
                   </td>
                 </tr>
-                <tr>
+                <tr class="halkaAçikAlanlar">
                   <th scope="row">
                     <input type="checkbox" class="checkbox-item" />
                   </th>
@@ -963,20 +1045,11 @@
                           />
                           Sil
                         </button>
-                        <button onclick="icerik()">
-                          <img
-                            src="../assets/images/dropdown_svg/copy-writing.svg"
-                            alt="content"
-                            width="10%"
-                            height="10%"
-                          />
-                          İçerik
-                        </button>
                       </div>
                     </div>
                   </td>
                 </tr>
-                <tr>
+                <tr class="halkaAçikAlanlar">
                   <th scope="row">
                     <input type="checkbox" class="checkbox-item" />
                   </th>
@@ -1019,20 +1092,11 @@
                           />
                           Sil
                         </button>
-                        <button onclick="icerik()">
-                          <img
-                            src="../assets/images/dropdown_svg/copy-writing.svg"
-                            alt="content"
-                            width="10%"
-                            height="10%"
-                          />
-                          İçerik
-                        </button>
                       </div>
                     </div>
                   </td>
                 </tr>
-                <tr>
+                <tr class="halkaAçikAlanlar">
                   <th scope="row">
                     <input type="checkbox" class="checkbox-item" />
                   </th>
@@ -1075,20 +1139,11 @@
                           />
                           Sil
                         </button>
-                        <button onclick="icerik()">
-                          <img
-                            src="../assets/images/dropdown_svg/copy-writing.svg"
-                            alt="content"
-                            width="10%"
-                            height="10%"
-                          />
-                          İçerik
-                        </button>
                       </div>
                     </div>
                   </td>
                 </tr>
-                <tr>
+                <tr class="halkYararinaOlanlar">
                   <th scope="row">
                     <input type="checkbox" class="checkbox-item" />
                   </th>
@@ -1131,20 +1186,11 @@
                           />
                           Sil
                         </button>
-                        <button onclick="icerik()">
-                          <img
-                            src="../assets/images/dropdown_svg/copy-writing.svg"
-                            alt="content"
-                            width="10%"
-                            height="10%"
-                          />
-                          İçerik
-                        </button>
                       </div>
                     </div>
                   </td>
                 </tr>
-                <tr>
+                <tr class="halkYararinaOlanlar">
                   <th scope="row">
                     <input type="checkbox" class="checkbox-item" />
                   </th>
@@ -1187,20 +1233,11 @@
                           />
                           Sil
                         </button>
-                        <button onclick="icerik()">
-                          <img
-                            src="../assets/images/dropdown_svg/copy-writing.svg"
-                            alt="content"
-                            width="10%"
-                            height="10%"
-                          />
-                          İçerik
-                        </button>
                       </div>
                     </div>
                   </td>
                 </tr>
-                <tr>
+                <tr class="halkYararinaOlanlar">
                   <th scope="row">
                     <input type="checkbox" class="checkbox-item" />
                   </th>
@@ -1242,15 +1279,6 @@
                             height="10%"
                           />
                           Sil
-                        </button>
-                        <button onclick="icerik()">
-                          <img
-                            src="../assets/images/dropdown_svg/copy-writing.svg"
-                            alt="content"
-                            width="10%"
-                            height="10%"
-                          />
-                          İçerik
                         </button>
                       </div>
                     </div>
@@ -1325,21 +1353,6 @@
             }
 
             // Örnek fonksiyonlar
-            function ekle() {
-              alert("Ekleme sayfasına yönlendiriliyor...");
-            }
-
-            function duzenle() {
-              alert("Düzenleme sayfasına yönlendiriliyor...");
-            }
-
-            function sil() {
-              alert("Silme işlemi yapılıyor...");
-            }
-
-            function icerik() {
-              alert("İçerik detayına yönlendiriliyor...");
-            }
           </script>
           <script>
             function toggleDropdown(btn) {
@@ -1362,6 +1375,107 @@
                   .querySelectorAll(".dropdown-menu")
                   .forEach((el) => (el.style.display = "none"));
               }
+            });
+          </script>
+          <!-- Şuan da mevcut olan kategoriye göre filtreleme yapmamızı sağlar -->
+          <script>
+            function filtreleKategoriler(secilenKategoriler) {
+              const satirlar = document.querySelectorAll("#tableContent tr");
+
+              satirlar.forEach((satir) => {
+                const kategori = satir.classList[0]; // sadece ilk sınıf
+
+                if (
+                  secilenKategoriler.length === 0 ||
+                  secilenKategoriler.includes(kategori)
+                ) {
+                  satir.style.display = "table-row";
+                } else {
+                  satir.style.display = "none";
+                }
+              });
+            }
+
+            document.querySelectorAll(".btn-uygula").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                const secilenler = Array.from(
+                  document.querySelectorAll(".checkbox-item:checked")
+                ).map((cb) => cb.getAttribute("data-kategori-hizmetler"));
+
+                filtreleKategoriler(secilenler);
+              });
+            });
+
+            document.querySelectorAll(".btn-sil").forEach((btn) => {
+              btn.addEventListener("click", function () {
+                document.querySelectorAll(".checkbox-item").forEach((cb) => {
+                  cb.checked = false;
+                });
+
+                filtreleKategoriler([]); // Hepsini geri göster
+              });
+            });
+          </script>
+
+          <script>
+            function filtreleKategoriler(secilenKategoriler) {
+              const satirlar = document.querySelectorAll("tbody tr"); // veya "#tableContent tr" eğer id eklediysen
+
+              satirlar.forEach((satir) => {
+                const kategori = satir.classList[0];
+
+                if (
+                  secilenKategoriler.length === 0 ||
+                  secilenKategoriler.includes(kategori)
+                ) {
+                  satir.style.display = "table-row";
+                } else {
+                  satir.style.display = "none";
+                }
+              });
+            }
+          </script>
+          <script>
+            function toggleDropdown(button) {
+              const menu = button.nextElementSibling;
+
+              // Diğer açık menüleri kapat
+              document
+                .querySelectorAll(".hizmetler-filter-menu")
+                .forEach((otherMenu) => {
+                  if (otherMenu !== menu) {
+                    otherMenu.style.display = "none";
+                  }
+                });
+
+              if (menu.style.display === "block") {
+                menu.style.display = "none";
+              } else {
+                // İlk olarak menüyü göster ve 'left'i sıfırla
+                menu.style.display = "block";
+                menu.style.left = "0px"; // BU SATIR ÖNEMLİ!
+
+                // Pozisyonu kontrol et: sağdan taşıyor mu?
+                const rect = menu.getBoundingClientRect();
+                const overflow = rect.right - window.innerWidth;
+                if (overflow > 0) {
+                  menu.style.left = `-${overflow + 10}px`; // Taşmayı engelle
+                }
+              }
+            }
+
+            // Dış tıklamada menüyü kapat
+            document.addEventListener("click", function (e) {
+              document
+                .querySelectorAll(".hizmetler-filter-container")
+                .forEach((container) => {
+                  if (!container.contains(e.target)) {
+                    const menu = container.querySelector(
+                      ".hizmetler-filter-menu"
+                    );
+                    if (menu) menu.style.display = "none";
+                  }
+                });
             });
           </script>
         </div>
