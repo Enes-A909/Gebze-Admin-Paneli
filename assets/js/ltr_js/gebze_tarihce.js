@@ -977,7 +977,8 @@
                     </div>
                   </div>
                 </div>
-                    `;remove();
+                    `;
+              remove();
            const photo = [
               "../assets/images/tarihce/tarihce1.png",
               "../assets/images/tarihce/tarihce2.png",
