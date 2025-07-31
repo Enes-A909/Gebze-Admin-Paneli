@@ -8,7 +8,7 @@
     <meta name="description"
         content="endless admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords"
-        content="admin template, endless admin template, dashboard template, flat admin template, responsive admin template, web app">
+        content="admin paneli, gebze admin paneli, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="../assets/images/gebze-belediyesi.ico" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images//gebze-belediyesi.ico" type="image/x-icon">
@@ -47,9 +47,6 @@
 
     <link rel="stylesheet" href="Profil/profil.css">
 
-    <!-- Head veya body sonuna -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <style>
         .buton {
             text-align: left;
@@ -64,7 +61,18 @@
         #save-button:hover {
             background-color: rgb(41, 77, 186);
         }
+
+        .form-select {
+            width: 100%;
+            height: 50px;
+            border-radius: 5px;
+            padding: 5px;
+            border-width: 1px;
+            border-color: rgb(221, 221, 221);
+        }
     </style>
+
+
 
 </head>
 
@@ -256,6 +264,12 @@
                             <input type="text" id="fullName" placeholder="Adınızı ve Soyadınızı Girin">
                         </div>
                         <div class="form-group-container">
+                            <label for="tckn">TC Kimlik Numarası</label>
+                            <input type="text" id="tckn" maxlength="11" pattern="\d{11}"
+                                placeholder="TC kimlik numaranızı girin" required
+                                oninput="this.value = this.value.replace(/\D/g, '').slice(0,11)">
+                        </div>
+                        <div class="form-group-container">
                             <label for="email">E-Posta</label>
                             <div class="input-with-icon">
                                 <input type="email" id="email" placeholder="ornek@mail.com">
@@ -282,8 +296,34 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-group-container">
+                            <label for="">Kullanıcı Durumu</label>
+                            <select class="form-select" aria-label="Default select example" id="userStatusSelect">
+                                <option selected>Kullanıcı Durumu</option>
+                                <option value="1">Aktif</option>
+                                <option value="2">Pasif</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group-container">
+                            <label for="newPassword">Yeni Şifre</label>
+                            <div class="input-with-icon">
+                                <input type="password" id="newPassword" placeholder="Yeni şifrenizi girin">
+                                <i class="fas fa-eye-slash password-toggle-icon" id="toggleNewPassword"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group-container">
+                            <label for="confirmNewPassword">Yeni Şifre Tekrar</label>
+                            <div class="input-with-icon">
+                                <input type="password" id="confirmNewPassword"
+                                    placeholder="Yeni şifrenizi tekrar girin">
+                                <i class="fas fa-eye-slash password-toggle-icon" id="toggleConfirmNewPassword"></i>
+                            </div>
+                        </div>
                         <div class="buton">
-                            <button id="save-button" class="btn">Kaydet</button>
+                            <button id="save-button" class="btn" onclick="kaydetKullanici()">Kaydet</button>
                             <button id="cancel-button" class="btn btn-success">Geri Dön</button>
                         </div>
                     </div>
@@ -313,7 +353,34 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
                 <!-- Proje Kodları -->
+
                 <script>
+                    function kaydetKullanici() {
+                        const ad = document.getElementById("fullName").value;
+                        const email = document.getElementById("email").value;
+                        const tel = document.getElementById("phone").value;
+                        const durum = document.getElementById("userStatusSelect").value; // 1: Aktif, 2: Pasif
+
+                        const kullanici = {
+                            ad,
+                            email,
+                            tel,
+                            durum // 1 veya 2 olarak saklıyoruz
+                        };
+
+                        // Basit bir dizi şeklinde saklıyoruz
+                        let kullanicilar = JSON.parse(localStorage.getItem("kullanicilar") || "[]");
+                        kullanicilar.push(kullanici);
+                        localStorage.setItem("kullanicilar", JSON.stringify(kullanicilar));
+
+                        alert("Kullanıcı kaydedildi!");
+                        // İsteğe bağlı yönlendirme
+                        window.location.href = "kullanicilar.html";
+                    }
+                </script>
+
+                <script>
+
                     document.addEventListener('DOMContentLoaded', () => {
                         // Profil Fotoğrafı Yükleme İşlevi
                         const profilePhotoWrapper = document.getElementById('profilePhotoWrapper');
@@ -371,48 +438,41 @@
 
 
 
-                        document.getElementById('save-button').addEventListener('click', kaydet);
+                        // document.getElementById('save-button').addEventListener('click', kaydet);
 
-                        function kaydet() {
-                            const fullName = document.getElementById('fullName').value;
-                            const email = document.getElementById('email').value;
-                            const phone = document.getElementById('phone').value;
-                            const photoInput = document.getElementById('profilePhotoInput');
+                        // function kaydet() {
 
-                            if (!fullName || !email || !phone || !photoInput.files[0]) {
-                                Swal.fire({
-                                    toast: true,
-                                    position: 'top-end',
-                                    icon: 'error',
-                                    title: 'Tüm alanları doldurun!',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                    timerProgressBar: true,
-                                    background: '#f8d7da',
-                                    color: '#721c24',
-                                });
-                                return;
-                            }
 
-                            const reader = new FileReader();
-                            reader.onload = function (e) {
-                                const profilePhoto = e.target.result; // base64 data url
+                        //     const fullName = document.getElementById("fullName").value;
+                        //     const email = document.getElementById("email").value;
+                        //     const phone = document.getElementById("phone").value;
 
-                                const yeniKullanici = {
-                                    profilePhoto,
-                                    fullName,
-                                    email,
-                                    phone,
-                                    tarih: new Date().toLocaleDateString("tr-TR"),
-                                    saat: new Date().toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit' }),
-                                };
+                        //     const params = new URLSearchParams(window.location.search);
+                        //     const index = params.get("index"); // varsa düzenleme modu
 
-                                localStorage.setItem("yeniKullanici", JSON.stringify(yeniKullanici));
-                                window.location.href = "kullanicilar.html";
-                            };
+                        //     const kullanici = { fullName, email, phone };
 
-                            reader.readAsDataURL(photoInput.files[0]);
-                        }
+                        //     let veriler = JSON.parse(localStorage.getItem("kullanicilar")) || [];
+
+                        //     if (index !== null) {
+                        //         // Düzenleme modunda: mevcut veriyi güncelle
+                        //         veriler[index - 1] = kullanici;
+                        //     } else {
+                        //         // Yeni kayıt
+                        //         veriler.push(kullanici);
+                        //     }
+
+                        //     localStorage.setItem("kullanicilar", JSON.stringify(veriler));
+                        //     window.location.href = "kullanicilar.html"; // geri dön
+                        //     if (islem === "ekle") {
+                        //         // tabloya yeni satır ekle
+                        //         tabloyaSatirEkle(fullName, email, phone);
+                        //     } else if (islem === "guncelle" && index !== null) {
+                        //         // belirtilen satırı güncelle
+                        //         tabloSatirGuncelle(index, fullName, email, phone);
+                        //     }
+
+                        // }
 
 
                         document.getElementById('cancel-button').addEventListener('click', geriDon);
@@ -423,7 +483,77 @@
 
                     });
 
+                    function tabloyaSatirEkle(ad, soyad, email, telefon) {
+                        const tablo = document.getElementById("kullaniciTablosu");
+                        const yeniSatir = tablo.insertRow(-1);
+
+                        yeniSatir.innerHTML = `
+    <td></td>
+    <td></td>
+    <td>${ad} ${soyad}</td>
+    <td>${email}</td>
+    <td>${telefon}</td>
+    <td>
+      <button onclick="duzenle(this)">Düzenle</button>
+    </td>
+  `;
+                    }
+
+                    function tabloSatirGuncelle(index, ad, soyad, email, telefon) {
+                        const tablo = document.getElementById("kullaniciTablosu");
+                        const satir = tablo.rows[index];
+
+                        satir.cells[2].textContent = `${ad} ${soyad}`;
+                        satir.cells[3].textContent = email;
+                        satir.cells[4].textContent = telefon;
+                    }
+
+
+                    // Şifre Göster/Gizle İşlevi
+                    const togglePassword = (inputId, toggleIconId) => {
+                        const passwordInput = document.getElementById(inputId);
+                        const toggleIcon = document.getElementById(toggleIconId);
+
+                        toggleIcon.addEventListener('click', () => {
+                            if (passwordInput.type === 'password') {
+                                passwordInput.type = 'text';
+                                toggleIcon.classList.remove('fa-eye-slash');
+                                toggleIcon.classList.add('fa-eye'); // Normal göz
+                            } else {
+                                passwordInput.type = 'password';
+                                toggleIcon.classList.remove('fa-eye');
+                                toggleIcon.classList.add('fa-eye-slash'); // Üstü çizili göz
+                            }
+                        });
+                    };
+
+                    togglePassword('newPassword', 'toggleNewPassword');
+                    togglePassword('confirmNewPassword', 'toggleConfirmNewPassword');
+
+
                 </script>
+
+                <!-- sayfanın en altında -->
+                <script>
+                    window.onload = function () {
+                        const params = new URLSearchParams(window.location.search);
+                        const fullName = params.get("fullName");
+                        const email = params.get("email");
+                        const phone = params.get("phone");
+
+                        if (fullName) document.getElementById("fullName").value = fullName;
+                        if (email) document.getElementById("email").value = email;
+                        if (phone) document.getElementById("phone").value = phone;
+                    };
+                </script>
+
+                <!-- Head veya body sonuna -->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>
+
 
 
 

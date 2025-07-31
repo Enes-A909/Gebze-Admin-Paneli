@@ -442,16 +442,10 @@
                 <!-- İçeriklerin Yükleneceği Alan -->
 
                 <div class="card-container">
+
                     <div class="img-card">
-                        <div class="photo-section">
-                            <input type="file" id="photoInput" accept="image/*" style="display: none;">
-                            <div class="photo-wrapper" id="photoWrapper">
-                                <img src="../assets/images/user/1.png" alt="" id="photo">
-                                <div class="edit-overlay" id="editOverlay">
-                                    <i class="fas fa-camera"></i>
-                                </div>
-                            </div>
-                        </div>
+
+
                         <div class="form-group-container">
                             <label for="baslik">Başlık</label>
                             <input type="text" id="baslik" placeholder="Başlık Girin">
@@ -476,6 +470,22 @@
 
                             </div>
                         </div>
+
+                        <!-- <div class="photo-section">
+                            <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                            <div class="photo-wrapper" id="photoWrapper">
+                                <img src="../assets/images/user/1.png" alt="" id="photo">
+                                <div class="edit-overlay" id="editOverlay">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="form-group-container">
+                            <label for="photoInput">Fotoğraf</label>
+                            <input type="file" id="photoInput" accept="image/*">
+                        </div>
+
                         <div class="buton">
                             <button id="save-button" class="btn">Kaydet</button>
                             <button id="cancel-button" class="btn btn-success">Geri Dön</button>
