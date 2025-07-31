@@ -1,115 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
   <head>
-    <style>
-      .kaydet:focus{
-        outline: none;
-      }
-      .logo-img {
-        height: 200px !important;
-        /* Boyutu küçültür */
-        object-fit: contain;
-        display: block;
-      }
+    
 
-      .index-img {
-        height: 90px !important;
-        weight: 100px !important;
-        /* Boyutu küçültür */
-        object-fit: contain;
-        display: block;
-        margin-right: 100px;
-      }
-
-      .container {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        flex-wrap: wrap;
-      }
-
-      .card {
-        display: flex; /* Yatay hizalama */
-        align-items: center; /* Dikey ortalama */
-        gap: 20px; /* Fotoğraf ile yazılar arası boşluk */
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        width: 100%;
-        max-width: 520px; /* Kart genişliği */
-      }
-
-      .card img {
-        width: 140px;
-        height: 260px;
-        object-fit: cover;
-        border-radius: 10px;
-        border: 2px solid #ccc;
-        margin-bottom: 10px;
-      }
-
-      .card input {
-        width: 90%;
-        padding: 8px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 14px;
-        margin-bottom: 10px;
-      }
-
-      .card-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex: 1;
-      }
-
-      .degistir-btn {
-        background-color: #7180e1;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: 0.3s;
-      }
-
-      .degistir-btn:hover {
-        background-color: #5a4bcc; /* Hover rengi */
-      }
-
-      .button-group {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-      }
-
-      .button-group button {
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        padding: 8px 15px;
-        font-size: 14px;
-      }
-
-      .photo-btn {
-        background-color: #16a085;
-        color: white;
-      }
-
-      .kaydet {
-        background-color: #8e44ad;
-        color: white;
-        border-radius: 6px;
-        border-color: #8e44ad;
-       
-      }
-
-
-    </style>
+ 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -183,6 +77,11 @@
       rel="stylesheet"
       type="text/css"
       href="../assets/css/responsive.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../ltr/CSS/danısmanDuzenle.css"
     />
   </head>
 
@@ -600,57 +499,18 @@
               <script src="../assets/js/script.js"></script>
               <!-- Bootstrap JS + Popper -->
               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+              
               <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
               <!-- Plugin used-->
-              <script>
-                function saveData(id) {
-                  const email = document.getElementById(id + "Email");
-                  const tel = document.getElementById(id + "Telefon");
-                  const isim = document.getElementById(id + "Isim");
-                  const img = document.getElementById(id + "Image");
-                  if (!email.value.trim()) {
-                    alert("E-posta alanı boş bırakılamaz!");
-                    email.focus();
-                    return;
-                  }
-                  if (!tel.value.trim()) {
-                    alert("Telefon alanı boş bırakılamaz!");
-                    tel.focus();
-                    return;
-                  }
-                  // localStorage'a kaydet
-                  const data = {
-                    isim: isim.innerText,
-                    email: email.value,
-                    tel: tel.value,
-                    img: img.src,
-                  };
-                  localStorage.setItem(id + "_data", JSON.stringify(data));
-                  alert("Bilgiler kaydedildi!");
-                }
 
-                // Sayfa açıldığında localStorage'dan yükle
-                function loadData(id) {
-                  const dataStr = localStorage.getItem(id + "_data");
-                  if (dataStr) {
-                    const data = JSON.parse(dataStr);
-                    document.getElementById(id + "Isim").innerText =
-                      data.isim || "";
-                    document.getElementById(id + "Email").value =
-                      data.email || "";
-                    document.getElementById(id + "Telefon").value =
-                      data.tel || "";
-                    if (data.img)
-                      document.getElementById(id + "Image").src = data.img;
-                  }
-                }
-                // Tüm danışmanlar için yükle
-                window.addEventListener("DOMContentLoaded", function () {
-                  loadData("danisman1");
-                  loadData("danisman2");
-                });
-              </script>
+              
+             <!-- Sayfanın Script kodlarını içeren sayfaya alttaki linke ctrl+click yaparak ulaşabilirsiniz -->
+              <script src="../ltr/JavaScript/danısmanDuzenle.js"></script>
+
+
+
+
+
               </div>
             </div>
 

@@ -1,98 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
   <head>
-    <style>
-      .logo-img {
-        height: 200px !important;
-        /* Boyutu küçültür */
-        object-fit: contain;
-        display: block;
-      }
-
-      .index-img {
-        height: 70px !important;
-        /* Boyutu küçültür */
-        object-fit: contain;
-        display: block;
-        margin-right: 100px;
-      }
-
-      .container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-
-      .card {
-        background: rgb(236, 236, 236);
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      }
-
-      .card img {
-        width: 200px;
-        height: 230px;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 2px solid #000000;
-        margin-bottom: 10px;
-      }
-
-      .card h3 {
-        font-size: 22px;
-        margin: 10px 0;
-        color: #000000;
-      }
-
-      .card input {
-        width: 96%;
-        padding: 8px;
-        margin: 5px 0;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 14px;
-      }
-
-      .degistir-btn {
-        background-color: #7180e1;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: 0.3s;
-      }
-
-
-
-      .button-group {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-      }
-
-      button.kaydet {
-        background-color: #825aa7;
-        color: white;
-        border: none;
-        padding: 8px 14px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      /* 7. Kart ortalanmış */
-      .full-width {
-        grid-column: span 2;
-        justify-self: center;
-        width: 50%;
-      }
-    </style>
+   
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -168,6 +77,12 @@
       type="text/css"
       href="../assets/css/responsive.css"
     />
+     <link
+      rel="stylesheet"
+      type="text/css"
+      href="../ltr/CSS/yardımcıDuzenle.css"
+    />
+    
   </head>
 
   <body>
@@ -1565,121 +1480,7 @@
             </div>
           </div>
 
-            <script>
-              // Dropdown logic entegre yonetimSemasiDuzenle.html'den
-              // Her kart için doğru img ve file input'u bulacak şekilde güncellendi
-              document.querySelectorAll('.container > .card').forEach(function(card, idx) {
-                var i = idx + 1;
-                var dropdownBtn = card.querySelector('.dropdownBtn');
-                var dropdownContent = card.querySelector('.dropdown-content');
-                var photoChange = card.querySelector('.dropdownPhotoChange');
-                var saveLink = card.querySelector('.dropdownSaveChanges');
-                var fileInput = card.querySelector('#yardimci'+i+'FileInput');
-                var img = card.querySelector('#yardimci'+i+'Image');
 
-                // Dropdown aç/kapat
-                if (dropdownBtn && dropdownContent) {
-                  dropdownBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    dropdownContent.style.display =
-                      dropdownContent.style.display === 'block' ? 'none' : 'block';
-                  });
-                  document.addEventListener('click', function(e) {
-                    if (dropdownContent.style.display === 'block') {
-                      dropdownContent.style.display = 'none';
-                    }
-                  });
-                }
-
-                // Fotoğrafı Değiştir
-                if (photoChange && fileInput && img) {
-                  photoChange.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    fileInput.click();
-                    if (dropdownContent) dropdownContent.style.display = 'none';
-                  });
-                  fileInput.addEventListener('change', function(event) {
-                    var file = event.target.files[0];
-                    if (file) {
-                      var reader = new FileReader();
-                      reader.onload = function(e) {
-                        img.src = e.target.result;
-                      };
-                      reader.readAsDataURL(file);
-                    }
-                  });
-                }
-              });
-              function previewImage(event, id) {
-                const reader = new FileReader();
-                reader.onload = function () {
-                  document.getElementById(id + "Image").src = reader.result;
-                };
-                reader.readAsDataURL(event.target.files[0]);
-              }
-
-              function saveData(id) {
-                const isimEl = document.getElementById(id + "Isim");
-                const emailEl = document.getElementById(id + "Email");
-                const telEl = document.getElementById(id + "Telefon");
-                const img = document.getElementById(id + "Image").src;
-                const isim = isimEl.innerText;
-                const email = emailEl.value;
-                const tel = telEl.value;
-                if (!isim.trim()) {
-                  alert("İsim alanı boş bırakılamaz!");
-                  isimEl.focus();
-                  return;
-                }
-                if (!email.trim()) {
-                  alert("E-posta alanı boş bırakılamaz!");
-                  emailEl.focus();
-                  return;
-                }
-                if (!tel.trim()) {
-                  alert("Telefon alanı boş bırakılamaz!");
-                  telEl.focus();
-                  return;
-                }
-                const data = { isim, email, tel, img };
-                localStorage.setItem(id + "_data", JSON.stringify(data));
-                alert("Bilgiler kaydedildi: " + isim);
-              }
-
-              function cancelData(id) {
-                const dataStr = localStorage.getItem(id + "_data");
-                if (dataStr) {
-                  const data = JSON.parse(dataStr);
-                  document.getElementById(id + "Isim").innerText =
-                    data.isim || "";
-                  document.getElementById(id + "Email").value =
-                    data.email || "";
-                  document.getElementById(id + "Telefon").value =
-                    data.tel || "";
-                  document.getElementById(id + "Image").src = data.img || "";
-                  alert("Değişiklikler geri alındı");
-                } else {
-                  window.location.reload();
-                }
-              }
-
-              window.addEventListener("DOMContentLoaded", function () {
-                for (let i = 1; i <= 7; i++) {
-                  const id = "yardimci" + i;
-                  const dataStr = localStorage.getItem(id + "_data");
-                  if (dataStr) {
-                    const data = JSON.parse(dataStr);
-                    document.getElementById(id + "Isim").innerText =
-                      data.isim || "";
-                    document.getElementById(id + "Email").value =
-                      data.email || "";
-                    document.getElementById(id + "Telefon").value =
-                      data.tel || "";
-                    document.getElementById(id + "Image").src = data.img || "";
-                  }
-                }
-              });
-            </script>
           </div>
           <footer style="height: 200px; opacity: 0"></footer>
 
@@ -1695,7 +1496,7 @@
           <script src="../assets/js/sidebar-menu.js"></script>
           <script src="../assets/js/config.js"></script>
           <!-- Plugins JS start-->
-
+ 
           <script src="../assets/js/typeahead/typeahead.bundle.js"></script>
           <script src="../assets/js/typeahead/typeahead.custom.js"></script>
           <script src="../assets/js/typeahead-search/handlebars.js"></script>
@@ -1708,6 +1509,9 @@
 
           <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
           <!-- Plugin used-->
+
+ <!-- Sayfanın Script kodlarını içeren sayfaya alttaki linke ctrl+click yaparak ulaşabilirsiniz -->
+         <script src="../ltr/JavaScript/yardımcıDuzenle.js"></script>
         </div>
       </div>
     </div>
