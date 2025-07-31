@@ -579,24 +579,27 @@
                 </td>
                 <td scope="row">...</td>
                 <td scope="row" style="text-align: right">
+                  
                   <div class="dropdown-container">
                     <button class="dropdown-toggle" onclick="toggleDropdown(this)">
                       İşlemler
                     </button>
                     <div class="dropdown-menu">
-                      <button onclick="window.location.href='yakinda.html'">
-                        <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                        Düzenle
-                      </button>
+                      <a href="arabuluculukDuzenle.html">
+                        <button class="dropdown-item">
+                          <i class="fa fa-edit"></i> Düzenle
+                        </button>
+                      </a>
+
                       <button onclick="remove(this)">
-                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
+                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="content" width="10%"
                           height="10%" />
                         Sil
                       </button>
                       <button onclick="archive(this)">
                         <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
                           height="10%" />
-                        Arşivlendi
+                        Arşivle
                       </button>
                     </div>
                   </div>
@@ -618,25 +621,29 @@
           </td>
           <td>...</td>
           <td scope="row" style="text-align: right">
-            <div class="dropdown-container">
-              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                İşlemler
-              </button>
-              <div class="dropdown-menu">
-                <button onclick="window.location.href='yakinda.html'">
-                  <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                  Düzenle
-                </button>
-                <button onclick="remove(this)">
-                  <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" />
-                  Sil
-                </button>
-                <button onclick="archive(this)">
-                  <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%" height="10%" />
-                  Arşivle
-                </button>
-              </div>
-            </div>
+                  <div class="dropdown-container">
+                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                      İşlemler
+                    </button>
+                    <div class="dropdown-menu">
+                      <a href="etikDuzenle.html">
+                        <button class="dropdown-item">
+                          <i class="fa fa-edit"></i> Düzenle
+                        </button>
+                      </a>
+
+                      <button onclick="remove(this)">
+                        <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="content" width="10%"
+                          height="10%" />
+                        Sil
+                      </button>
+                      <button onclick="archive(this)">
+                        <img src="../assets/images/dropdown_svg/copy-writing.svg" alt="content" width="10%"
+                          height="10%" />
+                        Arşivle
+                      </button>
+                    </div>
+                  </div>
           </td>
         </tr>
         </tbody>
