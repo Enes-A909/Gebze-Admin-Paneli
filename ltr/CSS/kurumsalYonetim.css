@@ -13,28 +13,43 @@ table {
   background-color: white;
 }
 
-/* Satırlar */
+/* Tablonun başlık ve içerik kısmı */
+thead th {
+  background-color: #eee;
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Hover efektli satır */
 table tr {
   transition: background-color 0.3s ease;
 }
 
-table tr:hover {
-  background-color: #cccccc;
+table tbody tr:hover {
+  background-color: #e0e0e0;
   cursor: pointer;
 }
 
-/* Butonlar */
+/* Butonlar için stil */
 table tr button {
   transition: transform 0.3s ease;
+  transform: translate(0%, 0%);
 }
 
 table tr button:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-/* Buton stili */
-.table-button {
-  background-color: rgba(68, 127, 245, 0.495);
+/* Özel tablo butonu */
+.tablo-button {
+  background-color: rgba(0, 81, 255, 0.738);
   color: white;
   border: none;
   padding: 5px 10px;
@@ -43,19 +58,8 @@ table tr button:hover {
   cursor: pointer;
 }
 
-.table-button:hover {
-  background-color: rgba(0, 0, 0, 0.948);
-}
-
-/* Dropdown menüler görünür kalsın */
-.islem-menu {
-  position: absolute;
-  z-index: 9999;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
-  padding: 5px 0;
+.tablo-button:hover {
+  background-color: rgba(0, 0, 0, 0.85);
 }
 
 .logo-img {
@@ -89,7 +93,7 @@ table tr button:hover {
 }
 
 .dropdown-menu {
-  border: none !important;
+  border: none !important ;
   display: none;
   position: absolute;
   top: 110%;
@@ -97,7 +101,7 @@ table tr button:hover {
   background-color: white;
   border: 1px solid #2d2525;
   border-radius: 5px;
-  box-shadow: 0 2px 6px rgba(236, 225, 225, 0.15) !important;
+  box-shadow: 0 2px 6px rgba(236, 225, 225, 0.15);
   z-index: 999;
   min-width: 140px;
 }
@@ -125,8 +129,8 @@ table tr button:hover {
   margin-bottom: 5px;
 }
 
-.kategori {
-  background-color: #ec5a5a;
+.badge {
+  background-color: #21d18538;
 
   padding: 4px 8px;
   border-radius: 12px;
@@ -135,7 +139,7 @@ table tr button:hover {
   display: inline-block;
 }
 
-.arşiv {
+.durum {
   background-color: #7d373769;
   color: white;
   padding: 4px 8px;
@@ -143,6 +147,14 @@ table tr button:hover {
   font-size: 13px;
   font-weight: 500;
   display: inline-block;
+}
+
+.ekle-butonu,
+.arsivle-butonu,
+.sil-butonu {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
 }
 
 .dropdown-toggle:focus,
@@ -155,23 +167,6 @@ table tr button:hover {
 .dropdown-toggle:hover {
   background-color: rgba(68, 127, 245, 0.495);
   color: white;
-}
-
-.ekle-butonu,
-.arsivle-butonu,
-.sil-butonu {
-  outline: none !important;
-  box-shadow: none !important;
-  border-color: transparent !important;
-}
-
-.badge {
-  background-color: #21d18538;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 500;
-  display: inline-block;
 }
 
 .buton {
