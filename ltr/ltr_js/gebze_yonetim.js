@@ -1,63 +1,58 @@
 // Muhtarlar JavaScript Kodları
-function jsonMuhtar(){
+function jsonMuhtar() {
   //Muhtar Json
-var ekremUsanmaz = {
-        name: "Ekrem USANMAZ",
-        title: "Adem Yavuz Mahallesi Muhtarı",
-        phone: "0538 632 83 12",
-        loc: "Adem Yavuz Mahallesi 2322Sok. No:1 Gebze/Kocaeli",
-        mail: "ekremusanmaz@gmail.com",
-        imgSrc: "../assets/images/muhtarImg/ekremUsanmazMuhtar.png"
-        };
-var tezcanGurlek = {
-        name: "Tezcan GÜRLEK",
-        title: "Ahatlı Mahallesi Muhtarı",
-        phone: "0537 585 92 5",
-        loc: "Ahatlı Mahallesi 3120 Sok. No:1/1 Gebze/Kocaeli",
-        mail: "-",
-        imgSrc: "../assets/images/muhtarImg/tezcanGurlekMuhtar.png"
-        };
-var remziKandaz = {
-        name: "Remzi KANDAZ",
-        title: "Arapçeme Mahallesi Muhtarı",
-        phone: "0532 680 14 20",
-        loc: "Arapçeşme Mah. Kavak Cad.No:35 Gebze/Kocaeli",
-        mail: "remzikandaz@hotmail.com",
-        imgSrc: "../assets/images/muhtarImg/remziKandazMuhtar.png"
-        };
-var halisTepe = {
-        name: "Halis TEPE",
-        title: "Balçık Mahallesi Muhtarı",
-        phone: "0532 432 00 54",
-        loc: "Balçık Mahallesi Mustafa Kemal Cad. No:47/A Balçık",
-        mail: "halis.tepe41@hotmail.com",
-        imgSrc: "../assets/images/muhtarImg/halisTepeMuhtar.png"
-        };
+  var ekremUsanmaz = {
+    name: "Ekrem USANMAZ",
+    title: "Adem Yavuz Mahallesi Muhtarı",
+    phone: "0538 632 83 12",
+    loc: "Adem Yavuz Mahallesi 2322Sok. No:1 Gebze/Kocaeli",
+    mail: "ekremusanmaz@gmail.com",
+    imgSrc: "../assets/images/muhtarImg/ekremUsanmazMuhtar.png",
+  };
+  var tezcanGurlek = {
+    name: "Tezcan GÜRLEK",
+    title: "Ahatlı Mahallesi Muhtarı",
+    phone: "0537 585 92 5",
+    loc: "Ahatlı Mahallesi 3120 Sok. No:1/1 Gebze/Kocaeli",
+    mail: "-",
+    imgSrc: "../assets/images/muhtarImg/tezcanGurlekMuhtar.png",
+  };
+  var remziKandaz = {
+    name: "Remzi KANDAZ",
+    title: "Arapçeme Mahallesi Muhtarı",
+    phone: "0532 680 14 20",
+    loc: "Arapçeşme Mah. Kavak Cad.No:35 Gebze/Kocaeli",
+    mail: "remzikandaz@hotmail.com",
+    imgSrc: "../assets/images/muhtarImg/remziKandazMuhtar.png",
+  };
+  var halisTepe = {
+    name: "Halis TEPE",
+    title: "Balçık Mahallesi Muhtarı",
+    phone: "0532 432 00 54",
+    loc: "Balçık Mahallesi Mustafa Kemal Cad. No:47/A Balçık",
+    mail: "halis.tepe41@hotmail.com",
+    imgSrc: "../assets/images/muhtarImg/halisTepeMuhtar.png",
+  };
 
-        const MUHTAR = [
-        ekremUsanmaz,
-        tezcanGurlek,
-        remziKandaz,
-        halisTepe
-      ];
+  const MUHTAR = [ekremUsanmaz, tezcanGurlek, remziKandaz, halisTepe];
 
-      return MUHTAR;
+  return MUHTAR;
 }
 
-function muhtarEdit(){
-    const muhtar = jsonMuhtar();    
-    const content = document.getElementById("icerikler");
-  content.innerHTML = ""; 
-  
+function muhtarEdit() {
+  const muhtar = jsonMuhtar();
+  const content = document.getElementById("icerikler");
+  content.innerHTML = "";
+
   const table = document.createElement("table");
   table.className = "table mt-0";
   table.id = "table";
   table.style.width = "100%";
-  table.style.backgroundColor="rgba(204, 204, 204, 0.186)"
-  table.style.boxShadow=" 6px 6px 20px rgba(100, 100, 100, 0.738)"
-  table.style.borderRadius="10px"
-  table.style.border="none"
-  table.style.marginTop="-30px"
+  table.style.backgroundColor = "rgba(204, 204, 204, 0.186)";
+  table.style.boxShadow = " 6px 6px 20px rgba(100, 100, 100, 0.738)";
+  table.style.borderRadius = "10px";
+  table.style.border = "none";
+  table.style.marginTop = "-30px";
 
   table.innerHTML = `
     <thead style="border-top: none">
@@ -75,12 +70,12 @@ function muhtarEdit(){
   `;
 
   const tableContent = table.querySelector("#tableContent");
- var count = 0;
+  var count = 0;
   for (let i = 0; i < 2; i++) {
     muhtar.forEach((muhtar) => {
-        count++;
+      count++;
       const tr = document.createElement("tr");
-      
+
       tr.innerHTML = `
         <td>
           <img class="imgSrc" src="${muhtar.imgSrc}" alt="${muhtar.name}" width="80" height="50" /> 
@@ -96,27 +91,26 @@ function muhtarEdit(){
       `;
       tableContent.appendChild(tr);
 
-      tr.querySelector(`#count${count}`).addEventListener("click", () => {
-      });
+      tr.querySelector(`#count${count}`).addEventListener("click", () => {});
     });
   }
 
   content.appendChild(table);
 }
 
-function editMuhtar(element){
+function editMuhtar(element) {
   // Tablodaki Düzenleye basılan tr elementini alıp içindeki değerleri alıyoruz
   const tr = element.closest("tr");
-  const name = tr.querySelector(".name").innerHTML
-  const title = tr.querySelector(".title").innerHTML
-  const mail = tr.querySelector(".mail").innerHTML
-  const phone = tr.querySelector(".phone").innerHTML
-  const loc = tr.querySelector(".loc").innerHTML
-  const imgSrc = tr.querySelector(".imgSrc").src
+  const name = tr.querySelector(".name").innerHTML;
+  const title = tr.querySelector(".title").innerHTML;
+  const mail = tr.querySelector(".mail").innerHTML;
+  const phone = tr.querySelector(".phone").innerHTML;
+  const loc = tr.querySelector(".loc").innerHTML;
+  const imgSrc = tr.querySelector(".imgSrc").src;
 
-   let content = document.getElementById("icerikler");
-// Muhtar Düzenleme sayfasını ekrana basıyoruz 
-        content.innerHTML = `
+  let content = document.getElementById("icerikler");
+  // Muhtar Düzenleme sayfasını ekrana basıyoruz
+  content.innerHTML = `
                   <div class="d-flex justify-content-center">
                     <div
                     class="card"
@@ -219,90 +213,85 @@ function editMuhtar(element){
                   </div>
                     `;
 
-        const inputs = document.querySelectorAll(".resim-input");
+  const inputs = document.querySelectorAll(".resim-input");
 
-        inputs.forEach((input) => {
-          input.addEventListener("change", function () {
-            const file = this.files[0];
-            if (file) {
-              const reader = new FileReader();
-              const self = this;
+  inputs.forEach((input) => {
+    input.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        const self = this;
 
-              reader.onload = function (e) {
-                const container = self.closest(".col-12");
-                const img = container.querySelector(".preview-img");
+        reader.onload = function (e) {
+          const container = self.closest(".col-12");
+          const img = container.querySelector(".preview-img");
 
-                if (img) {
-                  img.src = e.target.result;
-                  img.style.display = "block";
-                }
-              };
+          if (img) {
+            img.src = e.target.result;
+            img.style.display = "block";
+          }
+        };
 
-              reader.readAsDataURL(file);
-            }
-          });
-        });
-}  // Muhtarlar bu kadar
+        reader.readAsDataURL(file);
+      }
+    });
+  });
+} // Muhtarlar bu kadar
 
-function kardesSehirlerJson(){ // kardeş şehirler json dosyası
+function kardesSehirlerJson() {
+  // kardeş şehirler json dosyası
   var acigolBel = {
-        name: "Acıgöl Belediyesi",
-        city: "Nevşehir",
-        country: "Türkiye",
-        imgSrc: "https://flagcdn.com/w320/tr.png",
-        };
+    name: "Acıgöl Belediyesi",
+    city: "Nevşehir",
+    country: "Türkiye",
+    imgSrc: "https://flagcdn.com/w320/tr.png",
+  };
   var silvanBel = {
-        name: "Silvan Belediyesi",
-        city: "Diyarbakır",
-        country: "Türkiye",
-        imgSrc: "https://flagcdn.com/w320/tr.png",
-        };
+    name: "Silvan Belediyesi",
+    city: "Diyarbakır",
+    country: "Türkiye",
+    imgSrc: "https://flagcdn.com/w320/tr.png",
+  };
   var pileaBel = {
-        name: "Pilea Belediyesi",
-        city: "Selanik",
-        country: "Yunanistan",
-        imgSrc: "https://flagcdn.com/w320/gr.png",
-        };
+    name: "Pilea Belediyesi",
+    city: "Selanik",
+    country: "Yunanistan",
+    imgSrc: "https://flagcdn.com/w320/gr.png",
+  };
   var malazgirtBel = {
-        name: "Malazgirt Belediyesi",
-        city: "Muş",
-        country: "Türkiye",
-        imgSrc: "https://flagcdn.com/w320/tr.png",
-        };
+    name: "Malazgirt Belediyesi",
+    city: "Muş",
+    country: "Türkiye",
+    imgSrc: "https://flagcdn.com/w320/tr.png",
+  };
   var kakanjBel = {
-        name: "Kakanj Belediyesi",
-        city: "Kakanj",
-        country: "Bosna Hersek",
-        imgSrc: "https://flagcdn.com/w320/ba.png",
-        };
+    name: "Kakanj Belediyesi",
+    city: "Kakanj",
+    country: "Bosna Hersek",
+    imgSrc: "https://flagcdn.com/w320/ba.png",
+  };
 
-    const city = [
-        acigolBel,
-        silvanBel,
-        pileaBel,
-        malazgirtBel,
-        kakanjBel
-      ];
+  const city = [acigolBel, silvanBel, pileaBel, malazgirtBel, kakanjBel];
 
-    return city;
+  return city;
 }
 
-function kardesSehirler(){
-  const cities = kardesSehirlerJson();    
-    const content = document.getElementById("icerikler");
-  content.innerHTML = ""; 
-  
-  const table = document.createElement("table");  // tabloya stil veriyoruz
+function kardesSehirler() {
+  const cities = kardesSehirlerJson();
+  const content = document.getElementById("icerikler");
+  content.innerHTML = "";
+
+  const table = document.createElement("table"); // tabloya stil veriyoruz
   table.className = "table mt-0";
   table.id = "table";
   table.style.width = "100%";
-  table.style.backgroundColor="rgba(204, 204, 204, 0.186)"
-  table.style.boxShadow=" 6px 6px 20px rgba(100, 100, 100, 0.738)"
-  table.style.borderRadius="10px"
-  table.style.border="none"
-  table.style.marginTop="-30px"
+  table.style.backgroundColor = "rgba(204, 204, 204, 0.186)";
+  table.style.boxShadow = " 6px 6px 20px rgba(100, 100, 100, 0.738)";
+  table.style.borderRadius = "10px";
+  table.style.border = "none";
+  table.style.marginTop = "-30px";
 
- // tablo başlıklarını yazdırıyoruz
+  // tablo başlıklarını yazdırıyoruz
   table.innerHTML = `
     <thead style="border-top: none">
       <tr>
@@ -317,9 +306,9 @@ function kardesSehirler(){
   `;
 
   const tableContent = table.querySelector("#tableContent");
-      // jsondan çekilen verilerle birlikte içeriği yazdırıyoruz
-      cities.forEach(city => {
-        const tr = document.createElement("tr");
+  // jsondan çekilen verilerle birlikte içeriği yazdırıyoruz
+  cities.forEach((city) => {
+    const tr = document.createElement("tr");
     tr.innerHTML = `
       <td class="dot"><img alt="${city.name}" class="w-6 h-4 rounded-sm inline-block align-middle mr-2 img" style="width:40px; height:25px;" src="${city.imgSrc}"></img></td>
       <td class="name dot" title="${city.name}">${city.name}</td>
@@ -330,21 +319,21 @@ function kardesSehirler(){
       </td>
     `;
     tableContent.appendChild(tr);
-      });
+  });
 
-      content.appendChild(table);
-  } // kardeş şehirler .
+  content.appendChild(table);
+} // kardeş şehirler .
 
-  function editKardesSehirler(element){
-      const tr = element.closest("tr");
-      const name = tr.querySelector(".name").innerHTML
-      const city = tr.querySelector(".city").innerHTML
-      const country = tr.querySelector(".country").innerHTML
-      const img = tr.querySelector(".img").src
+function editKardesSehirler(element) {
+  const tr = element.closest("tr");
+  const name = tr.querySelector(".name").innerHTML;
+  const city = tr.querySelector(".city").innerHTML;
+  const country = tr.querySelector(".country").innerHTML;
+  const img = tr.querySelector(".img").src;
 
-      const content = document.getElementById("icerikler");
-      
-      content.innerHTML = `
+  const content = document.getElementById("icerikler");
+
+  content.innerHTML = `
                   <div class="d-flex justify-content-center">
                     <div
                     class="card"
@@ -409,93 +398,99 @@ function kardesSehirler(){
                   </div>
                     `;
   const flagMap = {
-  "Türkiye": "https://flagcdn.com/w320/tr.png",
-  "Portekiz": "https://flagcdn.com/w320/pt.png",
-  "Bosna Hersek": "https://flagcdn.com/w320/ba.png",
-  "Yunanistan": "https://flagcdn.com/w320/gr.png",
-  "Kırgızistan": "https://flagcdn.com/w320/kg.png",
-  "Bulgaristan": "https://flagcdn.com/w320/bg.png"
-};
+    Türkiye: "https://flagcdn.com/w320/tr.png",
+    Portekiz: "https://flagcdn.com/w320/pt.png",
+    "Bosna Hersek": "https://flagcdn.com/w320/ba.png",
+    Yunanistan: "https://flagcdn.com/w320/gr.png",
+    Kırgızistan: "https://flagcdn.com/w320/kg.png",
+    Bulgaristan: "https://flagcdn.com/w320/bg.png",
+  };
 
-const select = document.getElementById("select");
-const imgSrc = document.getElementById("imgSrcInput");
+  const select = document.getElementById("select");
+  const imgSrc = document.getElementById("imgSrcInput");
 
-for (let i = 0; i < select.options.length; i++) {
-  if (select.options[i].text === country) {
-    select.selectedIndex = i;
-    imgSrc.src = flagMap[country];  // seçili olan selectteki image mapdeki ile değiştiriliyor
-    break;
+  for (let i = 0; i < select.options.length; i++) {
+    if (select.options[i].text === country) {
+      select.selectedIndex = i;
+      imgSrc.src = flagMap[country]; // seçili olan selectteki image mapdeki ile değiştiriliyor
+      break;
+    }
   }
-}
 
-select.addEventListener("change", () => {   // select değişince imagei de değiştirir
-  const selectedCountry = select.value; //seçilen select etiketindeki değer keye atanıyor
-  imgSrc.src = flagMap[selectedCountry];  // atanan key ile mapdeki src alınıp image değişiyor
-});
+  select.addEventListener("change", () => {
+    // select değişince imagei de değiştirir
+    const selectedCountry = select.value; //seçilen select etiketindeki değer keye atanıyor
+    imgSrc.src = flagMap[selectedCountry]; // atanan key ile mapdeki src alınıp image değişiyor
+  });
 }
 
 //uye
 function uyeJson() {
   var anadoluBelBir = {
-        name: "ANADOLU MEDENİYETLER BELEDİYELER BİRLİĞİ",
-        link: "https://www.anadolubirlik.org.tr/",
-        imgSrc: "../assets/images/belediyeBirlikleriImg/anadoluMedeniyetleriBirligi.png",
-        };
+    name: "ANADOLU MEDENİYETLER BELEDİYELER BİRLİĞİ",
+    link: "https://www.anadolubirlik.org.tr/",
+    imgSrc:
+      "../assets/images/belediyeBirlikleriImg/anadoluMedeniyetleriBirligi.png",
+  };
   var birlesmisKent = {
-        name: "BİRLEŞMİŞ KENTLER VE YEREL YÖNETİMLER",
-        link: "https://uclg.org/",
-        imgSrc: "../assets/images/belediyeBirlikleriImg/BirlesmisKentlerBirligi.png",
-        };
+    name: "BİRLEŞMİŞ KENTLER VE YEREL YÖNETİMLER",
+    link: "https://uclg.org/",
+    imgSrc:
+      "../assets/images/belediyeBirlikleriImg/BirlesmisKentlerBirligi.png",
+  };
   var gebzeBelBir = {
-        name: "GEBZE BELEDİYELER BİRLİĞİ",
-        link: "https://www.gebzebelediyelerbirligi.org/",
-        imgSrc: "../assets/images/belediyeBirlikleriImg/gebzeBelediyelerBirligi.png",
-        };
+    name: "GEBZE BELEDİYELER BİRLİĞİ",
+    link: "https://www.gebzebelediyelerbirligi.org/",
+    imgSrc:
+      "../assets/images/belediyeBirlikleriImg/gebzeBelediyelerBirligi.png",
+  };
   var marmaraBelBir = {
-        name: "MARMARA BELEDİYELER BİRLİĞİ",
-        link: "https://www.marmara.gov.tr/",
-        imgSrc: "../assets/images/belediyeBirlikleriImg/marmaraBelediyelerBirligi.png",
-        };
+    name: "MARMARA BELEDİYELER BİRLİĞİ",
+    link: "https://www.marmara.gov.tr/",
+    imgSrc:
+      "../assets/images/belediyeBirlikleriImg/marmaraBelediyelerBirligi.png",
+  };
   var tarihiKentlerBir = {
-        name: "TARİHİ KENTLER BİRLİĞİ",
-        link: "https://www.tarihikentlerbirligi.org/",
-        imgSrc: "../assets/images/belediyeBirlikleriImg/tarihiKentlerBirligi.png",
-        };
+    name: "TARİHİ KENTLER BİRLİĞİ",
+    link: "https://www.tarihikentlerbirligi.org/",
+    imgSrc: "../assets/images/belediyeBirlikleriImg/tarihiKentlerBirligi.png",
+  };
   var turkDunyasiBelBir = {
-        name: "TÜRK DÜNYASI BELEDİYELER BİRLİĞİ",
-        link: "https://www.tdbb.org.tr/?lang=tr",
-        imgSrc: "../assets/images/belediyeBirlikleriImg/turkDunyasıBelediyelerBirligi.png",
-        };
+    name: "TÜRK DÜNYASI BELEDİYELER BİRLİĞİ",
+    link: "https://www.tdbb.org.tr/?lang=tr",
+    imgSrc:
+      "../assets/images/belediyeBirlikleriImg/turkDunyasıBelediyelerBirligi.png",
+  };
 
-        const uyeliks = [
-        anadoluBelBir,
-        birlesmisKent,
-        gebzeBelBir,
-        marmaraBelBir,
-        tarihiKentlerBir,
-        turkDunyasiBelBir
-      ];
+  const uyeliks = [
+    anadoluBelBir,
+    birlesmisKent,
+    gebzeBelBir,
+    marmaraBelBir,
+    tarihiKentlerBir,
+    turkDunyasiBelBir,
+  ];
 
-      return uyeliks;
+  return uyeliks;
 }
 
-function uyelikler(){
+function uyelikler() {
   const uyelikler = uyeJson();
 
   const content = document.getElementById("icerikler");
-  content.innerHTML = ""; 
-  
-  const table = document.createElement("table");  // tabloya stil veriyoruz
+  content.innerHTML = "";
+
+  const table = document.createElement("table"); // tabloya stil veriyoruz
   table.className = "table mt-0";
   table.id = "table";
   table.style.width = "100%";
-  table.style.backgroundColor="rgba(204, 204, 204, 0.186)"
-  table.style.boxShadow=" 6px 6px 20px rgba(100, 100, 100, 0.738)"
-  table.style.borderRadius="10px"
-  table.style.border="none"
-  table.style.marginTop="-30px"
+  table.style.backgroundColor = "rgba(204, 204, 204, 0.186)";
+  table.style.boxShadow = " 6px 6px 20px rgba(100, 100, 100, 0.738)";
+  table.style.borderRadius = "10px";
+  table.style.border = "none";
+  table.style.marginTop = "-30px";
 
- // tablo başlıklarını yazdırıyoruz
+  // tablo başlıklarını yazdırıyoruz
   table.innerHTML = `
     <thead style="border-top: none">
       <tr>
@@ -509,9 +504,9 @@ function uyelikler(){
   `;
 
   const tableContent = table.querySelector("#tableContent");
-      // jsondan çekilen verilerle birlikte içeriği yazdırıyoruz
-      uyelikler.forEach(uye => {
-        const tr = document.createElement("tr");
+  // jsondan çekilen verilerle birlikte içeriği yazdırıyoruz
+  uyelikler.forEach((uye) => {
+    const tr = document.createElement("tr");
     tr.innerHTML = ` 
       <td class="dot"><img alt="${uye.name}" class="w-6 h-4 rounded-sm inline-block align-middle mr-2 img" style="width:40px; height:25px;" src="${uye.imgSrc}"></img></td>
       <td class="name dot" title="${uye.name}">${uye.name}</td>
@@ -521,21 +516,20 @@ function uyelikler(){
       </td>
     `;
     tableContent.appendChild(tr);
-      });
-      content.appendChild(table);
-      
+  });
+  content.appendChild(table);
 }
 
-function editUyelikler(element){
-  console.log("saldır fenerbahçe oley")
-    const tr = element.closest("tr");
-      const name = tr.querySelector(".name").innerHTML
-      const link = tr.querySelector(".link").innerHTML
-      const img = tr.querySelector(".img").src
+function editUyelikler(element) {
+  console.log("saldır fenerbahçe oley");
+  const tr = element.closest("tr");
+  const name = tr.querySelector(".name").innerHTML;
+  const link = tr.querySelector(".link").innerHTML;
+  const img = tr.querySelector(".img").src;
 
-      const content = document.getElementById("icerikler");
-      
-      content.innerHTML = `
+  const content = document.getElementById("icerikler");
+
+  content.innerHTML = `
                   <div class="d-flex justify-content-center">
                     <div
                     class="card"
@@ -603,23 +597,21 @@ function editUyelikler(element){
                   </div>
                     `;
 
-            const input = document.querySelector(".resim-input");
-            const imgPrev = document.querySelector(".preview-img");
+  const input = document.querySelector(".resim-input");
+  const imgPrev = document.querySelector(".preview-img");
 
-            input.addEventListener("change", function () {
-              const dosya = this.files[0];
+  input.addEventListener("change", function () {
+    const dosya = this.files[0];
 
-              if (dosya) {
-                const okuyucu = new FileReader();
+    if (dosya) {
+      const okuyucu = new FileReader();
 
-                okuyucu.onload = function (e) {
-                  imgPrev.src = e.target.result;
-                  imgPrev.style.display = "block";
-                };
+      okuyucu.onload = function (e) {
+        imgPrev.src = e.target.result;
+        imgPrev.style.display = "block";
+      };
 
-                okuyucu.readAsDataURL(dosya);
-              }
-            });
+      okuyucu.readAsDataURL(dosya);
+    }
+  });
 }
-
-
