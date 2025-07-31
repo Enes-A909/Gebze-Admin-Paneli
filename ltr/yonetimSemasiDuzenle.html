@@ -526,7 +526,7 @@
             </style>
 
 
-                        <div class="container" style="height: auto">
+            <div class="container">
               <!-- Fotoğraf ve Buton -->
               <div class="photo-section">
                 <img
@@ -534,7 +534,7 @@
                   alt="Başkan"
                 />
                 <input type="file" class="file-input" accept="image/*" />
-              </div>
+            </div>
 
               <!-- İsim ve Müdürlükler -->
 
@@ -546,28 +546,10 @@
                     align-items: center;
                     gap: 10px;
                     margin-bottom: 10px;
+                    position: relative;
                   "
                 >
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="8"
-                      r="4"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M4 20c0-3.3137 3.134-6 7-6s7 2.6863 7 6"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                  </svg>
+
                   <input
                     type="text"
                     class="baskanİsmi-text"
@@ -586,48 +568,33 @@
                       padding: 0;
                     "
                   />
-                  <div class="dropdown" style="position: relative; margin-left: auto;">
-                    <button
-                      type="button"
-                      class="photo-btn dropdownBtn"
+                <div
+                  class="dropdown"
+                  style="position: absolute; right: 0; top: 0;"
+                >
+                  <button
+                    type="button"
+                    class="photo-btn dropdownBtn"
                       style="
                         padding: 6px 12px;
                         font-size: 14px;
                         display: flex;
                         align-items: center;
                         gap: 6px;
-                        background: #ececec;
-                        color: #e36f21;
-                        border: 1px solid #d0d0d0;
+                        background: #bdc2ec;
+                        color: #ffffff;
+                        border: none;
                       "
                     >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                        <path
-                          d="M8 10l4 4 4-4"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                      </svg>
-                      İşlemler
+                      <img src="../assets/images/secenekler.svg" alt="İşlemler" width="18" height="18" />
+                      
                     </button>
                     <div
                       class="dropdown-content"
                       style="
                         display: none;
                         position: absolute;
-                        left: 0;
+                        right: 0;
                         top: 110%;
                         background: #fff;
                         border: 1px solid #ddd;
@@ -636,6 +603,7 @@
                         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
                         z-index: 10;
                         text-align: left;
+                      
                       "
                     >
                       <a
@@ -807,7 +775,7 @@
               </div>
             </div>
 
-            <div class="container">
+         <div class="container">
               <!-- Fotoğraf ve Buton -->
               <div class="photo-section">
                 <img
@@ -827,28 +795,10 @@
                     align-items: center;
                     gap: 10px;
                     margin-bottom: 10px;
+                    position: relative;
                   "
                 >
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="8"
-                      r="4"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M4 20c0-3.3137 3.134-6 7-6s7 2.6863 7 6"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                  </svg>
+
                   <input
                     type="text"
                     class="baskanİsmi-text"
@@ -867,7 +817,10 @@
                       padding: 0;
                     "
                   />
-                  <div class="dropdown" style="position: relative; margin-left: auto;">
+                 <div
+                    class="dropdown"
+                    style="position: absolute; right: 0; top: 0"
+                  >
                     <button
                       type="button"
                       class="photo-btn dropdownBtn"
@@ -877,38 +830,20 @@
                         display: flex;
                         align-items: center;
                         gap: 6px;
-                        background: #ececec;
-                        color: #e36f21;
-                        border: 1px solid #d0d0d0;
+                        background: #bdc2ec;
+                        color: #ffffff;
+                        border: none;
                       "
                     >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                        <path
-                          d="M8 10l4 4 4-4"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                      </svg>
-                      İşlemler
+                      <img src="../assets/images/secenekler.svg" alt="İşlemler" width="18" height="18" />
+                      
                     </button>
                     <div
                       class="dropdown-content"
                       style="
                         display: none;
                         position: absolute;
-                        left: 0;
+                        right: 0;
                         top: 110%;
                         background: #fff;
                         border: 1px solid #ddd;
@@ -1034,14 +969,17 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="subtitle" style="font-size: 1.2em">
                   Başkan Yardımcısı
                 </div>
+
+
                 <div class="divider"></div>
                 <div class="mudurlukler-title">İlgili Müdürlükler</div>
                 <div class="mudurlukler">
-                  <div class="mudurluk-card">
-                    <input
+                    <div class="mudurluk-card">
+                      <input
                       type="text"
                       class="editable-text"
                       placeholder="Müdürlük Adı"
@@ -1053,7 +991,7 @@
                       placeholder="Müdür Adı"
                       value="Mecit KESKİNOĞLU"
                     />
-                  </div>
+                   </div>
                   <div class="mudurluk-card">
                     <input
                       type="text"
@@ -1124,26 +1062,7 @@
                     position: relative;
                   "
                 >
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="8"
-                      r="4"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M4 20c0-3.3137 3.134-6 7-6s7 2.6863 7 6"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                  </svg>
+
                   <input
                     type="text"
                     class="baskanİsmi-text"
@@ -1175,31 +1094,13 @@
                         display: flex;
                         align-items: center;
                         gap: 6px;
-                        background: #ececec;
-                        color: #e36f21;
-                        border: 1px solid #d0d0d0;
+                        background: #bdc2ec;
+                        color: #ffffff;
+                        border: none;
                       "
                     >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                        <path
-                          d="M8 10l4 4 4-4"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                      </svg>
-                      İşlemler
+                      <img src="../assets/images/secenekler.svg" alt="İşlemler" width="18" height="18" />
+                      
                     </button>
                     <div
                       class="dropdown-content"
@@ -1475,32 +1376,13 @@
                         display: flex;
                         align-items: center;
                         gap: 6px;
-                        background: #ececec;
-                        color: #e36f21;
-                        border: 1px solid #d0d0d0;
+                        background: #bdc2ec;
+                        color: #ffffff;
+                        border: none;
                       "
                     >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        style="margin-right: 4px"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                        <path
-                          d="M8 10l4 4 4-4"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                      </svg>
-                      İşlemler
+                      <img src="../assets/images/secenekler.svg" alt="İşlemler" width="18" height="18" />
+                      
                     </button>
                     <div
                       class="dropdown-content"
@@ -1752,7 +1634,7 @@
                     class="dropdown"
                     style="position: absolute; right: 0; top: 0"
                   >
-                    <button
+                     <button
                       type="button"
                       class="photo-btn dropdownBtn"
                       style="
@@ -1761,32 +1643,13 @@
                         display: flex;
                         align-items: center;
                         gap: 6px;
-                        background: #ececec;
-                        color: #e36f21;
-                        border: 1px solid #d0d0d0;
+                        background: #bdc2ec;
+                        color: #ffffff;
+                        border: none;
                       "
                     >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        style="margin-right: 4px"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                        <path
-                          d="M8 10l4 4 4-4"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                      </svg>
-                      İşlemler
+                      <img src="../assets/images/secenekler.svg" alt="İşlemler" width="18" height="18" />
+                      
                     </button>
                     <div
                       class="dropdown-content"
@@ -2023,26 +1886,7 @@
                     position: relative;
                   "
                 >
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="8"
-                      r="4"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M4 20c0-3.3137 3.134-6 7-6s7 2.6863 7 6"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                  </svg>
+
                   <input
                     type="text"
                     class="baskanİsmi-text"
@@ -2074,32 +1918,13 @@
                         display: flex;
                         align-items: center;
                         gap: 6px;
-                        background: #ececec;
-                        color: #e36f21;
-                        border: 1px solid #d0d0d0;
+                        background: #bdc2ec;
+                        color: #ffffff;
+                        border: none;
                       "
                     >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        style="margin-right: 4px"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                        <path
-                          d="M8 10l4 4 4-4"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                      </svg>
-                      İşlemler
+                      <img src="../assets/images/secenekler.svg" alt="İşlemler" width="18" height="18" />
+                      
                     </button>
                     <div
                       class="dropdown-content"
@@ -2323,26 +2148,7 @@
                     position: relative;
                   "
                 >
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="8"
-                      r="4"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M4 20c0-3.3137 3.134-6 7-6s7 2.6863 7 6"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                  </svg>
+
                   <input
                     type="text"
                     class="baskanİsmi-text"
@@ -2365,7 +2171,7 @@
                     class="dropdown"
                     style="position: absolute; right: 0; top: 0"
                   >
-                    <button
+                     <button
                       type="button"
                       class="photo-btn dropdownBtn"
                       style="
@@ -2374,32 +2180,13 @@
                         display: flex;
                         align-items: center;
                         gap: 6px;
-                        background: #ececec;
-                        color: #e36f21;
-                        border: 1px solid #d0d0d0;
+                        background: #bdc2ec;
+                        color: #ffffff;
+                        border: none;
                       "
                     >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        style="margin-right: 4px"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                        <path
-                          d="M8 10l4 4 4-4"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                      </svg>
-                      İşlemler
+                      <img src="../assets/images/secenekler.svg" alt="İşlemler" width="18" height="18" />
+                      
                     </button>
                     <div
                       class="dropdown-content"
@@ -2608,26 +2395,7 @@
                     position: relative;
                   "
                 >
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="8"
-                      r="4"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M4 20c0-3.3137 3.134-6 7-6s7 2.6863 7 6"
-                      stroke="#2041c7"
-                      stroke-width="2"
-                    />
-                  </svg>
+
                   <input
                     type="text"
                     class="baskanİsmi-text"
@@ -2650,7 +2418,7 @@
                     class="dropdown"
                     style="position: absolute; right: 0; top: 0"
                   >
-                    <button
+                     <button
                       type="button"
                       class="photo-btn dropdownBtn"
                       style="
@@ -2659,32 +2427,13 @@
                         display: flex;
                         align-items: center;
                         gap: 6px;
-                        background: #ececec;
-                        color: #e36f21;
-                        border: 1px solid #d0d0d0;
+                        background: #bdc2ec;
+                        color: #ffffff;
+                        border: none;
                       "
                     >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        style="margin-right: 4px"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                        <path
-                          d="M8 10l4 4 4-4"
-                          stroke="#2041c7"
-                          stroke-width="2"
-                        />
-                      </svg>
-                      İşlemler
+                      <img src="../assets/images/secenekler.svg" alt="İşlemler" width="18" height="18" />
+                      
                     </button>
                     <div
                       class="dropdown-content"
