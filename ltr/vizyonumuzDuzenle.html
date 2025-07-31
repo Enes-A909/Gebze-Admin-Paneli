@@ -2,42 +2,7 @@
 <html lang="tr">
 
 <head>
-  <style>
-    .cancelButton:focus{
-      outline: none !important;
-      border: none !important;
-    }
-    .cancelButton:hover{
-      transform: scale(1.02);
-         
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .saveButton:focus{
-      outline: none !important;
-      border: none !important;
-    }
-    .saveButton:hover{
-      transform: scale(1.02);
-         
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .logo-img {
-      height: 200px !important;
-      /* Boyutu küçültür */
-      object-fit: contain;
-      display: block;
-    }
-
-    .index-img {
-      height: 70px !important;
-      /* Boyutu küçültür */
-      object-fit: contain;
-      display: block;
-      margin-right: 100px;
-    }
-  </style>
+  
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,6 +43,7 @@
   <link id="color" rel="stylesheet" href="../assets/css/light-1.css" media="screen">
   <!-- Responsive css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+  <link rel="stylesheet" type="text/css" href="../ltr/CSS/vizyonDuzenle.css">
 
 </head>
 
@@ -373,21 +339,7 @@
         <script src="../assets/js/script.js"></script>
         <!-- Bootstrap JS + Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-        <script>
-        function validateAndSaveAll() {
-          var isim = document.getElementById('isim').value.trim();
-          var uyari = document.getElementById('isimUyari');
-          if (!isim) {
-            uyari.style.display = 'block';
-            document.getElementById('isim').focus();
-            return false;
-          } else {
-            uyari.style.display = 'none';
-            saveAll();
-          }
-        }
-        </script>
+        <script src="../ltr/JavaScript/vizyonDuzenle.js"></script>
 </body>
 
 </html>

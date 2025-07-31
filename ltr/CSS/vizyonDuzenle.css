@@ -1,0 +1,34 @@
+.cancelButton:focus {
+  outline: none !important;
+  border: none !important;
+}
+.cancelButton:hover {
+  transform: scale(1.02);
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.saveButton:focus {
+  outline: none !important;
+  border: none !important;
+}
+.saveButton:hover {
+  transform: scale(1.02);
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.logo-img {
+  height: 200px !important;
+  /* Boyutu küçültür */
+  object-fit: contain;
+  display: block;
+}
+
+.index-img {
+  height: 70px !important;
+  /* Boyutu küçültür */
+  object-fit: contain;
+  display: block;
+  margin-right: 100px;
+}
