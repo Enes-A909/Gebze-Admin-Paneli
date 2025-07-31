@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
   <head>
-    <style>
-      .logo-img {
-        height: 200px !important;
-        /* Boyutu küçültür */
-        object-fit: contain;
-        display: block;
-      }
-
-      .index-img {
-        height: 70px !important;
-        /* Boyutu küçültür */
-        object-fit: contain;
-        display: block;
-        margin-right: 100px;
-      }
-    </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -90,6 +74,11 @@
       rel="stylesheet"
       type="text/css"
       href="../assets/css/responsive.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../ltr/CSS/belediyeMeclisiDuzenle.css"
     />
   </head>
 
@@ -383,102 +372,6 @@
 
           <!-- İçeriklerin Yükleneceği Alan -->
           <div id="icerikler">
-            <style>
-              h1 {
-                color: #333;
-                margin-bottom: 30px;
-              }
-
-              .card-container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: left;
-                gap: 20px;
-                max-width: 1200px;
-                margin-left: 100px;
-              }
-
-              .card {
-                background-color: #fff;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-                width: 250px;
-                text-align: center;
-              }
-              .ozel-kart {
-                width: 360px;
-                height: 460px;
-                margin-left: auto;
-                margin-right: auto;
-                background-color: #fef4e8; /* açık vurgu rengi */
-
-                order: -1; /* Başkan en üste gelsin istiyorsan */
-              }
-
-              .card img {
-                width: 100%;
-                height: 250px;
-                object-fit: cover;
-                border-radius: 8px;
-                margin-bottom: 10px;
-              }
-
-              .card h2 {
-                font-size: 1.2em;
-                color: #333;
-                margin-bottom: 10px;
-              }
-
-              .card input {
-                width: 100%;
-                padding: 8px;
-                margin: 5px 0;
-                border-radius: 5px;
-                border: 1px solid #ccc;
-                font-size: 14px;
-              }
-
-              .card button {
-                margin: 5px;
-                padding: 8px 15px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 14px;
-              }
-
-              .card p {
-                font-size: 0.95em;
-                font-weight: 300;
-                color: #666; /* Daha gri ve ince yazı */
-                margin: 0 0 10px;
-              }
-
-              .photo-btn {
-                background-color: #fcbd66;
-                color: white;
-              }
-
-              .save-btn {
-                background-color: #6f42c1;
-                color: white;
-              }
-
-              .cancel-btn {
-                background-color: #6c757d;
-                color: white;
-              }
-
-              .card button:hover {
-                opacity: 0.9;
-              }
-
-              .file-input {
-                display: none;
-              }
-            </style>
-
             <!-- Belediye Başkanı -->
             <div class="card-container">
               <div class="card ozel-kart">
@@ -1001,84 +894,6 @@
                 />
                 <button class="photo-btn">Fotoğraf Değiştir</button>
               </div>
-
-              <script>
-                document.querySelectorAll(".card").forEach((card, idx) => {
-                  const photoBtn = card.querySelector(".photo-btn");
-                  const fileInput = card.querySelector(".file-input");
-                  const img = card.querySelector("img");
-                  const nameInput = card.querySelector("input[type='text']");
-                  const emailInput = card.querySelector("input[type='email']");
-                  const telInput = card.querySelector("input[type='tel']");
-                  const saveBtn = card.querySelector(".save-btn");
-                  const cancelBtn = card.querySelector(".cancel-btn");
-                  const cardKey = `meclis_card_${idx}`;
-
-                  // Fotoğraf Değiştir
-                  photoBtn.addEventListener("click", () => fileInput.click());
-                  fileInput.addEventListener("change", (event) => {
-                    const file = event.target.files[0];
-                    if (file) {
-                      const reader = new FileReader();
-                      reader.onload = (e) => {
-                        img.src = e.target.result;
-                      };
-                      reader.readAsDataURL(file);
-                    }
-                  });
-
-                  // Kaydet
-                  saveBtn.addEventListener("click", () => {
-                    if (!nameInput.value.trim()) {
-                      alert("İsim alanı boş bırakılamaz!");
-                      nameInput.focus();
-                      return;
-                    }
-                    if (emailInput && !emailInput.value.trim()) {
-                      alert("E-posta alanı boş bırakılamaz!");
-                      emailInput.focus();
-                      return;
-                    }
-                    if (telInput && !telInput.value.trim()) {
-                      alert("Telefon alanı boş bırakılamaz!");
-                      telInput.focus();
-                      return;
-                    }
-                    const data = {
-                      name: nameInput ? nameInput.value : "",
-                      email: emailInput ? emailInput.value : "",
-                      tel: telInput ? telInput.value : "",
-                      img: img ? img.src : "",
-                    };
-                    localStorage.setItem(cardKey, JSON.stringify(data));
-                    alert((data.name || "Meclis üyesi") + " kaydedildi!");
-                  });
-
-                  // İptal
-                  cancelBtn.addEventListener("click", () => {
-                    const dataStr = localStorage.getItem(cardKey);
-                    if (dataStr) {
-                      const data = JSON.parse(dataStr);
-                      if (nameInput) nameInput.value = data.name || "";
-                      if (emailInput) emailInput.value = data.email || "";
-                      if (telInput) telInput.value = data.tel || "";
-                      if (img && data.img) img.src = data.img;
-                    } else {
-                      window.location.reload();
-                    }
-                  });
-
-                  // Sayfa açıldığında localStorage'dan yükle
-                  const dataStr = localStorage.getItem(cardKey);
-                  if (dataStr) {
-                    const data = JSON.parse(dataStr);
-                    if (nameInput) nameInput.value = data.name || "";
-                    if (emailInput) emailInput.value = data.email || "";
-                    if (telInput) telInput.value = data.tel || "";
-                    if (img && data.img) img.src = data.img;
-                  }
-                });
-              </script>
             </div>
           </div>
         </div>
@@ -1108,7 +923,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-        <!-- Plugin used-->
+        <!-- JavaScript kodları aşağıdaki uzantıda -->
+        <script src="../ltr/JavaScript/belediyeMeclisiDuzenle.js"></script>
       </div>
     </div>
   </body>
