@@ -226,63 +226,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eski Belediye Başkanlarımız</title>
-    <style>
-      
-      h1 {
-        color: #333;
-        font-weight: 500;
-        margin-bottom: 30px;
-      }
-
-      .card-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .card {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 15px;
-        text-align: center;
-      }
-
-      .card img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
-      }
-
-      .card h2 {
-        font-size: 1em;
-        font-weight: 400;
-        color: #333;
-        margin: 5px 0 10px;
-      }
-
-      .photo-btn {
-        background-color: #6868cc;
-        color: white;
-        padding: 8px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-      }
-
-      .photo-btn:hover {
-        opacity: 0.9;
-      }
-
-      .file-input {
-        display: none;
-      }
-    </style>
+   
   </head>
   <body>
    
@@ -624,26 +568,7 @@
       </div>
     </div>
 
-    <script>
-      document.querySelectorAll(".card").forEach((card) => {
-        const photoBtn = card.querySelector(".photo-btn");
-        const fileInput = card.querySelector(".file-input");
-        const img = card.querySelector("img");
-
-        photoBtn.addEventListener("click", () => fileInput.click());
-
-        fileInput.addEventListener("change", (event) => {
-          const file = event.target.files[0];
-          if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-          }
-        });
-      });
-    </script>
+   
   </body>
 </html>
       </div>
@@ -673,7 +598,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- <script src="../assets/js/theme-customizer/customizer.js"></script> -->
-        <!-- Plugin used-->
+        
+        <script src="../ltr/JavaScript/eskiBaskanlarDuzenle.js"></script>
 
 
 
