@@ -461,7 +461,7 @@ function editTarihiYerler(photoNum) {
                           
                             <label
                               id="add"
-                              class="btn btn-primary w-10 p-1"
+                              class="addLocButton"
                               style="float: right; margin-left: 1%"
                               >Lokasyon Ekle</label
                             >
