@@ -154,19 +154,23 @@
 }
 
 .dropdownBtnBio {
+  height: 40px;
+  
   padding: 6px;
   background: #ececec;
-  color: #ea5b23;
+  overflow: hidden;
   border: 1px solid #d0d0d0;
   border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center
+
 }
 
-.dropdownBtnBio svg {
-  width: 24px !important;
+.dropdownBtnBio img {
+   width: 24px !important;
   height: 24px !important;
+  margin-top: 15px;
 }
 
 .dropdownCancel {
