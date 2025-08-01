@@ -243,29 +243,12 @@
                 <img
                   id="vizyonImage"
                   src="../assets/images/kurumsal gebze/vizyonumus.jpg"
-                  style="object-fit: cover; border-radius: 8px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto; text-align: center;width: 690px; height: auto;"
+                  style="object-fit: cover; border-radius: 8px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto; text-align: left;width: 690px; height: auto;"
                 />
 
                 </div>
-                <br />
-                <button
-                  onclick="document.getElementById('baskanUpload').click()"
-                  style="margin-left: auto; margin-right: auto; width:150px; height: 50px; background: #27ae60; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;"
-                >
-                  Fotoğraf Seç
-                </button>
-                <input
-                  type="file"
-                  id="baskanUpload"
-                  accept="image/*"
-                  style="display: none"
-                  onchange="previewImage(event, 'baskan')"
-                />
-                <div id="baskanButtons" style="margin-top: 10px; display: none">
-                  <button onclick="savePhoto('baskan')" style="background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-right: 5px;">Kaydet</button>
-                  <button onclick="cancelChange('baskan')" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px;">İptal</button>
-                
-              </div>
+     
+              
 
               <!-- Vizyonumuz -->
               <div style="margin-bottom: 20px;">
@@ -273,17 +256,29 @@
                 <textarea
                   id="biyografi"
                   rows="8"
-                  style="width: 100%; max-width: 700px; height: 350px ;margin: 0 auto; display: block; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical;"
+                  style="width: 100%; max-width: 1100px; height: 220px ;margin: 0 auto; display: block; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-top: 20px;"
                 >Gebze Belediyesi olarak, kentimizin yaşam kalitesini artırmak, sürdürülebilir kalkınmayı sağlamak ve vatandaşlarımızın ihtiyaçlarına duyarlı, adil ve etkin hizmetler sunmak en büyük sorumluluklarımız arasındadır. Altyapı ve çevre düzenlemelerinden, sosyal hizmetlere, kültürel ve sanatsal faaliyetlerden, ekonomik kalkınmaya kadar geniş bir yelpazede hizmet sunarak, şehrimizin her alanında gelişimi destekliyoruz. Ulaşım altyapısını iyileştirmek, yeşil alanları artırmak, çevre temizliği ve atık yönetimi gibi konularda çalışmalar yürütürken, sosyal yardımlarla dezavantajlı gruplara destek sağlıyoruz. Eğitim, sağlık ve spor alanlarında projeler geliştirerek her yaştan vatandaşımıza yönelik hizmetler sunuyor, kültürel etkinliklerle şehrimizin tarihi ve sanatsal değerlerini yaşatıyoruz. Yerel ekonomiyi güçlendirmek adına girişimcilere destek verirken, akıllı şehir teknolojileriyle belediyecilik hizmetlerini dijitalleştirerek halkımıza daha hızlı ve şeffaf çözümler sunuyoruz. Katılımcı yönetim anlayışımızla, halkın beklentilerini ön planda tutarak karar alma süreçlerine dahil ediyor ve kaynaklarımızı etkin kullanarak sürdürülebilir bir belediyecilik anlayışı benimsiyoruz. Tüm bu çalışmalarımızla Gebze'yi hem bugünün hem de geleceğin modern, yaşanabilir ve güçlü bir kenti haline getirmek için durmaksızın çalışıyoruz.
 
 </textarea>
               </div>
               <!-- Butonlar -->
-              <div style="text-align: center; margin-bottom: 30px;">
-                <button  class="saveButton" onclick="validateAndSaveAll()" style="background: #f7971e; color: white; border: none; padding: 10px 20px; border-radius: 4px; margin-right: 10px; cursor: pointer;">Kaydet</button>
-                <button class="cancelButton" onclick="cancelAll()" style="background: #666666; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">İptal</button>
-               
+            <!-- DROPDOWN BAŞLANGIÇ -->
+            <div style="position: relative; display: inline-block;">
+              <!-- Açma Butonu -->
+              <button onclick="togglePhotoDropdown()" class="dropdown-toggle">
+                Düzenle
+              </button>
+
+              <!-- Dropdown Menüsü -->
+              <div id="photoDropdown" class="dropdown-content">
+                <button onclick="document.getElementById('photoUpload').click()"> Fotoğraf Değiştir</button>
+                <input type="file" id="photoUpload" accept="image/*" style="display: none" onchange="previewImage(event)" />
+
+                <button onclick="savePhoto()" style="background-color: #73e277; color: rgb(0, 0, 0);"> Kaydet</button>
+                <button onclick="cancelChange()" style="background-color: #d5776c; color: rgb(0, 0, 0);"> İptal</button>
               </div>
+            </div>
+
               <!-- İkon (en altta sağda) -->
               <div style="position: absolute;
                bottom: 30px;
