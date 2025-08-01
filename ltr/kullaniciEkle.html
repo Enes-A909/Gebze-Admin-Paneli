@@ -298,15 +298,6 @@
                         </div>
 
                         <div class="form-group-container">
-                            <label for="">Kullanıcı Durumu</label>
-                            <select class="form-select" aria-label="Default select example" id="userStatusSelect">
-                                <option selected>Kullanıcı Durumu</option>
-                                <option value="1">Aktif</option>
-                                <option value="2">Pasif</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group-container">
                             <label for="newPassword">Yeni Şifre</label>
                             <div class="input-with-icon">
                                 <input type="password" id="newPassword" placeholder="Yeni şifrenizi girin">
@@ -353,34 +344,90 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
                 <!-- Proje Kodları -->
-
                 <script>
                     function kaydetKullanici() {
-                        const ad = document.getElementById("fullName").value;
-                        const email = document.getElementById("email").value;
-                        const tel = document.getElementById("phone").value;
-                        const durum = document.getElementById("userStatusSelect").value; // 1: Aktif, 2: Pasif
+                        const fullName = document.getElementById("fullName").value.trim();
+                        const tckn = document.getElementById("tckn").value.trim();
+                        const email = document.getElementById("email").value.trim();
+                        const phone = document.getElementById("phone").value.trim();
+                        const newPassword = document.getElementById("newPassword").value;
+                        const confirmNewPassword = document.getElementById("confirmNewPassword").value;
+
+                        // Basit doğrulama
+                        if (!fullName || !tckn || !email || !phone || !newPassword || !confirmNewPassword) {
+                            Swal.fire("Hata", "Lütfen tüm alanları doldurun.", "error");
+                            return;
+                        }
+                        if (newPassword !== confirmNewPassword) {
+                            Swal.fire("Hata", "Şifreler uyuşmuyor.", "error");
+                            return;
+                        }
+
+                        // Profil fotoğrafı base64 olarak alınır (varsa)
+                        let profilePhoto = document.getElementById("profilePhoto").src;
+                        if (profilePhoto.includes("user.png")) profilePhoto = ""; // default ise boş bırak
 
                         const kullanici = {
-                            ad,
+                            fullName,
+                            tckn,
                             email,
-                            tel,
-                            durum // 1 veya 2 olarak saklıyoruz
+                            phone,
+                            newPassword,
+                            profilePhoto
                         };
 
-                        // Basit bir dizi şeklinde saklıyoruz
-                        let kullanicilar = JSON.parse(localStorage.getItem("kullanicilar") || "[]");
-                        kullanicilar.push(kullanici);
-                        localStorage.setItem("kullanicilar", JSON.stringify(kullanicilar));
+                        // URL'de index parametresi varsa düzenleme modu
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const index = urlParams.get('index');
 
-                        alert("Kullanıcı kaydedildi!");
-                        // İsteğe bağlı yönlendirme
-                        window.location.href = "kullanicilar.html";
-                    }
-                </script>
+                        if (index) {
+                            // Düzenleme modu - localStorage'dan kullanıcıları al ve güncelle
+                            let kullanicilar = JSON.parse(localStorage.getItem("kullanicilar")) || [];
+                            if (kullanicilar[index]) {
+                                kullanicilar[index] = kullanici;
+                                localStorage.setItem("kullanicilar", JSON.stringify(kullanicilar));
+                                Swal.fire("Başarılı", "Kullanıcı güncellendi.", "success").then(() => {
+                                    window.location.href = "kullanicilar.html";
+                                });
+                            } else {
+                                Swal.fire("Hata", "Kullanıcı bulunamadı.", "error");
+                            }
+                        } else {
+                            // Yeni kullanıcı ekleme modu
+                            let kullanicilar = JSON.parse(localStorage.getItem("kullanicilar")) || [];
+                            kullanicilar.push(kullanici);
+                            localStorage.setItem("kullanicilar", JSON.stringify(kullanicilar));
+                            Swal.fire("Başarılı", "Kullanıcı kaydedildi.", "success").then(() => {
+                                window.location.href = "kullanicilar.html";
+                            });
+                        }
+                    }</script>
+
 
                 <script>
+                    // URL parametrelerini oku ve form alanlarını doldur
+                    window.onload = function () {
+                        const urlParams = new URLSearchParams(window.location.search);
 
+                        // Eğer URL'de parametreler varsa (düzenleme modu)
+                        if (urlParams.has('fullName')) {
+                            const fullName = urlParams.get('fullName');
+                            const email = urlParams.get('email');
+                            const phone = urlParams.get('phone');
+
+                            // Form alanlarını doldur
+                            if (fullName) document.getElementById('fullName').value = fullName;
+                            if (email) document.getElementById('email').value = email;
+                            if (phone) document.getElementById('phone').value = phone;
+
+
+                            // Başlığı güncelle
+                            document.querySelector('h2').textContent = 'Kullanıcı Düzenle';
+
+                            // Kaydet butonunu güncelle
+                            document.getElementById('save-button').textContent = 'Güncelle';
+                        }
+                    };
                     document.addEventListener('DOMContentLoaded', () => {
                         // Profil Fotoğrafı Yükleme İşlevi
                         const profilePhotoWrapper = document.getElementById('profilePhotoWrapper');
@@ -435,45 +482,6 @@
                                 phoneError.style.display = 'none';
                             }
                         });
-
-
-
-                        // document.getElementById('save-button').addEventListener('click', kaydet);
-
-                        // function kaydet() {
-
-
-                        //     const fullName = document.getElementById("fullName").value;
-                        //     const email = document.getElementById("email").value;
-                        //     const phone = document.getElementById("phone").value;
-
-                        //     const params = new URLSearchParams(window.location.search);
-                        //     const index = params.get("index"); // varsa düzenleme modu
-
-                        //     const kullanici = { fullName, email, phone };
-
-                        //     let veriler = JSON.parse(localStorage.getItem("kullanicilar")) || [];
-
-                        //     if (index !== null) {
-                        //         // Düzenleme modunda: mevcut veriyi güncelle
-                        //         veriler[index - 1] = kullanici;
-                        //     } else {
-                        //         // Yeni kayıt
-                        //         veriler.push(kullanici);
-                        //     }
-
-                        //     localStorage.setItem("kullanicilar", JSON.stringify(veriler));
-                        //     window.location.href = "kullanicilar.html"; // geri dön
-                        //     if (islem === "ekle") {
-                        //         // tabloya yeni satır ekle
-                        //         tabloyaSatirEkle(fullName, email, phone);
-                        //     } else if (islem === "guncelle" && index !== null) {
-                        //         // belirtilen satırı güncelle
-                        //         tabloSatirGuncelle(index, fullName, email, phone);
-                        //     }
-
-                        // }
-
 
                         document.getElementById('cancel-button').addEventListener('click', geriDon);
                         function geriDon() {

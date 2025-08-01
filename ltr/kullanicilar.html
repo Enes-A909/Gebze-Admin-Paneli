@@ -920,6 +920,10 @@
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                           Yetkilendir
                         </button>
+                        <button onclick="durumDegistir(this)">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="status" width="10%" height="10%" />
+                          Durumu Değiştir
+                        </button>
                         <button onclick="remove(this)">
                           <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                             height="10%" />
@@ -960,6 +964,10 @@
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                           Yetkilendir
                         </button>
+                        <button onclick="durumDegistir(this)">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="status" width="10%" height="10%" />
+                          Durumu Değiştir
+                        </button>
                         <button onclick="remove(this)">
                           <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
                             height="10%" />
@@ -977,7 +985,9 @@
                     <div class="profile-container">
                       <img src="../assets/images/user/user.png" alt="Kullanıcı" class="rounded-circle" width="40"
                         height="40" />
-                      <div class="active-indicator" id="activeIndicator" title="Durum"></div>
+                      <div id="nokta">
+                        <div class="active-indicator pasif" id="activeIndicator" title="Çevrimdışı"></div>
+                      </div>
                     </div>
                   </td>
                   <td>Zeynep Karaca</td>
@@ -998,6 +1008,10 @@
                         <button onclick="yetkilendir()">
                           <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
                           Yetkilendir
+                        </button>
+                        <button onclick="durumDegistir(this)">
+                          <img src="../assets/images/dropdown_svg/edit.svg" alt="status" width="10%" height="10%" />
+                          Durumu Değiştir
                         </button>
                         <button onclick="remove(this)">
                           <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%"
@@ -1034,47 +1048,7 @@
         <!-- Bootstrap JS + Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script>
-          window.onload = function () {
-            const kullanicilar = JSON.parse(localStorage.getItem("kullanicilar") || "[]");
-            const tbody = document.getElementById("kullaniciTablosu");
 
-            kullanicilar.forEach((kullanici, index) => {
-              const durumClass = kullanici.durum == "1" ? "aktif" : "pasif";
-
-              const row = `
-        <tr>
-          <th scope="row">
-            <input type="checkbox" class="checkbox-item" style="margin-top: 10px;" />
-          </th>
-          <td>
-            <div class="profile-container">
-              <img src="../assets/images/user/user.png" alt="Kullanıcı" class="rounded-circle" width="40" height="40" />
-              <div class="active-indicator ${durumClass}" title="Durum"></div>
-            </div>
-          </td>
-          <td>${kullanici.ad}</td>
-          <td>${kullanici.email}</td>
-          <td>${kullanici.tel}</td>
-          <td>18.03.2024</td>
-          <td>10.07.2025 [09:00]</td>
-          <td>
-            <div class="dropdown-container">
-              <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
-              <div class="dropdown-menu">
-                <button onclick="duzenle(this)">Düzenle</button>
-                <button onclick="yetkilendir()">Yetkilendir</button>
-                <button onclick="remove(this)">Sil</button>
-              </div>
-            </div>
-          </td>
-        </tr>
-      `;
-
-              tbody.innerHTML += row;
-            });
-          }
-        </script>
 
 
         <script>
@@ -1110,7 +1084,13 @@
             const email = row.children[3].textContent.trim();
             const phone = row.children[4].textContent.trim();
 
-            const url = `kullaniciEkle.html?fullName=${encodeURIComponent(adSoyad)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&index=${rowIndex}`;
+            // Kullanıcı durumunu al
+            const profileContainer = row.querySelector(".profile-container");
+            const activeIndicator = profileContainer.querySelector(".active-indicator");
+            const isAktif = activeIndicator.classList.contains("aktif");
+            const userStatus = isAktif ? "aktif" : "pasif";
+
+            const url = `kullaniciEkle.html?fullName=${encodeURIComponent(adSoyad)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&userStatus=${encodeURIComponent(userStatus)}&index=${rowIndex}`;
 
             window.location.href = url;
           }
@@ -1143,6 +1123,48 @@
 
           function yetkilendir() {
             alert("Yetkilendirme tıklandı");
+          }
+
+          function durumDegistir(btn) {
+            const row = btn.closest("tr");
+            const profileContainer = row.querySelector(".profile-container");
+            const activeIndicator = profileContainer.querySelector(".active-indicator");
+
+            // Mevcut durumu kontrol et
+            const isAktif = activeIndicator.classList.contains("aktif");
+
+            if (isAktif) {
+              // Aktif ise pasif yap
+              activeIndicator.classList.remove("aktif");
+              activeIndicator.classList.add("pasif");
+              activeIndicator.title = "Çevrimdışı";
+              activeIndicator.style.backgroundColor = "red";
+            } else {
+              // Pasif ise aktif yap
+              activeIndicator.classList.remove("pasif");
+              activeIndicator.classList.add("aktif");
+              activeIndicator.title = "Şu anda çevrimiçi";
+              activeIndicator.style.backgroundColor = "green";
+            }
+
+            // Dropdown menüsünü kapat
+            const dropdownMenu = btn.closest(".dropdown-menu");
+            dropdownMenu.style.display = "none";
+
+            // Kullanıcıya bilgi ver
+            const kullaniciAdi = row.querySelector("td:nth-child(3)").textContent.trim();
+            const yeniDurum = isAktif ? "pasif" : "aktif";
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Durum Değiştirildi',
+              text: `${kullaniciAdi} kullanıcısının durumu ${yeniDurum} olarak güncellendi.`,
+              confirmButtonText: 'Tamam',
+              customClass: {
+                popup: 'rounded-3',
+                confirmButton: 'btn btn-success'
+              }
+            });
           }
 
           function remove(btn) {
@@ -1178,7 +1200,10 @@
                 <input type="checkbox" class="checkbox-item" style="margin-top: 10px;" />
             </th>
             <td>
-                <img src="${kullanici.profilePhoto}" alt="${kullanici.fullName}" class="rounded-circle" width="40" height="40" />
+                <div class="profile-container">
+                    <img src="${kullanici.profilePhoto}" alt="${kullanici.fullName}" class="rounded-circle" width="40" height="40" />
+                    <div class="active-indicator aktif" title="Şu anda çevrimiçi"></div>
+                </div>
             </td>
             <td>${kullanici.fullName}</td>
             <td class="exp dot" title="${kullanici.email}">${kullanici.email}</td>
@@ -1186,19 +1211,23 @@
             <td>${kullanici.tarih}</td>
             <td>${new Date().toLocaleDateString("tr-TR")} [${kullanici.saat}]</td>
             <td>
-                <div class="dropdown-container">
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
-                    <div class="dropdown-menu">
-                        <button onclick="yetkilendir()">
-                            <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
-                            Yetkilendir
-                        </button>
-                        <button onclick="remove(this)">
-                            <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" />
-                            Sil
-                        </button>
+                                    <div class="dropdown-container">
+                        <button class="dropdown-toggle" onclick="toggleDropdown(this)">İşlemler</button>
+                        <div class="dropdown-menu">
+                            <button onclick="yetkilendir()">
+                                <img src="../assets/images/dropdown_svg/edit.svg" alt="edit" width="10%" height="10%" />
+                                Yetkilendir
+                            </button>
+                            <button onclick="durumDegistir(this)">
+                                <img src="../assets/images/dropdown_svg/edit.svg" alt="status" width="10%" height="10%" />
+                                Durumu Değiştir
+                            </button>
+                            <button onclick="remove(this)">
+                                <img src="../assets/images/dropdown_svg/rubbish-bin.svg" alt="remove" width="10%" height="10%" />
+                                Sil
+                            </button>
+                        </div>
                     </div>
-                </div>
             </td>
         `;
 

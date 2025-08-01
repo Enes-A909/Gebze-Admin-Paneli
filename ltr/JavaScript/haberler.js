@@ -604,7 +604,10 @@ function sil() {
     if (checkbox.checked) {
       seciliVar = true;
       const row = checkbox.closest("tr");
-      row.parentNode.removeChild(row);
+      // Sadece tbody içindeki satırları sil, thead'i koru
+      if (row && row.parentNode && row.parentNode.id === "tableContent") {
+        row.remove();
+      }
     }
   });
   if (!seciliVar) {
@@ -763,7 +766,10 @@ function search() {
       if (btn.textContent.includes("Sil")) {
         btn.onclick = function () {
           const tr = btn.closest("tr");
-          if (tr) tr.remove();
+          // Sadece tbody içindeki satırları sil, thead'i koru
+          if (tr && tr.parentNode && tr.parentNode.id === "tableContent") {
+            tr.remove();
+          }
         };
       }
     });
@@ -774,7 +780,10 @@ function search() {
 
 function remove() {
   let tr = document.getElementById("remove").closest("tr");
-  tr.remove();
+  // Sadece tbody içindeki satırları sil, thead'i koru
+  if (tr && tr.parentNode && tr.parentNode.id === "tableContent") {
+    tr.remove();
+  }
 }
 
 const checkboxes = document.querySelectorAll(".checkbox-item");

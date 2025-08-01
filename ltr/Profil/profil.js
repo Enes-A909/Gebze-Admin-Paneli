@@ -194,14 +194,14 @@ function onayKodTel() {
             if (userCode === kod.toString()) {
                 overlay.remove();
 
-                // Onaylandı ikonunu yeşile çevir
-                const icon = document.querySelector('.fa-times-circle.unverified-icon');
-                if (icon) {
-                    icon.classList.remove('fa-times-circle', 'red-icon', 'unverified-icon');
-                    icon.classList.add('fa-check-circle', 'green-icon', 'verified-icon');
+                // Onaylandı ikonunu yeşile çevir - Telefon ikonu için
+                const phoneIcon = document.querySelector('#phone-icon .fa-times-circle.unverified-icon');
+                if (phoneIcon) {
+                    phoneIcon.classList.remove('fa-times-circle', 'red-icon', 'unverified-icon');
+                    phoneIcon.classList.add('fa-check-circle', 'green-icon', 'verified-icon');
 
                     // Popup başlığını değiştir
-                    const popup = icon.closest('.icon-container').querySelector('.popup');
+                    const popup = phoneIcon.closest('#phone-icon').querySelector('.popup');
                     if (popup) {
                         popup.querySelector('.popup-header').className = 'popup-header-onaylandi';
                         popup.querySelector('.popup-header-onaylandi').textContent = 'Onaylandı!';
@@ -228,7 +228,7 @@ function onayKodTel() {
 }
 
 function onayKodPosta() {
-    // Telefon veya e-posta bilgisini al
+    // e-posta bilgisini al
     const email = document.getElementById('email').value.trim();
     let hedef = '';
 
@@ -289,14 +289,14 @@ function onayKodPosta() {
             if (userCode === kod.toString()) {
                 overlay.remove();
 
-                // Onaylandı ikonunu yeşile çevir
-                const icon = document.querySelector('.fa-times-circle.unverified-icon');
-                if (icon) {
-                    icon.classList.remove('fa-times-circle', 'red-icon', 'unverified-icon');
-                    icon.classList.add('fa-check-circle', 'green-icon', 'verified-icon');
+                // Onaylandı ikonunu yeşile çevir - E-posta ikonu için
+                const emailIcon = document.querySelector('#email-icon .fa-times-circle.unverified-icon');
+                if (emailIcon) {
+                    emailIcon.classList.remove('fa-times-circle', 'red-icon', 'unverified-icon');
+                    emailIcon.classList.add('fa-check-circle', 'green-icon', 'verified-icon');
 
                     // Popup başlığını değiştir
-                    const popup = icon.closest('.icon-container').querySelector('.popup');
+                    const popup = emailIcon.closest('#email-icon').querySelector('.popup');
                     if (popup) {
                         popup.querySelector('.popup-header').className = 'popup-header-onaylandi';
                         popup.querySelector('.popup-header-onaylandi').textContent = 'Onaylandı!';
