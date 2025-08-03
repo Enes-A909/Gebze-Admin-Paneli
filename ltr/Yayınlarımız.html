@@ -571,7 +571,7 @@
                 </td>
                 <td scope="row">
                   <span class="durum" style="margin-top: 7px">
-                    Arşivlendi
+                    Aktif
                   </span>
                 </td>
                 <td scope="row">...</td>
@@ -640,6 +640,48 @@
               menu.style.display === "block" ? "none" : "block";
           }
 
+          // Arşivle butonuna tıklandığında dropdown menüsünün kapanmasını engelle
+          function archive(btn) {
+            // Dropdown menüsünün kapanmasını engelle
+            event.stopPropagation();
+
+            if (!btn) return;
+
+            const row = btn.closest("tr");
+            const durumHucresi = row.querySelectorAll("td, th")[3];
+            const durumSpan = durumHucresi.querySelector("span");
+            const butonSpan = btn.querySelector("span");
+
+            const suankiDurum = durumSpan.textContent.trim();
+            const butonMetni = butonSpan ? butonSpan.textContent.trim() : "";
+
+            console.log("Mevcut durum:", suankiDurum);
+            console.log("Buton metni:", butonMetni);
+
+            // Durum ve buton metnini kontrol ederek doğru işlemi yap
+            if (suankiDurum === "Arşivlendi" || butonMetni === "Çıkar") {
+              // Arşivden çıkar
+              console.log("Arşivden çıkarılıyor...");
+              durumSpan.textContent = "Aktif";
+              if (butonSpan) {
+                butonSpan.textContent = "Arşivle";
+                console.log("Buton metni 'Arşivle' olarak değiştirildi");
+              }
+            } else {
+              // Arşivle
+              console.log("Arşivleniyor...");
+              durumSpan.textContent = "Arşivlendi";
+              if (butonSpan) {
+                butonSpan.textContent = "Çıkar";
+                console.log("Buton metni 'Çıkar' olarak değiştirildi");
+              }
+            }
+
+            // Dropdown menüsünü kapatma - bu satırı kaldırdık
+            // const dropdownMenu = btn.closest(".dropdown-menu");
+            // dropdownMenu.style.display = "none";
+          }
+
           // Tablo görünümüne geri dönme
           function geriDon() {
             location.reload(); // Sayfayı yenileyerek tabloyu geri yükler
@@ -691,26 +733,7 @@
 
           }
 
-          // Tekli Arşivleme Butonu
-          function archive(btn) {
-            if (!btn) return;
 
-            const row = btn.closest("tr");
-            const durumHucresi = row.querySelectorAll("td, th")[3];
-            const durumSpan = durumHucresi.querySelector("span");
-
-            const suankiDurum = durumSpan.textContent.trim();
-
-            if (suankiDurum === "Arşivlendi") {
-              // Arşivden çıkar
-              durumSpan.textContent = "Aktif";
-              btn.textContent = "Arşivle";
-            } else {
-              // Arşivle
-              durumSpan.textContent = "Arşivlendi";
-              btn.textContent = "Çıkar";
-            }
-          }
 
 
 

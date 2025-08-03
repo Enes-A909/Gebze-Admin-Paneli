@@ -1,3 +1,4 @@
+// Version: 1.1 - Debug version
 // Açılır menüyü açıp kapatma
 function toggleDropdown(btn) {
   const menu = btn.nextElementSibling;
@@ -58,23 +59,66 @@ function remove(btn) {
 
 // Tekli Arşivleme Butonu
 function archive(btn) {
-  if (!btn) return;
+  console.log("Archive fonksiyonu çağrıldı!");
+  alert("Archive fonksiyonu çalışıyor!"); // Geçici test için
+
+  // Dropdown menüsünün kapanmasını engelle
+  event.stopPropagation();
+
+  if (!btn) {
+    console.log("Btn parametresi boş!");
+    return;
+  }
+
+  console.log("Btn elementi:", btn);
+  console.log("Btn HTML:", btn.outerHTML);
 
   const row = btn.closest("tr");
+  console.log("Row elementi:", row);
+
   const durumHucresi = row.querySelectorAll("td, th")[3];
+  console.log("Durum hücresi:", durumHucresi);
+
   const durumSpan = durumHucresi.querySelector("span");
+  console.log("Durum span:", durumSpan);
+
+  const butonSpan = btn.querySelector("span");
+  console.log("Buton span:", butonSpan);
+  console.log("Buton span HTML:", butonSpan ? butonSpan.outerHTML : "Bulunamadı");
 
   const suankiDurum = durumSpan.textContent.trim();
+  const butonMetni = butonSpan ? butonSpan.textContent.trim() : "";
 
-  if (suankiDurum === "Arşivlendi") {
+  console.log("Mevcut durum:", suankiDurum);
+  console.log("Buton metni:", butonMetni);
+
+  // Durum ve buton metnini kontrol ederek doğru işlemi yap
+  if (suankiDurum === "Arşivlendi" || butonMetni === "Çıkar") {
     // Arşivden çıkar
+    console.log("Arşivden çıkarılıyor...");
     durumSpan.textContent = "Aktif";
-    btn.textContent = "Arşivle";
+    if (butonSpan) {
+      butonSpan.textContent = "Arşivle";
+      console.log("Buton metni 'Arşivle' olarak değiştirildi");
+      console.log("Buton span yeni içerik:", butonSpan.textContent);
+      console.log("Buton span HTML sonrası:", butonSpan.outerHTML);
+    }
   } else {
     // Arşivle
+    console.log("Arşivleniyor...");
     durumSpan.textContent = "Arşivlendi";
-    btn.textContent = "Çıkar";
+    if (butonSpan) {
+      butonSpan.textContent = "Çıkar";
+      console.log("Buton metni 'Çıkar' olarak değiştirildi");
+      console.log("Buton span yeni içerik:", butonSpan.textContent);
+      console.log("Buton span HTML sonrası:", butonSpan.outerHTML);
+      console.log("Buton HTML sonrası:", btn.outerHTML);
+    }
   }
+
+  // Test: Butonun görünür olup olmadığını kontrol et
+  console.log("Buton görünür mü:", btn.offsetParent !== null);
+  console.log("Span görünür mü:", butonSpan ? butonSpan.offsetParent !== null : "Span yok");
 }
 
 // Ekle kısmındaki kaydet butonu

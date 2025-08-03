@@ -898,7 +898,7 @@
                     <div class="profile-container">
                       <img src="../assets/images/user/user.png" alt="Mehmet Yılmaz" class="rounded-circle" width="40"
                         height="40" />
-                      <div class="active-indicator" title="Şu anda çevrimiçi"></div>
+                      <div class="active-indicator aktif" title="Şu anda çevrimiçi"></div>
                     </div>
                   </td>
                   <td>Ayşe Demir</td>
@@ -942,7 +942,7 @@
                     <div class="profile-container">
                       <img src="../assets/images/user/user.png" alt="Mehmet Yılmaz" class="rounded-circle" width="40"
                         height="40" />
-                      <div class="active-indicator" title="Şu anda çevrimiçi"></div>
+                      <div class="active-indicator aktif" title="Şu anda çevrimiçi"></div>
                     </div>
                   </td>
                   <td>Mehmet Yılmaz</td>
@@ -1130,8 +1130,10 @@
             const profileContainer = row.querySelector(".profile-container");
             const activeIndicator = profileContainer.querySelector(".active-indicator");
 
-            // Mevcut durumu kontrol et
-            const isAktif = activeIndicator.classList.contains("aktif");
+            // Mevcut durumu kontrol et - hem class hem de background color'a bak
+            const isAktif = activeIndicator.classList.contains("aktif") ||
+              activeIndicator.style.backgroundColor === "green" ||
+              (activeIndicator.style.backgroundColor === "" && !activeIndicator.classList.contains("pasif"));
 
             if (isAktif) {
               // Aktif ise pasif yap
